@@ -1,10 +1,10 @@
 module ManageIQ::Providers
   module AnsibleTower
-    class ConfigurationManager::RefreshParser
+    class AutomationManager::RefreshParser
       include Vmdb::Logging
 
-      def self.configuration_manager_inv_to_hashes(ems, options = nil)
-        new(ems, options).configuration_manager_inv_to_hashes
+      def self.automation_manager_inv_to_hashes(ems, options = nil)
+        new(ems, options).automation_manager_inv_to_hashes
       end
 
       def initialize(ems, options = nil)
@@ -15,8 +15,8 @@ module ManageIQ::Providers
         @data_index = {}
       end
 
-      def configuration_manager_inv_to_hashes
-        log_header = "Collecting data for ConfigurationManager : [#{@ems.name}] id: [#{@ems.id}]"
+      def automation_manager_inv_to_hashes
+        log_header = "Collecting data for AutomationManager : [#{@ems.name}] id: [#{@ems.id}]"
 
         _log.info("#{log_header}...")
         get_inventories
@@ -61,7 +61,7 @@ module ManageIQ::Providers
         name = uid = host.name
 
         new_result = {
-          :type                 => "ManageIQ::Providers::AnsibleTower::ConfigurationManager::ConfiguredSystem",
+          :type                 => "ManageIQ::Providers::AnsibleTower::AutomationManager::ConfiguredSystem",
           :manager_ref          => host.id.to_s,
           :hostname             => name,
           :inventory_root_group => inventory_root_group,
@@ -82,7 +82,7 @@ module ManageIQ::Providers
         uid = inventory.id
 
         new_result = {
-          :type    => "ManageIQ::Providers::ConfigurationManager::InventoryRootGroup",
+          :type    => "ManageIQ::Providers::AutomationManager::InventoryRootGroup",
           :ems_ref => inventory.id.to_s,
           :name    => inventory.name,
         }
@@ -100,7 +100,7 @@ module ManageIQ::Providers
           :manager_ref          => job_template.id.to_s,
           :name                 => job_template.name,
           :survey_spec          => job_template.survey_spec_hash,
-          :type                 => "ManageIQ::Providers::AnsibleTower::ConfigurationManager::ConfigurationScript",
+          :type                 => "ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript",
           :variables            => job_template.extra_vars_hash
         }
 

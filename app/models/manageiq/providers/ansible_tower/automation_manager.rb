@@ -1,4 +1,4 @@
-class ManageIQ::Providers::AnsibleTower::ConfigurationManager < ManageIQ::Providers::ConfigurationManager
+class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers::ExternalAutomationManager
   require_nested :ConfigurationScript
   require_nested :ConfiguredSystem
   require_nested :Refresher
@@ -17,15 +17,15 @@ class ManageIQ::Providers::AnsibleTower::ConfigurationManager < ManageIQ::Provid
            :to => :provider
 
   def self.ems_type
-    @ems_type ||= "ansible_tower_configuration".freeze
+    @ems_type ||= "ansible_tower_automation".freeze
   end
 
   def self.description
-    @description ||= "Ansible Tower Configuration".freeze
+    @description ||= "Ansible Tower Automation".freeze
   end
 
   def image_name
-    "ansible_tower_configuration"
+    "ansible_tower_automation"
   end
 
   private

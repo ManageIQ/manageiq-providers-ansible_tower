@@ -1,13 +1,13 @@
 require 'ansible_tower_client'
 require 'faraday'
-describe ManageIQ::Providers::AnsibleTower::ConfigurationManager::Job do
+describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
   let(:faraday_connection) { instance_double("Faraday::Connection", :post => post, :get => get) }
   let(:post) { instance_double("Faraday::Result", :body => {}.to_json) }
   let(:get)  { instance_double("Faraday::Result", :body => {'id' => 1}.to_json) }
 
   let(:connection) { double(:connection, :api => double(:api, :jobs => double(:jobs, :find => the_raw_job))) }
 
-  let(:manager)  { FactoryGirl.create(:configuration_manager_ansible_tower, :provider) }
+  let(:manager)  { FactoryGirl.create(:automation_manager_ansible_tower, :provider) }
   let(:mock_api) { AnsibleTowerClient::Api.new(faraday_connection) }
   let(:the_raw_job) do
     AnsibleTowerClient::Job.new(
@@ -27,7 +27,7 @@ describe ManageIQ::Providers::AnsibleTower::ConfigurationManager::Job do
       it 'creates a job' do
         expect(template).to receive(:run).and_return(the_raw_job)
 
-        job = ManageIQ::Providers::AnsibleTower::ConfigurationManager::Job.create_job(template, {})
+        job = ManageIQ::Providers::AnsibleTower::AutomationManager::Job.create_job(template, {})
         expect(job.class).to                 eq(described_class)
         expect(job.name).to                  eq(template.name)
         expect(job.ems_ref).to               eq(the_raw_job.id)
@@ -40,7 +40,7 @@ describe ManageIQ::Providers::AnsibleTower::ConfigurationManager::Job do
         expect(template).to receive(:run).and_raise('bad request')
 
         expect do
-          ManageIQ::Providers::AnsibleTower::ConfigurationManager::Job.create_job(template, {})
+          ManageIQ::Providers::AnsibleTower::AutomationManager::Job.create_job(template, {})
         end.to raise_error(MiqException::MiqOrchestrationProvisionError)
       end
     end

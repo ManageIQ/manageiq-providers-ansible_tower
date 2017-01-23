@@ -1,4 +1,4 @@
-describe ManageIQ::Providers::AnsibleTower::ConfigurationManager::Job::Status do
+describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job::Status do
   it 'parses Succeeded' do
     status = described_class.new('Successful', '')
     expect(status.completed?).to   be_truthy

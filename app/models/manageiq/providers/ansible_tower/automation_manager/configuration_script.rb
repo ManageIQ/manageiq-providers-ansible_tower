@@ -1,4 +1,4 @@
-class ManageIQ::Providers::AnsibleTower::ConfigurationManager::ConfigurationScript < ConfigurationScript
+class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript < ConfigurationScript
   def run(vars = {})
     options = vars.merge(merge_extra_vars(vars[:extra_vars]))
 

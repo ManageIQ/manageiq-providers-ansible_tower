@@ -1,4 +1,4 @@
-module ManageIQ::Providers::AnsibleTower::ConfigurationManager::EventParser
+module ManageIQ::Providers::AnsibleTower::AutomationManager::EventParser
   def self.event_to_hash(event, ems_id)
     {
       :event_type => "ansible_tower_#{event.operation}",

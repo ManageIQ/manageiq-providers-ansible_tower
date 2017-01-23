@@ -1,4 +1,4 @@
-class ManageIQ::Providers::AnsibleTower::ConfigurationManager::EventCatcher::Runner < ManageIQ::Providers::BaseManager::EventCatcher::Runner
+class ManageIQ::Providers::AnsibleTower::AutomationManager::EventCatcher::Runner < ManageIQ::Providers::BaseManager::EventCatcher::Runner
   def stop_event_monitor
     event_monitor_handle.stop
   end
@@ -16,7 +16,7 @@ class ManageIQ::Providers::AnsibleTower::ConfigurationManager::EventCatcher::Run
 
   def queue_event(event)
     _log.info "#{log_prefix} Caught event [#{event.id}]"
-    event_hash = ManageIQ::Providers::AnsibleTower::ConfigurationManager::EventParser.event_to_hash(event, @cfg[:ems_id])
+    event_hash = ManageIQ::Providers::AnsibleTower::AutomationManager::EventParser.event_to_hash(event, @cfg[:ems_id])
     EmsEvent.add_queue('add', @cfg[:ems_id], event_hash)
   end
 
@@ -24,7 +24,7 @@ class ManageIQ::Providers::AnsibleTower::ConfigurationManager::EventCatcher::Run
 
   def event_monitor_handle
     @event_monitor_handle ||= begin
-      ManageIQ::Providers::AnsibleTower::ConfigurationManager::EventCatcher::Stream.new(
+      ManageIQ::Providers::AnsibleTower::AutomationManager::EventCatcher::Stream.new(
         @ems,
         :poll_sleep => worker_settings[:poll]
       )

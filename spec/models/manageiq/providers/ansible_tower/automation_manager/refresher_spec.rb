@@ -1,6 +1,6 @@
-describe ManageIQ::Providers::AnsibleTower::ConfigurationManager::Refresher do
+describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
   let(:auth)                    { FactoryGirl.create(:authentication) }
-  let(:configuration_manager)   { provider.configuration_manager }
+  let(:automation_manager)      { provider.automation_manager }
   let(:expected_counterpart_vm) { FactoryGirl.create(:vm, :uid_ems => "4233080d-7467-de61-76c9-c8307b6e4830") }
   let(:provider) do
     _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone
@@ -12,7 +12,7 @@ describe ManageIQ::Providers::AnsibleTower::ConfigurationManager::Refresher do
   end
 
   it ".ems_type" do
-    expect(described_class.ems_type).to eq(:ansible_tower_configuration)
+    expect(described_class.ems_type).to eq(:ansible_tower_automation)
   end
 
   it "will perform a full refresh" do
@@ -20,8 +20,8 @@ describe ManageIQ::Providers::AnsibleTower::ConfigurationManager::Refresher do
 
     2.times do
       VCR.use_cassette(described_class.name.underscore) do
-        EmsRefresh.refresh(configuration_manager)
-        expect(configuration_manager.reload.last_refresh_error).to be_nil
+        EmsRefresh.refresh(automation_manager)
+        expect(automation_manager.reload.last_refresh_error).to be_nil
       end
 
       assert_counts
@@ -34,15 +34,15 @@ describe ManageIQ::Providers::AnsibleTower::ConfigurationManager::Refresher do
 
   def assert_counts
     expect(Provider.count).to                                    eq(1)
-    expect(configuration_manager).to                             have_attributes(:api_version => "2.4.2")
-    expect(configuration_manager.configured_systems.count).to    eq(98)
-    expect(configuration_manager.configuration_scripts.count).to eq(13)
-    expect(configuration_manager.inventory_groups.count).to      eq(7)
+    expect(automation_manager).to                             have_attributes(:api_version => "2.4.2")
+    expect(automation_manager.configured_systems.count).to    eq(98)
+    expect(automation_manager.configuration_scripts.count).to eq(13)
+    expect(automation_manager.inventory_groups.count).to      eq(7)
   end
 
   def assert_configured_system
     expect(expected_configured_system).to have_attributes(
-      :type                 => "ManageIQ::Providers::AnsibleTower::ConfigurationManager::ConfiguredSystem",
+      :type                 => "ManageIQ::Providers::AnsibleTower::AutomationManager::ConfiguredSystem",
       :hostname             => "Ansible-Host",
       :manager_ref          => "145",
       :virtual_instance_ref => "4233080d-7467-de61-76c9-c8307b6e4830",
@@ -63,7 +63,7 @@ describe ManageIQ::Providers::AnsibleTower::ConfigurationManager::Refresher do
   end
 
   def assert_configuration_script_with_survey_spec
-    system = configuration_manager.configuration_scripts.where(:name => "Ansible-JobTemplate-Survey").first
+    system = automation_manager.configuration_scripts.where(:name => "Ansible-JobTemplate-Survey").first
     expect(system).to have_attributes(
       :name        => "Ansible-JobTemplate-Survey",
       :description => "Ansible-JobTemplate-Description",
@@ -79,21 +79,21 @@ describe ManageIQ::Providers::AnsibleTower::ConfigurationManager::Refresher do
     expect(expected_inventory_root_group).to have_attributes(
       :name    => "Dev VC60",
       :ems_ref => "17",
-      :type    => "ManageIQ::Providers::ConfigurationManager::InventoryRootGroup",
+      :type    => "ManageIQ::Providers::AutomationManager::InventoryRootGroup",
     )
   end
 
   private
 
   def expected_configured_system
-    @expected_configured_system ||= configuration_manager.configured_systems.where(:hostname => "Ansible-Host").first
+    @expected_configured_system ||= automation_manager.configured_systems.where(:hostname => "Ansible-Host").first
   end
 
   def expected_configuration_script
-    @expected_configuration_script ||= configuration_manager.configuration_scripts.where(:name => "Ansible-JobTemplate").first
+    @expected_configuration_script ||= automation_manager.configuration_scripts.where(:name => "Ansible-JobTemplate").first
   end
 
   def expected_inventory_root_group
-    @expected_inventory_root_group ||= configuration_manager.inventory_groups.where(:name => "Dev VC60").first
+    @expected_inventory_root_group ||= automation_manager.inventory_groups.where(:name => "Dev VC60").first
   end
 end

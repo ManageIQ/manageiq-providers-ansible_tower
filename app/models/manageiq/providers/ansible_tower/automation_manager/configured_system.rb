@@ -1,4 +1,4 @@
-class ManageIQ::Providers::AnsibleTower::ConfigurationManager::ConfiguredSystem < ::ConfiguredSystem
+class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfiguredSystem < ::ConfiguredSystem
   include ProviderObjectMixin
 
   def provider_object(connection = nil)
