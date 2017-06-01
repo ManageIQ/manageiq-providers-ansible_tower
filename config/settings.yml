@@ -1,0 +1,12 @@
+---
+:ems:
+  :ems_ansible_tower:
+    :blacklisted_event_names: []
+    :event_handling:
+      :event_groups:
+:http_proxy:
+  :ansible_tower:
+    :host:
+    :password:
+    :port:
+    :user:
