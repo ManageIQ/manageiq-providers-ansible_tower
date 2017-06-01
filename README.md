@@ -1,5 +1,7 @@
 # manageiq-providers-ansible_tower
 
+[![Join the chat at https://gitter.im/ManageIQ/manageiq-providers-ansible_tower](https://badges.gitter.im/ManageIQ/manageiq-providers-ansible_tower.svg)](https://gitter.im/ManageIQ/manageiq-providers-ansible_tower?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Gem Version](https://badge.fury.io/rb/manageiq-providers-ansible_tower.svg)](http://badge.fury.io/rb/manageiq-providers-ansible_tower)
 [![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-ansible_tower.svg)](https://travis-ci.org/ManageIQ/manageiq-providers-ansible_tower)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower)
