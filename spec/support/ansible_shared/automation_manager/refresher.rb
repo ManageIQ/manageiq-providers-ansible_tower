@@ -97,6 +97,8 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
 
   def assert_credentials
     expect(expected_configuration_script.authentications.count).to eq(3)
+
+    # machine_credential
     machine_credential = expected_configuration_script.authentications.find_by(
       :type => manager_class::MachineCredential
     )
@@ -104,10 +106,11 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
       :name   => "Demo Credential",
       :userid => "admin",
     )
-    expect(machine_credential.options.keys).to match_array(machine_credential.class::EXTRA_ATTRIBUTES.keys)
+    expect(machine_credential.options.keys).to match_array([:become_method, :become_password, :become_username, :ssh_key_data, :ssh_key_unlock, :vault_password])
     expect(machine_credential.options[:become_method]).to eq('su')
     expect(machine_credential.options[:become_username]).to eq('root')
 
+    # network_credential
     network_credential = expected_configuration_script.authentications.find_by(
       :type => manager_class::NetworkCredential
     )
@@ -115,23 +118,25 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
       :name   => "Demo Creds 2",
       :userid => "awdd",
     )
-    expect(network_credential.options.keys).to match_array(network_credential.class::EXTRA_ATTRIBUTES.keys)
+    expect(network_credential.options.keys).to match_array([:authorize, :authorize_password, :ssh_key_data, :ssh_key_unlock])
 
-    cloud_credential = expected_configuration_script.authentications.find_by(
+    # vmware_credential
+    vmware_credential = expected_configuration_script.authentications.find_by(
       :type => manager_class::VmwareCredential
     )
-    expect(cloud_credential).to have_attributes(
+    expect(vmware_credential).to have_attributes(
       :name   => "dev-vc60",
       :userid => "MiqAnsibleUser@vsphere.local",
     )
-    expect(cloud_credential.options.keys).to match_array(cloud_credential.class::EXTRA_ATTRIBUTES.keys)
+    expect(vmware_credential.options.keys).to match_array([:host])
 
+    # scm_credential
     scm_credential = expected_configuration_script_source.authentication
     expect(scm_credential).to have_attributes(
       :name   => "db-github",
       :userid => "syncrou"
     )
-    expect(scm_credential.options.keys).to match_array(scm_credential.class::EXTRA_ATTRIBUTES.keys)
+    expect(scm_credential.options.keys).to match_array([:ssh_key_data, :ssh_key_unlock])
   end
 
   def assert_playbooks
