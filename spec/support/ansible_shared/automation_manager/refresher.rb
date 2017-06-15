@@ -110,6 +110,8 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
 
   def assert_credentials
     expect(expected_configuration_script.authentications.count).to eq(3)
+
+    # machine_credential
     machine_credential = expected_configuration_script.authentications.find_by(
       :type => manager_class::MachineCredential
     )
@@ -117,10 +119,12 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
       :name   => "hello_machine_cred",
       :userid => "admin",
     )
+    expect(machine_credential.options.keys).to match_array([:become_method, :become_password, :become_username, :ssh_key_data, :ssh_key_unlock, :vault_password])
     expect(machine_credential.options.keys).to match_array(machine_credential.class::EXTRA_ATTRIBUTES.keys)
     expect(machine_credential.options[:become_method]).to eq('')
     expect(machine_credential.options[:become_username]).to eq('')
 
+    # network_credential
     network_credential = expected_configuration_script.authentications.find_by(
       :type => manager_class::NetworkCredential
     )
@@ -128,7 +132,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
       :name   => "hello_network_cred",
       :userid => "admin",
     )
-    expect(network_credential.options.keys).to match_array(network_credential.class::EXTRA_ATTRIBUTES.keys)
+    expect(network_credential.options.keys).to match_array([:authorize, :authorize_password, :ssh_key_data, :ssh_key_unlock])
 
     cloud_credential = expected_configuration_script.authentications.find_by(
       :type => manager_class::AmazonCredential
@@ -137,14 +141,15 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
       :name   => "hello_aws_cred",
       :userid => "ABC",
     )
-    expect(cloud_credential.options.keys).to match_array(cloud_credential.class::EXTRA_ATTRIBUTES.keys)
+    expect(cloud_credential.options.keys).to match_array([:security_token])
 
+    # scm_credential
     scm_credential = expected_configuration_script_source.authentication
     expect(scm_credential).to have_attributes(
       :name   => "hello_scm_cred",
       :userid => "admin"
     )
-    expect(scm_credential.options.keys).to match_array(scm_credential.class::EXTRA_ATTRIBUTES.keys)
+    expect(scm_credential.options.keys).to match_array([:ssh_key_data, :ssh_key_unlock])
   end
 
   def assert_playbooks
