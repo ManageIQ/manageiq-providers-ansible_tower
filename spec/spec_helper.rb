@@ -9,4 +9,4 @@ end
 #  config.cassette_library_dir = File.join(ManageIQ::Providers::AnsibleTower::Engine.root, 'spec/vcr_cassettes')
 #end
 
-Dir[Rails.root.join("spec/shared/**/*.rb")].each { |f| require f }
+Dir[File.join(ManageIQ::Providers::AnsibleTower::Engine.root, 'spec/support/**/*.rb')].each { |f| require f }
