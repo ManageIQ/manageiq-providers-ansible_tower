@@ -87,7 +87,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_counts
     expect(Provider.count).to                                    eq(1)
     expect(automation_manager).to                             have_attributes(:api_version => "3.0.1")
-    expect(automation_manager.configured_systems.count).to    eq(84)
+    expect(automation_manager.configured_systems.count).to    eq(116)
     expect(automation_manager.configuration_scripts.count).to eq(11)
     expect(automation_manager.inventory_groups.count).to      eq(6)
     expect(automation_manager.configuration_script_sources.count).to eq(6)
