@@ -1,5 +1,20 @@
 
 shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems_type, cassette_path|
+  # Maintaining cassettes for new specs
+  #
+  # Option #1
+  # ========
+  # Update: re-create expected set of Tower objects and re-record cassettes
+  # 1. Modify the rake task lib/tasks_private/spec_helper.rake to modify the objects for new spec
+  # 2. rake manageiq:providers:ansible_tower:populate_tower
+  #    (refer to the task doc for detail)
+  # 2. remove the old cassette
+  # 3. run the spec to create the cassette
+  # 4. update the expectations
+  # 5. change credentials in cassettes before commit
+  #
+  # Option #2
+  # ========
   # To re-record cassettes or to add cassettes you can add another inner `VCR.use_cassette` block to the
   # 'will perform a full refresh' example. When running specs, new requests are recorded to the innermost cassette and
   # can be played back from  any level of nesting (it tries the innermost cassette first, then searches up the parent
@@ -16,7 +31,9 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   #   * rm cassette ; run specs
   #   * change back the order of cassettes
   #
-  # To change credentials in cassettes:
+  #
+  # To change credentials in cassettes
+  # ==================================
   # replace with defaults - before committing
   # ruby -pi -e 'gsub /yourdomain.com/, "example.com"; gsub /admin:smartvm/, "testuser:secret"' spec/vcr_cassettes/manageiq/providers/ansible_tower/automation_manager/*.yml
   # replace with your working credentials
