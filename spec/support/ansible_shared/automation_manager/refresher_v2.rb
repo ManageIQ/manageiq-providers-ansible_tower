@@ -64,6 +64,7 @@ shared_examples_for "ansible refresher_v2" do |ansible_provider, manager_class, 
       :name   => "appliance",
       :userid => "root",
     )
+    expect(machine_credential.options.keys).to match_array([:become_method, :become_password, :become_username, :ssh_key_data, :ssh_key_unlock, :vault_password])
 
     cloud_credential = expected_configuration_script.authentications.find_by(
       :type => manager_class::AmazonCredential
@@ -72,13 +73,14 @@ shared_examples_for "ansible refresher_v2" do |ansible_provider, manager_class, 
       :name   => "AWS",
       :userid => "065ZMGNV5WNKPMX4FF82",
     )
+    expect(cloud_credential.options.keys).to match_array([:ssh_key_data, :ssh_key_unlock])
 
     scm_credential = expected_configuration_script_source.authentication
     expect(scm_credential).to have_attributes(
       :name   => "db-github",
       :userid => "syncrou"
     )
-    expect(scm_credential.options.keys).to match_array(scm_credential.class::EXTRA_ATTRIBUTES.keys)
+    expect(scm_credential.options.keys).to match_array([:ssh_key_data, :ssh_key_unlock])
   end
 
   def assert_playbooks
