@@ -4,13 +4,13 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::OpenstackCr
   COMMON_ATTRIBUTES = {
     :userid => {
       :label     => N_('Username'),
-      :help_text => N_('Username for this credential'),
+      :help_text => N_('The username to use to connect to OpenStack'),
       :required  => true
     },
     :password => {
       :type      => :password,
       :label     => N_('Password (API Key)'),
-      :help_text => N_('Password for this credential'),
+      :help_text => N_('The password or API key to use to connect to OpenStack'),
       :required  => true
     }
   }.freeze
