@@ -80,6 +80,37 @@ class PopulateTower
   end
 
   def create_dataset
+
+    ssh_key_data = <<~HEREDOC
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEowIBAAKCAQEArIIYuT+hC2dhPaSx68zTxsh5OJ3byVLNoX7urk8XU20OjlK4
+    7++J7qqkHojXadRZrJI69/BFteqOpLr16fAuTdPnEV1dIolEApT9Gd5sEMb4SFFc
+    QmZPtOCuFMRjweQBVqAFboUDpzp1Yosjyiw34JWaT8n2SVYjgFB/6SZt9/r/ZHjU
+    qOnQi/VY1Zp6eWtjW+LpverzCDS7EAv06OLeu9CZtKLNl8DcgcCvCbuONPCsbaSv
+    FtK8kw4Ev/oJvoYa3RbMphx9dfj8WB0xOcdlDmJLlvqw/iuBX0Ktslm/nADcPcxK
+    sd37i8Ds2BRVIlr7F3Pblh77TIP+KWzM0lVs1wIDAQABAoIBAAdpj6ZmFYVn68W6
+    TerT4kWoV40XO1prNGq8CYVz4Iy1Iur6ovesU0DuFB87wgXKGhBQODhvGo+2hGqP
+    ngFvUI4HjOYyHM5fF40E2dtCs2IFKqXw2QYBX2tmPBSoW6D5KxWNyq31CTMmT+Ts
+    FZ2aSMxdoUPMaci86smYq+ZYwGDnVfp2Da5G/GnvdmN+x51mMku5hETBMCOpR+n9
+    Z4bYnayVGyLXBJvwhx3pdIprwzAvoiySFjp/tFk+knxiPK84dJ3tIfdtgXmf1Cp9
+    pEqDQR3lnvwW0LrBG3c6MiJRlp+Pl3EOZNMLdmsaKODnInwO2U5BNPQuVHPdrObD
+    1GXxcAECgYEA3xkFdbQ+I6QZH5OSNxPKRPcqcYuYewTwQKmiL3mSoICfV9dRNV3e
+    ewQpcca7h9dcjTtdyx8PfvCNFR/uh/FhMw+kRXb4bdKDbDrKcQ9x23RFatbsgN14
+    q90a6FaEOjOXf0TiTNqP/LTFry1x2r1ZCDLtVcg5zWM/iwUgrO5qOJkCgYEAxfMV
+    ijLKtBg8Mbdhb2F29vIxMokZS++AhEjWuWl7d/DCApjCXzrfMaHnBC6b4Oppubkp
+    i40KnkaaDSy03U4hpcSPoPONbv2Fw4o/88ml71DF44D7kXCIFjSMvPLEtU2qLl4z
+    o4dHUSbtycBzn+wou+IdgPNqNnBYvl/eBNHvBu8CgYBQJ3M4uMtijsCgAasUsr2H
+    Ta4oIVllSX7wHIIywGEX3V5idu+sVs9qLzKcuCQESDHuZBfstHoix1ZI8rIGkYi0
+    ibghZP8Ypful1PGK8Vuc1wdhvVo3alrClKvoMb1ME+EoTp1ns1bsGh60M4Wma0Uj
+    lviCS2/JBRF9Zxg4SWhMcQKBgQC3PLABv8a4M371HqXJLtWq/sLf3t1V15yF1888
+    zxIGEw3kzXeQI7UcAp0Q1/xflV7NF0QH9EWSAhT0gR/jhEHNa0jxWsLfrTs3qTBO
+    AanjAEhOssUs+phexcJJ3giNNBmG1pjClaVEz95qVgYyUa/bTBK3nZwCTLk5cRDa
+    MWMsbQKBgCaNkKxH/gZBxVGbnjxbaxTGGq2TxNrKcKWEY4aIybcJ1kM0+UctHPy2
+    ixDk3cLUN9/a24A9BI+3GkyuX9LmubW/HqmSErIxnw6fx8OGUsVc/oJxJFbJjXQv
+    QS4PQZOVkJOn3sZr4hlMMLEKA7NSP9O9BiXCQIycrCDN6YlZ+0/c
+    -----END RSA PRIVATE KEY-----
+    HEREDOC
+
     puts "=== Re-creating Tower objects ==="
     # create test organization
     uri = '/api/v1/organizations/'
@@ -95,13 +126,33 @@ class PopulateTower
     data = {"name" => "hello_machine_cred", "kind" => "ssh", "username" => "admin", "password" => "abc", "organization" => organization['id']}
     machine_credential = create_obj(uri, data)
 
+    # create network cred
+    data = {"name" => "hello_network_cred", "kind" => "net", "username" => "admin", "password" => "abc", "organization" => organization['id']}
+    network_credential = create_obj(uri, data)
+
     # create cloud aws cred
     data = {"name" => "hello_aws_cred", "kind" => "aws", "username" => "ABC", "password" => "abc", "organization" => organization['id']}
     aws_credential = create_obj(uri, data)
 
-    # create network cred
-    data = {"name" => "hello_network_cred", "kind" => "net", "username" => "admin", "password" => "abc", "organization" => organization['id']}
-    network_credential = create_obj(uri, data)
+    # create cloud openstack cred
+    data = {"name" => "hello_openstack_cred", "kind" => "openstack", "username" => "hello_rack", "password" => "abc", "host" => "openstack.com", "project" => "hello_rack", "organization" => organization['id']}
+    _openstack_credential = create_obj(uri, data)
+
+    # create cloud google cred
+    data = {"name" => "hello_gce_cred", "kind" => "gce", "username" => "hello_gce@gce.com", "ssh_key_data" => ssh_key_data, "project" => "squeamish-ossifrage-123", "organization" => organization['id']}
+    _gce_credential = create_obj(uri, data)
+
+    # create cloud rackspace cred
+    data = {"name" => "hello_rax_cred", "kind" => "rax", "username" => "admin", "password" => "abc", "organization" => organization['id']}
+    _rax_credential = create_obj(uri, data)
+
+    # create cloud azure(RM) cred
+    data = {"name" => "hello_azure_cred", "kind" => "azure_rm", "username" => "admin", "password" => "abc", "subscription"  => "sub_id", "tenant" => "ten_id", "secret" => "my_secret", "client" => "cli_id", "organization" => organization['id']}
+    _azure_credential = create_obj(uri, data)
+
+    # create cloud satellite6 cred
+    data = {"name" => "hello_sat_cred", "kind" => "satellite6", "username" => "admin", "password" => "abc", "host"  => "s1.sat.com", "organization" => organization['id']}
+    _azure_credential = create_obj(uri, data)
 
     # create inventory
     uri = '/api/v1/inventories/'
@@ -134,6 +185,7 @@ class PopulateTower
     puts "created #{template['url']} survey_spec"
     self
   end
+
 
   def counts
     puts "=== Object counts ==="
