@@ -100,12 +100,12 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_counts
     expect(Provider.count).to                                 eq(1)
     expect(automation_manager).to                             have_attributes(:api_version => "3.0.1")
-    expect(automation_manager.configured_systems.count).to    eq(130)
+    expect(automation_manager.configured_systems.count).to    eq(131)
     expect(automation_manager.configuration_scripts.count).to eq(120)
     expect(automation_manager.inventory_groups.count).to      eq(29)
     expect(automation_manager.configuration_script_sources.count).to eq(32)
     expect(automation_manager.configuration_script_payloads.count).to eq(2720)
-    expect(automation_manager.credentials.count).to eq(47)
+    expect(automation_manager.credentials.count).to eq(54)
   end
 
   def assert_credentials
@@ -150,6 +150,18 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
       :userid => "admin"
     )
     expect(scm_credential.options.keys).to match_array([:ssh_key_data, :ssh_key_unlock])
+
+    # other credential types
+    openstack_cred = automation_manager.credentials.find_by(:name => 'hello_openstack_cred')
+    expect(openstack_cred.type.split('::').last).to eq("OpenstackCredential")
+    gce_cred = automation_manager.credentials.find_by(:name => 'hello_gce_cred')
+    expect(gce_cred.type.split('::').last).to eq("GoogleCredential")
+    rackspace_cred = automation_manager.credentials.find_by(:name => 'hello_rax_cred')
+    expect(rackspace_cred.type.split('::').last).to eq("RackspaceCredential")
+    azure_cred = automation_manager.credentials.find_by(:name => 'hello_azure_cred')
+    expect(azure_cred.type.split('::').last).to eq("AzureCredential")
+    satellite6_cred = automation_manager.credentials.find_by(:name => 'hello_sat_cred')
+    expect(satellite6_cred.type.split('::').last).to eq("Satellite6Credential")
   end
 
   def assert_playbooks
@@ -180,7 +192,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configured_system).to have_attributes(
       :type                 => manager_class::ConfiguredSystem.name,
       :hostname             => "hello_vm",
-      :manager_ref          => "242",
+      :manager_ref          => "251",
       :virtual_instance_ref => "4233080d-7467-de61-76c9-c8307b6e4830",
     )
     expect(expected_configured_system.counterpart).to          eq(expected_counterpart_vm)
@@ -191,7 +203,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configuration_script).to have_attributes(
       :name        => "hello_template",
       :description => "test job",
-      :manager_ref => "571",
+      :manager_ref => "598",
       :survey_spec => {},
       :variables   => {},
     )
@@ -205,7 +217,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(system).to have_attributes(
       :name        => "hello_template_with_survey",
       :description => "test job with survey spec",
-      :manager_ref => "572",
+      :manager_ref => "599",
       :variables   => {}
     )
     survey = system.survey_spec
@@ -216,7 +228,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_inventory_root_group
     expect(expected_inventory_root_group).to have_attributes(
       :name    => "hello_inventory",
-      :ems_ref => "103",
+      :ems_ref => "112",
       :type    => "ManageIQ::Providers::AutomationManager::InventoryRootGroup",
     )
   end
