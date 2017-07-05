@@ -1,6 +1,4 @@
 module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::GoogleCredential
-  extend ActiveSupport::Concern
-
   COMMON_ATTRIBUTES = {
     :userid => {
       :type      => :email,
