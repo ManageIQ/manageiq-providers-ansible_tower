@@ -41,7 +41,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::NetworkCred
   API_ATTRIBUTES = COMMON_ATTRIBUTES.merge(EXTRA_ATTRIBUTES).freeze
 
   API_OPTIONS = {
-    :label      => N_('network'),
+    :label      => N_('Network'),
     :type       => 'network',
     :attributes => API_ATTRIBUTES
   }.freeze
