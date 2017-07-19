@@ -17,17 +17,19 @@ shared_examples_for "ansible event_catcher stream" do |cassette_file|
 
   context "#poll" do
     it "yields valid events" do
-      VCR.use_cassette(cassette_file) do
-        last_activity = subject.send(:last_activity)
-        # do something on tower that creates an activity in activity_stream
-        provider.connect.api.credentials.create!(:name => 'test_stream', :user => 1)
-        polled_event = nil
-        subject.poll do |event|
-          expect(event['id']).to eq(last_activity.id + 1)
-          subject.stop
-          polled_event = event
+      Spec::Support::VcrHelper.with_cassette_library_dir(ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/vcr_cassettes")) do
+        VCR.use_cassette(cassette_file) do
+          last_activity = subject.send(:last_activity)
+          # do something on tower that creates an activity in activity_stream
+          provider.connect.api.credentials.create!(:name => 'test_stream', :user => 1)
+          polled_event = nil
+          subject.poll do |event|
+            expect(event['id']).to eq(last_activity.id + 1)
+            subject.stop
+            polled_event = event
+          end
+          expect(subject.send(:last_activity).id).to eq(polled_event['id'])
         end
-        expect(subject.send(:last_activity).id).to eq(polled_event['id'])
       end
     end
   end
