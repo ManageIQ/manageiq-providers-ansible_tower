@@ -27,20 +27,22 @@ shared_examples_for "ansible refresher_v2" do |ansible_provider, manager_class, 
   it "will perform a full refresh" do
     expected_counterpart_vm
 
-    2.times do
-      VCR.use_cassette("#{cassette_path}_v2") do
-        EmsRefresh.refresh(automation_manager)
-        expect(automation_manager.reload.last_refresh_error).to be_nil
-      end
+    Spec::Support::VcrHelper.with_cassette_library_dir(ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/vcr_cassettes")) do
+      2.times do
+        VCR.use_cassette("#{cassette_path}_v2") do
+          EmsRefresh.refresh(automation_manager)
+          expect(automation_manager.reload.last_refresh_error).to be_nil
+        end
 
-      assert_counts
-      assert_configured_system
-      assert_configuration_script_with_nil_survey_spec
-      assert_configuration_script_with_survey_spec
-      assert_inventory_root_group
-      assert_configuration_script_sources
-      assert_playbooks
-      assert_credentials
+        assert_counts
+        assert_configured_system
+        assert_configuration_script_with_nil_survey_spec
+        assert_configuration_script_with_survey_spec
+        assert_inventory_root_group
+        assert_configuration_script_sources
+        assert_playbooks
+        assert_credentials
+      end
     end
   end
 
