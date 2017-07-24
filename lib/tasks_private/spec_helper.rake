@@ -150,6 +150,10 @@ class PopulateTower
     data = {"name" => "hello_azure_cred", "kind" => "azure_rm", "username" => "admin", "password" => "abc", "subscription"  => "sub_id", "tenant" => "ten_id", "secret" => "my_secret", "client" => "cli_id", "organization" => organization['id']}
     _azure_credential = create_obj(uri, data)
 
+    # create cloud azure(Classic) cred
+    data = {"name" => "hello_azure_classic_cred", "kind" => "azure", "username" => "admin", "ssh_key_data" => ssh_key_data, "organization" => organization['id']}
+    _azure_credential = create_obj(uri, data)
+
     # create cloud satellite6 cred
     data = {"name" => "hello_sat_cred", "kind" => "satellite6", "username" => "admin", "password" => "abc", "host"  => "s1.sat.com", "organization" => organization['id']}
     _azure_credential = create_obj(uri, data)
