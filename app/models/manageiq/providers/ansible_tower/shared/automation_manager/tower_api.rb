@@ -25,6 +25,26 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi
       queue(manager.my_zone, nil, "create_in_provider", [manager_id, params], action, auth_user)
     end
 
+    def launch_in_provider(result_id)
+      template = ConfigurationScript.find(result_id)
+      template.with_provider_object do |object|
+        job = object.launch
+        job.to_hash.to_json
+      end
+    rescue AnsibleTowerClient::ClientError => error
+      raise
+    ensure
+      if self.class.try(:notify_on_provider_interaction?)
+        self.class.send('notify', 'launch', payload.id, {:manager_ref => payload.manager_ref}, error.nil?)
+      end
+    end
+
+    def launch_in_provider_queue(manager_id, result_id, name, auth_user = nil)
+      manager = ExtManagementSystem.find(manager_id)
+      action = "Launching #{self::FRIENDLY_NAME} (name=#{name})"
+      queue(manager.my_zone, nil, "launch_in_provider", [result_id], action, auth_user)
+    end
+
     private
 
     def notify(op, manager_id, params, success)

@@ -172,6 +172,20 @@ shared_examples_for "ansible configuration_script" do
       )
     end
 
+    it "#launch_in_provider_queue" do
+      task_id = described_class.launch_in_provider_queue(manager.id, job_template.id, 'test_name', 'system')
+      expect(MiqTask.find(task_id)).to have_attributes(:name => "Launching #{described_class::FRIENDLY_NAME} (name=test_name)")
+      expect(MiqQueue.first).to have_attributes(
+        :instance_id => nil,
+        :args        => [job_template.id],
+        :class_name  => described_class.name,
+        :method_name => "launch_in_provider",
+        :priority    => MiqQueue::HIGH_PRIORITY,
+        :role        => "ems_operations",
+        :zone        => manager.my_zone
+      )
+    end
+
     def store_new_job_template(job_template, manager)
       described_class.create!(
         :manager     => manager,
