@@ -45,17 +45,30 @@ shared_examples_for "ansible job" do
   subject { FactoryGirl.create(:ansible_tower_job, :job_template => template, :ext_management_system => manager) }
 
   describe 'job operations' do
-    context ".create_job" do
-      it 'creates a job' do
-        expect(template).to receive(:run).and_return(the_raw_job)
+    describe ".create_job" do
+      context 'template is persisted' do
+        it 'creates a job' do
+          expect(template).to receive(:run).and_return(the_raw_job)
 
-        job = described_class.create_job(template, {})
-        expect(job.class).to                 eq(described_class)
-        expect(job.name).to                  eq(template.name)
-        expect(job.ems_ref).to               eq(the_raw_job.id)
-        expect(job.job_template).to          eq(template)
-        expect(job.status).to                eq(the_raw_job.status)
-        expect(job.ext_management_system).to eq(manager)
+          job = described_class.create_job(template, {})
+          expect(job.class).to                 eq(described_class)
+          expect(job.name).to                  eq(template.name)
+          expect(job.ems_ref).to               eq(the_raw_job.id)
+          expect(job.job_template).to          eq(template)
+          expect(job.status).to                eq(the_raw_job.status)
+          expect(job.ext_management_system).to eq(manager)
+        end
+      end
+
+      context 'template is temporary' do
+        let(:template) { FactoryGirl.build(:configuration_script, :manager => manager) }
+
+        it 'creates a job' do
+          expect(template).to receive(:run).and_return(the_raw_job)
+
+          job = described_class.create_job(template, {})
+          expect(job.job_template).to be_nil
+        end
       end
 
       it 'catches errors from provider' do
