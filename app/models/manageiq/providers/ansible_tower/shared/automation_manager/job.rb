@@ -9,9 +9,10 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
     #   :extra_vars => Hash
     #
     def create_stack(template, options = {})
-      self.new(:name                  => template.name,
+      template_ref = template.new_record? ? nil : template
+      new(:name                  => template.name,
           :ext_management_system => template.manager,
-          :job_template          => template).tap do |stack|
+          :job_template          => template_ref).tap do |stack|
         stack.send(:update_with_provider_object, raw_create_stack(template, options))
       end
     end

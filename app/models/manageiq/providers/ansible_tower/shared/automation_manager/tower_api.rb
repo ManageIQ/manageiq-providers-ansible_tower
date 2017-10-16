@@ -2,11 +2,15 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def create_in_provider(manager_id, params)
+    def raw_create_in_provider(manager, params)
       params = provider_params(params) if respond_to?(:provider_params)
       process_secrets(params, true) if respond_to?(:process_secrets)
+      provider_collection(manager).create!(params)
+    end
+
+    def create_in_provider(manager_id, params)
       manager = ExtManagementSystem.find(manager_id)
-      tower_object = provider_collection(manager).create!(params)
+      tower_object = raw_create_in_provider(manager, params)
       if respond_to?(:refresh_in_provider)
         refresh_in_provider(tower_object)
       end
