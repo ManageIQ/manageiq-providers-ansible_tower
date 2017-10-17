@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 71 ending 2017-10-16
+
+### Added
+- Split #create_in_provider method into two methods. [(#25)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/25)
+
 ## Unreleased as of Sprint 70 ending 2017-10-02
 
 ### Fixed
