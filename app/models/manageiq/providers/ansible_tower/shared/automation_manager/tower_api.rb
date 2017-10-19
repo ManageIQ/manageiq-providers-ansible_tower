@@ -95,8 +95,12 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi
     self.class.send('queue', manager.my_zone, id, "update_in_provider", [params], action, auth_user)
   end
 
-  def delete_in_provider
+  def raw_delete_in_provider
     with_provider_object(&:destroy!)
+  end
+
+  def delete_in_provider
+    raw_delete_in_provider
     self.class.send('refresh', manager)
   rescue AnsibleTowerClient::ClientError => error
     raise
