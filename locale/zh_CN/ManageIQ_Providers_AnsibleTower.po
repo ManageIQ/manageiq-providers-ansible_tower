@@ -1,0 +1,246 @@
+# Chinese translations for ManageIQ_Providers_AnsibleTower package.
+# Copyright (C) 2017 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ManageIQ_Providers_AnsibleTower package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ManageIQ_Providers_AnsibleTower 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2017-10-31 17:14+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"\n"
+
+msgid "%{name} Automation Manager"
+msgstr ""
+
+msgid "API Key"
+msgstr ""
+
+msgid "API Key for this credential"
+msgstr ""
+
+msgid "AWS Access Key for this credential"
+msgstr ""
+
+msgid "AWS Secret Key for this credential"
+msgstr ""
+
+msgid "Access Key"
+msgstr ""
+
+msgid "Amazon"
+msgstr ""
+
+msgid "Authorize"
+msgstr ""
+
+msgid "Authorize password"
+msgstr ""
+
+msgid "Azure"
+msgstr ""
+
+msgid "Azure Classic (deprecated)"
+msgstr ""
+
+msgid "Client ID"
+msgstr ""
+
+msgid "Client Secret"
+msgstr ""
+
+msgid "Contents of the PEM file associated with the service account email"
+msgstr ""
+
+msgid "Contents of the PEM file that corresponds to the certificate you uploaded in the Microsoft Azure console"
+msgstr ""
+
+msgid "Domain Name"
+msgstr ""
+
+msgid "Google Compute Engine"
+msgstr ""
+
+msgid "Host (Authentication URL"
+msgstr ""
+
+msgid "Hostname or IP address which corresponds to your Red Hat Satellite 6 server"
+msgstr ""
+
+msgid "Machine"
+msgstr ""
+
+msgid "Management Certificate"
+msgstr ""
+
+msgid "Network"
+msgstr ""
+
+msgid "OpenStack"
+msgstr ""
+
+msgid "OpenStack domains define administrative boundaries. It is only needed for Keystone v3 authentication URLs"
+msgstr ""
+
+msgid "Passphrase to unlock SSH private key if encrypted"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password (API Key)"
+msgstr ""
+
+msgid "Password for privilege escalation method"
+msgstr ""
+
+msgid "Password for this credential"
+msgstr ""
+
+msgid "Password used by the authorize mechanism"
+msgstr ""
+
+msgid "Private key"
+msgstr ""
+
+msgid "Private key passphrase"
+msgstr ""
+
+msgid "Privilege Escalation"
+msgstr ""
+
+msgid "Privilege Escalation Password"
+msgstr ""
+
+msgid "Privilege Escalation Username"
+msgstr ""
+
+msgid "Privilege escalation method"
+msgstr ""
+
+msgid "Privilege escalation username"
+msgstr ""
+
+msgid "Project"
+msgstr ""
+
+msgid "Project (Tenant Name)"
+msgstr ""
+
+msgid "RSA Private Key"
+msgstr ""
+
+msgid "RSA or DSA private key to be used instead of password"
+msgstr ""
+
+msgid "Rackspace"
+msgstr ""
+
+msgid "SSH key"
+msgstr ""
+
+msgid "STS Token"
+msgstr ""
+
+msgid "Satellite 6 Host"
+msgstr ""
+
+msgid "Satellite6"
+msgstr ""
+
+msgid "Scm"
+msgstr ""
+
+msgid "Secret Key"
+msgstr ""
+
+msgid "Security Token Service(STS) Token for this credential"
+msgstr ""
+
+msgid "Service Account Email Address"
+msgstr ""
+
+msgid "Subscription ID"
+msgstr ""
+
+msgid "Tenant ID"
+msgstr ""
+
+msgid "The Client ID for the Microsoft Azure account"
+msgstr ""
+
+msgid "The Client Secret for the Microsoft Azure account"
+msgstr ""
+
+msgid "The GCE assigned identification. It is constructed as two words followed by a three digit number, such as: squeamish-ossifrage-123"
+msgstr ""
+
+msgid "The Subscription UUID for the Microsoft Azure Classic account"
+msgstr ""
+
+msgid "The Subscription UUID for the Microsoft Azure account"
+msgstr ""
+
+msgid "The Tenant ID for the Microsoft Azure account"
+msgstr ""
+
+msgid "The email address assigned to the Google Compute Engine service account"
+msgstr ""
+
+msgid "The host to authenticate with. For example, https://openstack.business.com/v2.0"
+msgstr ""
+
+msgid "The hostname or IP address of the vCenter Host"
+msgstr ""
+
+msgid "The password or API key to use to connect to OpenStack"
+msgstr ""
+
+msgid "The password to use to connect to Satellite 6"
+msgstr ""
+
+msgid "The password to use to connect to the Microsoft Azure account"
+msgstr ""
+
+msgid "The username to use to connect to OpenStack"
+msgstr ""
+
+msgid "The username to use to connect to Satellite 6"
+msgstr ""
+
+msgid "The username to use to connect to the Microsoft Azure account"
+msgstr ""
+
+msgid "This is the tenant name. This value is usually the same as the username"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Username for this credential"
+msgstr ""
+
+msgid "Username or password is not valid"
+msgstr ""
+
+msgid "VMware"
+msgstr ""
+
+msgid "Vault password"
+msgstr ""
+
+msgid "Whether to use the authorize mechanism"
+msgstr ""
+
+msgid "no credentials defined"
+msgstr ""
+
+msgid "vCenter Host"
+msgstr ""
