@@ -161,7 +161,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
       connection.api.jobs.find(ems_ref).stdout(format)
     end
   rescue AnsibleTowerClient::ResourceNotFoundError
-    msg = "AnsibleTower Job #{name} with id(#{id}) does not exist on #{ext_management_system.name}"
+    msg = "AnsibleTower Job #{name} with id(#{id}) or its stdout does not exist on #{ext_management_system.name}"
     raise MiqException::MiqOrchestrationStackNotExistError, msg
   rescue => err
     _log.error "Reading AnsibleTower Job #{name} with id(#{id}) stdout failed with error: #{err}"
