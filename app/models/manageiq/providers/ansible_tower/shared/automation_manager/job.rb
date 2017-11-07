@@ -21,7 +21,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
       options = reconcile_extra_vars_keys(template, options)
       template.run(options)
     rescue => err
-      _log.error "Failed to create job from template(#{name}), error: #{err}"
+      _log.error("Failed to create job from template(#{template.name}), error: #{err}")
       raise MiqException::MiqOrchestrationProvisionError, err.to_s, err.backtrace
     end
 
@@ -30,7 +30,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
     end
 
     def status_class
-      "#{self.name}::Status".constantize
+      "#{name}::Status".constantize
     end
 
     private
