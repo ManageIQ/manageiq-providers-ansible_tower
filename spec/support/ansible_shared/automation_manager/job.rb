@@ -78,6 +78,21 @@ shared_examples_for "ansible job" do
           described_class.create_job(template, {})
         end.to raise_error(MiqException::MiqOrchestrationProvisionError)
       end
+
+      context 'options have extra_vars' do
+        let(:template) do
+          FactoryGirl.build(:configuration_script,
+                            :manager     => manager,
+                            :variables   => {'Var1' => 'v1', 'VAR2' => 'v2'},
+                            :survey_spec => {'spec' => [{'default' => 'v3', 'variable' => 'var3', 'type' => 'text'}]})
+        end
+
+        it 'updates the extra_vars with original keys' do
+          expect(template).to receive(:run).with(:extra_vars => {'Var1' => 'n1', 'VAR2' => 'n2', 'var3' => 'n3'}).and_return(the_raw_job)
+
+          described_class.create_job(template, :extra_vars => {'var1' => 'n1', 'var2' => 'n2', 'VAR3' => 'n3'})
+        end
+      end
     end
 
     context "#refres_ems" do

@@ -18,9 +18,10 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
     end
 
     def raw_create_stack(template, options = {})
+      options = reconcile_extra_vars_keys(template, options)
       template.run(options)
     rescue => err
-      _log.error "Failed to create job from template(#{name}), error: #{err}"
+      _log.error("Failed to create job from template(#{template.name}), error: #{err}")
       raise MiqException::MiqOrchestrationProvisionError, err.to_s, err.backtrace
     end
 
@@ -29,7 +30,27 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
     end
 
     def status_class
-      "#{self.name}::Status".constantize
+      "#{name}::Status".constantize
+    end
+
+    private
+
+    # If extra_vars are passed through automate, all keys are considered as attributes and
+    # converted to lower case. Need to convert them back to original definitions in the
+    # job template through survey_spec or variables
+    def reconcile_extra_vars_keys(template, options)
+      extra_vars = options[:extra_vars]
+      return options if extra_vars.blank?
+
+      defined_extra_vars = ((template.survey_spec || {})['spec'] || {}).collect { |s| s['variable'] }
+      defined_extra_vars |= (template.variables || {}).keys
+      extra_vars_lookup = defined_extra_vars.collect { |key| [key.downcase, key] }.to_h
+
+      extra_vars = extra_vars.transform_keys do |key|
+        extra_vars_lookup[key.downcase] || key
+      end
+
+      options.merge(:extra_vars => extra_vars)
     end
   end
 
@@ -140,7 +161,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
       connection.api.jobs.find(ems_ref).stdout(format)
     end
   rescue AnsibleTowerClient::ResourceNotFoundError
-    msg = "AnsibleTower Job #{name} with id(#{id}) does not exist on #{ext_management_system.name}"
+    msg = "AnsibleTower Job #{name} with id(#{id}) or its stdout does not exist on #{ext_management_system.name}"
     raise MiqException::MiqOrchestrationStackNotExistError, msg
   rescue => err
     _log.error "Reading AnsibleTower Job #{name} with id(#{id}) stdout failed with error: #{err}"
