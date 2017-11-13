@@ -16,7 +16,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::OpenstackCr
   EXTRA_ATTRIBUTES = {
     :host => {
       :type       => :string,
-      :label      => N_('Host (Authentication URL'),
+      :label      => N_('Host (Authentication URL)'),
       :help_text  => N_('The host to authenticate with. For example, https://openstack.business.com/v2.0'),
       :max_length => 1024,
       :required   => true
