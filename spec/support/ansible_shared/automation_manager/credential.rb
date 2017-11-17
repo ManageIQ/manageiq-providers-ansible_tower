@@ -80,8 +80,8 @@ shared_examples_for "ansible credential" do
     end
 
     it ".create_in_provider_queue to fail with incompatible manager" do
-      wrong_manager = FactoryGirl.create(:provider_foreman).managers.first
-      expect { described_class.create_in_provider_queue(wrong_manager.id, params) }.to raise_error(ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi::UnsupportedManagerOperation)
+      wrong_manager = FactoryGirl.create(:configuration_manager_foreman)
+      expect { described_class.create_in_provider_queue(wrong_manager.id, params) }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     def store_new_credential(credential, manager)

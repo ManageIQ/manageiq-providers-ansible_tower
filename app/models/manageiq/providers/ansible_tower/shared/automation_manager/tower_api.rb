@@ -1,8 +1,6 @@
 module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi
   extend ActiveSupport::Concern
 
-  class UnsupportedManagerOperation < StandardError; end
-
   module ClassMethods
     def raw_create_in_provider(manager, params)
       params = provider_params(params) if respond_to?(:provider_params)
@@ -26,10 +24,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi
 
     def create_in_provider_queue(manager_id, params, auth_user = nil)
       process_secrets(params) if respond_to?(:process_secrets)
-      manager = ExtManagementSystem.find(manager_id)
-      if ManageIQ::Providers::Inflector.provider_name(manager) != ManageIQ::Providers::Inflector.provider_name(self)
-        raise UnsupportedManagerOperation, "#{manager.try(:name)} does not support create_in_provider of #{self::FRIENDLY_NAME}"
-      end
+      manager = parent.find(manager_id)
       action = "Creating #{self::FRIENDLY_NAME} (name=#{params[:name]})"
       queue(manager.my_zone, nil, "create_in_provider", [manager_id, params], action, auth_user)
     end
