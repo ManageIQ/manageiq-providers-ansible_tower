@@ -2,7 +2,6 @@ require 'ansible_tower_client'
 
 shared_examples_for "ansible configuration_script_source" do
   let(:finished_task) { FactoryGirl.create(:miq_task, :state => "Finished") }
-  let(:manager)       { FactoryGirl.create(:provider_ansible_tower, :with_authentication).managers.first }
   let(:atc)           { double("AnsibleTowerClient::Connection", :api => api) }
   let(:api)           { double("AnsibleTowerClient::Api", :projects => projects) }
   let(:credential)    { FactoryGirl.create(:ansible_scm_credential, :manager_ref => '1') }
