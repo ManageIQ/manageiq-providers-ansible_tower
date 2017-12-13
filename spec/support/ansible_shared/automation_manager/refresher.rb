@@ -164,8 +164,12 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(azure_cred.type.split('::').last).to eq("AzureCredential")
     azure_classic_cred = automation_manager.credentials.find_by(:name => 'hello_azure_classic_cred')
     expect(azure_classic_cred.type.split('::').last).to eq("AzureClassicCredential")
-    satellite6_cred = automation_manager.credentials.find_by(:name => 'hello_sat_cred')
-    expect(satellite6_cred.type.split('::').last).to eq("Satellite6Credential")
+    if defined?(more_credential_types)
+      more_credential_types.each do |name, type|
+        cred = automation_manager.credentials.find_by(:name => name)
+        expect(cred.type.split('::').last).to end_with(type)
+      end
+    end
   end
 
   def assert_playbooks
