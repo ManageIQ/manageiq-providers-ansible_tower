@@ -74,27 +74,33 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
     end
   end
 
+  def miq_credential_types
+    @miq_credential_types ||= begin
+      provider_module = ManageIQ::Providers::Inflector.provider_module(collector.manager.class).name
+      supported_types = "#{provider_module}::AutomationManager::Credential".constantize.descendants.collect(&:name)
+      {
+        'net'        => "#{provider_module}::AutomationManager::NetworkCredential",
+        'ssh'        => "#{provider_module}::AutomationManager::MachineCredential",
+        'vmware'     => "#{provider_module}::AutomationManager::VmwareCredential",
+        'scm'        => "#{provider_module}::AutomationManager::ScmCredential",
+        'aws'        => "#{provider_module}::AutomationManager::AmazonCredential",
+        'rax'        => "#{provider_module}::AutomationManager::RackspaceCredential",
+        'satellite6' => "#{provider_module}::AutomationManager::Satellite6Credential",
+        'gce'        => "#{provider_module}::AutomationManager::GoogleCredential",
+        'azure'      => "#{provider_module}::AutomationManager::AzureClassicCredential",
+        'azure_rm'   => "#{provider_module}::AutomationManager::AzureCredential",
+        'openstack'  => "#{provider_module}::AutomationManager::OpenstackCredential"
+      }.select { |_tower_type, miq_type| supported_types.include?(miq_type) }
+    end
+  end
+
   def credentials
+    provider_module = ManageIQ::Providers::Inflector.provider_module(collector.manager.class).name
     collector.credentials.each do |credential|
       inventory_object = persister.credentials.find_or_build(credential.id.to_s)
       inventory_object.name = credential.name
       inventory_object.userid = credential.username
-      provider_module = ManageIQ::Providers::Inflector.provider_module(collector.manager.class).name
-      inventory_object.type = case credential.kind
-                                when 'net' then "#{provider_module}::AutomationManager::NetworkCredential"
-                                when 'ssh' then "#{provider_module}::AutomationManager::MachineCredential"
-                                when 'vmware' then "#{provider_module}::AutomationManager::VmwareCredential"
-                                when 'scm' then "#{provider_module}::AutomationManager::ScmCredential"
-                                when 'aws' then "#{provider_module}::AutomationManager::AmazonCredential"
-                                when 'rax' then "#{provider_module}::AutomationManager::RackspaceCredential"
-                                when 'satellite6' then "#{provider_module}::AutomationManager::Satellite6Credential"
-                                # when 'cloudforms' then "#{provider_module}::AutomationManager::$$$Credential"
-                                when 'gce' then "#{provider_module}::AutomationManager::GoogleCredential"
-                                when 'azure' then "#{provider_module}::AutomationManager::AzureClassicCredential"
-                                when 'azure_rm' then "#{provider_module}::AutomationManager::AzureCredential"
-                                when 'openstack' then "#{provider_module}::AutomationManager::OpenstackCredential"
-                                else "#{provider_module}::AutomationManager::Credential"
-                                end
+      inventory_object.type = miq_credential_types[credential.kind] || "#{provider_module}::AutomationManager::Credential"
       inventory_object.options = inventory_object.type.constantize::EXTRA_ATTRIBUTES.keys.each_with_object({}) do |k, h|
         h[k] = credential.try(k)
       end
