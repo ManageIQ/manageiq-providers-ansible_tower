@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 76 ending 2018-01-01
+
+### Fixed
+- Allow Satellite6Credential to be removed from Embedded Ansible space [(#46)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/46)
+- Move manager factory object out of shared_example [(#43)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/43)
+
 ## Unreleased as of Sprint 73 ending 2017-11-13
 
 ### Fixed
