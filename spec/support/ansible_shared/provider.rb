@@ -36,6 +36,46 @@ shared_examples_for "ansible provider" do
       expect(OperatingSystem.count).to       eq(0)
       expect(Hardware.count).to              eq(0)
     end
+
+    it "thru automation_manager will remove all child objects" do
+      subject.automation_manager.configured_systems = [
+        FactoryGirl.create(:configured_system, :computer_system =>
+          FactoryGirl.create(:computer_system,
+                             :operating_system => FactoryGirl.create(:operating_system),
+                             :hardware         => FactoryGirl.create(:hardware)))
+      ]
+
+      expect(ExtManagementSystem.count).to eq(1)
+      expect(subject.automation_manager.class.name).to eq("ManageIQ::Providers::AnsibleTower::AutomationManager")
+      subject.automation_manager.destroy
+
+      expect(Provider.count).to              eq(1)
+      expect(ExtManagementSystem.count).to   eq(0)
+      expect(ConfiguredSystem.count).to      eq(0)
+      expect(ComputerSystem.count).to        eq(0)
+      expect(OperatingSystem.count).to       eq(0)
+      expect(Hardware.count).to              eq(0)
+    end
+
+    it "thru ems will NOT remove all child objects" do
+      subject.automation_manager.configured_systems = [
+        FactoryGirl.create(:configured_system, :computer_system =>
+          FactoryGirl.create(:computer_system,
+                             :operating_system => FactoryGirl.create(:operating_system),
+                             :hardware         => FactoryGirl.create(:hardware)))
+      ]
+
+      expect(ExtManagementSystem.count).to eq(1)
+      expect(ExtManagementSystem.first.class.name).to eq("ManageIQ::Providers::AnsibleTower::AutomationManager")
+      ExtManagementSystem.first.destroy
+
+      expect(Provider.count).to              eq(1)
+      expect(ExtManagementSystem.count).to   eq(0)
+      expect(ConfiguredSystem.count).to      eq(1)
+      expect(ComputerSystem.count).to        eq(1)
+      expect(OperatingSystem.count).to       eq(1)
+      expect(Hardware.count).to              eq(1)
+    end
   end
 
   context "#url=" do
