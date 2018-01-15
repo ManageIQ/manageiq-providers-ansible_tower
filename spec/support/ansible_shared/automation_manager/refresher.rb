@@ -113,6 +113,12 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_credentials
     expect(expected_configuration_script.authentications.count).to eq(3)
 
+    # vault_credential
+    vault_credential = Authentication.all.find_by(:type => manager_class::VaultCredential)
+    expect(vault_credential.options.keys).to match_array([:vault_password])
+    expect(vault_credential.options[:vault_password]).not_to be_empty
+    expect(vault_credential.name).to eq("Demo Creds 2")
+
     # machine_credential
     machine_credential = expected_configuration_script.authentications.find_by(
       :type => manager_class::MachineCredential
@@ -121,8 +127,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
       :name   => "hello_machine_cred",
       :userid => "admin",
     )
-    expect(machine_credential.options.keys).to match_array([:become_method, :become_password, :become_username, :ssh_key_data, :ssh_key_unlock, :vault_password])
-    expect(machine_credential.options.keys).to match_array(machine_credential.class::EXTRA_ATTRIBUTES.keys)
+    expect(machine_credential.options.keys).to match_array(%i(become_method become_password become_username ssh_key_data ssh_key_unlock))
     expect(machine_credential.options[:become_method]).to eq('')
     expect(machine_credential.options[:become_username]).to eq('')
 
