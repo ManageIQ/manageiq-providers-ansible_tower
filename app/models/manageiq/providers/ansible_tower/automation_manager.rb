@@ -35,4 +35,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   def supported_catalog_types
     %w(generic_ansible_tower)
   end
+
+  def self.display_name(number = 1)
+    n_('Automation Manager (Ansible Tower)', 'Automation Managers (Ansible Tower)', number)
+  end
 end
