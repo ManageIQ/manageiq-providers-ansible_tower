@@ -22,10 +22,12 @@ shared_examples_for "ansible provider" do
   describe "#destroy" do
     it "will remove all child objects" do
       subject.automation_manager.configured_systems = [
-        FactoryGirl.create(:configured_system, :computer_system =>
-          FactoryGirl.create(:computer_system,
+        FactoryGirl.create(:configured_system_automation_manager,
+                           :computer_system => FactoryGirl.create(
+                             :computer_system,
                              :operating_system => FactoryGirl.create(:operating_system),
-                             :hardware         => FactoryGirl.create(:hardware)))
+                             :hardware         => FactoryGirl.create(:hardware)
+                           ))
       ]
 
       subject.destroy
