@@ -1,12 +1,13 @@
 # Laurence Ganseman <laurence.ganseman@stoquart.com>, 2017. #zanata
 # Nathalie Stoquart <nateltrad@gmail.com>, 2017. #zanata
+# Milan Zázrivec <mzazrivec@redhat.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ManageIQ_Providers_AnsibleTower 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-31 17:14+0100\n"
-"PO-Revision-Date: 2017-11-14 05:11-0500\n"
-"Last-Translator: Nathalie Stoquart <nateltrad@gmail.com>\n"
+"PO-Revision-Date: 2018-01-21 05:41-0500\n"
+"Last-Translator: Milan Zázrivec <mzazrivec@redhat.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +18,7 @@ msgstr ""
 
 #: ../app/models/manageiq/providers/ansible_tower/shared/provider.rb:69
 msgid "%{name} Automation Manager"
-msgstr "Gestionnaire d''automatisation %{name}"
+msgstr "Gestionnaire d'automatisation %{name}"
 
 #: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/rackspace_credential.rb:10
 msgid "API Key"
