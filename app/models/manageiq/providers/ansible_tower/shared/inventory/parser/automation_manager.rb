@@ -35,7 +35,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
       inventory_object.parent = persister.configuration_script_payloads.lazy_find(
         # checking job_template.project_id due to https://github.com/ansible/ansible_tower_client_ruby/issues/68
         # if we hit a job_template which has no related project and thus .project_id is not defined
-        :configuration_script_source => job_template.try(:project_id),
+        :configuration_script_source => persister.configuration_script_sources.lazy_find(job_template.try(:project_id)),
         :manager_ref                 => job_template.playbook
       )
 
