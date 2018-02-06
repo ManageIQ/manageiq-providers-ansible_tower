@@ -158,12 +158,8 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(openstack_cred.type.split('::').last).to eq("OpenstackCredential")
     gce_cred = automation_manager.credentials.find_by(:name => 'hello_gce_cred')
     expect(gce_cred.type.split('::').last).to eq("GoogleCredential")
-    rackspace_cred = automation_manager.credentials.find_by(:name => 'hello_rax_cred')
-    expect(rackspace_cred.type.split('::').last).to eq("RackspaceCredential")
     azure_cred = automation_manager.credentials.find_by(:name => 'hello_azure_cred')
     expect(azure_cred.type.split('::').last).to eq("AzureCredential")
-    azure_classic_cred = automation_manager.credentials.find_by(:name => 'hello_azure_classic_cred')
-    expect(azure_classic_cred.type.split('::').last).to eq("AzureClassicCredential")
     if defined?(more_credential_types)
       more_credential_types.each do |name, type|
         cred = automation_manager.credentials.find_by(:name => name)
