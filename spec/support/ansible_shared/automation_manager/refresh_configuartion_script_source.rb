@@ -49,6 +49,7 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
           last_project_update = last_updated
 
           expect(configuration_script_source.name).to eq("targeted_refresh")
+          expect(configuration_script_source.last_updated_on).to eq(last_updated)
           expect(ConfigurationScriptPayload.count).to eq(81)
           expect(ConfigurationScriptPayload.where(:name => '2b_rm')).to be_empty
           expect(configuration_script_source.configuration_script_payloads.count).to eq(81)
