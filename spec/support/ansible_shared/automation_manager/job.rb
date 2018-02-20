@@ -105,8 +105,8 @@ shared_examples_for "ansible job" do
         expect(subject).to have_attributes(
           :ems_ref     => the_raw_job.id,
           :status      => the_raw_job.status,
-          :start_time  => the_raw_job.started,
-          :finish_time => the_raw_job.finished,
+          :start_time  => a_value_within(1.second).of(the_raw_job.started),
+          :finish_time => a_value_within(1.second).of(the_raw_job.finished),
           :verbosity   => the_raw_job.verbosity
         )
         subject.reload
@@ -116,15 +116,15 @@ shared_examples_for "ansible job" do
         expect(subject.authentications).to match_array([machine_credential, cloud_credential, network_credential])
 
         expect(subject.job_plays.first).to have_attributes(
-          :start_time        => the_raw_plays.first.created,
-          :finish_time       => the_raw_plays.last.created,
+          :start_time        => a_value_within(1.second).of(the_raw_plays.first.created),
+          :finish_time       => a_value_within(1.second).of(the_raw_plays.last.created),
           :resource_status   => 'successful',
           :resource_category => 'job_play',
           :name              => 'play1'
         )
         expect(subject.job_plays.last).to have_attributes(
-          :start_time        => the_raw_plays.last.created,
-          :finish_time       => the_raw_job.finished,
+          :start_time        => a_value_within(1.second).of(the_raw_plays.last.created),
+          :finish_time       => a_value_within(1.second).of(the_raw_job.finished),
           :resource_status   => 'failed',
           :resource_category => 'job_play',
           :name              => 'play2'
