@@ -99,6 +99,9 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
       inventory_object.name = credential.name
       inventory_object.userid = credential.username
       inventory_object.type = miq_credential_types[credential.kind] || "#{provider_module}::AutomationManager::Credential"
+      if credential.kind == 'ssh' && !credential.vault_password.empty?
+        inventory_object.type = "#{provider_module}::AutomationManager::VaultCredential"
+      end
       inventory_object.options = inventory_object.type.constantize::EXTRA_ATTRIBUTES.keys.each_with_object({}) do |k, h|
         h[k] = credential.try(k)
       end
