@@ -41,12 +41,6 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::MachineCred
       :label      => N_('Privilege Escalation Password'),
       :help_text  => N_('Password for privilege escalation method'),
       :max_length => 1024
-    },
-    :vault_password => {
-      :type       => :password,
-      :label      => N_('Vault password'),
-      :help_text  => N_('Vault password'),
-      :max_length => 1024
     }
   }.freeze
 
