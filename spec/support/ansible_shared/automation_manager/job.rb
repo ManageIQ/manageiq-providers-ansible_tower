@@ -138,6 +138,13 @@ shared_examples_for "ansible job" do
         expect { subject.refresh_ems }.to raise_error(MiqException::MiqOrchestrationUpdateError)
       end
     end
+
+    describe '#retire_now' do
+      it 'processes retire_now properly' do
+        expect(subject).to receive(:finish_retirement).once
+        subject.retire_now
+      end
+    end
   end
 
   describe 'job status' do

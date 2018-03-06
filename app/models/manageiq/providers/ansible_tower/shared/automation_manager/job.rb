@@ -168,4 +168,8 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
     raise MiqException::MiqOrchestrationStatusError, err.to_s, err.backtrace
   end
 
+  def retire_now(requester = nil)
+    update_attributes(:retirement_requester => requester)
+    finish_retirement
+  end
 end
