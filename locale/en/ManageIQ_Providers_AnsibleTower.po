@@ -20,12 +20,6 @@ msgstr ""
 msgid "%{name} Automation Manager"
 msgstr ""
 
-msgid "API Key"
-msgstr ""
-
-msgid "API Key for this credential"
-msgstr ""
-
 msgid "AWS Access Key for this credential"
 msgstr ""
 
@@ -47,9 +41,6 @@ msgstr ""
 msgid "Azure"
 msgstr ""
 
-msgid "Azure Classic (deprecated)"
-msgstr ""
-
 msgid "Client ID"
 msgstr ""
 
@@ -59,25 +50,19 @@ msgstr ""
 msgid "Contents of the PEM file associated with the service account email"
 msgstr ""
 
-msgid "Contents of the PEM file that corresponds to the certificate you uploaded in the Microsoft Azure console"
-msgstr ""
-
 msgid "Domain Name"
 msgstr ""
 
 msgid "Google Compute Engine"
 msgstr ""
 
-msgid "Host (Authentication URL"
+msgid "Host (Authentication URL)"
 msgstr ""
 
 msgid "Hostname or IP address which corresponds to your Red Hat Satellite 6 server"
 msgstr ""
 
 msgid "Machine"
-msgstr ""
-
-msgid "Management Certificate"
 msgstr ""
 
 msgid "Network"
@@ -140,9 +125,6 @@ msgstr ""
 msgid "RSA or DSA private key to be used instead of password"
 msgstr ""
 
-msgid "Rackspace"
-msgstr ""
-
 msgid "SSH key"
 msgstr ""
 
@@ -180,9 +162,6 @@ msgid "The Client Secret for the Microsoft Azure account"
 msgstr ""
 
 msgid "The GCE assigned identification. It is constructed as two words followed by a three digit number, such as: squeamish-ossifrage-123"
-msgstr ""
-
-msgid "The Subscription UUID for the Microsoft Azure Classic account"
 msgstr ""
 
 msgid "The Subscription UUID for the Microsoft Azure account"
