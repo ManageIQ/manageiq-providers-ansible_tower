@@ -88,7 +88,8 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
         'satellite6' => "#{provider_module}::AutomationManager::Satellite6Credential",
         'gce'        => "#{provider_module}::AutomationManager::GoogleCredential",
         'azure_rm'   => "#{provider_module}::AutomationManager::AzureCredential",
-        'openstack'  => "#{provider_module}::AutomationManager::OpenstackCredential"
+        'openstack'  => "#{provider_module}::AutomationManager::OpenstackCredential",
+        'rhv'        => "#{provider_module}::AutomationManager::RhvCredential"
       }.select { |_tower_type, miq_type| supported_types.include?(miq_type) }
     end
   end
