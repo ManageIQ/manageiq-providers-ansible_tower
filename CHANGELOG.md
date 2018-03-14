@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 81 ending 2018-03-12
+
+### Added
+- To store Tower repo last_updated_on [(#59)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/59)
+
+### Fixed
+- Move #retire_now to shared code [(#66)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/66) 
+
+## Gaprindashvili-2 released 2018-03-06
+
+### Fixed
+- Dropping azure classic and rackspace credential types [(#58)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/58)
+
 ## Unreleased as of Sprint 80 ending 2018-02-26
 
 ### Added
@@ -14,9 +27,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ### Added
 - Use proper nested references in parser [(#47)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/47)
-
-### Fixed
-- Dropping azure classic and rackspace credential types [(#58)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/58)
 
 ## Gaprindashvili-1 - Released 2018-01-31
 
