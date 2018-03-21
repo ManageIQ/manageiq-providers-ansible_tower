@@ -1,12 +1,12 @@
-# Laurence Ganseman <laurence.ganseman@stoquart.com>, 2017. #zanata
-# Nathalie Stoquart <nateltrad@gmail.com>, 2017. #zanata
 # Milan Zázrivec <mzazrivec@redhat.com>, 2018. #zanata
+# croe <croe@redhat.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ManageIQ_Providers_AnsibleTower 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2018-01-21 05:41-0500\n"
-"Last-Translator: Milan Zázrivec <mzazrivec@redhat.com>\n"
+"POT-Creation-Date: 2018-02-21 12:16+0100\n"
+"PO-Revision-Date: 2018-02-27 07:26-0500\n"
+"Last-Translator: croe <croe@redhat.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,209 +15,325 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Zanata 3.9.6\n"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/provider.rb:69
 msgid "%{name} Automation Manager"
 msgstr "Gestionnaire d'automatisation %{name}"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/amazon_credential.rb:5
 msgid "AWS Access Key for this credential"
 msgstr "Clé d'accès AWS pour cet identifiant"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/amazon_credential.rb:11
 msgid "AWS Secret Key for this credential"
 msgstr "Clé secrète AWS pour cet identifiant"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/amazon_credential.rb:4
 msgid "Access Key"
 msgstr "Clé d'accès"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/amazon_credential.rb:29
 msgid "Amazon"
 msgstr "Amazon"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:19
 msgid "Authorize"
 msgstr "Autoriser"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:24
 msgid "Authorize password"
 msgstr "Autoriser le mot de passe"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:46
 msgid "Azure"
 msgstr "Azure"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:36
 msgid "Client ID"
 msgstr "ID du client"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:30
 msgid "Client Secret"
 msgstr "Question secrète du client"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/google_credential.rb:16
 msgid "Contents of the PEM file associated with the service account email"
-msgstr "Contenu du fichier PEM associé à l'adresse électronique de ce compte de service"
+msgstr ""
+"Contenu du fichier PEM associé à l'adresse électronique de ce compte de "
+"service"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:33
 msgid "Domain Name"
 msgstr "Nom du domaine"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/google_credential.rb:31
 msgid "Google Compute Engine"
 msgstr "Moteur de calcul Google"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:19
 msgid "Host (Authentication URL)"
+msgstr "Hôte (URL d'authentification)"
+
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/satellite6_credential.rb:20
+msgid ""
+"Hostname or IP address which corresponds to your Red Hat Satellite 6 server"
 msgstr ""
+"Nom d'hôte ou adresse IP correspondant à votre serveur Red Hat Satellite 6"
 
-msgid "Hostname or IP address which corresponds to your Red Hat Satellite 6 server"
-msgstr "Nom d'hôte ou adresse IP correspondant à votre serveur Red Hat Satellite 6"
-
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:56
 msgid "Machine"
 msgstr "Machine"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:44
 msgid "Network"
 msgstr "Réseau"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:43
 msgid "OpenStack"
 msgstr "OpenStack"
 
-msgid "OpenStack domains define administrative boundaries. It is only needed for Keystone v3 authentication URLs"
-msgstr "Les domaines OpenStack définissent des limites administratives. Cela n'est nécessaire que pour les URL d'authentification Keystone v3"
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:34
+msgid ""
+"OpenStack domains define administrative boundaries. It is only needed for "
+"Keystone v3 authentication URLs"
+msgstr ""
+"Les domaines OpenStack définissent des limites administratives. Cela n'est "
+"nécessaire que pour les URL d'authentification Keystone v3"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:24
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/scm_credential.rb:18
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:36
 msgid "Passphrase to unlock SSH private key if encrypted"
 msgstr "Phrase de passe pour déverrouiller la clé privée SSH chiffrée"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:9
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/satellite6_credential.rb:10
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/scm_credential.rb:9
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/vmware_credential.rb:10
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:10
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:9
 msgid "Password"
 msgstr "Mot de passe"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:10
 msgid "Password (API Key)"
 msgstr "Mot de passe (Clé d'API)"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:42
 msgid "Password for privilege escalation method"
 msgstr "Mot de passe associé à la méthode d'escalade privilégiée"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:10
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/scm_credential.rb:10
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/vmware_credential.rb:11
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:11
 msgid "Password for this credential"
 msgstr "Mot de passe de cet identifiant"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:25
 msgid "Password used by the authorize mechanism"
 msgstr "Mot de passe utilisé par le mécanisme d'autorisation"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:18
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/scm_credential.rb:24
 msgid "Private key"
 msgstr "Clé privée"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:23
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/scm_credential.rb:17
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:35
 msgid "Private key passphrase"
 msgstr "Phrase de passe de la clé privée"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:29
 msgid "Privilege Escalation"
 msgstr "Escalade privilégiée"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:41
 msgid "Privilege Escalation Password"
 msgstr "Mot de passe de l'escalade privilégiée"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:35
 msgid "Privilege Escalation Username"
 msgstr "Nom d'utilisateur pour l'escalade privilégiée"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:30
 msgid "Privilege escalation method"
 msgstr "Méthode d'escalade privilégiée"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:36
 msgid "Privilege escalation username"
 msgstr "Nom d'utilisateur pour l'escalade privilégiée"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/google_credential.rb:21
 msgid "Project"
 msgstr "Projet"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:26
 msgid "Project (Tenant Name)"
 msgstr "Projet (Nom du tenant)"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/google_credential.rb:15
 msgid "RSA Private Key"
 msgstr "Clé privée RSA"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:19
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/scm_credential.rb:25
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:31
 msgid "RSA or DSA private key to be used instead of password"
 msgstr "Clé privée RSA ou DSA à utiliser à la place d'un mot de passe"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:30
 msgid "SSH key"
 msgstr "Clé SSH"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/amazon_credential.rb:19
 msgid "STS Token"
 msgstr "Jeton STS"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/satellite6_credential.rb:19
 msgid "Satellite 6 Host"
 msgstr "Hôte Satellite 6"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/satellite6_credential.rb:30
 msgid "Satellite6"
 msgstr "Satellite 6"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/scm_credential.rb:32
 msgid "Scm"
 msgstr "Scm"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/amazon_credential.rb:10
 msgid "Secret Key"
 msgstr "Clé secrète"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/amazon_credential.rb:20
 msgid "Security Token Service(STS) Token for this credential"
 msgstr "Jeton STS (Security Token Service) de cet identifiant"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/google_credential.rb:5
 msgid "Service Account Email Address"
 msgstr "Adresse électronique du compte de service"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:17
 msgid "Subscription ID"
 msgstr "ID d'abonnement"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:24
 msgid "Tenant ID"
 msgstr "ID du tenant"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:37
 msgid "The Client ID for the Microsoft Azure account"
 msgstr "ID client du compte Microsoft Azure"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:31
 msgid "The Client Secret for the Microsoft Azure account"
 msgstr "Question secrète du compte Microsoft Azure"
 
-msgid "The GCE assigned identification. It is constructed as two words followed by a three digit number, such as: squeamish-ossifrage-123"
-msgstr "Identification associée à GCE . Il s'agit de deux mots suivis de trois chiffres, par exemple : squeamish-ossifrage-123"
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/google_credential.rb:22
+msgid ""
+"The GCE assigned identification. It is constructed as two words followed by "
+"a three digit number, such as: squeamish-ossifrage-123"
+msgstr ""
+"Identification associée à GCE . Il s'agit de deux mots suivis de trois "
+"chiffres, par exemple : squeamish-ossifrage-123"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:18
 msgid "The Subscription UUID for the Microsoft Azure account"
 msgstr "UUID d'abonnement pour le compte Microsoft Azure"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:25
 msgid "The Tenant ID for the Microsoft Azure account"
 msgstr "ID du tenant pour le compte Microsoft Azure"
 
-msgid "The email address assigned to the Google Compute Engine service account"
-msgstr "Adresse électronique associée au compte de service Google Compute Engine"
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/google_credential.rb:6
+msgid ""
+"The email address assigned to the Google Compute Engine service account"
+msgstr ""
+"Adresse électronique associée au compte de service Google Compute Engine"
 
-msgid "The host to authenticate with. For example, https://openstack.business.com/v2.0"
-msgstr "Hôte utilisé pour l'authentification, par exemple https://openstack.business.com/v2.0"
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:20
+msgid ""
+"The host to authenticate with. For example, "
+"https://openstack.business.com/v2.0"
+msgstr ""
+"Hôte utilisé pour l'authentification, par exemple "
+"https://openstack.business.com/v2.0"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/vmware_credential.rb:20
 msgid "The hostname or IP address of the vCenter Host"
 msgstr "Nom d'hôte ou adresse IP de l'hôte vCenter"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:11
 msgid "The password or API key to use to connect to OpenStack"
 msgstr "Mot de passe ou clé d'API à utiliser pour la connexion à OpenStack"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/satellite6_credential.rb:11
 msgid "The password to use to connect to Satellite 6"
 msgstr "Mot de passe à utiliser pour la connexion à Satellite 6"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:10
 msgid "The password to use to connect to the Microsoft Azure account"
 msgstr "Mot de passe à utiliser pour la connexion au compte Microsoft Azure"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:5
 msgid "The username to use to connect to OpenStack"
 msgstr "Nom d'utilisateur à utiliser pour la connexion OpenStack"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/satellite6_credential.rb:5
 msgid "The username to use to connect to Satellite 6"
 msgstr "Nom d'utilisateur à utiliser pour la connexion à Satellite 6"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:5
 msgid "The username to use to connect to the Microsoft Azure account"
-msgstr "Nom d'utilisateur à utiliser pour la connexion au compte Microsoft Azure"
+msgstr ""
+"Nom d'utilisateur à utiliser pour la connexion au compte Microsoft Azure"
 
-msgid "This is the tenant name. This value is usually the same as the username"
-msgstr "Il s'agit du nom du tenant. Cette valeur correspond généralement au nom d'utilisateur"
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:27
+msgid ""
+"This is the tenant name. This value is usually the same as the username"
+msgstr ""
+"Il s'agit du nom du tenant. Cette valeur correspond généralement au nom "
+"d'utilisateur"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:4
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/satellite6_credential.rb:4
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/scm_credential.rb:4
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/vmware_credential.rb:4
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:4
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/azure_credential.rb:4
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/openstack_credential.rb:4
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:5
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/scm_credential.rb:5
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/vmware_credential.rb:5
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:5
 msgid "Username for this credential"
 msgstr "Nom utilisateur pour cet identifiant"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/provider.rb:48
 msgid "Username or password is not valid"
 msgstr "Nom d'utilisateur ou mot de passe incorrect"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/vmware_credential.rb:29
 msgid "VMware"
 msgstr "VMware"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:47
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/machine_credential.rb:48
 msgid "Vault password"
 msgstr "Mots de passe du coffre-fort"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/network_credential.rb:20
 msgid "Whether to use the authorize mechanism"
 msgstr "Utilisation ou non du mécanisme d'autorisation"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/provider.rb:33
 msgid "no credentials defined"
 msgstr "aucun identifiant défini"
 
+#: ../app/models/manageiq/providers/ansible_tower/shared/automation_manager/vmware_credential.rb:19
 msgid "vCenter Host"
 msgstr "Hôte vCenter"
