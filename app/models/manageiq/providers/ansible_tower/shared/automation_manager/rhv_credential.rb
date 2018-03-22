@@ -11,7 +11,15 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::RhvCredenti
     }
   }.freeze
 
-  EXTRA_ATTRIBUTES = {}.freeze
+  EXTRA_ATTRIBUTES = {
+    :host => {
+      :type       => :string,
+      :label      => N_('Host'),
+      :help_text  => N_('The host to authenticate with'),
+      :max_length => 1024,
+      :required   => true
+    }
+  }.freeze
 
   API_ATTRIBUTES = COMMON_ATTRIBUTES.merge(EXTRA_ATTRIBUTES).freeze
 
