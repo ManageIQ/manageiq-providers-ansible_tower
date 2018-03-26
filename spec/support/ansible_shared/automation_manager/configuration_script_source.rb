@@ -26,50 +26,74 @@ shared_examples_for "ansible configuration_script_source" do
       }
     end
 
-    let(:expected_notify) do
-      {
-        :type    => :tower_op_success,
-        :options => {
-          :op_name => "#{described_class::FRIENDLY_NAME} creation",
-          :op_arg  => "(name=My Project)",
-          :tower   => "EMS(manager_id=#{manager.id})"
-        }
-      }
-    end
+    let(:expected_notify_creation) { expected_notify_action('creation') }
+    let(:expected_notify_refresh_in_provider) { expected_notify_action('refresh in provider') }
 
-    it ".create_in_provider to succeed and send notification" do
+    it ".create_in_provider to succeed and send creation notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       store_new_project(project, manager)
-      expect(described_class).to receive(:refresh_in_provider).and_return(nil)
+      expect(described_class).to receive(:refresh_in_provider).with(project, nil).and_return(true)
       expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
       expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
       expect(projects).to receive(:create!).with(params)
-      expect(Notification).to receive(:create).with(expected_notify)
+      allow(Notification).to receive(:create)
       expect(described_class.create_in_provider(manager.id, params)).to be_a(described_class)
+      expect(Notification).to have_received(:create).with(expected_notify_creation)
     end
 
-    it ".create_in_provider to fail(not found during refresh) and send notification" do
+    it ".create_in_provider to fail(not found during refresh) and send creation notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(described_class).to receive(:refresh_in_provider).and_return(nil)
+      expect(described_class).to receive(:refresh_in_provider).with(project, nil).and_return(true)
       expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
       expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
-      expected_notify[:type] = :tower_op_failure
-      expect(Notification).to receive(:create).with(expected_notify)
+      allow(Notification).to receive(:create)
       expect { described_class.create_in_provider(manager.id, params) }.to raise_error(ActiveRecord::RecordNotFound)
+      expected_notify_creation[:type] = :tower_op_failure
+      expect(Notification).to have_received(:create).with(expected_notify_creation)
+    end
+
+    it ".create_in_provider to succeed (with refresh_in_provider success) and send refresh in provider notification" do
+      expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
+      store_new_project(project, manager)
+      expect(described_class).to receive(:refresh_in_provider).with(project, nil).and_return(true)
+      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
+      expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
+      expect(projects).to receive(:create!).with(params)
+      allow(Notification).to receive(:create)
+      expect(described_class.create_in_provider(manager.id, params)).to be_a(described_class)
+      [expected_notify_refresh_in_provider, expected_notify_creation].each do |notify|
+        expect(Notification).to have_received(:create).with(notify)
+      end
+    end
+
+    it ".create_in_provider to succeed (with refresh_in_provider failure) and send refresh in provider notification" do
+      expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
+      store_new_project(project, manager)
+      expect(described_class).to receive(:refresh_in_provider).with(project, nil).and_return(false)
+      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
+      expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
+      expect(projects).to receive(:create!).with(params)
+      allow(Notification).to receive(:create)
+      expected_notify_refresh_in_provider[:type] = :tower_op_failure
+      expect(described_class.create_in_provider(manager.id, params)).to be_a(described_class)
+      [expected_notify_refresh_in_provider, expected_notify_creation].each do |notify|
+        expect(Notification).to have_received(:create).with(notify)
+      end
     end
 
     it ".create_in_provider with credential" do
       params[:authentication_id] = credential.id
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       store_new_project(project, manager)
-      expect(described_class).to receive(:refresh_in_provider).and_return(nil)
+      expect(described_class).to receive(:refresh_in_provider).with(project, nil).and_return(true)
       expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
       expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
       expected_params = params.clone.merge(:credential => '1')
       expected_params.delete(:authentication_id)
       expect(projects).to receive(:create!).with(expected_params)
-      expect(Notification).to receive(:create).with(expected_notify)
+      allow(Notification).to receive(:create)
       expect(described_class.create_in_provider(manager.id, params)).to be_a(described_class)
+      expect(Notification).to have_received(:create).with(expected_notify_creation)
     end
 
     it ".create_in_provider_queue" do
@@ -92,6 +116,17 @@ shared_examples_for "ansible configuration_script_source" do
         :manager_ref => project.id.to_s,
         :name        => project.name,
       )
+    end
+
+    def expected_notify_action(action)
+      {
+        :type    => :tower_op_success,
+        :options => {
+          :op_name => "#{described_class::FRIENDLY_NAME} #{action}",
+          :op_arg  => "(name=My Project)",
+          :tower   => "EMS(manager_id=#{manager.id})"
+        }
+      }
     end
   end
 
@@ -145,49 +180,69 @@ shared_examples_for "ansible configuration_script_source" do
     let(:tower_project) { double("AnsibleTowerClient::Project", :update_attributes! => {}, :id => 1) }
     let(:project)       { described_class.create!(:manager => manager, :manager_ref => tower_project.id) }
     let(:tower_cred)    { FactoryGirl.create(:ansible_scm_credential, :manager_ref => '100') }
-    let(:expected_notify) do
-      {
-        :type    => :tower_op_success,
-        :options => {
-          :op_name => "#{described_class::FRIENDLY_NAME} update",
-          :op_arg  => "()",
-          :tower   => "EMS(manager_id=#{manager.id})"
-        }
-      }
-    end
+
+    let(:expected_notify_update) { expected_notify('update') }
+    let(:expected_notify_refresh_in_provider) { expected_notify('refresh in provider') }
 
     it "#update_in_provider to succeed and send notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
-      expect(project).to receive(:refresh_in_provider)
-      expect(Notification).to receive(:create).with(expected_notify)
+      expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
+      allow(Notification).to receive(:create)
       expect(project.update_in_provider({})).to be_a(described_class)
+      expect(Notification).to have_received(:create).with(expected_notify_update)
     end
 
     it "#update_in_provider to fail (at update_attributes!) and send notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       expect(tower_project).to receive(:update_attributes!).with({}).and_raise(AnsibleTowerClient::ClientError)
-      expected_notify[:type] = :tower_op_failure
-      expect(Notification).to receive(:create).with(expected_notify)
+      allow(Notification).to receive(:create)
       expect { project.update_in_provider({}) }.to raise_error(AnsibleTowerClient::ClientError)
+      expected_notify_update[:type] = :tower_op_failure
+      expect(Notification).to have_received(:create).with(expected_notify_update)
+    end
+
+    it "#update_in_provider to succeed (with refresh_in_provider success) and send notification" do
+      expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
+      allow(Notification).to receive(:create)
+      expect(project.update_in_provider({})).to be_a(described_class)
+      [expected_notify_refresh_in_provider, expected_notify_update].each do |notify|
+        expect(Notification).to have_received(:create).with(notify)
+      end
+    end
+
+    it "#update_in_provider to succeed (with refresh_in_provider failure) and send notification" do
+      expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(false)
+      allow(Notification).to receive(:create)
+      expect(project.update_in_provider({})).to be_a(described_class)
+      expected_notify_refresh_in_provider[:type] = :tower_op_failure
+      [expected_notify_refresh_in_provider, expected_notify_update].each do |notify|
+        expect(Notification).to have_received(:create).with(notify)
+      end
     end
 
     it "#update_in_provider with credential" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
-      expect(project).to receive(:refresh_in_provider)
+      expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
       expect(tower_project).to receive(:update_attributes!).with(:credential => tower_cred.manager_ref)
-      expect(Notification).to receive(:create).with(expected_notify)
+      allow(Notification).to receive(:create)
       expect(project.update_in_provider(:authentication_id => tower_cred.id)).to be_a(described_class)
+      expect(Notification).to have_received(:create).with(expected_notify_update)
     end
 
     it "#update_in_provider with nil credential" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
-      expect(project).to receive(:refresh_in_provider)
+      expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
       expect(tower_project).to receive(:update_attributes!).with(:credential => nil)
-      expect(Notification).to receive(:create).with(expected_notify)
+      allow(Notification).to receive(:create)
       expect(project.update_in_provider(:authentication_id => nil)).to be_a(described_class)
+      expect(Notification).to have_received(:create).with(expected_notify_update)
     end
 
     it "#update_in_provider_queue" do
@@ -202,6 +257,17 @@ shared_examples_for "ansible configuration_script_source" do
         :role        => "ems_operations",
         :zone        => manager.my_zone
       )
+    end
+
+    def expected_notify(action)
+      {
+        :type    => :tower_op_success,
+        :options => {
+          :op_name => "#{described_class::FRIENDLY_NAME} #{action}",
+          :op_arg  => "()",
+          :tower   => "EMS(manager_id=#{manager.id})"
+        }
+      }
     end
   end
 end

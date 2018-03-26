@@ -23,7 +23,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Configurati
     end
 
     def refresh_in_provider(project, id = nil)
-      return unless project.can_update?
+      return false unless project.can_update?
 
       project_update = project.update
 
@@ -41,7 +41,14 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Configurati
           break if project_update.finished.present?
         end
       end
-      _log.info "#{log_header}...Complete"
+
+      if project_update.failed
+        _log.info "#{log_header}...Failed"
+        false
+      else
+        _log.info "#{log_header}...Complete"
+        true
+      end
     end
   end
 
