@@ -108,7 +108,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
   private :update_parameters
 
   def update_credentials(raw_job)
-    credential_types = %w(credential_id cloud_credential_id network_credential_id)
+    credential_types = %w(credential_id vault_credential_id cloud_credential_id network_credential_id)
     credential_refs = credential_types.collect { |attr| raw_job.try(attr) }.delete_blanks
     self.authentications = ext_management_system.credentials.where(:manager_ref => credential_refs)
   end
