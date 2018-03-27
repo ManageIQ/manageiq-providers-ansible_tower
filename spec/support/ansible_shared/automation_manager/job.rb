@@ -14,6 +14,7 @@ shared_examples_for "ansible job" do
   let(:machine_credential) { FactoryGirl.create(:ansible_machine_credential, :manager_ref => '1', :resource => manager) }
   let(:cloud_credential)   { FactoryGirl.create(:ansible_cloud_credential,   :manager_ref => '2', :resource => manager) }
   let(:network_credential) { FactoryGirl.create(:ansible_network_credential, :manager_ref => '3', :resource => manager) }
+  let(:vault_credential)   { FactoryGirl.create(:ansible_vault_credential,   :manager_ref => '4', :resource => manager) }
 
   let(:the_raw_job) do
     AnsibleTowerClient::Job.new(
@@ -26,6 +27,7 @@ shared_examples_for "ansible job" do
       'started'               => Time.current,
       'finished'              => Time.current,
       'credential_id'         => machine_credential.manager_ref,
+      'vault_credential_id'   => vault_credential.manager_ref,
       'cloud_credential_id'   => cloud_credential.manager_ref,
       'network_credential_id' => network_credential.manager_ref
     ).tap do |rjob|
@@ -113,7 +115,7 @@ shared_examples_for "ansible job" do
         expect(subject.ems_ref).to eq(the_raw_job.id)
         expect(subject.status).to  eq(the_raw_job.status)
         expect(subject.parameters.first).to have_attributes(:name => 'param1', :value => 'val1')
-        expect(subject.authentications).to match_array([machine_credential, cloud_credential, network_credential])
+        expect(subject.authentications).to match_array([machine_credential, vault_credential, cloud_credential, network_credential])
 
         expect(subject.job_plays.first).to have_attributes(
           :start_time        => a_value_within(1.second).of(the_raw_plays.first.created),
