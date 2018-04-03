@@ -103,22 +103,22 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_counts
     expect(Provider.count).to                                         eq(1)
     expect(automation_manager).to                                     have_attributes(:api_version => "3.2.2")
-    expect(automation_manager.configured_systems.count).to            eq(3)
-    expect(automation_manager.configuration_scripts.count).to         eq(7)
-    expect(automation_manager.inventory_groups.count).to              eq(3)
-    expect(automation_manager.configuration_script_sources.count).to  eq(10)
-    expect(automation_manager.configuration_script_payloads.count).to eq(130)
-    expect(automation_manager.credentials.count).to                   eq(15)
+    expect(automation_manager.configured_systems.count).to            eq(7)
+    expect(automation_manager.configuration_scripts.count).to         eq(10)
+    expect(automation_manager.inventory_groups.count).to              eq(6)
+    expect(automation_manager.configuration_script_sources.count).to  eq(13)
+    expect(automation_manager.configuration_script_payloads.count).to eq(213)
+    expect(automation_manager.credentials.count).to                   eq(17)
   end
 
   def assert_credentials
     expect(expected_configuration_script.authentications.count).to eq(3)
 
     # vault_credential
-    vault_credential = Authentication.all.find_by(:type => manager_class::VaultCredential, :manager_ref => "2")
+    vault_credential = Authentication.all.find_by(:type => manager_class::VaultCredential, :manager_ref => "986")
     expect(vault_credential.options.keys).to match_array([:vault_password])
     expect(vault_credential.options[:vault_password]).not_to be_empty
-    expect(vault_credential.name).to eq("vault-test")
+    expect(vault_credential.name).to eq("hello_vault_cred")
 
     # machine_credential
     machine_credential = expected_configuration_script.authentications.find_by(
@@ -181,6 +181,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   end
 
   def assert_configuration_script_sources
+    # Project with a successful last update job.
     expect(expected_configuration_script_source).to be_an_instance_of(manager_class::ConfigurationScriptSource)
     expect(expected_configuration_script_source).to have_attributes(
       :name                 => 'hello_repo',
@@ -191,16 +192,51 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
       :scm_clean            => false,
       :scm_delete_on_update => false,
       :scm_update_on_launch => false,
-      :status               => 'successful'
+      :status               => 'successful',
+      :last_update_error    => nil
     )
     expect(expected_configuration_script_source.authentication.name).to eq('hello_scm_cred')
+
+    # Project without any last update job.
+    jobless_configuration_script_source = automation_manager.configuration_script_sources.find_by(:name => 'jobless_repo')
+    expect(jobless_configuration_script_source).to be_an_instance_of(manager_class::ConfigurationScriptSource)
+    expect(jobless_configuration_script_source).to have_attributes(
+      :name                 => 'jobless_repo',
+      :description          => '',
+      :scm_type             => 'git',
+      :scm_url              => 'https://github.com/jameswnl/ansible-examples',
+      :scm_branch           => '',
+      :scm_clean            => false,
+      :scm_delete_on_update => false,
+      :scm_update_on_launch => false,
+      :status               => 'successful',
+      :last_update_error    => nil
+    )
+    expect(jobless_configuration_script_source.authentication.name).to eq('hello_scm_cred')
+
+    # Project with failed last update job.
+    failed_configuration_script_source = automation_manager.configuration_script_sources.find_by(:name => 'failed_repo')
+    expect(failed_configuration_script_source).to be_an_instance_of(manager_class::ConfigurationScriptSource)
+    expect(failed_configuration_script_source).to have_attributes(
+      :name                 => 'failed_repo',
+      :description          => '',
+      :scm_type             => 'git',
+      :scm_url              => 'https://github.com/jameswnl/ansible-examplez',
+      :scm_branch           => '',
+      :scm_clean            => false,
+      :scm_delete_on_update => false,
+      :scm_update_on_launch => false,
+      :status               => 'failed',
+      :last_update_error    => "Using /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS option, In favor of become which \r\nis a generic framework . This feature will be removed in version 2.8. \r\nDeprecation warnings can be disabled by setting deprecation_warnings=False in \r\nansible.cfg.\r\n\r\nPLAY [all] *********************************************************************\r\n\r\nTASK [delete project directory before update] **********************************\r\nskipping: [localhost]\r\n\r\nTASK [update project using git and accept hostkey] *****************************\r\nskipping: [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nskipping: [localhost]\r\n\r\nTASK [update project using git] ************************************************\r\nfatal: [localhost]: FAILED! => {\"changed\": false, \"cmd\": \"/usr/bin/git clone --origin origin 'https://$encrypted$:$encrypted$@github.com/jameswnl/ansible-examplez' /var/lib/awx/projects/_372__failed_repo\", \"failed\": true, \"msg\": \"remote: Invalid username or password.\\nfatal: Authentication failed for 'https://$encrypted$:$encrypted$@github.com/jameswnl/ansible-examplez/'\", \"rc\": 128, \"stderr\": \"remote: Invalid username or password.\\nfatal: Authentication failed for 'https://$encrypted$:$encrypted$@github.com/jameswnl/ansible-examplez/'\\n\", \"stderr_lines\": [\"remote: Invalid username or password.\", \"fatal: Authentication failed for 'https://$encrypted$:$encrypted$@github.com/jameswnl/ansible-examplez/'\"], \"stdout\": \"Cloning into '/var/lib/awx/projects/_372__failed_repo'...\\n\", \"stdout_lines\": [\"Cloning into '/var/lib/awx/projects/_372__failed_repo'...\"]}\r\n\r\nPLAY RECAP *********************************************************************\r\nlocalhost                  : ok=0    changed=0    unreachable=0    failed=1   \r\n\r\n"
+    )
+    expect(failed_configuration_script_source.authentication.name).to eq('hello_scm_cred')
   end
 
   def assert_configured_system
     expect(expected_configured_system).to have_attributes(
       :type                 => manager_class::ConfiguredSystem.name,
       :hostname             => "hello_vm",
-      :manager_ref          => "98",
+      :manager_ref          => "103",
       :virtual_instance_ref => "4233080d-7467-de61-76c9-c8307b6e4830",
     )
     expect(expected_configured_system.counterpart).to          eq(expected_counterpart_vm)
@@ -211,13 +247,13 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configuration_script).to have_attributes(
       :name        => "hello_template",
       :description => "test job",
-      :manager_ref => "341",
+      :manager_ref => "369",
       :survey_spec => {},
       :variables   => {},
     )
     # expect(expected_configuration_script.inventory_root_group).to have_attributes(:ems_ref => "43")
     expect(expected_configuration_script.parent.name).to eq('hello_world.yml')
-    expect(expected_configuration_script.parent.configuration_script_source.manager_ref).to eq('340')
+    expect(expected_configuration_script.parent.configuration_script_source.manager_ref).to eq('368')
   end
 
   def assert_configuration_script_with_survey_spec
@@ -225,7 +261,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(system).to have_attributes(
       :name        => "hello_template_with_survey",
       :description => "test job with survey spec",
-      :manager_ref => "342",
+      :manager_ref => "370",
       :variables   => {}
     )
     survey = system.survey_spec
@@ -236,7 +272,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_inventory_root_group
     expect(expected_inventory_root_group).to have_attributes(
       :name    => "hello_inventory",
-      :ems_ref => "99",
+      :ems_ref => "104",
       :type    => "ManageIQ::Providers::AutomationManager::InventoryRootGroup",
     )
   end

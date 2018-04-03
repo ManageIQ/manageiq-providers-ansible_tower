@@ -1,4 +1,6 @@
 module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationManager
+  ERROR_MAX_SIZE = 50 * 1024 # 50 KiB
+
   def parse
     inventory_root_groups
     configured_systems
@@ -65,6 +67,14 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
       inventory_object.scm_update_on_launch = project.scm_update_on_launch
       inventory_object.status = project.status
       inventory_object.last_updated_on = project.last_updated
+
+      inventory_object.last_update_error = nil
+      unless project.status == 'successful'
+        last_update = project.last_update
+        if last_update
+          inventory_object.last_update_error = last_update.result_stdout[0..ERROR_MAX_SIZE]
+        end
+      end
 
       project.playbooks.each do |playbook_name|
         inventory_object_playbook = persister.configuration_script_payloads.find_or_build_by(
