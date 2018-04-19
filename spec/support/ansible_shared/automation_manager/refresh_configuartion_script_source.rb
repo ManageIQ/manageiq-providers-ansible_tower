@@ -20,10 +20,10 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
     configuration_script_source = FactoryGirl.create(:"#{ems_type}_configuration_script_source",
                                                      :authentication => credential,
                                                      :manager        => automation_manager,
-                                                     :manager_ref    => 472)
+                                                     :manager_ref    => 70)
     configuration_script_source.configuration_script_payloads.create!(:manager_ref => '2b_rm', :name => '2b_rm')
     configuration_script_source_other = FactoryGirl.create(:"#{ems_type}_configuration_script_source",
-                                                           :manager_ref => 5,
+                                                           :manager_ref => 71,
                                                            :manager     => automation_manager,
                                                            :name        => 'Dont touch this')
 
@@ -31,7 +31,7 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
     stub_const("ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::ConfigurationScriptSource::REFRESH_ON_TOWER_SLEEP", 0.seconds)
 
     # this is to check if a project will be updated on tower
-    last_project_update = Time.zone.parse("2017-04-10 20:50:11.429285000 +0000") - 1.minute
+    last_project_update = Time.zone.parse("2018-04-20T11:41:02.011Z")
 
     Spec::Support::VcrHelper.with_cassette_library_dir(ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/vcr_cassettes")) do
       2.times do
@@ -48,17 +48,17 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
           expect(last_updated).to be >= last_project_update
           last_project_update = last_updated
 
-          expect(configuration_script_source.name).to eq("targeted_refresh")
+          expect(configuration_script_source.name).to eq("hello_repo")
           expect(configuration_script_source.last_updated_on).to eq(last_updated)
-          expect(ConfigurationScriptPayload.count).to eq(81)
+          expect(ConfigurationScriptPayload.count).to eq(61)
           expect(ConfigurationScriptPayload.where(:name => '2b_rm')).to be_empty
-          expect(configuration_script_source.configuration_script_payloads.count).to eq(81)
+          expect(configuration_script_source.configuration_script_payloads.count).to eq(61)
           expect(
             configuration_script_source.configuration_script_payloads.where(
-              :name => "test/utils/docker/httptester/httptester.yml"
+              :name => "jboss-standalone/demo-aws-launch.yml"
             ).count
           ).to eq(1)
-          expect(configuration_script_source.authentication.name).to eq('db-github')
+          expect(configuration_script_source.authentication.name).to eq('hello_scm_cred')
           expect(credential.reload).to eq(credential)
 
           expect(configuration_script_source_other.name).to eq("Dont touch this")
