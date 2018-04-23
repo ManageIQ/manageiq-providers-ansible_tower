@@ -50,6 +50,10 @@ class PopulateTower
   require "faraday"
   require 'faraday_middleware'
 
+  MAX_TRIES = 10
+  TRY_SLEEP = 2
+  DEL_SLEEP = 20
+
   def initialize(tower_host, id, password)
     @conn = Faraday.new(tower_host, :ssl => {:verify => false}) do |c|
       c.use(FaradayMiddleware::EncodeJson)
@@ -73,10 +77,23 @@ class PopulateTower
       next if item['name'] != match_name
       puts "   deleting old #{item['name']}: #{item['url']}"
       resp = @conn.delete(item['url'])
-      sleep(20) # without sleep, sometimes subsequent create will return 400. Seems the deletion has some delay in Tower
+      sleep(DEL_SLEEP) # without sleep, sometimes subsequent create will return 400. Seems the deletion has some delay in Tower
       resp
     end
     del_obj(data['next'], match_name) if data['next']
+  end
+
+  def try_get_obj_until(uri)
+    current_try = 1
+    loop do
+      raise "Requested operation did not finish even after #{current_try} tries." if current_try > MAX_TRIES
+
+      data = JSON.parse(@conn.get(uri).body)
+      break if yield data
+
+      current_try = current_try.succ
+      sleep(TRY_SLEEP)
+    end
   end
 
   def create_dataset
@@ -172,6 +189,19 @@ class PopulateTower
     uri = '/api/v1/projects/'
     data = {"name" => 'hello_repo', "scm_url" => "https://github.com/jameswnl/ansible-examples", "scm_type" => "git", "credential" => scm_credential['id'], "organization" => organization['id']}
     project = create_obj(uri, data)
+
+    # Wait until there is a update job for "hello_repo".
+    uri = nil
+    try_get_obj_until(project['url']) do |body|
+      uri = body['related']['last_update']
+      uri.present?
+    end
+
+    # Wait until the "hello_repo" update finishes.
+    try_get_obj_until(uri) do |body|
+      raise "“hello repo” cloning failed." if body['failed']
+      body['finished'].present?
+    end
 
     # create a job_template
     uri = '/api/v1/job_templates/'
