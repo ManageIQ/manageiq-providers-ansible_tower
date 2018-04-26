@@ -6,12 +6,17 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   # ========
   # Update: re-create expected set of Tower objects and re-record cassettes
   # 1. Modify the rake task lib/tasks_private/spec_helper.rake to modify the objects for new spec
-  # 2. rake manageiq:providers:ansible_tower:populate_tower
-  #    (refer to the task doc for detail)
-  # 2. remove the old cassette
-  # 3. run the spec to create the cassette
-  # 4. update the expectations
-  # 5. change credentials in cassettes before commit
+  # 2. $ bundle exec rake manageiq:providers:ansible_tower:populate_tower
+  #    - Populates test data in Tower instance
+  #    - Collects variables (ids, timestamps, object counts...) for expectations
+  # 3. remove the old cassette
+  # 4. run the refresher specs to create the cassettes before data in Tower instance changes because of changes
+  #    triggered by other specs
+  #    $ bundle exec rspec spec/models/manageiq/providers/ansible_tower/automation_manager/refresher_spec.rb spec/models/manageiq/providers/ansible_tower/automation_manager/refresher_v2_spec.rb
+  # 5. run other specs to record the remaining cassettes
+  #    $ bundle exec rspec
+  # 6. update the expectations
+  # 7. change credentials in cassettes before commit
   #
   # Option #2
   # ========
@@ -54,6 +59,25 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
                        :verify_ssl => false,).tap { |provider| provider.authentications << auth }
   end
   let(:manager_class) { manager_class }
+
+  let(:tower_data) { Spec::Support::TowerDataHelper.tower_data }
+
+  let(:host_count) { tower_data['counts']['hosts']['total'] }
+  let(:job_template_count) { tower_data['counts']['job_templates']['total'] }
+  let(:inventory_count) { tower_data['counts']['inventories']['total'] }
+  let(:project_count) { tower_data['counts']['projects']['total'] }
+  let(:playbook_count) { tower_data['counts']['playbooks']['total'] }
+  let(:credential_count) { tower_data['counts']['credentials']['total'] }
+
+  let(:hello_inventory_id) { tower_data['items']['hello_inventory']['id'] }
+  let(:hello_repo_id) { tower_data['items']['hello_repo']['id'] }
+  let(:hello_repo_playbooks) { tower_data['items']['hello_repo']['playbooks'] }
+  let(:hello_repo_playbook_count) { tower_data['counts']['playbooks']['hello_repo'] }
+  let(:hello_repo_status) { tower_data['items']['hello_repo']['status'] }
+  let(:hello_template_id) { tower_data['items']['hello_template']['id'] }
+  let(:hello_template_with_survey_id) { tower_data['items']['hello_template_with_survey']['id'] }
+  let(:hello_vault_cred_id) { tower_data['items']['hello_vault_cred']['id'] }
+  let(:hello_vm_id) { tower_data['items']['hello_vm']['id'] }
 
   it ".ems_type" do
     expect(described_class.ems_type).to eq(ems_type)
@@ -102,19 +126,22 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_counts
     expect(Provider.count).to                                         eq(1)
     expect(automation_manager).to                                     have_attributes(:api_version => "3.2.2")
-    expect(automation_manager.configured_systems.count).to            eq(2)
-    expect(automation_manager.configuration_scripts.count).to         eq(3)
-    expect(automation_manager.inventory_groups.count).to              eq(2)
-    expect(automation_manager.configuration_script_sources.count).to  eq(7)
-    expect(automation_manager.configuration_script_payloads.count).to eq(139)
-    expect(automation_manager.credentials.count).to                   eq(17)
+    expect(automation_manager.configured_systems.count).to            eq(host_count)
+    expect(automation_manager.configuration_scripts.count).to         eq(job_template_count)
+    expect(automation_manager.inventory_groups.count).to              eq(inventory_count)
+    expect(automation_manager.configuration_script_sources.count).to  eq(project_count)
+    expect(automation_manager.configuration_script_payloads.count).to eq(playbook_count)
+    expect(automation_manager.credentials.count).to                   eq(credential_count)
   end
 
   def assert_credentials
     expect(expected_configuration_script.authentications.count).to eq(3)
 
     # vault_credential
-    vault_credential = Authentication.all.find_by(:type => manager_class::VaultCredential, :manager_ref => "272")
+    vault_credential = Authentication.all.find_by(
+      :type        => manager_class::VaultCredential,
+      :manager_ref => hello_vault_cred_id.to_s
+    )
     expect(vault_credential.options.keys).to match_array([:vault_password])
     expect(vault_credential.options[:vault_password]).not_to be_empty
     expect(vault_credential.name).to eq("hello_vault_cred")
@@ -174,9 +201,12 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   end
 
   def assert_playbooks
-    expect(expected_configuration_script_source.configuration_script_payloads.first).to be_an_instance_of(manager_class::Playbook)
-    expect(expected_configuration_script_source.configuration_script_payloads.count).to eq(61)
-    expect(expected_configuration_script_source.configuration_script_payloads.map(&:name)).to include('jboss-standalone/site.yml')
+    configuration_script_payloads = expected_configuration_script_source.configuration_script_payloads
+    expect(configuration_script_payloads.count).to eq(hello_repo_playbook_count)
+    configuration_script_payloads.each do |payload|
+      expect(payload).to be_an_instance_of(manager_class::Playbook)
+    end
+    expect(configuration_script_payloads.map(&:name).sort).to eq(hello_repo_playbooks.sort)
   end
 
   def assert_configuration_script_sources
@@ -190,7 +220,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
       :scm_clean            => false,
       :scm_delete_on_update => false,
       :scm_update_on_launch => false,
-      :status               => 'successful'
+      :status               => hello_repo_status
     )
     expect(expected_configuration_script_source.authentication.name).to eq('hello_scm_cred')
   end
@@ -199,7 +229,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configured_system).to have_attributes(
       :type                 => manager_class::ConfiguredSystem.name,
       :hostname             => "hello_vm",
-      :manager_ref          => "24",
+      :manager_ref          => hello_vm_id.to_s,
       :virtual_instance_ref => "4233080d-7467-de61-76c9-c8307b6e4830",
     )
     expect(expected_configured_system.counterpart).to          eq(expected_counterpart_vm)
@@ -210,13 +240,13 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configuration_script).to have_attributes(
       :name        => "hello_template",
       :description => "test job",
-      :manager_ref => "72",
+      :manager_ref => hello_template_id.to_s,
       :survey_spec => {},
       :variables   => {},
     )
-    expect(expected_configuration_script.inventory_root_group).to have_attributes(:ems_ref => "24")
+    expect(expected_configuration_script.inventory_root_group).to have_attributes(:ems_ref => hello_inventory_id.to_s)
     expect(expected_configuration_script.parent.name).to eq('hello_world.yml')
-    expect(expected_configuration_script.parent.configuration_script_source.manager_ref).to eq('70')
+    expect(expected_configuration_script.parent.configuration_script_source.manager_ref).to eq(hello_repo_id.to_s)
   end
 
   def assert_configuration_script_with_survey_spec
@@ -224,7 +254,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(system).to have_attributes(
       :name        => "hello_template_with_survey",
       :description => "test job with survey spec",
-      :manager_ref => "73",
+      :manager_ref => hello_template_with_survey_id.to_s,
       :variables   => {}
     )
     survey = system.survey_spec
@@ -235,7 +265,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_inventory_root_group
     expect(expected_inventory_root_group).to have_attributes(
       :name    => "hello_inventory",
-      :ems_ref => "24",
+      :ems_ref => hello_inventory_id.to_s,
       :type    => "ManageIQ::Providers::AutomationManager::InventoryRootGroup",
     )
   end
