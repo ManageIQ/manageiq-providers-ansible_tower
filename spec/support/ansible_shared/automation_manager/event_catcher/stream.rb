@@ -11,6 +11,10 @@ shared_examples_for "ansible event_catcher stream" do |cassette_file|
                        :verify_ssl => false,).tap { |provider| provider.authentications << auth }
   end
 
+  let(:tower_data) { Spec::Support::TowerDataHelper.tower_data }
+  let(:spec_test_org_id) { tower_data['items']['spec_test_org']['id'] }
+  let(:user_id) { tower_data['user']['id'] }
+
   subject do
     described_class.new(automation_manager)
   end
@@ -21,9 +25,9 @@ shared_examples_for "ansible event_catcher stream" do |cassette_file|
         VCR.use_cassette(cassette_file) do
           last_activity = subject.send(:last_activity)
           # do something on tower that creates an activity in activity_stream
-          provider.connect.api.credentials.create!(:organization => 102,
+          provider.connect.api.credentials.create!(:organization => spec_test_org_id,
                                                    :name         => 'test_stream',
-                                                   :user         => 1)
+                                                   :user         => user_id)
           polled_event = nil
           subject.poll do |event|
             expect(event['id']).to eq(last_activity.id + 1)
