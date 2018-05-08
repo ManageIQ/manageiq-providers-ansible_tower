@@ -5,7 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Gaprindashvili-2
+## Gaprindashvili-3
+
+### Added
+- Tower 3.2.2 vault credential type [(#54)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/54)
+- Tower Rhv credential type [(#62)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/62)
+- Add host field to rhv_credential [(#69)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/69)
+- Add vault credential to Ansible Tower Job. #70
+
+## Gaprindashvili-2 - Released 2018-03-07
 
 ### Fixed
 - Dropping azure classic and rackspace credential types [(#58)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/58)
