@@ -1,3 +1,11 @@
-class ManageIQ::Providers::AnsibleTower::Inventory::Persister::ConfigurationScriptSource < ManagerRefresh::Inventory::Persister
-  include ManageIQ::Providers::AnsibleTower::Shared::Inventory::Persister::ConfigurationScriptSource
+class ManageIQ::Providers::AnsibleTower::Inventory::Persister::ConfigurationScriptSource < ManageIQ::Providers::AnsibleTower::Inventory::Persister
+  include ManageIQ::Providers::AnsibleTower::Inventory::Persister::Shared::Collections
+
+  def initialize_inventory_collections
+    add_collection(automation, :credentials, :complete => false)
+
+    add_collection(automation, :configuration_script_sources, :complete => false)
+
+    add_configuration_script_payloads(:parent => target)
+  end
 end
