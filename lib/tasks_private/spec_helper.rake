@@ -40,7 +40,8 @@ class PopulateTower
   #   deleting old hello_template_with_survey: /api/v1/job_templates/590/
   # Created name=hello_template_with_survey  manager_ref/ems_ref= 593       url=/api/v1/job_templates/593/
   # created /api/v1/job_templates/594/ survey_spec
-  # Created name=another_repo                manager_ref/ems_ref= 594       url=/api/v1/projects/594/
+  # Created name=failed_repo                 manager_ref/ems_ref= 594       url=/api/v1/projects/594/
+  # Created name=jobless_repo                manager_ref/ems_ref= 595       url=/api/v1/projects/595/
   # === Object counts ===
   # configuration_script           (job_templates)     : 120
   # configuration_script_source    (projects)          : 32
@@ -99,11 +100,25 @@ class PopulateTower
     loop do
       raise "Requested operation did not finish even after #{current_try} tries." if current_try > MAX_TRIES
 
-      data = JSON.parse(@conn.get(uri).body)
-      break if yield data
+      obj = JSON.parse(@conn.get(uri).body)
+      return obj if yield obj
 
       current_try = current_try.succ
       sleep(TRY_SLEEP)
+    end
+  end
+
+  def wait_for_project_update(project)
+    last_update_uri = nil
+    try_get_obj_until(project['url']) do |body|
+      last_update_uri = body['related']['last_update']
+      last_update_uri.present?
+    end
+
+    # Wait until the "hello_repo" update finishes.
+    try_get_obj_until(last_update_uri) do |body|
+      raise "“#{project['name']}” cloning failed." if body['failed']
+      body['finished'].present?
     end
   end
 
@@ -207,29 +222,19 @@ class PopulateTower
     # create a project
     uri = '/api/v1/projects/'
     data = {"name" => 'hello_repo', "scm_url" => "https://github.com/jameswnl/ansible-examples", "scm_type" => "git", "credential" => scm_credential['id'], "organization" => organization['id']}
-    project = create_obj(uri, data)
+    hello_project = create_obj(uri, data)
 
-    # Wait until there is a update job for "hello_repo".
-    uri = nil
-    try_get_obj_until(project['url']) do |body|
-      uri = body['related']['last_update']
-      uri.present?
-    end
-
-    # Wait until the "hello_repo" update finishes.
-    try_get_obj_until(uri) do |body|
-      raise "“hello repo” cloning failed." if body['failed']
-      body['finished'].present?
-    end
+    # Wait for hello_project update to finish, it is necessary for creating a template
+    wait_for_project_update(hello_project)
 
     # create a job_template
     uri = '/api/v1/job_templates/'
-    data = {"name" => 'hello_template', "description" => "test job", "job_type" => "run", "project" => project['id'], "playbook" => "hello_world.yml", "credential" => machine_credential['id'], "cloud_credential" => aws_credential['id'], "network_credential" => network_credential['id'], "inventory" => inventory['id'], "organization" => organization['id']}
+    data = {"name" => 'hello_template', "description" => "test job", "job_type" => "run", "project" => hello_project['id'], "playbook" => "hello_world.yml", "credential" => machine_credential['id'], "cloud_credential" => aws_credential['id'], "network_credential" => network_credential['id'], "inventory" => inventory['id'], "organization" => organization['id']}
     create_obj(uri, data)
 
     # create a job_template with survey spec
     uri = '/api/v1/job_templates/'
-    data = {"name" => "hello_template_with_survey", "description" => "test job with survey spec", "job_type" => "run", "project" => project['id'], "playbook" => "hello_world.yml", "credential" => machine_credential['id'], "inventory" => inventory['id'], "survey_enabled" => true, "organization" => organization['id']}
+    data = {"name" => "hello_template_with_survey", "description" => "test job with survey spec", "job_type" => "run", "project" => hello_project['id'], "playbook" => "hello_world.yml", "credential" => machine_credential['id'], "inventory" => inventory['id'], "survey_enabled" => true, "organization" => organization['id']}
     template = create_obj(uri, data)
     # create survey spec
     uri = "/api/v1/job_templates/#{template['id']}/survey_spec/"
@@ -237,10 +242,18 @@ class PopulateTower
     @conn.post(uri, data).body
     puts "created #{template['url']} survey_spec"
 
-    # create another project
+    # Create a project with failed update.
     uri = '/api/v1/projects/'
-    data = {"name" => 'another_repo', "scm_url" => "https://github.com/jameswnl/ansible-examples", "scm_type" => "git", "credential" => scm_credential['id'], "organization" => organization['id']}
+    data = {"name" => 'failed_repo', "scm_url" => "https://github.com/jameswnl/ansible-examplez", "scm_type" => "git", "credential" => scm_credential['id'], "organization" => organization['id']}
     create_obj(uri, data)
+
+    # Create a project without an update job.
+    uri = '/api/v1/projects/'
+    data = {"name" => 'jobless_repo', "scm_url" => "https://github.com/jameswnl/ansible-examples", "scm_type" => "git", "credential" => scm_credential['id'], "organization" => organization['id']}
+    jobless_project = create_obj(uri, data)
+
+    last_update = wait_for_project_update(jobless_project)
+    @conn.delete(last_update['url'])
 
     self
   end
