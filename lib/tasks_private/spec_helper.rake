@@ -29,16 +29,18 @@ class PopulateTower
   # Created name=spec_test_org               manager_ref/ems_ref= 40        url=/api/v1/organizations/40/
   # Created name=hello_scm_cred              manager_ref/ems_ref= 136       url=/api/v1/credentials/136/
   # Created name=hello_machine_cred          manager_ref/ems_ref= 137       url=/api/v1/credentials/137/
-  # Created name=hello_aws_cred              manager_ref/ems_ref= 138       url=/api/v1/credentials/138/
-  # Created name=hello_network_cred          manager_ref/ems_ref= 139       url=/api/v1/credentials/139/
+  # Created name=hello_vault_cred            manager_ref/ems_ref= 138       url=/api/v1/credentials/138/
+  # Created name=hello_aws_cred              manager_ref/ems_ref= 139       url=/api/v1/credentials/139/
+  # Created name=hello_network_cred          manager_ref/ems_ref= 140       url=/api/v1/credentials/140/
   # Created name=hello_inventory             manager_ref/ems_ref= 110       url=/api/v1/inventories/110/
   # Created name=hello_vm                    manager_ref/ems_ref= 249       url=/api/v1/hosts/249/
   # Created name=hello_repo                  manager_ref/ems_ref= 591       url=/api/v1/projects/591/
+  # Created name=another_repo                manager_ref/ems_ref= 592       url=/api/v1/projects/592/
   #   deleting old hello_template: /api/v1/job_templates/589/
-  # Created name=hello_template              manager_ref/ems_ref= 592       url=/api/v1/job_templates/592/
+  # Created name=hello_template              manager_ref/ems_ref= 593       url=/api/v1/job_templates/593/
   #   deleting old hello_template_with_survey: /api/v1/job_templates/590/
-  # Created name=hello_template_with_survey  manager_ref/ems_ref= 593       url=/api/v1/job_templates/593/
-  # created /api/v1/job_templates/593/ survey_spec
+  # Created name=hello_template_with_survey  manager_ref/ems_ref= 594       url=/api/v1/job_templates/594/
+  # created /api/v1/job_templates/594/ survey_spec
   # === Object counts ===
   # configuration_script           (job_templates)     : 120
   # configuration_script_source    (projects)          : 32
@@ -49,6 +51,10 @@ class PopulateTower
 
   require "faraday"
   require 'faraday_middleware'
+
+  MAX_TRIES = 10
+  TRY_SLEEP = 2
+  DEL_SLEEP = 20
 
   def initialize(tower_host, id, password)
     @conn = Faraday.new(tower_host, :ssl => {:verify => false}) do |c|
@@ -73,10 +79,23 @@ class PopulateTower
       next if item['name'] != match_name
       puts "   deleting old #{item['name']}: #{item['url']}"
       resp = @conn.delete(item['url'])
-      sleep(20) # without sleep, sometimes subsequent create will return 400. Seems the deletion has some delay in Tower
+      sleep(DEL_SLEEP) # without sleep, sometimes subsequent create will return 400. Seems the deletion has some delay in Tower
       resp
     end
     del_obj(data['next'], match_name) if data['next']
+  end
+
+  def try_get_obj_until(uri)
+    current_try = 1
+    loop do
+      raise "Requested operation did not finish even after #{current_try} tries." if current_try > MAX_TRIES
+
+      data = JSON.parse(@conn.get(uri).body)
+      break if yield data
+
+      current_try = current_try.succ
+      sleep(TRY_SLEEP)
+    end
   end
 
   def create_dataset
@@ -126,6 +145,10 @@ class PopulateTower
     data = {"name" => "hello_machine_cred", "kind" => "ssh", "username" => "admin", "password" => "abc", "organization" => organization['id']}
     machine_credential = create_obj(uri, data)
 
+    # create vault cred
+    data = {"name" => "hello_vault_cred", "kind" => "ssh", "vault_password" => "abc", "organization" => organization['id']}
+    _vault_credential = create_obj(uri, data)
+
     # create network cred
     data = {"name" => "hello_network_cred", "kind" => "net", "username" => "admin", "password" => "abc", "organization" => organization['id']}
     network_credential = create_obj(uri, data)
@@ -142,21 +165,13 @@ class PopulateTower
     data = {"name" => "hello_gce_cred", "kind" => "gce", "username" => "hello_gce@gce.com", "ssh_key_data" => ssh_key_data, "project" => "squeamish-ossifrage-123", "organization" => organization['id']}
     _gce_credential = create_obj(uri, data)
 
-    # create cloud rackspace cred
-    data = {"name" => "hello_rax_cred", "kind" => "rax", "username" => "admin", "password" => "abc", "organization" => organization['id']}
-    _rax_credential = create_obj(uri, data)
-
     # create cloud azure(RM) cred
-    data = {"name" => "hello_azure_cred", "kind" => "azure_rm", "username" => "admin", "password" => "abc", "subscription"  => "sub_id", "tenant" => "ten_id", "secret" => "my_secret", "client" => "cli_id", "organization" => organization['id']}
-    _azure_credential = create_obj(uri, data)
-
-    # create cloud azure(Classic) cred
-    data = {"name" => "hello_azure_classic_cred", "kind" => "azure", "username" => "admin", "ssh_key_data" => ssh_key_data, "organization" => organization['id']}
+    data = {"name" => "hello_azure_cred", "kind" => "azure_rm", "username" => "admin", "password" => "abc", "subscription" => "sub_id", "tenant" => "ten_id", "secret" => "my_secret", "client" => "cli_id", "organization" => organization['id']}
     _azure_credential = create_obj(uri, data)
 
     # create cloud satellite6 cred
-    data = {"name" => "hello_sat_cred", "kind" => "satellite6", "username" => "admin", "password" => "abc", "host"  => "s1.sat.com", "organization" => organization['id']}
-    _azure_credential = create_obj(uri, data)
+    data = {"name" => "hello_sat_cred", "kind" => "satellite6", "username" => "admin", "password" => "abc", "host" => "s1.sat.com", "organization" => organization['id']}
+    _sat6_credential = create_obj(uri, data)
 
     # create inventory
     uri = '/api/v1/inventories/'
@@ -172,6 +187,24 @@ class PopulateTower
     uri = '/api/v1/projects/'
     data = {"name" => 'hello_repo', "scm_url" => "https://github.com/jameswnl/ansible-examples", "scm_type" => "git", "credential" => scm_credential['id'], "organization" => organization['id']}
     project = create_obj(uri, data)
+
+    # create another project
+    uri = '/api/v1/projects/'
+    data = {"name" => 'another_repo', "scm_url" => "https://github.com/jameswnl/ansible-examples", "scm_type" => "git", "credential" => scm_credential['id'], "organization" => organization['id']}
+    create_obj(uri, data)
+
+    # Wait until there is a update job for "hello_repo".
+    uri = nil
+    try_get_obj_until(project['url']) do |body|
+      uri = body['related']['last_update']
+      uri.present?
+    end
+
+    # Wait until the "hello_repo" update finishes.
+    try_get_obj_until(uri) do |body|
+      raise "“hello repo” cloning failed." if body['failed']
+      body['finished'].present?
+    end
 
     # create a job_template
     uri = '/api/v1/job_templates/'

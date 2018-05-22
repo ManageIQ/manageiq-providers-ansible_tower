@@ -101,23 +101,23 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
 
   def assert_counts
     expect(Provider.count).to                                         eq(1)
-    expect(automation_manager).to                                     have_attributes(:api_version => "3.0.1")
-    expect(automation_manager.configured_systems.count).to            eq(131)
-    expect(automation_manager.configuration_scripts.count).to         eq(120)
-    expect(automation_manager.inventory_groups.count).to              eq(30)
-    expect(automation_manager.configuration_script_sources.count).to  eq(34)
-    expect(automation_manager.configuration_script_payloads.count).to eq(2721)
-    expect(automation_manager.credentials.count).to                   eq(62)
+    expect(automation_manager).to                                     have_attributes(:api_version => "3.2.2")
+    expect(automation_manager.configured_systems.count).to            eq(2)
+    expect(automation_manager.configuration_scripts.count).to         eq(3)
+    expect(automation_manager.inventory_groups.count).to              eq(2)
+    expect(automation_manager.configuration_script_sources.count).to  eq(7)
+    expect(automation_manager.configuration_script_payloads.count).to eq(139)
+    expect(automation_manager.credentials.count).to                   eq(17)
   end
 
   def assert_credentials
     expect(expected_configuration_script.authentications.count).to eq(3)
 
     # vault_credential
-    vault_credential = Authentication.all.find_by(:type => manager_class::VaultCredential)
+    vault_credential = Authentication.all.find_by(:type => manager_class::VaultCredential, :manager_ref => "272")
     expect(vault_credential.options.keys).to match_array([:vault_password])
     expect(vault_credential.options[:vault_password]).not_to be_empty
-    expect(vault_credential.name).to eq("Demo Creds 2")
+    expect(vault_credential.name).to eq("hello_vault_cred")
 
     # machine_credential
     machine_credential = expected_configuration_script.authentications.find_by(
@@ -199,7 +199,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configured_system).to have_attributes(
       :type                 => manager_class::ConfiguredSystem.name,
       :hostname             => "hello_vm",
-      :manager_ref          => "252",
+      :manager_ref          => "24",
       :virtual_instance_ref => "4233080d-7467-de61-76c9-c8307b6e4830",
     )
     expect(expected_configured_system.counterpart).to          eq(expected_counterpart_vm)
@@ -210,13 +210,13 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configuration_script).to have_attributes(
       :name        => "hello_template",
       :description => "test job",
-      :manager_ref => "604",
+      :manager_ref => "72",
       :survey_spec => {},
       :variables   => {},
     )
-    # expect(expected_configuration_script.inventory_root_group).to have_attributes(:ems_ref => "1")
+    expect(expected_configuration_script.inventory_root_group).to have_attributes(:ems_ref => "24")
     expect(expected_configuration_script.parent.name).to eq('hello_world.yml')
-    # expect(expected_configuration_script.parent.configuration_script_source.manager_ref).to eq('37')
+    expect(expected_configuration_script.parent.configuration_script_source.manager_ref).to eq('70')
   end
 
   def assert_configuration_script_with_survey_spec
@@ -224,7 +224,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(system).to have_attributes(
       :name        => "hello_template_with_survey",
       :description => "test job with survey spec",
-      :manager_ref => "605",
+      :manager_ref => "73",
       :variables   => {}
     )
     survey = system.survey_spec
@@ -235,7 +235,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_inventory_root_group
     expect(expected_inventory_root_group).to have_attributes(
       :name    => "hello_inventory",
-      :ems_ref => "115",
+      :ems_ref => "24",
       :type    => "ManageIQ::Providers::AutomationManager::InventoryRootGroup",
     )
   end
