@@ -1,11 +1,6 @@
 module ManageIQ::Providers::AnsibleTower::Inventory::Persister::Shared::Collections
   extend ActiveSupport::Concern
 
-  # Builder class for Network
-  def automation
-    ::ManagerRefresh::InventoryCollection::Builder::AutomationManager
-  end
-
   # ------ IC provider specific definitions -------------------------
 
   def add_configuration_script_payloads(extra_properties = {})
