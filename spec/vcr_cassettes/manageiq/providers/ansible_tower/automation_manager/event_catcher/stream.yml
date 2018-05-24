@@ -7,33 +7,41 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      Authorization: Basic <%= Base64.encode64("testuser:secret").chomp %>
   response:
     status:
       code: 301
-      message: MOVED PERMANENTLY
+      message: Moved Permanently
     headers:
-      Date:
-      - Wed, 05 Apr 2017 07:17:59 GMT
       Server:
-      - Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.1e-fips mod_wsgi/3.4 Python/2.7.5
+      - nginx/1.12.2
+      Date:
+      - Thu, 24 May 2018 10:47:30 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '185'
       Location:
       - https://dev-ansible-tower3.example.com/api/v1/activity_stream/?order_by=-id
-      Content-Length:
-      - '0'
-      Content-Type:
-      - text/html; charset=utf-8
+      Connection:
+      - keep-alive
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
     body:
       encoding: UTF-8
-      string: ''
+      string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
+        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/1.12.2</center>\r\n</body>\r\n</html>\r\n"
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 07:17:59 GMT
+  recorded_at: Thu, 24 May 2018 10:47:21 GMT
 - request:
     method: get
     uri: https://dev-ansible-tower3.example.com/api/v1/activity_stream/?order_by=-id
@@ -41,60 +49,160 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      Authorization: Basic <%= Base64.encode64("testuser:secret").chomp %>
   response:
     status:
       code: 200
       message: OK
     headers:
-      Date:
-      - Wed, 05 Apr 2017 07:18:00 GMT
       Server:
-      - Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.1e-fips mod_wsgi/3.4 Python/2.7.5
-      Vary:
-      - Accept,Cookie
-      Allow:
-      - GET, HEAD, OPTIONS
-      X-Api-Time:
-      - 0.657s
-      Transfer-Encoding:
-      - chunked
+      - nginx/1.12.2
+      Date:
+      - Thu, 24 May 2018 10:47:32 GMT
       Content-Type:
       - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.754s
+      X-Api-Total-Time:
+      - 0.765s
+      Allow:
+      - GET, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
     body:
       encoding: UTF-8
-      string: '{"count":4853,"next":"/api/v1/activity_stream/?order_by=-id&page=2","previous":null,"results":[{"id":4853,"type":"activity_stream","url":"/api/v1/activity_stream/4853/","related":{"role":["/api/v1/roles/1873/"],"job_template":["/api/v1/job_templates/470/"],"actor":"/api/v1/users/1/","user":["/api/v1/users/1/"]},"summary_fields":{"job_template":[{"description":"is
-        here too","id":470,"name":"miq_Karel_provision"}],"role":[{"id":1873,"role_field":"admin_role"}],"user":[{"username":"admin","first_name":"","last_name":"","id":1}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:10:22.362958Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_members","object2_pk":1,"object1":"job_template","object2":"user","object1_pk":470,"action":"associate"},"object1":"job_template","object2":"user","object_association":"role"},{"id":4852,"type":"activity_stream","url":"/api/v1/activity_stream/4852/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:10:22.343417Z","operation":"create","changes":{"network_credential":null,"ask_tags_on_launch":false,"job_type":"run","skip_tags":"","playbook":"product/alerts/rss/microsoft_vms.yml","id":470,"survey_enabled":false,"force_handlers":false,"job_tags":"","ask_inventory_on_launch":true,"inventory":null,"forks":0,"cloud_credential":"jwong-aws-test-10","become_enabled":false,"credential":"ManageIQ
-        Default Credential-27","description":"is here too","ask_variables_on_launch":true,"ask_job_type_on_launch":false,"start_at_task":"","ask_limit_on_launch":true,"host_config_key":"","name":"miq_Karel_provision","ask_credential_on_launch":true,"extra_vars":"{}","verbosity":0,"allow_simultaneous":false,"project":"jwong-org2-36","limit":""},"object1":"job_template","object2":"","object_association":""},{"id":4851,"type":"activity_stream","url":"/api/v1/activity_stream/4851/","related":{"organization":["/api/v1/organizations/2/"],"role":["/api/v1/roles/77/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":77,"role_field":"auditor_role"}],"organization":[{"description":"For
-        tests","id":2,"name":"Test Org"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:10:22.319613Z","operation":"associate","changes":{"relationship":"awx.main.models.organization.Organization.auditor_role","object2_pk":77,"object1":"job_template","object2":"organization","object1_pk":470,"action":"associate"},"object1":"job_template","object2":"organization","object_association":"role"},{"id":4850,"type":"activity_stream","url":"/api/v1/activity_stream/4850/","related":{"role":["/api/v1/roles/77/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":77,"role_field":"auditor_role"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:10:22.310892Z","operation":"associate","changes":{"relationship":"awx.main.models.organization.Organization.auditor_role","object2_pk":1875,"object1":"job_template","object2":"job_template","object1_pk":470,"action":"associate"},"object1":"job_template","object2":"job_template","object_association":"role"},{"id":4849,"type":"activity_stream","url":"/api/v1/activity_stream/4849/","related":{"role":["/api/v1/roles/77/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":77,"role_field":"auditor_role"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:10:22.300328Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1873,"object1":"job_template","object2":"job_template","object1_pk":470,"action":"associate"},"object1":"job_template","object2":"job_template","object_association":"role"},{"id":4848,"type":"activity_stream","url":"/api/v1/activity_stream/4848/","related":{"organization":["/api/v1/organizations/2/"],"role":["/api/v1/roles/76/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":76,"role_field":"admin_role"}],"organization":[{"description":"For
-        tests","id":2,"name":"Test Org"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:10:22.279090Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":76,"object1":"job_template","object2":"organization","object1_pk":470,"action":"associate"},"object1":"job_template","object2":"organization","object_association":"role"},{"id":4847,"type":"activity_stream","url":"/api/v1/activity_stream/4847/","related":{"project":["/api/v1/projects/469/"],"actor":"/api/v1/users/1/"},"summary_fields":{"project":[{"status":"successful","description":"","id":469,"name":"Carlos"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T06:55:42.403922Z","operation":"update","changes":{"local_path":["","_469__carlos"]},"object1":"project","object2":"","object_association":""},{"id":4846,"type":"activity_stream","url":"/api/v1/activity_stream/4846/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T06:55:42.393618Z","operation":"create","changes":{"credential":null,"scm_branch":"","name":"Carlos","scm_update_cache_timeout":0,"scm_clean":false,"scm_url":"https://github.com/ManageIQ/manageiq","scm_delete_on_update":false,"local_path":"","scm_type":"git","scm_update_on_launch":false,"organization":null,"id":469,"description":""},"object1":"project","object2":"","object_association":""},{"id":4845,"type":"activity_stream","url":"/api/v1/activity_stream/4845/","related":{"role":["/api/v1/roles/7/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":7,"role_field":"system_auditor"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T06:55:42.361406Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1871,"object1":"project","object2":"project","object1_pk":469,"action":"associate"},"object1":"project","object2":"project","object_association":"parents"},{"id":4844,"type":"activity_stream","url":"/api/v1/activity_stream/4844/","related":{"role":["/api/v1/roles/7/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":7,"role_field":"system_auditor"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T06:55:42.350835Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":7,"object1":"project","object2":"role","object1_pk":469,"action":"associate"},"object1":"project","object2":"role","object_association":"parents"},{"id":4843,"type":"activity_stream","url":"/api/v1/activity_stream/4843/","related":{"role":["/api/v1/roles/7/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":7,"role_field":"system_auditor"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T06:55:42.341531Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1872,"object1":"project","object2":"project","object1_pk":469,"action":"associate"},"object1":"project","object2":"project","object_association":"parents"},{"id":4842,"type":"activity_stream","url":"/api/v1/activity_stream/4842/","related":{"role":["/api/v1/roles/1/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1,"role_field":"system_administrator"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T06:55:42.322199Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1,"object1":"project","object2":"role","object1_pk":469,"action":"associate"},"object1":"project","object2":"role","object_association":"parents"},{"id":4841,"type":"activity_stream","url":"/api/v1/activity_stream/4841/","related":{"project":["/api/v1/projects/35/"],"actor":"/api/v1/users/1/"},"summary_fields":{"project":[{"status":"successful","description":"DB
-        Playbooks","id":35,"name":"DB"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T06:54:44.386398Z","operation":"update","changes":{"name":["DB
-        karel","DB"]},"object1":"project","object2":"","object_association":""},{"id":4840,"type":"activity_stream","url":"/api/v1/activity_stream/4840/","related":{"role":["/api/v1/roles/1866/"],"user":["/api/v1/users/1/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1866,"role_field":"admin_role"}],"user":[{"username":"admin","first_name":"","last_name":"","id":1}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:53:01.584942Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_members","object2_pk":1,"object1":"job_template","object2":"user","object1_pk":468,"action":"associate"},"object1":"job_template","object2":"user","object_association":"role"},{"id":4839,"type":"activity_stream","url":"/api/v1/activity_stream/4839/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:53:01.565068Z","operation":"create","changes":{"network_credential":null,"ask_tags_on_launch":false,"job_type":"run","skip_tags":"","playbook":"copy_file_example.yml","id":468,"survey_enabled":false,"force_handlers":false,"job_tags":"","ask_inventory_on_launch":true,"inventory":null,"forks":0,"cloud_credential":null,"become_enabled":false,"credential":"ManageIQ
-        Default Credential-27","description":"DB APRIL 04 1747","ask_variables_on_launch":true,"ask_job_type_on_launch":false,"start_at_task":"","ask_limit_on_launch":true,"host_config_key":"","name":"miq_db_april_04_1747_retirement","ask_credential_on_launch":true,"extra_vars":"{}","verbosity":0,"allow_simultaneous":false,"project":"DB
-        Playbooks 2-457","limit":""},"object1":"job_template","object2":"","object_association":""},{"id":4838,"type":"activity_stream","url":"/api/v1/activity_stream/4838/","related":{"role":["/api/v1/roles/1432/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1432,"role_field":"auditor_role"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:53:01.539030Z","operation":"associate","changes":{"relationship":"awx.main.models.organization.Organization.auditor_role","object2_pk":1868,"object1":"job_template","object2":"job_template","object1_pk":468,"action":"associate"},"object1":"job_template","object2":"job_template","object_association":"role"},{"id":4837,"type":"activity_stream","url":"/api/v1/activity_stream/4837/","related":{"role":["/api/v1/roles/1432/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1432,"role_field":"auditor_role"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:53:01.526164Z","operation":"associate","changes":{"relationship":"awx.main.models.organization.Organization.auditor_role","object2_pk":1866,"object1":"job_template","object2":"job_template","object1_pk":468,"action":"associate"},"object1":"job_template","object2":"job_template","object_association":"role"},{"id":4836,"type":"activity_stream","url":"/api/v1/activity_stream/4836/","related":{"organization":["/api/v1/organizations/4/"],"role":["/api/v1/roles/1432/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1432,"role_field":"auditor_role"}],"organization":[{"description":"ManageIQ
-        Default Organization","id":4,"name":"ManageIQ"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:53:01.512089Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1432,"object1":"job_template","object2":"organization","object1_pk":468,"action":"associate"},"object1":"job_template","object2":"organization","object_association":"role"},{"id":4835,"type":"activity_stream","url":"/api/v1/activity_stream/4835/","related":{"organization":["/api/v1/organizations/4/"],"role":["/api/v1/roles/1431/"],"job_template":["/api/v1/job_templates/468/"],"actor":"/api/v1/users/1/"},"summary_fields":{"job_template":[{"description":"DB
-        APRIL 04 1747","id":468,"name":"miq_db_april_04_1747_retirement"}],"role":[{"id":1431,"role_field":"admin_role"}],"organization":[{"description":"ManageIQ
-        Default Organization","id":4,"name":"ManageIQ"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:53:01.489467Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1431,"object1":"job_template","object2":"organization","object1_pk":468,"action":"associate"},"object1":"job_template","object2":"organization","object_association":"role"},{"id":4834,"type":"activity_stream","url":"/api/v1/activity_stream/4834/","related":{"role":["/api/v1/roles/1863/"],"job_template":["/api/v1/job_templates/467/"],"actor":"/api/v1/users/1/","user":["/api/v1/users/1/"]},"summary_fields":{"job_template":[{"description":"DB
-        APRIL 04 1747","id":467,"name":"miq_db_april_04_1747_provision"}],"role":[{"id":1863,"role_field":"admin_role"}],"user":[{"username":"admin","first_name":"","last_name":"","id":1}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:51:01.262050Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_members","object2_pk":1,"object1":"job_template","object2":"user","object1_pk":467,"action":"associate"},"object1":"job_template","object2":"user","object_association":"role"},{"id":4833,"type":"activity_stream","url":"/api/v1/activity_stream/4833/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:51:01.243127Z","operation":"create","changes":{"network_credential":null,"ask_tags_on_launch":false,"job_type":"run","skip_tags":"","playbook":"copy_file_example.yml","id":467,"survey_enabled":false,"force_handlers":false,"job_tags":"","ask_inventory_on_launch":true,"inventory":null,"forks":0,"cloud_credential":null,"become_enabled":false,"credential":"ManageIQ
-        Default Credential-27","description":"DB APRIL 04 1747","ask_variables_on_launch":true,"ask_job_type_on_launch":false,"start_at_task":"","ask_limit_on_launch":true,"host_config_key":"","name":"miq_db_april_04_1747_provision","ask_credential_on_launch":true,"extra_vars":"{}","verbosity":0,"allow_simultaneous":false,"project":"DB
-        Playbooks 2-457","limit":""},"object1":"job_template","object2":"","object_association":""},{"id":4832,"type":"activity_stream","url":"/api/v1/activity_stream/4832/","related":{"role":["/api/v1/roles/1432/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1432,"role_field":"auditor_role"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:51:01.218584Z","operation":"associate","changes":{"relationship":"awx.main.models.organization.Organization.auditor_role","object2_pk":1863,"object1":"job_template","object2":"job_template","object1_pk":467,"action":"associate"},"object1":"job_template","object2":"job_template","object_association":"role"},{"id":4831,"type":"activity_stream","url":"/api/v1/activity_stream/4831/","related":{"role":["/api/v1/roles/1432/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1432,"role_field":"auditor_role"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:51:01.207443Z","operation":"associate","changes":{"relationship":"awx.main.models.organization.Organization.auditor_role","object2_pk":1865,"object1":"job_template","object2":"job_template","object1_pk":467,"action":"associate"},"object1":"job_template","object2":"job_template","object_association":"role"},{"id":4830,"type":"activity_stream","url":"/api/v1/activity_stream/4830/","related":{"organization":["/api/v1/organizations/4/"],"role":["/api/v1/roles/1432/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1432,"role_field":"auditor_role"}],"organization":[{"description":"ManageIQ
-        Default Organization","id":4,"name":"ManageIQ"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:51:01.195208Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1432,"object1":"job_template","object2":"organization","object1_pk":467,"action":"associate"},"object1":"job_template","object2":"organization","object_association":"role"},{"id":4829,"type":"activity_stream","url":"/api/v1/activity_stream/4829/","related":{"organization":["/api/v1/organizations/4/"],"role":["/api/v1/roles/1431/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1431,"role_field":"admin_role"}],"organization":[{"description":"ManageIQ
-        Default Organization","id":4,"name":"ManageIQ"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-04T21:51:01.120759Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1431,"object1":"job_template","object2":"organization","object1_pk":467,"action":"associate"},"object1":"job_template","object2":"organization","object_association":"role"}]}'
+      string: '{"count":3546,"next":"/api/v1/activity_stream/?order_by=-id&page=2","previous":null,"results":[{"id":3547,"type":"activity_stream","url":"/api/v1/activity_stream/3547/","related":{"organization":["/api/v1/organizations/102/"],"actor":"/api/v1/users/1/"},"summary_fields":{"organization":[{"description":"","id":102,"name":"test_spec_org"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:46:06.136277Z","operation":"create","changes":{"description":"","id":102,"name":"test_spec_org"},"object1":"organization","object2":"","object_association":""},{"id":3546,"type":"activity_stream","url":"/api/v1/activity_stream/3546/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.758019Z","operation":"delete","changes":{"inputs":"hidden","admin_role":"Role
+        object","modified_by":"admin","description":"","created":"2018-05-24 10:02:42.327716+00:00","modified":"2018-05-24
+        10:02:42.379746+00:00","created_by":"admin","credential_type":"Red Hat Satellite
+        6-8","read_role":"Role object","organization":"spec_test_org","use_role":"Role
+        object","id":909,"name":"hello_sat_cred"},"object1":"credential","object2":"","object_association":""},{"id":3545,"type":"activity_stream","url":"/api/v1/activity_stream/3545/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.745588Z","operation":"delete","changes":{"inputs":"hidden","admin_role":"Role
+        object","modified_by":"admin","description":"","created":"2018-05-24 10:02:40.526914+00:00","modified":"2018-05-24
+        10:02:40.576712+00:00","created_by":"admin","credential_type":"Microsoft Azure
+        Resource Manager-11","read_role":"Role object","organization":"spec_test_org","use_role":"Role
+        object","id":908,"name":"hello_azure_cred"},"object1":"credential","object2":"","object_association":""},{"id":3544,"type":"activity_stream","url":"/api/v1/activity_stream/3544/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.733767Z","operation":"delete","changes":{"inputs":"hidden","admin_role":"Role
+        object","modified_by":"admin","description":"","created":"2018-05-24 10:02:38.675726+00:00","modified":"2018-05-24
+        10:02:38.726719+00:00","created_by":"admin","credential_type":"Google Compute
+        Engine-10","read_role":"Role object","organization":"spec_test_org","use_role":"Role
+        object","id":907,"name":"hello_gce_cred"},"object1":"credential","object2":"","object_association":""},{"id":3543,"type":"activity_stream","url":"/api/v1/activity_stream/3543/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.722126Z","operation":"delete","changes":{"inputs":"hidden","admin_role":"Role
+        object","modified_by":"admin","description":"","created":"2018-05-24 10:02:36.815635+00:00","modified":"2018-05-24
+        10:02:36.867665+00:00","created_by":"admin","credential_type":"OpenStack-6","read_role":"Role
+        object","organization":"spec_test_org","use_role":"Role object","id":906,"name":"hello_openstack_cred"},"object1":"credential","object2":"","object_association":""},{"id":3542,"type":"activity_stream","url":"/api/v1/activity_stream/3542/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.710296Z","operation":"delete","changes":{"inputs":"hidden","admin_role":"Role
+        object","modified_by":"admin","description":"","created":"2018-05-24 10:02:35.104746+00:00","modified":"2018-05-24
+        10:02:35.156170+00:00","created_by":"admin","credential_type":"Amazon Web
+        Services-5","read_role":"Role object","organization":"spec_test_org","use_role":"Role
+        object","id":905,"name":"hello_aws_cred"},"object1":"credential","object2":"","object_association":""},{"id":3541,"type":"activity_stream","url":"/api/v1/activity_stream/3541/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.698469Z","operation":"delete","changes":{"inputs":"hidden","admin_role":"Role
+        object","modified_by":"admin","description":"","created":"2018-05-24 10:02:33.159643+00:00","modified":"2018-05-24
+        10:02:33.210844+00:00","created_by":"admin","credential_type":"Network-4","read_role":"Role
+        object","organization":"spec_test_org","use_role":"Role object","id":904,"name":"hello_network_cred"},"object1":"credential","object2":"","object_association":""},{"id":3540,"type":"activity_stream","url":"/api/v1/activity_stream/3540/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.686134Z","operation":"delete","changes":{"inputs":"hidden","admin_role":"Role
+        object","modified_by":"admin","description":"","created":"2018-05-24 10:02:31.321450+00:00","modified":"2018-05-24
+        10:02:31.371653+00:00","created_by":"admin","credential_type":"Machine-1","read_role":"Role
+        object","organization":"spec_test_org","use_role":"Role object","id":903,"name":"hello_machine_cred"},"object1":"credential","object2":"","object_association":""},{"id":3539,"type":"activity_stream","url":"/api/v1/activity_stream/3539/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.684900Z","operation":"delete","changes":{"has_active_failures":false,"has_inventory_sources":false,"modified_by":"admin","description":"","created":"2018-05-24
+        10:02:45.949223+00:00","variables":"","enabled":true,"modified":"2018-05-24
+        10:02:45.949346+00:00","created_by":"admin","ansible_facts":"{}","instance_id":"4233080d-7467-de61-76c9-c8307b6e4830","last_job":null,"inventory":"hello_inventory-96","ansible_facts_modified":null,"last_job_host_summary":null,"id":95,"insights_system_id":null,"name":"hello_vm"},"object1":"host","object2":"","object_association":""},{"id":3538,"type":"activity_stream","url":"/api/v1/activity_stream/3538/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.674207Z","operation":"delete","changes":{"inputs":"hidden","admin_role":"Role
+        object","modified_by":"admin","description":"","created":"2018-05-24 10:02:29.559420+00:00","modified":"2018-05-24
+        10:02:29.609814+00:00","created_by":"admin","credential_type":"Source Control-2","read_role":"Role
+        object","organization":"spec_test_org","use_role":"Role object","id":902,"name":"hello_scm_cred"},"object1":"credential","object2":"","object_association":""},{"id":3537,"type":"activity_stream","url":"/api/v1/activity_stream/3537/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.660084Z","operation":"delete","changes":{"current_job":null,"scm_branch":"","scm_update_cache_timeout":0,"scm_clean":false,"scm_delete_on_update":false,"last_job":"2018-05-24
+        10:02:48.169125+00:00-498-successful","id":332,"last_job_failed":false,"admin_role":"Role
+        object","modified_by":null,"old_pk":null,"created_by":"admin","local_path":"_332__hello_repo","scm_revision":"c28f4a6f8ea69e409af58e4b17f937097efacc37","read_role":"Role
+        object","scm_delete_on_next_update":false,"use_role":"Role object","status":"successful","credential":"hello_scm_cred-902","description":"","last_job_run":"2018-05-24
+        10:02:52.267866+00:00","scm_type":"git","scm_update_on_launch":false,"next_job_run":null,"inventory_files":"[\".gitignore\",
+        \"jboss-standalone/hosts\", \"lamp_haproxy/hosts\", \"lamp_simple/hosts\",
+        \"lamp_simple_rhel7/hosts\", \"mongodb/hosts\", \"tomcat-memcached-failover/hosts\",
+        \"tomcat-standalone/hosts\"]","polymorphic_ctype":"project","unifiedjobtemplate_ptr":"hello_repo-332","name":"hello_repo","created":"2018-05-24
+        10:02:48.093074+00:00","modified":"2018-05-24 10:02:52.231320+00:00","scm_url":"https://github.com/jameswnl/ansible-examples","playbook_files":"[\"hello_world.yml\",
+        \"jboss-standalone/demo-aws-launch.yml\", \"jboss-standalone/deploy-application.yml\",
+        \"jboss-standalone/site.yml\", \"lamp_haproxy/aws/demo-aws-launch.yml\", \"lamp_haproxy/aws/rolling_update.yml\",
+        \"lamp_haproxy/aws/site.yml\", \"lamp_haproxy/provision.yml\", \"lamp_haproxy/rolling_update.yml\",
+        \"lamp_haproxy/site.yml\", \"lamp_simple/site.yml\", \"lamp_simple_rhel7/site.yml\",
+        \"language_features/ansible_pull.yml\", \"language_features/batch_size_control.yml\",
+        \"language_features/cloudformation.yaml\", \"language_features/complex_args.yml\",
+        \"language_features/conditionals_part1.yml\", \"language_features/conditionals_part2.yml\",
+        \"language_features/custom_filters.yml\", \"language_features/delegation.yml\",
+        \"language_features/environment.yml\", \"language_features/eucalyptus-ec2.yml\",
+        \"language_features/file_secontext.yml\", \"language_features/get_url.yml\",
+        \"language_features/group_by.yml\", \"language_features/group_commands.yml\",
+        \"language_features/intermediate_example.yml\", \"language_features/intro_example.yml\",
+        \"language_features/loop_nested.yml\", \"language_features/loop_plugins.yml\",
+        \"language_features/loop_with_items.yml\", \"language_features/mysql.yml\",
+        \"language_features/nested_playbooks.yml\", \"language_features/netscaler.yml\",
+        \"language_features/postgresql.yml\", \"language_features/prompts.yml\", \"language_features/rabbitmq.yml\",
+        \"language_features/register_logic.yml\", \"language_features/roletest.yml\",
+        \"language_features/roletest2.yml\", \"language_features/selective_file_sources.yml\",
+        \"language_features/tags.yml\", \"language_features/upgraded_vars.yml\", \"language_features/user_commands.yml\",
+        \"language_features/zfs.yml\", \"mongodb/playbooks/testsharding.yml\", \"mongodb/site.yml\",
+        \"tomcat-memcached-failover/site.yml\", \"tomcat-standalone/site.yml\", \"windows/create-user.yml\",
+        \"windows/deploy-site.yml\", \"windows/enable-iis.yml\", \"windows/install-msi.yml\",
+        \"windows/ping.yml\", \"windows/run-powershell.yml\", \"windows/test.yml\",
+        \"windows/wamp_haproxy/demo-aws-wamp-launch.yml\", \"windows/wamp_haproxy/rolling_update.yml\",
+        \"windows/wamp_haproxy/site.yml\", \"wordpress-nginx/site.yml\", \"wordpress-nginx_rhel7/site.yml\"]","update_role":"Role
+        object","timeout":0,"next_schedule":null,"organization":"spec_test_org"},"object1":"project","object2":"","object_association":""},{"id":3536,"type":"activity_stream","url":"/api/v1/activity_stream/3536/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.640833Z","operation":"delete","changes":{"admin_role":"Role
+        object","modified_by":"admin","description":"for miq spec tests","created":"2018-05-24
+        10:02:26.818910+00:00","member_role":"Role object","modified":"2018-05-24
+        10:02:26.819084+00:00","created_by":"admin","read_role":"Role object","auditor_role":"Role
+        object","id":101,"name":"spec_test_org"},"object1":"organization","object2":"","object_association":""},{"id":3535,"type":"activity_stream","url":"/api/v1/activity_stream/3535/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:44.608710Z","operation":"delete","changes":{"variables":"","total_inventory_sources":0,"adhoc_role":"Role
+        object","id":96,"admin_role":"Role object","has_inventory_sources":false,"modified_by":"admin","groups_with_active_failures":0,"created_by":"admin","hosts_with_active_failures":0,"read_role":"Role
+        object","total_groups":0,"insights_credential":null,"use_role":"Role object","inventory_sources_with_failures":0,"description":"inventory
+        for miq spec tests","has_active_failures":false,"host_filter":null,"kind":"","name":"hello_inventory","created":"2018-05-24
+        10:02:44.036784+00:00","modified":"2018-05-24 10:03:44.585314+00:00","total_hosts":1,"update_role":"Role
+        object","organization":"spec_test_org","pending_deletion":true},"object1":"inventory","object2":"","object_association":""},{"id":3534,"type":"activity_stream","url":"/api/v1/activity_stream/3534/","related":{"job_template":["/api/v1/job_templates/334/"],"role":["/api/v1/roles/4801/"],"user":["/api/v1/users/1/"],"actor":"/api/v1/users/1/"},"summary_fields":{"user":[{"username":"admin","first_name":"","last_name":"","id":1}],"job_template":[{"description":"test
+        job with survey spec","id":334,"name":"hello_template_with_survey"}],"role":[{"id":4801,"role_field":"admin_role"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:34.504273Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_members","object2_pk":1,"object1":"job_template","object2":"user","object1_pk":334,"action":"associate"},"object1":"job_template","object2":"user","object_association":"role"},{"id":3533,"type":"activity_stream","url":"/api/v1/activity_stream/3533/","related":{"job_template":["/api/v1/job_templates/334/"],"actor":"/api/v1/users/1/"},"summary_fields":{"job_template":[{"description":"test
+        job with survey spec","id":334,"name":"hello_template_with_survey"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:34.441852Z","operation":"create","changes":{"ask_tags_on_launch":false,"job_type":"run","skip_tags":"","ask_verbosity_on_launch":false,"playbook":"hello_world.yml","id":334,"survey_enabled":true,"force_handlers":false,"ask_diff_mode_on_launch":false,"job_tags":"","diff_mode":false,"ask_inventory_on_launch":false,"inventory":"hello_inventory-96","forks":0,"vault_credential":null,"become_enabled":false,"credential":"hello_machine_cred-903","description":"test
+        job with survey spec","ask_variables_on_launch":false,"ask_job_type_on_launch":false,"start_at_task":"","ask_limit_on_launch":false,"host_config_key":"","ask_skip_tags_on_launch":false,"use_fact_cache":false,"name":"hello_template_with_survey","ask_credential_on_launch":false,"extra_vars":"","verbosity":0,"allow_simultaneous":false,"project":"hello_repo-332","limit":"","timeout":0},"object1":"job_template","object2":"","object_association":""},{"id":3532,"type":"activity_stream","url":"/api/v1/activity_stream/3532/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:13.538066Z","operation":"delete","changes":{"current_job":null,"ask_tags_on_launch":false,"job_type":"run","skip_tags":"","job_tags":"","last_job":null,"playbook":"hello_world.yml","id":331,"survey_enabled":true,"last_job_failed":false,"ask_diff_mode_on_launch":false,"modified_by":"admin","old_pk":null,"description":"test
+        job with survey spec","created_by":"admin","created":"2018-05-24 08:40:22.927088+00:00","diff_mode":false,"ask_inventory_on_launch":false,"inventory":null,"read_role":"Role
+        object","forks":0,"survey_spec":"{\"description\": \"Description of the simple
+        survey\", \"spec\": [{\"question_description\": \"What is your favorite color?\",
+        \"default\": \"blue\", \"question_name\": \"example question\", \"required\":
+        false, \"variable\": \"favorite_color\", \"type\": \"text\"}], \"name\": \"Simple
+        Survey\"}","vault_credential":null,"become_enabled":false,"status":"never
+        updated","credential":null,"force_handlers":false,"last_job_run":null,"admin_role":"Role
+        object","ask_variables_on_launch":false,"ask_job_type_on_launch":false,"execute_role":"Role
+        object","start_at_task":"","ask_limit_on_launch":false,"host_config_key":"","next_job_run":null,"ask_skip_tags_on_launch":false,"polymorphic_ctype":"job
+        template","use_fact_cache":false,"unifiedjobtemplate_ptr":"hello_template_with_survey-331","name":"hello_template_with_survey","allow_simultaneous":false,"extra_vars":"","verbosity":0,"ask_credential_on_launch":false,"modified":"2018-05-24
+        08:40:23.907085+00:00","project":null,"limit":"","timeout":0,"next_schedule":null,"ask_verbosity_on_launch":false},"object1":"job_template","object2":"","object_association":""},{"id":3531,"type":"activity_stream","url":"/api/v1/activity_stream/3531/","related":{"job_template":["/api/v1/job_templates/333/"],"role":["/api/v1/roles/4798/"],"user":["/api/v1/users/1/"],"actor":"/api/v1/users/1/"},"summary_fields":{"user":[{"username":"admin","first_name":"","last_name":"","id":1}],"job_template":[{"description":"test
+        job","id":333,"name":"hello_template"}],"role":[{"id":4798,"role_field":"admin_role"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:11.314284Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_members","object2_pk":1,"object1":"job_template","object2":"user","object1_pk":333,"action":"associate"},"object1":"job_template","object2":"user","object_association":"role"},{"id":3530,"type":"activity_stream","url":"/api/v1/activity_stream/3530/","related":{"job_template":["/api/v1/job_templates/333/"],"actor":"/api/v1/users/1/"},"summary_fields":{"job_template":[{"description":"test
+        job","id":333,"name":"hello_template"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:11.239292Z","operation":"associate","changes":{"relationship":"awx.main.models.jobs.JobTemplate_extra_credentials","object2_pk":904,"object1":"job_template","object2":"credential","object1_pk":333,"action":"associate"},"object1":"job_template","object2":"credential","object_association":"extra"},{"id":3529,"type":"activity_stream","url":"/api/v1/activity_stream/3529/","related":{"job_template":["/api/v1/job_templates/333/"],"actor":"/api/v1/users/1/"},"summary_fields":{"job_template":[{"description":"test
+        job","id":333,"name":"hello_template"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:11.225682Z","operation":"associate","changes":{"relationship":"awx.main.models.jobs.JobTemplate_extra_credentials","object2_pk":905,"object1":"job_template","object2":"credential","object1_pk":333,"action":"associate"},"object1":"job_template","object2":"credential","object_association":"extra"},{"id":3528,"type":"activity_stream","url":"/api/v1/activity_stream/3528/","related":{"job_template":["/api/v1/job_templates/333/"],"actor":"/api/v1/users/1/"},"summary_fields":{"job_template":[{"description":"test
+        job","id":333,"name":"hello_template"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:03:11.211053Z","operation":"create","changes":{"ask_tags_on_launch":false,"job_type":"run","skip_tags":"","ask_verbosity_on_launch":false,"playbook":"hello_world.yml","id":333,"survey_enabled":false,"force_handlers":false,"ask_diff_mode_on_launch":false,"job_tags":"","diff_mode":false,"ask_inventory_on_launch":false,"inventory":"hello_inventory-96","forks":0,"vault_credential":null,"become_enabled":false,"credential":"hello_machine_cred-903","description":"test
+        job","ask_variables_on_launch":false,"ask_job_type_on_launch":false,"start_at_task":"","ask_limit_on_launch":false,"host_config_key":"","ask_skip_tags_on_launch":false,"use_fact_cache":false,"name":"hello_template","ask_credential_on_launch":false,"extra_vars":"","verbosity":0,"allow_simultaneous":false,"project":"hello_repo-332","limit":"","timeout":0},"object1":"job_template","object2":"","object_association":""},{"id":3527,"type":"activity_stream","url":"/api/v1/activity_stream/3527/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:02:50.009818Z","operation":"delete","changes":{"current_job":null,"ask_tags_on_launch":false,"job_type":"run","skip_tags":"","job_tags":"","last_job":null,"playbook":"hello_world.yml","id":330,"survey_enabled":false,"last_job_failed":false,"ask_diff_mode_on_launch":false,"modified_by":"admin","old_pk":null,"description":"test
+        job","created_by":"admin","created":"2018-05-24 08:40:20.700120+00:00","diff_mode":false,"ask_inventory_on_launch":false,"inventory":null,"read_role":"Role
+        object","forks":0,"survey_spec":"{}","vault_credential":null,"become_enabled":false,"status":"never
+        updated","credential":null,"force_handlers":false,"last_job_run":null,"admin_role":"Role
+        object","ask_variables_on_launch":false,"ask_job_type_on_launch":false,"execute_role":"Role
+        object","start_at_task":"","ask_limit_on_launch":false,"host_config_key":"","next_job_run":null,"ask_skip_tags_on_launch":false,"polymorphic_ctype":"job
+        template","use_fact_cache":false,"unifiedjobtemplate_ptr":"hello_template-330","name":"hello_template","allow_simultaneous":false,"extra_vars":"","verbosity":0,"ask_credential_on_launch":false,"modified":"2018-05-24
+        08:40:20.790476+00:00","project":null,"limit":"","timeout":0,"next_schedule":null,"ask_verbosity_on_launch":false},"object1":"job_template","object2":"","object_association":""},{"id":3526,"type":"activity_stream","url":"/api/v1/activity_stream/3526/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:02:48.152864Z","operation":"create","changes":{"credential":"hello_scm_cred-902","scm_branch":"","name":"hello_repo","scm_update_cache_timeout":0,"scm_clean":false,"scm_url":"https://github.com/jameswnl/ansible-examples","scm_delete_on_update":false,"local_path":"","scm_type":"git","timeout":0,"scm_update_on_launch":false,"organization":"spec_test_org","id":332,"description":""},"object1":"project","object2":"","object_association":""},{"id":3525,"type":"activity_stream","url":"/api/v1/activity_stream/3525/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:02:45.956054Z","operation":"create","changes":{"name":"hello_vm","variables":"","enabled":true,"instance_id":"4233080d-7467-de61-76c9-c8307b6e4830","inventory":"hello_inventory-96","id":95,"description":""},"object1":"host","object2":"","object_association":""},{"id":3524,"type":"activity_stream","url":"/api/v1/activity_stream/3524/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:02:44.096303Z","operation":"create","changes":{"host_filter":"","kind":"","name":"hello_inventory","variables":"","organization":"spec_test_org","insights_credential":null,"id":96,"description":"inventory
+        for miq spec tests"},"object1":"inventory","object2":"","object_association":""},{"id":3523,"type":"activity_stream","url":"/api/v1/activity_stream/3523/","related":{"actor":"/api/v1/users/1/"},"summary_fields":{"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:02:42.374241Z","operation":"create","changes":{"inputs":"hidden","description":"","credential_type":"Red
+        Hat Satellite 6-8","organization":"spec_test_org","id":909,"name":"hello_sat_cred"},"object1":"credential","object2":"","object_association":""}]}'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 07:18:01 GMT
+  recorded_at: Thu, 24 May 2018 10:47:24 GMT
 - request:
     method: post
     uri: https://dev-ansible-tower3.example.com/api/v1/credentials/
     body:
       encoding: UTF-8
-      string: '{"name":"test_stream","user":1}'
+      string: '{"organization":102,"name":"test_stream","user":1}'
     headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
       User-Agent:
       - Faraday v0.9.2
       Content-Type:
@@ -103,107 +211,139 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      Authorization: Basic <%= Base64.encode64("testuser:secret").chomp %>
   response:
     status:
       code: 201
       message: CREATED
     headers:
-      Date:
-      - Wed, 05 Apr 2017 07:18:01 GMT
       Server:
-      - Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.1e-fips mod_wsgi/3.4 Python/2.7.5
-      Vary:
-      - Accept,Cookie
-      Allow:
-      - GET, POST, HEAD, OPTIONS
-      X-Api-Time:
-      - 0.157s
-      Location:
-      - https://dev-ansible-tower3.example.com/api/v1/credentials/62/
-      Transfer-Encoding:
-      - chunked
+      - nginx/1.12.2
+      Date:
+      - Thu, 24 May 2018 10:47:33 GMT
       Content-Type:
       - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.141s
+      X-Api-Total-Time:
+      - 0.185s
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Location:
+      - https://dev-ansible-tower3.example.com/api/v1/credentials/910/
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
     body:
       encoding: UTF-8
-      string: '{"id":62,"type":"credential","url":"/api/v1/credentials/62/","related":{"created_by":"/api/v1/users/1/","modified_by":"/api/v1/users/1/","owner_teams":"/api/v1/credentials/62/owner_teams/","owner_users":"/api/v1/credentials/62/owner_users/","activity_stream":"/api/v1/credentials/62/activity_stream/","access_list":"/api/v1/credentials/62/access_list/","object_roles":"/api/v1/credentials/62/object_roles/","user":"/api/v1/users/1/"},"summary_fields":{"host":{},"project":{},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"description":"Can
-        manage all aspects of the credential","id":1876,"name":"Admin"},"use_role":{"description":"Can
-        use the credential in a job template","id":1878,"name":"Use"},"read_role":{"description":"May
-        view settings for the credential","id":1877,"name":"Read"}},"owners":[{"url":"/api/v1/users/1/","description":"
-        ","type":"user","id":1,"name":"admin"}]},"created":"2017-04-05T07:18:01.678Z","modified":"2017-04-05T07:18:01.767Z","name":"test_stream","description":"","kind":"ssh","cloud":false,"host":"","username":"","password":"","security_token":"","project":"","domain":"","ssh_key_data":"","ssh_key_unlock":"","become_method":"","become_username":"","become_password":"","vault_password":"","subscription":"","tenant":"","secret":"","client":"","authorize":false,"authorize_password":""}'
+      string: '{"id":910,"type":"credential","url":"/api/v1/credentials/910/","related":{"created_by":"/api/v1/users/1/","modified_by":"/api/v1/users/1/","organization":"/api/v1/organizations/102/","owner_teams":"/api/v1/credentials/910/owner_teams/","owner_users":"/api/v1/credentials/910/owner_users/","activity_stream":"/api/v1/credentials/910/activity_stream/","access_list":"/api/v1/credentials/910/access_list/","object_roles":"/api/v1/credentials/910/object_roles/"},"summary_fields":{"host":{},"project":{},"organization":{"id":102,"name":"test_spec_org","description":""},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"id":4806,"description":"Can
+        manage all aspects of the credential","name":"Admin"},"use_role":{"id":4808,"description":"Can
+        use the credential in a job template","name":"Use"},"read_role":{"id":4807,"description":"May
+        view settings for the credential","name":"Read"}},"user_capabilities":{"edit":true,"delete":true},"owners":[{"url":"/api/v1/users/1/","description":"
+        ","type":"user","id":1,"name":"admin"},{"url":"/api/v1/organizations/102/","description":"","type":"organization","id":102,"name":"test_spec_org"}]},"created":"2018-05-24T10:47:33.501Z","modified":"2018-05-24T10:47:33.554Z","name":"test_stream","description":"","organization":102,"kind":"ssh","cloud":false,"host":"","username":"","password":"","security_token":"","project":"","domain":"","ssh_key_data":"","ssh_key_unlock":"","become_method":"","become_username":"","become_password":"","vault_password":"","subscription":"","tenant":"","secret":"","client":"","authorize":false,"authorize_password":""}'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 07:18:01 GMT
+  recorded_at: Thu, 24 May 2018 10:47:24 GMT
 - request:
     method: get
-    uri: https://dev-ansible-tower3.example.com/api/v1/activity_stream?id__gt=4853&order_by=id
+    uri: https://dev-ansible-tower3.example.com/api/v1/activity_stream?id__gt=3547&order_by=id
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      Authorization: Basic <%= Base64.encode64("testuser:secret").chomp %>
   response:
     status:
       code: 301
-      message: MOVED PERMANENTLY
+      message: Moved Permanently
     headers:
-      Date:
-      - Wed, 05 Apr 2017 07:18:02 GMT
       Server:
-      - Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.1e-fips mod_wsgi/3.4 Python/2.7.5
-      Location:
-      - https://dev-ansible-tower3.example.com/api/v1/activity_stream/?id__gt=4853&order_by=id
-      Content-Length:
-      - '0'
+      - nginx/1.12.2
+      Date:
+      - Thu, 24 May 2018 10:47:34 GMT
       Content-Type:
-      - text/html; charset=utf-8
+      - text/html
+      Content-Length:
+      - '185'
+      Location:
+      - https://dev-ansible-tower3.example.com/api/v1/activity_stream/?id__gt=3547&order_by=id
+      Connection:
+      - keep-alive
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
     body:
       encoding: UTF-8
-      string: ''
+      string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
+        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/1.12.2</center>\r\n</body>\r\n</html>\r\n"
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 07:18:02 GMT
+  recorded_at: Thu, 24 May 2018 10:47:25 GMT
 - request:
     method: get
-    uri: https://dev-ansible-tower3.example.com/api/v1/activity_stream/?id__gt=4853&order_by=id
+    uri: https://dev-ansible-tower3.example.com/api/v1/activity_stream/?id__gt=3547&order_by=id
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
       User-Agent:
       - Faraday v0.9.2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      Authorization: Basic <%= Base64.encode64("testuser:secret").chomp %>
   response:
     status:
       code: 200
       message: OK
     headers:
-      Date:
-      - Wed, 05 Apr 2017 07:18:03 GMT
       Server:
-      - Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.1e-fips mod_wsgi/3.4 Python/2.7.5
-      Vary:
-      - Accept,Cookie
-      Allow:
-      - GET, HEAD, OPTIONS
-      X-Api-Time:
-      - 0.215s
-      Content-Length:
-      - '4568'
+      - nginx/1.12.2
+      Date:
+      - Thu, 24 May 2018 10:47:35 GMT
       Content-Type:
       - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.143s
+      X-Api-Total-Time:
+      - 0.151s
+      Allow:
+      - GET, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
     body:
       encoding: UTF-8
-      string: '{"count":6,"next":null,"previous":null,"results":[{"id":4854,"type":"activity_stream","url":"/api/v1/activity_stream/4854/","related":{"credential":["/api/v1/credentials/62/"],"role":["/api/v1/roles/1/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1,"role_field":"system_administrator"}],"credential":[{"cloud":false,"description":"","id":62,"kind":"ssh","name":"test_stream"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:18:01.690828Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1,"object1":"credential","object2":"role","object1_pk":62,"action":"associate"},"object1":"credential","object2":"role","object_association":"parents"},{"id":4855,"type":"activity_stream","url":"/api/v1/activity_stream/4855/","related":{"credential":["/api/v1/credentials/62/"],"role":["/api/v1/roles/7/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":7,"role_field":"system_auditor"}],"credential":[{"cloud":false,"description":"","id":62,"kind":"ssh","name":"test_stream"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:18:01.711510Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1876,"object1":"credential","object2":"credential","object1_pk":62,"action":"associate"},"object1":"credential","object2":"credential","object_association":"parents"},{"id":4856,"type":"activity_stream","url":"/api/v1/activity_stream/4856/","related":{"credential":["/api/v1/credentials/62/"],"role":["/api/v1/roles/7/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":7,"role_field":"system_auditor"}],"credential":[{"cloud":false,"description":"","id":62,"kind":"ssh","name":"test_stream"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:18:01.725378Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":1878,"object1":"credential","object2":"credential","object1_pk":62,"action":"associate"},"object1":"credential","object2":"credential","object_association":"parents"},{"id":4857,"type":"activity_stream","url":"/api/v1/activity_stream/4857/","related":{"credential":["/api/v1/credentials/62/"],"role":["/api/v1/roles/7/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":7,"role_field":"system_auditor"}],"credential":[{"cloud":false,"description":"","id":62,"kind":"ssh","name":"test_stream"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:18:01.736474Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_parents","object2_pk":7,"object1":"credential","object2":"role","object1_pk":62,"action":"associate"},"object1":"credential","object2":"role","object_association":"parents"},{"id":4858,"type":"activity_stream","url":"/api/v1/activity_stream/4858/","related":{"credential":["/api/v1/credentials/62/"],"actor":"/api/v1/users/1/"},"summary_fields":{"credential":[{"cloud":false,"description":"","id":62,"kind":"ssh","name":"test_stream"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:18:01.762271Z","operation":"create","changes":{"authorize":false,"domain":"","vault_password":"hidden","become_username":"","id":62,"become_method":"","secret":"hidden","ssh_key_unlock":"hidden","authorize_password":"hidden","username":"","description":"","host":"","become_password":"hidden","password":"hidden","tenant":"","subscription":"","kind":"ssh","name":"test_stream","security_token":"hidden","project":"","client":"","ssh_key_data":"hidden","organization":null},"object1":"credential","object2":"","object_association":""},{"id":4859,"type":"activity_stream","url":"/api/v1/activity_stream/4859/","related":{"credential":["/api/v1/credentials/62/"],"role":["/api/v1/roles/1876/"],"user":["/api/v1/users/1/"],"actor":"/api/v1/users/1/"},"summary_fields":{"role":[{"id":1876,"role_field":"admin_role"}],"credential":[{"cloud":false,"description":"","id":62,"kind":"ssh","name":"test_stream"}],"user":[{"username":"admin","first_name":"","last_name":"","id":1}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2017-04-05T07:18:01.780407Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_members","object2_pk":1,"object1":"credential","object2":"user","object1_pk":62,"action":"associate"},"object1":"credential","object2":"user","object_association":"role"}]}'
+      string: '{"count":2,"next":null,"previous":null,"results":[{"id":3548,"type":"activity_stream","url":"/api/v1/activity_stream/3548/","related":{"credential":["/api/v1/credentials/910/"],"actor":"/api/v1/users/1/"},"summary_fields":{"credential":[{"kind":"ssh","credential_type_id":1,"description":"","id":910,"cloud":false,"name":"test_stream"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:47:33.545569Z","operation":"create","changes":{"inputs":"hidden","description":"","credential_type":"Machine-1","organization":"test_spec_org","id":910,"name":"test_stream"},"object1":"credential","object2":"","object_association":""},{"id":3549,"type":"activity_stream","url":"/api/v1/activity_stream/3549/","related":{"credential":["/api/v1/credentials/910/"],"role":["/api/v1/roles/4806/"],"user":["/api/v1/users/1/"],"actor":"/api/v1/users/1/"},"summary_fields":{"credential":[{"kind":"ssh","credential_type_id":1,"description":"","id":910,"cloud":false,"name":"test_stream"}],"user":[{"username":"admin","first_name":"","last_name":"","id":1}],"role":[{"id":4806,"role_field":"admin_role"}],"actor":{"username":"admin","first_name":"","last_name":"","id":1}},"timestamp":"2018-05-24T10:47:33.566161Z","operation":"associate","changes":{"relationship":"awx.main.models.rbac.Role_members","object2_pk":1,"object1":"credential","object2":"user","object1_pk":910,"action":"associate"},"object1":"credential","object2":"user","object_association":"role"}]}'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 07:18:03 GMT
+  recorded_at: Thu, 24 May 2018 10:47:26 GMT
 recorded_with: VCR 3.0.3
