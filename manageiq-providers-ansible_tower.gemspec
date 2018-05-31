@@ -13,6 +13,8 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,lib}/**/*"]
 
+  s.add_runtime_dependency "ansible_tower_client", "~> 0.13.0"
+
   s.add_development_dependency "codeclimate-test-reporter", "~> 1.0.0"
   s.add_development_dependency "simplecov"
 end
