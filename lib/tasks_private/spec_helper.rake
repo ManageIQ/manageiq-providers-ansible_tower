@@ -62,6 +62,15 @@ class PopulateTower
       c.adapter(Faraday.default_adapter)
       c.basic_auth(id, password)
     end
+
+    # Get API version.
+    uri = '/api/v1/config'
+    obj = JSON.parse(@conn.get(uri).body)
+    @version = Gem::Version.new(obj['version'])
+  end
+
+  def v3_2?
+    @version >= Gem::Version.new('3.2')
   end
 
   def create_obj(uri, data)
@@ -159,21 +168,25 @@ class PopulateTower
     data = {"name" => "hello_gce_cred", "kind" => "gce", "username" => "hello_gce@gce.com", "ssh_key_data" => ssh_key_data, "project" => "squeamish-ossifrage-123", "organization" => organization['id']}
     _gce_credential = create_obj(uri, data)
 
-    # create cloud rackspace cred
-    data = {"name" => "hello_rax_cred", "kind" => "rax", "username" => "admin", "password" => "abc", "organization" => organization['id']}
-    _rax_credential = create_obj(uri, data)
-
     # create cloud azure(RM) cred
-    data = {"name" => "hello_azure_cred", "kind" => "azure_rm", "username" => "admin", "password" => "abc", "subscription"  => "sub_id", "tenant" => "ten_id", "secret" => "my_secret", "client" => "cli_id", "organization" => organization['id']}
-    _azure_credential = create_obj(uri, data)
-
-    # create cloud azure(Classic) cred
-    data = {"name" => "hello_azure_classic_cred", "kind" => "azure", "username" => "admin", "ssh_key_data" => ssh_key_data, "organization" => organization['id']}
-    _azure_credential = create_obj(uri, data)
+    data = {"name" => "hello_azure_cred", "kind" => "azure_rm", "username" => "admin", "password" => "abc", "subscription" => "sub_id", "tenant" => "ten_id", "secret" => "my_secret", "client" => "cli_id", "organization" => organization['id']}
+    _azure_rm_credential = create_obj(uri, data)
 
     # create cloud satellite6 cred
-    data = {"name" => "hello_sat_cred", "kind" => "satellite6", "username" => "admin", "password" => "abc", "host"  => "s1.sat.com", "organization" => organization['id']}
-    _azure_credential = create_obj(uri, data)
+    data = {"name" => "hello_sat_cred", "kind" => "satellite6", "username" => "admin", "password" => "abc", "host" => "s1.sat.com", "organization" => organization['id']}
+    _sat6_credential = create_obj(uri, data)
+
+    unless v3_2?
+      # These Credential types were removed from v3.2.
+
+      # create cloud rackspace cred
+      data = {"name" => "hello_rax_cred", "kind" => "rax", "username" => "admin", "password" => "abc", "organization" => organization['id']}
+      _rax_credential = create_obj(uri, data)
+
+      # create cloud azure(Classic) cred
+      data = {"name" => "hello_azure_classic_cred", "kind" => "azure", "username" => "admin", "ssh_key_data" => ssh_key_data, "organization" => organization['id']}
+      _azure_classic_credential = create_obj(uri, data)
+    end
 
     # create inventory
     uri = '/api/v1/inventories/'
