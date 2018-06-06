@@ -21,7 +21,9 @@ shared_examples_for "ansible event_catcher stream" do |cassette_file|
         VCR.use_cassette(cassette_file) do
           last_activity = subject.send(:last_activity)
           # do something on tower that creates an activity in activity_stream
-          provider.connect.api.credentials.create!(:name => 'test_stream', :user => 1)
+          provider.connect.api.credentials.create!(:organization => 102,
+                                                   :name         => 'test_stream',
+                                                   :user         => 1)
           polled_event = nil
           subject.poll do |event|
             expect(event['id']).to eq(last_activity.id + 1)
