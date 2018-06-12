@@ -1,5 +1,5 @@
 class ManageIQ::Providers::AnsibleTower::Inventory::Persister::AutomationManager < ManageIQ::Providers::AnsibleTower::Inventory::Persister
-  include ManageIQ::Providers::AnsibleTower::Inventory::Persister::Shared::Collections
+  include ManageIQ::Providers::AnsibleTower::Inventory::Persister::Definitions::Collections
 
   def initialize_inventory_collections
     %i(credentials

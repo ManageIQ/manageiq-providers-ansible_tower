@@ -1,4 +1,4 @@
-module ManageIQ::Providers::AnsibleTower::Inventory::Persister::Shared::Collections
+module ManageIQ::Providers::AnsibleTower::Inventory::Persister::Definitions::Collections
   extend ActiveSupport::Concern
 
   # ------ IC provider specific definitions -------------------------
