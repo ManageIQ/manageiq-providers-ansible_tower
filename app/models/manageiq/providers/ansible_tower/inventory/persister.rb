@@ -16,4 +16,11 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Persister < ManagerRefresh::
 
     initialize_inventory_collections
   end
+
+  # Shared properties for inventory collections
+  def shared_options
+    {
+      :parent => manager.presence
+    }
+  end
 end
