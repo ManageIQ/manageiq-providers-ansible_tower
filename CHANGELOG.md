@@ -5,16 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Unreleased as of Sprint 83 ending 2018-04-09
+## Gaprindashvili-3 - Released 2018-05-15
 
 ### Added
-- Add vault credential to Ansible Tower Job. [(#70)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/70)
-
-## Unreleased as of Sprint 82 ending 2018-03-26
-
-### Added
-- Add host field to rhv_credential [(#69)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/69)
+- Tower 3.2.2 vault credential type [(#54)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/54)
 - Tower Rhv credential type [(#62)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/62)
+- Add host field to rhv_credential [(#69)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/69)
+- Add vault credential to Ansible Tower Job. [(#70)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/70)
 
 ## Unreleased as of Sprint 81 ending 2018-03-12
 
@@ -28,11 +25,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ### Fixed
 - Dropping azure classic and rackspace credential types [(#58)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/58)
-
-## Unreleased as of Sprint 80 ending 2018-02-26
-
-### Added
-- Tower 3.2.2 vault credential type [(#54)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/54)
 
 ## Unreleased as of Sprint 79 ending 2018-02-12
 
