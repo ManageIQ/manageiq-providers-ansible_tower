@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 88 ending 2018-06-18
+
+### Added
+- Integrate with Tower Workflow [(#86)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/86)
+- Migrate model display names from locale/en.yml to plugin [(#55)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/55)
+
+### Fixed
+- Missing files killing embedded refresh [(#97)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/97)
+
 ## Gaprindashvili-3 - Released 2018-05-15
 
 ### Added
