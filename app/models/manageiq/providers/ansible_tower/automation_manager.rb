@@ -26,6 +26,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   require_nested :Playbook
   require_nested :Refresher
   require_nested :RefreshWorker
+  require_nested :WorkflowJob
 
   def self.ems_type
     @ems_type ||= "ansible_tower_automation".freeze
