@@ -10,3 +10,5 @@
     :password:
     :port:
     :user:
+:log:
+  :level_ansible_tower: info

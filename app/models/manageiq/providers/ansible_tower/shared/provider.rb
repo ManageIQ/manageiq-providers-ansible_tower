@@ -13,7 +13,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::Provider
   module ClassMethods
     def raw_connect(base_url, username, password, verify_ssl)
       require 'ansible_tower_client'
-      AnsibleTowerClient.logger = $log
+      AnsibleTowerClient.logger = $ansible_tower_log
       AnsibleTowerClient::Connection.new(
         :base_url   => base_url,
         :username   => username,
