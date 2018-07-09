@@ -189,7 +189,8 @@ shared_examples_for "ansible configuration_script_source" do
       expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
       expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
       allow(Notification).to receive(:create)
-      expect(project.update_in_provider({})).to be_a(described_class)
+      expect(tower_project).to receive(:update_attributes!).with({})
+      expect(project.update_in_provider(:miq_task_id => 1, :task_id => 1)).to be_a(described_class)
       expect(Notification).to have_received(:create).with(expected_notify_update)
     end
 
