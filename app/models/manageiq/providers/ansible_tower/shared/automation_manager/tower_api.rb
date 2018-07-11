@@ -76,6 +76,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi
   def update_in_provider(params)
     self.class.process_secrets(params, true) if self.class.respond_to?(:process_secrets)
     params.delete(:task_id) # in case this is being called through update_in_provider_queue which will stick in a :task_id
+    params.delete(:miq_task_id) # miq_queue.activate_miq_task will stick in a :miq_task_id
     params = self.class.provider_params(params) if self.class.respond_to?(:provider_params)
     with_provider_object do |provider_object|
       provider_object.update_attributes!(params)
