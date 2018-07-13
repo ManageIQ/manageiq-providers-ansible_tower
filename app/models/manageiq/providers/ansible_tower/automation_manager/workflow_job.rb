@@ -29,6 +29,9 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
     alias raw_create_job raw_create_stack
   end
 
+  # jobs under this workflow job
+  alias jobs orchestration_stacks
+
   def self.display_name(number = 1)
     n_('Ansible Tower Workflow Job', 'Ansible Tower Workflow Jobs', number)
   end
@@ -40,8 +43,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
     extra_vars = options[:extra_vars]
     return options if extra_vars.blank?
 
-    defined_extra_vars = ((template.survey_spec || {})['spec'] || {}).collect { |s| s['variable'] }
-    defined_extra_vars |= (template.variables || {}).keys
+    defined_extra_vars = Array(Hash(template.survey_spec)['spec']).collect { |s| s['variable'] }
+    defined_extra_vars |= Hash(template.variables).keys
     extra_vars_lookup = defined_extra_vars.collect { |key| [key.downcase, key] }.to_h
 
     extra_vars = extra_vars.transform_keys do |key|
@@ -64,32 +67,34 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
     raise MiqException::MiqOrchestrationUpdateError, err.to_s, err.backtrace
   end
 
-  def update_with_provider_object(raw_job)
+  def update_with_provider_object(raw_workflow_job)
     update_attributes(
-      :ems_ref     => raw_job.id,
-      :status      => raw_job.status,
-      :start_time  => raw_job.started,
-      :finish_time => raw_job.finished
+      :ems_ref     => raw_workflow_job.id,
+      :status      => raw_workflow_job.status,
+      :start_time  => raw_workflow_job.started,
+      :finish_time => raw_workflow_job.finished
     )
 
-    update_parameters(raw_job) if parameters.empty?
+    update_parameters(raw_workflow_job) if parameters.empty?
 
-    raw_job.workflow_job_nodes.each do |node|
+    raw_workflow_job.workflow_job_nodes.each do |node|
       update_child_job(node.job) if node.job
     end
   end
   private :update_with_provider_object
 
   def update_child_job(raw_job)
-    job_template = ext_management_system.configuration_scripts.find_by(:manager_ref => raw_job.job_template_id)
-    ManageIQ::Providers::AnsibleTower::AutomationManager::Job.new(
-      :name                  => job_template.name,
-      :ext_management_system => job_template.manager,
-      :job_template          => job_template
-    ).tap do |stack|
-      stack.send(:update_with_provider_object, raw_job)
-      stack.update_attributes(:parent => self)
+    job = jobs.find_by(:ems_ref => raw_job.id)
+    unless job
+      job_template = ext_management_system.configuration_scripts.find_by(:manager_ref => raw_job.job_template_id)
+      job = ManageIQ::Providers::AnsibleTower::AutomationManager::Job.create(
+        :name                  => job_template.name,
+        :ext_management_system => job_template.manager,
+        :job_template          => job_template,
+        :parent                => self
+      )
     end
+    job.refresh_ems
   end
   private :update_child_job
 
@@ -103,5 +108,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
   def retire_now(requester = nil)
     update_attributes(:retirement_requester => requester)
     finish_retirement
+
+    Array(jobs).each { |job| job.retire_now(requester) }
   end
 end
