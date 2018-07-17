@@ -63,6 +63,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
       inventory_object.scm_clean = project.scm_clean
       inventory_object.scm_delete_on_update = project.scm_delete_on_update
       inventory_object.scm_update_on_launch = project.scm_update_on_launch
+      inventory_object.local_path = project.local_path
       inventory_object.status = project.status
       inventory_object.last_updated_on = project.last_updated
 
