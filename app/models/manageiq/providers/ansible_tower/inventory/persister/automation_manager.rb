@@ -6,13 +6,14 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Persister::AutomationManager
        configuration_scripts
        configuration_script_sources
        configuration_workflows
-       configured_systems
-       inventory_root_groups).each do |name|
+       configured_systems).each do |name|
 
       add_collection(automation, name)
     end
 
     add_configuration_script_payloads
+
+    add_inventory_root_groups
 
     add_vms
   end
