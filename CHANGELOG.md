@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 90 ending 2018-07-16
+
+### Fixed
+- tower_api.update_in_provider to remove miq_task_id from params [(#106)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/106)
+- AnsibleTowerClient::Api.new now requires a version as of v0.16.0 [(#105)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/105)
+
 ## Unreleased as of Sprint 88 ending 2018-06-18
 
 ### Added
