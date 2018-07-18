@@ -237,7 +237,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_inventory_root_group).to have_attributes(
       :name    => "hello_inventory",
       :ems_ref => "99",
-      :type    => manager_class::InventoryRootGroup.name,
+      :type    => "ManageIQ::Providers::AutomationManager::InventoryRootGroup",
     )
   end
 
