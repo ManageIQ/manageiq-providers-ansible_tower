@@ -100,6 +100,19 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     end
   end
 
+  it "limits the size of configuration_script_source.last_update_error" do
+    stub_const("#{ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationManager}::ERROR_MAX_SIZE", 20)
+
+    VCR.use_cassette(cassette_path) do
+      EmsRefresh.refresh(automation_manager)
+    end
+
+    failed_configuration_script_source = automation_manager.configuration_script_sources.find_by(:name => 'failed_repo')
+    expect(failed_configuration_script_source).to have_attributes(
+      :last_update_error => "Using /etc/ansible/a"
+    )
+  end
+
   def assert_counts
     expect(Provider.count).to                                         eq(1)
     expect(automation_manager).to                                     have_attributes(:api_version => "3.2.2")
