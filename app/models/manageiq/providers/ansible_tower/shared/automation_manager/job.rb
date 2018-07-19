@@ -168,6 +168,22 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
     raise MiqException::MiqOrchestrationStatusError, err.to_s, err.backtrace
   end
 
+  # Intend to be called by UI to display stdout. The stdout is stored in MiqTask#task_results or #message if error
+  # Since the task_results may contain a large block of data, it is desired to remove the task upon receiving the data
+  def raw_stdout_via_worker(userid, format = 'txt', role = nil)
+    options = {:userid => userid || 'system', :action => 'ansible_stdout'}
+    queue_options = {
+      :class_name  => self.class,
+      :method_name => 'raw_stdout',
+      :instance_id => id,
+      :args        => [format],
+      :priority    => MiqQueue::HIGH_PRIORITY,
+      :role        => role
+    }
+
+    MiqTask.generic_action_with_callback(options, queue_options)
+  end
+
   def retire_now(requester = nil)
     update_attributes(:retirement_requester => requester)
     finish_retirement
