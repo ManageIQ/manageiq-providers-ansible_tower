@@ -2,6 +2,11 @@ module ManageIQ::Providers::AnsibleTower::Inventory::Persister::Definitions::Col
   extend ActiveSupport::Concern
 
   # ------ IC provider specific definitions -------------------------
+  def add_inventory_root_groups
+    add_collection(automation, :inventory_root_groups) do |builder|
+      builder.add_properties(:model_class => ManageIQ::Providers::AutomationManager::InventoryRootGroup)
+    end
+  end
 
   def add_configuration_script_payloads(extra_properties = {})
     add_collection(automation, :configuration_script_payloads, extra_properties) do |builder|
