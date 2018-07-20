@@ -459,6 +459,10 @@ class PopulateTower
   end
 
   def counts
+    puts_proc = Proc.new do |label, count|
+      puts "#{label.ljust(40)} #{count}"
+    end
+
     puts "=== Object counts ==="
 
     @tower_data.update { |td| td['counts'] = {} }
@@ -471,8 +475,7 @@ class PopulateTower
       'credential'                  => 'credentials'
     }.each_pair do |miq_name, tower_name|
       count = get_obj("/api/v1/#{tower_name}/")['count']
-      label = "#{miq_name} (#{tower_name})"
-      puts "#{label.ljust(40)} #{count}"
+      puts_proc.call("#{miq_name} (#{tower_name})", count)
 
       @tower_data.update { |td| td['counts'][tower_name] = {'total' => count} }
     end
@@ -496,11 +499,12 @@ class PopulateTower
 
     # Dump playbook count: total and for created projects
     tower_data = @tower_data.read
-    puts("%s %s: %s" % ['configuration_script_payload'.ljust(30),
-                        "(playbooks)".ljust(20),
-                        tower_data['counts']['playbooks']['total']])
+
+    total_count = tower_data['counts']['playbooks']['total']
+    puts_proc.call("configuration_script_payload (playbooks)", total_count)
+
     tower_data['counts']['playbooks'].each do |name, count|
-      puts("    %s: %s" % [name.ljust(47), count]) if dumped_projects.include?(name)
+      puts_proc.call("\t#{name}", count) if dumped_projects.include?(name)
     end
 
     self
