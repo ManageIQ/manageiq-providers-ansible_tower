@@ -1,19 +1,20 @@
 ---
-config:
-  version: 3.2.2
-user:
-  id: 1
-items:
+:config:
+  :version: 3.2.2
+:user:
+  :id: 1
+:items:
   spec_test_org:
-    id: 102
+    :id: 89
   hello_inventory:
-    id: 99
+    :id: 104
   hello_vm:
-    id: 98
+    :id: 103
   hello_repo:
-    id: 340
-    status: successful
-    playbooks:
+    :id: 368
+    :status: successful
+    :last_updated: 2018-07-23 15:51:03.037003000 Z
+    :playbooks:
     - hello_world.yml
     - jboss-standalone/demo-aws-launch.yml
     - jboss-standalone/deploy-application.yml
@@ -75,109 +76,16 @@ items:
     - windows/wamp_haproxy/site.yml
     - wordpress-nginx/site.yml
     - wordpress-nginx_rhel7/site.yml
-  targeted_refresh:
-    id: 472
-    last_updated: 2017-04-10 20:49:11.429285000 +0000
-    playbooks:
-    - docs/docsite/keyword_desc.yml
-    - packaging/release/release.yml
-    - shippable.yml
-    - test/integration/amazon.yml
-    - test/integration/asa.yaml
-    - test/integration/azure.yml
-    - test/integration/cloudflare.yml
-    - test/integration/cloudscale.yml
-    - test/integration/cloudstack.yml
-    - test/integration/cnos.yaml
-    - test/integration/consul.yml
-    - test/integration/consul_inventory.yml
-    - test/integration/dellos10.yaml
-    - test/integration/dellos6.yaml
-    - test/integration/dellos9.yaml
-    - test/integration/destructive.yml
-    - test/integration/eos.yaml
-    - test/integration/exoscale.yml
-    - test/integration/galaxy_playbook.yml
-    - test/integration/galaxy_playbook_git.yml
-    - test/integration/gce.yml
-    - test/integration/ios.yaml
-    - test/integration/iosxr.yaml
-    - test/integration/jenkins.yml
-    - test/integration/junos.yaml
-    - test/integration/net_command.yml
-    - test/integration/non_destructive.yml
-    - test/integration/nxos.yaml
-    - test/integration/ops.yaml
-    - test/integration/rackspace.yml
-    - test/integration/targets/async_extra_data/test_async.yml
-    - test/integration/targets/binary_modules/download_binary_modules.yml
-    - test/integration/targets/binary_modules/test_binary_modules.yml
-    - test/integration/targets/blocks/main.yml
-    - test/integration/targets/blocks/nested_fail.yml
-    - test/integration/targets/blocks/nested_nested_fail.yml
-    - test/integration/targets/callback_retry_task_name/test.yml
-    - test/integration/targets/check_mode/check_mode.yml
-    - test/integration/targets/connection/test_connection.yml
-    - test/integration/targets/delegate_to/test_delegate_to.yml
-    - test/integration/targets/environment/test_environment.yml
-    - test/integration/targets/filters/vars/main.yml
-    - test/integration/targets/gathering_facts/test_gathering_facts.yml
-    - test/integration/targets/group_by/test_group_by.yml
-    - test/integration/targets/groupby_filter/test_jinja2_groupby.yml
-    - test/integration/targets/handlers/test_force_handlers.yml
-    - test/integration/targets/handlers/test_handlers.yml
-    - test/integration/targets/handlers/test_handlers_include.yml
-    - test/integration/targets/handlers/test_handlers_inexistent_notify.yml
-    - test/integration/targets/handlers/test_handlers_listen.yml
-    - test/integration/targets/handlers/test_listening_handlers.yml
-    - test/integration/targets/hash/test_hash.yml
-    - test/integration/targets/hosts_field/test_hosts_field.yml
-    - test/integration/targets/includes/test_includes.yml
-    - test/integration/targets/includes/test_includes2.yml
-    - test/integration/targets/includes/test_includes3.yml
-    - test/integration/targets/lookup_paths/play.yml
-    - test/integration/targets/lookup_paths/testplay.yml
-    - test/integration/targets/lookup_properties/test_lookup_properties.yml
-    - test/integration/targets/module_utils/module_utils_envvar.yml
-    - test/integration/targets/module_utils/module_utils_test.yml
-    - test/integration/targets/no_log/no_log_local.yml
-    - test/integration/targets/parsing/bad_parsing.yml
-    - test/integration/targets/parsing/good_parsing.yml
-    - test/integration/targets/pull/pull-integration-test/local.yml
-    - test/integration/targets/tags/test_tags.yml
-    - test/integration/targets/template_jinja2_latest/main.yml
-    - test/integration/targets/templating_settings/test_templating_settings.yml
-    - test/integration/targets/test_infra/test_test_infra.yml
-    - test/integration/targets/unicode/unicode.yml
-    - test/integration/targets/var_blending/test_var_blending.yml
-    - test/integration/targets/var_precedence/test_var_precedence.yml
-    - test/integration/targets/vault/test_vault.yml
-    - test/integration/targets/vault/test_vault_embedded.yml
-    - test/integration/targets/vault/test_vaulted_inventory.yml
-    - test/integration/test_win_group1.yml
-    - test/integration/test_win_group2.yml
-    - test/integration/test_win_group3.yml
-    - test/integration/vars/test_var_encrypted.yml
-    - test/integration/vyos.yaml
-    - test/utils/docker/httptester/httptester.yml
-  nonexistent_repo:
-    id: 5
   hello_template:
-    id: 341
+    :id: 369
   hello_template_with_survey:
-    id: 342
-counts:
-  job_templates:
-    total: 7
-  projects:
-    total: 10
-  hosts:
-    total: 3
-  inventories:
-    total: 3
-  credentials:
-    total: 15
-  playbooks:
-    total: 130
-    hello_repo: 61
-    targeted_refresh: 81
+    :id: 370
+  nonexistent_repo:
+    :id: 892
+:total_counts:
+  :job_templates: 10
+  :projects: 13
+  :hosts: 7
+  :inventories: 6
+  :credentials: 17
+  :playbooks: 213

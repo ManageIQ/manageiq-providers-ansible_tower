@@ -434,6 +434,19 @@ class PopulateTower
     last_update = wait_for_project_update(jobless_project)
     @conn.delete(last_update['url'])
 
+    # Create and remove project - record an collect an ID of missing entity
+    uri = '/api/v1/projects/'
+    data = {
+      :name         => 'nonexistent_repo',
+      :scm_url      => 'https://github.com/jameswnl/ansible-examples',
+      :scm_type     => 'git',
+      :credential   => scm_credential['id'],
+      :organization => organization['id']
+    }
+    nonexistent_project = create_obj(uri, data)
+    @tower_data[:items][data[:name]] = { :id => nonexistent_project['id'] }
+    del_obj(uri, data[:name])
+
     self
   end
 

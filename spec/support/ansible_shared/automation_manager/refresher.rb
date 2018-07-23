@@ -1,4 +1,3 @@
-
 shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems_type, cassette_path|
   # Maintaining cassettes for new specs
   #
@@ -38,6 +37,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   # ruby -pi -e 'gsub /yourdomain.com/, "example.com"; gsub /admin:smartvm/, "testuser:secret"' spec/vcr_cassettes/manageiq/providers/ansible_tower/automation_manager/*.yml
   # replace with your working credentials
   # ruby -pi -e 'gsub /example.com/, "yourdomain.com"; gsub /testuser:secret/, "admin:smartvm"' spec/vcr_cassettes/manageiq/providers/ansible_tower/automation_manager/*.yml
+  include_context "uses tower_data.yml"
 
   let(:tower_url) { ENV['TOWER_URL'] || "https://example.com/api/v1/" }
   let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
@@ -55,25 +55,23 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   end
   let(:manager_class) { manager_class }
 
-  let(:tower_data) { Spec::Support::TowerDataHelper.tower_data }
+  let(:api_version) { tower_data[:config][:version] }
 
-  let(:api_version) { tower_data['config']['version'] }
+  let(:host_count) { tower_data[:total_counts][:hosts] }
+  let(:job_template_count) { tower_data[:total_counts][:job_templates] }
+  let(:inventory_count) { tower_data[:total_counts][:inventories] }
+  let(:project_count) { tower_data[:total_counts][:projects] }
+  let(:playbook_count) { tower_data[:total_counts][:playbooks] }
+  let(:credential_count) { tower_data[:total_counts][:credentials] }
 
-  let(:host_count) { tower_data['counts']['hosts']['total'] }
-  let(:job_template_count) { tower_data['counts']['job_templates']['total'] }
-  let(:inventory_count) { tower_data['counts']['inventories']['total'] }
-  let(:project_count) { tower_data['counts']['projects']['total'] }
-  let(:playbook_count) { tower_data['counts']['playbooks']['total'] }
-  let(:credential_count) { tower_data['counts']['credentials']['total'] }
-
-  let(:hello_inventory_id) { tower_data['items']['hello_inventory']['id'] }
-  let(:hello_repo_id) { tower_data['items']['hello_repo']['id'] }
-  let(:hello_repo_playbooks) { tower_data['items']['hello_repo']['playbooks'] }
-  let(:hello_repo_playbook_count) { tower_data['counts']['playbooks']['hello_repo'] }
-  let(:hello_repo_status) { tower_data['items']['hello_repo']['status'] }
-  let(:hello_template_id) { tower_data['items']['hello_template']['id'] }
-  let(:hello_template_with_survey_id) { tower_data['items']['hello_template_with_survey']['id'] }
-  let(:hello_vm_id) { tower_data['items']['hello_vm']['id'] }
+  let(:hello_inventory_id) { tower_data[:items]['hello_inventory'][:id] }
+  let(:hello_repo_id) { tower_data[:items]['hello_repo'][:id] }
+  let(:hello_repo_playbooks) { tower_data[:items]['hello_repo'][:playbooks] }
+  let(:hello_repo_playbook_count) { tower_data[:items]['hello_repo'][:playbooks].count }
+  let(:hello_repo_status) { tower_data[:items]['hello_repo'][:status] }
+  let(:hello_template_id) { tower_data[:items]['hello_template'][:id] }
+  let(:hello_template_with_survey_id) { tower_data[:items]['hello_template_with_survey'][:id] }
+  let(:hello_vm_id) { tower_data[:items]['hello_vm'][:id] }
 
   it ".ems_type" do
     expect(described_class.ems_type).to eq(ems_type)

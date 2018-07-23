@@ -1,4 +1,6 @@
 shared_examples_for "refresh configuration_script_source" do |ansible_provider, manager_class, ems_type, cassette_path|
+  include_context "uses tower_data.yml"
+
   let(:tower_url) { ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/" }
   let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
   let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
@@ -14,14 +16,12 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
   end
   let(:manager_class) { manager_class }
 
-  let(:tower_data) { Spec::Support::TowerDataHelper.tower_data }
+  let(:targeted_refresh_id) { tower_data[:items]['hello_repo'][:id] }
+  let(:targeted_refresh_last_updated) { tower_data[:items]['hello_repo'][:last_updated].utc }
+  let(:targeted_refresh_playbooks) { tower_data[:items]['hello_repo'][:playbooks] }
+  let(:nonexistent_repo_id) { tower_data[:items]['nonexistent_repo'][:id] }
 
-  let(:targeted_refresh_id) { tower_data['items']['targeted_refresh']['id'] }
-  let(:targeted_refresh_last_updated) { tower_data['items']['targeted_refresh']['last_updated'].utc }
-  let(:targeted_refresh_playbooks) { tower_data['items']['targeted_refresh']['playbooks'] }
-  let(:nonexistent_repo_id) { tower_data['items']['nonexistent_repo']['id'] }
-
-  let(:targeted_refresh_playbook_count) { tower_data['counts']['playbooks']['targeted_refresh'] }
+  let(:targeted_refresh_playbook_count) { tower_data[:items]['hello_repo'][:playbooks].count }
 
   it "will perform a targeted refresh" do
     credential = FactoryGirl.create(:"#{ems_type}_scm_credential", :name => '2keep')
@@ -59,7 +59,7 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
           expect(last_updated).to be >= last_project_update
           last_project_update = last_updated
 
-          expect(configuration_script_source.name).to eq("targeted_refresh")
+          expect(configuration_script_source.name).to eq('hello_repo')
           expect(configuration_script_source.last_updated_on).to eq(last_updated)
           expect(ConfigurationScriptPayload.count).to eq(targeted_refresh_playbook_count)
           expect(ConfigurationScriptPayload.where(:name => '2b_rm')).to be_empty
@@ -69,7 +69,7 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
             expect(configuration_script_payloads.where(:name => playbook).count).to eq(1)
           end
 
-          expect(configuration_script_source.authentication.name).to eq('db-github')
+          expect(configuration_script_source.authentication.name).to eq('hello_scm_cred')
           expect(credential.reload).to eq(credential)
 
           expect(configuration_script_source_other.name).to eq("Dont touch this")

@@ -1,4 +1,6 @@
 shared_examples_for "ansible event_catcher stream" do |cassette_file|
+  include_context "uses tower_data.yml"
+
   let(:tower_url) { ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/" }
   let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
   let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
@@ -11,9 +13,8 @@ shared_examples_for "ansible event_catcher stream" do |cassette_file|
                        :verify_ssl => false,).tap { |provider| provider.authentications << auth }
   end
 
-  let(:tower_data) { Spec::Support::TowerDataHelper.tower_data }
-  let(:spec_test_org_id) { tower_data['items']['spec_test_org']['id'] }
-  let(:user_id) { tower_data['user']['id'] }
+  let(:spec_test_org_id) { tower_data[:items]['spec_test_org'][:id] }
+  let(:user_id) { tower_data[:user][:id] }
 
   subject do
     described_class.new(automation_manager)
