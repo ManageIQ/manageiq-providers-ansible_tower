@@ -4,7 +4,11 @@ namespace :spec do
     tower_host = ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/"
     id = ENV['TOWER_USER'] || 'testuser'
     password = ENV['TOWER_PASSWORD'] || 'secret'
-    PopulateTower.new(tower_host, id, password, TowerData.new(true)).create_dataset.counts
+    populate = PopulateTower.new(tower_host, id, password)
+
+    populate.create_dataset
+    populate.counts
+    populate.to_file(ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/support/tower_data.yml"))
   end
 
   desc "Get counts of various Tower objects"
@@ -12,39 +16,7 @@ namespace :spec do
     tower_host = ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/"
     id = ENV['TOWER_USER'] || 'testuser'
     password = ENV['TOWER_PASSWORD'] || 'secret'
-    PopulateTower.new(tower_host, id, password, TowerData.new(false)).counts
-  end
-end
-
-class TowerData
-  def initialize(delete)
-    require ManageIQ::Providers::AnsibleTower::Engine.root.join('spec', 'support', 'tower_data_helper')
-
-    if delete || !Spec::Support::TowerDataHelper.tower_data_initialized?
-      init_blank
-    else
-      @data = Spec::Support::TowerDataHelper.tower_data
-      raise 'Invalid Tower data stored, can’t update.' unless @data.kind_of?(Hash)
-    end
-  end
-
-  def init_blank
-    @data = {}
-    write
-  end
-
-  def read
-    @data
-  end
-
-  def write
-    Spec::Support::TowerDataHelper.tower_data = @data
-  end
-
-  def update
-    yield @data if block_given?
-    write
-    @data
+    PopulateTower.new(tower_host, id, password).counts
   end
 end
 
@@ -90,7 +62,7 @@ class PopulateTower
   TRY_SLEEP = 2
   DEL_SLEEP = 20
 
-  def initialize(tower_host, id, password, tower_data)
+  def initialize(tower_host, id, password)
     @conn = Faraday.new(tower_host, :ssl => {:verify => false}) do |c|
       c.use(FaradayMiddleware::EncodeJson)
       c.use(FaradayMiddleware::FollowRedirects, :limit => 3, :standards_compliant => true)
@@ -99,43 +71,44 @@ class PopulateTower
       c.basic_auth(id, password)
     end
 
-    @tower_data = tower_data
+    @tower_data = {}
 
     uri = '/api/v1/config'
     config = get_obj(uri)
     @version = Gem::Version.new(config['version'])
-    @tower_data.update { |td| td['config'] = config.slice('version') }
+    @tower_data[:config] = { :version => config['version'] }
 
     uri = '/api/v1/me'
     me = get_obj(uri)
-    @tower_data.update { |td| td['user'] = me['results'].first.slice('id') }
+    @tower_data[:user] = { :id => me['results'].first['id'] }
   end
 
   def v3_2?
     @version >= Gem::Version.new('3.2')
   end
 
-  def create_obj(uri, data, dumped_fields = %w())
+  def to_file(filename)
+    File.write(filename, @tower_data.to_yaml)
+  end
+
+  def create_obj(uri, data)
     del_obj(uri, data[:name])
     obj = JSON.parse(@conn.post(uri, data).body)
     puts "Created name=#{obj['name'].ljust(27)} manager_ref/ems_ref=#{obj['id'].to_s.ljust(10)} url=#{obj['url']}"
-
-    dumped_data = obj.slice(*dumped_fields)
-    @tower_data.update { |td| td['items'][obj['name']] = dumped_data } unless dumped_data.empty?
 
     obj
   end
 
   def del_obj(uri, match_name)
     obj = get_obj(uri)
-    obj['results'].each do |item|
-      next if item['name'] != match_name
+
+    if (item = obj['results'].find { |i| i['name'] == match_name })
       puts "Deleting old #{item['name']}: #{item['url']}"
       @conn.delete(item['url'])
-
       sleep(DEL_SLEEP) # without sleep, sometimes subsequent create will return 400. Seems the deletion has some delay in Tower
+    elsif obj['next']
+      del_obj(obj['next'], match_name)
     end
-    del_obj(obj['next'], match_name) if obj['next']
   end
 
   def get_obj(uri)
@@ -202,7 +175,7 @@ class PopulateTower
 
     puts "=== Re-creating Tower objects ==="
 
-    @tower_data.update { |td| td['items'] = {} }
+    @tower_data[:items] = {}
 
     # create test organization
     uri = '/api/v1/organizations/'
@@ -210,7 +183,8 @@ class PopulateTower
       :name        => 'spec_test_org',
       :description => 'for miq spec tests'
     }
-    organization = create_obj(uri, data, %w(id))
+    organization = create_obj(uri, data)
+    @tower_data[:items][data[:name]] = { :id => organization['id'] }
 
     # create scm cred
     uri = '/api/v1/credentials/'
@@ -341,7 +315,8 @@ class PopulateTower
       :description  => 'inventory for miq spec tests',
       :organization => organization['id']
     }
-    inventory = create_obj(uri, data, %w(id))
+    inventory = create_obj(uri, data)
+    @tower_data[:items][data[:name]] = { :id => inventory['id'] }
 
     # create a host
     uri = '/api/v1/hosts/'
@@ -350,7 +325,8 @@ class PopulateTower
       :instance_id => '4233080d-7467-de61-76c9-c8307b6e4830',
       :inventory   => inventory['id']
     }
-    create_obj(uri, data, %w(id))
+    host = create_obj(uri, data)
+    @tower_data[:items][data[:name]] = { :id => host['id'] }
 
     # create a project
     uri = '/api/v1/projects/'
@@ -361,27 +337,28 @@ class PopulateTower
       :credential   => scm_credential['id'],
       :organization => organization['id']
     }
-    hello_project = create_obj(uri, data, %w(id status))
+    hello_project = create_obj(uri, data)
+    @tower_data[:items][data[:name]] = hello_project.slice('id', 'status').symbolize_keys
 
     # Wait for hello_project update to finish, it is necessary for creating a template
     wait_for_project_update(hello_project)
 
     # Wait until there is a update job for "hello_repo".
     uri = nil
-    project = try_get_obj_until(project['url']) do |body|
+    project = try_get_obj_until(hello_project['url']) do |body|
       uri = body['related']['last_update']
       uri.present?
     end
 
     # Wait until the "hello_repo" update finishes.
     last_update = try_get_obj_until(uri) do |body|
-      raise "“hello repo” cloning failed." if body['failed']
+      raise "\"#{data[:name]}\" cloning failed." if body['failed']
       body['finished'].present?
     end
 
-    @tower_data.update { |td| td['items']['hello_repo']['status'] = last_update['status'] }
-    @tower_data.update { |td| td['items']['hello_repo']['last_updated'] = Time.parse(last_update['finished']).utc }
-    @tower_data.update { |td| td['items']['hello_repo']['playbooks'] = get_obj(project['related']['playbooks']) }
+    @tower_data[:items][data[:name]][:status] = last_update['status']
+    @tower_data[:items][data[:name]][:last_updated] = Time.parse(last_update['finished']).utc
+    @tower_data[:items][data[:name]][:playbooks] = get_obj(project['related']['playbooks'])
 
     # create a job_template
     uri = '/api/v1/job_templates/'
@@ -397,7 +374,8 @@ class PopulateTower
       :inventory          => inventory['id'],
       :organization       => organization['id']
     }
-    create_obj(uri, data, %w(id))
+    template = create_obj(uri, data)
+    @tower_data[:items][data[:name]] = { :id => template['id'] }
 
     # create a job_template with survey spec
     uri = '/api/v1/job_templates/'
@@ -412,7 +390,8 @@ class PopulateTower
       :survey_enabled => true,
       :organization   => organization['id']
     }
-    template = create_obj(uri, data, %w(id))
+    template = create_obj(uri, data)
+    @tower_data[:items][data[:name]] = { :id => template['id'] }
 
     # create survey spec
     uri = "/api/v1/job_templates/#{template['id']}/survey_spec/"
@@ -459,52 +438,50 @@ class PopulateTower
   end
 
   def counts
-    puts_proc = Proc.new do |label, count|
-      puts "#{label.ljust(40)} #{count}"
-    end
+    # Watched record types
+    record_types = {
+      :configuration_script         => :job_templates,
+      :configuration_script_source  => :projects,
+      :configured_system            => :hosts,
+      :inventory_group              => :inventories,
+      :credential                   => :credentials,
+      :configuration_script_payload => :playbooks
+    }
 
-    puts "=== Object counts ==="
-
-    @tower_data.update { |td| td['counts'] = {} }
-
-    {
-      'configuration_script'        => 'job_templates',
-      'configuration_script_source' => 'projects',
-      'configured_system'           => 'hosts',
-      'inventory_group'             => 'inventories',
-      'credential'                  => 'credentials'
-    }.each_pair do |miq_name, tower_name|
+    # Collect total counts for various object types
+    @tower_data[:total_counts] = {}
+    record_types.except(:configuration_script_payload).each_value do |tower_name|
       count = get_obj("/api/v1/#{tower_name}/")['count']
-      puts_proc.call("#{miq_name} (#{tower_name})", count)
-
-      @tower_data.update { |td| td['counts'][tower_name] = {'total' => count} }
+      @tower_data[:total_counts][tower_name] = count
     end
 
-    @tower_data.update { |td| td['counts']['playbooks'] = {'total' => 0} }
+    # Collect counts of playbooks (total and per project)
+    playbook_counts_per_project = {}
+    watched_projects = %w(hello_repo)
+    @tower_data[:total_counts][:playbooks] = 0
 
-    # Dump playbook count: total and for created projects
-    dumped_projects = %w(hello_repo)
     uri = '/api/v1/projects/'
     while uri
       response = get_obj(uri)
       uri = response['next']
       response['results'].each do |result|
         playbook_count = get_obj(result['related']['playbooks']).count
-        if dumped_projects.include?(result['name'])
-          @tower_data.update { |td| td['counts']['playbooks'][result['name']] = playbook_count }
-        end
-        @tower_data.update { |td| td['counts']['playbooks']['total'] += playbook_count }
+
+        playbook_counts_per_project[result['name']] = playbook_count if watched_projects.include?(result['name'])
+        @tower_data[:total_counts][:playbooks] += playbook_count
       end
     end
 
-    # Dump playbook count: total and for created projects
-    tower_data = @tower_data.read
+    # Report the counts
+    puts "=== Object counts ==="
+    record_types.each_pair do |miq_name, tower_name|
+      label = "#{miq_name} (#{tower_name})"
+      puts "#{label.ljust(40)} #{@tower_data[:total_counts][tower_name]}"
+    end
 
-    total_count = tower_data['counts']['playbooks']['total']
-    puts_proc.call("configuration_script_payload (playbooks)", total_count)
-
-    tower_data['counts']['playbooks'].each do |name, count|
-      puts_proc.call("\t#{name}", count) if dumped_projects.include?(name)
+    playbook_counts_per_project.each_pair do |project, count|
+      label = "\t#{project}"
+      puts "#{label.ljust(40)} #{count}"
     end
 
     self
