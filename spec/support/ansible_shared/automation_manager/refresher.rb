@@ -92,6 +92,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
         assert_configured_system
         assert_configuration_script_with_nil_survey_spec
         assert_configuration_script_with_survey_spec
+        assert_configuration_workflow
         assert_inventory_root_group
         assert_configuration_script_sources
         assert_playbooks
@@ -103,22 +104,23 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_counts
     expect(Provider.count).to                                         eq(1)
     expect(automation_manager).to                                     have_attributes(:api_version => "3.2.2")
-    expect(automation_manager.configured_systems.count).to            eq(3)
-    expect(automation_manager.configuration_scripts.count).to         eq(7)
-    expect(automation_manager.inventory_groups.count).to              eq(3)
-    expect(automation_manager.configuration_script_sources.count).to  eq(10)
-    expect(automation_manager.configuration_script_payloads.count).to eq(130)
-    expect(automation_manager.credentials.count).to                   eq(15)
+    expect(automation_manager.configured_systems.count).to            eq(6)
+    expect(automation_manager.configuration_scripts.count).to         eq(10)
+    expect(automation_manager.configuration_workflows.count).to       eq(11)
+    expect(automation_manager.inventory_groups.count).to              eq(6)
+    expect(automation_manager.configuration_script_sources.count).to  eq(14)
+    expect(automation_manager.configuration_script_payloads.count).to eq(214)
+    expect(automation_manager.credentials.count).to                   eq(17)
   end
 
   def assert_credentials
     expect(expected_configuration_script.authentications.count).to eq(3)
 
     # vault_credential
-    vault_credential = Authentication.all.find_by(:type => manager_class::VaultCredential, :manager_ref => "2")
+    vault_credential = Authentication.all.find_by(:type => manager_class::VaultCredential, :manager_ref => '1004')
     expect(vault_credential.options.keys).to match_array([:vault_password])
     expect(vault_credential.options[:vault_password]).not_to be_empty
-    expect(vault_credential.name).to eq("vault-test")
+    expect(vault_credential.name).to eq("hello_vault_cred")
 
     # machine_credential
     machine_credential = expected_configuration_script.authentications.find_by(
@@ -200,7 +202,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configured_system).to have_attributes(
       :type                 => manager_class::ConfiguredSystem.name,
       :hostname             => "hello_vm",
-      :manager_ref          => "98",
+      :manager_ref          => "108",
       :virtual_instance_ref => "4233080d-7467-de61-76c9-c8307b6e4830",
     )
     expect(expected_configured_system.counterpart).to          eq(expected_counterpart_vm)
@@ -211,13 +213,13 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configuration_script).to have_attributes(
       :name        => "hello_template",
       :description => "test job",
-      :manager_ref => "341",
+      :manager_ref => "393",
       :survey_spec => {},
       :variables   => {},
     )
     # expect(expected_configuration_script.inventory_root_group).to have_attributes(:ems_ref => "43")
     expect(expected_configuration_script.parent.name).to eq('hello_world.yml')
-    expect(expected_configuration_script.parent.configuration_script_source.manager_ref).to eq('340')
+    expect(expected_configuration_script.parent.configuration_script_source.manager_ref).to eq('392')
   end
 
   def assert_configuration_script_with_survey_spec
@@ -225,7 +227,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(system).to have_attributes(
       :name        => "hello_template_with_survey",
       :description => "test job with survey spec",
-      :manager_ref => "342",
+      :manager_ref => "394",
       :variables   => {}
     )
     survey = system.survey_spec
@@ -233,10 +235,19 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(survey['spec'].first['question_name']).to eq('example question')
   end
 
+  def assert_configuration_workflow
+    expect(expected_configuration_workflow).to have_attributes(
+      :name        => "hello_workflow",
+      :manager_ref => "395",
+      :survey_spec => {},
+      :variables   => {},
+    )
+  end
+
   def assert_inventory_root_group
     expect(expected_inventory_root_group).to have_attributes(
       :name    => "hello_inventory",
-      :ems_ref => "99",
+      :ems_ref => "107",
       :type    => "ManageIQ::Providers::AutomationManager::InventoryRootGroup",
     )
   end
@@ -249,6 +260,10 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
 
   def expected_configuration_script
     @expected_configuration_script ||= automation_manager.configuration_scripts.where(:name => "hello_template").first
+  end
+
+  def expected_configuration_workflow
+    @expected_configuration_workflow ||= automation_manager.configuration_workflows.where(:name => "hello_workflow").first
   end
 
   def expected_inventory_root_group
