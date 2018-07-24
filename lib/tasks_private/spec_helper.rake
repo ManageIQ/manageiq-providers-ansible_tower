@@ -92,9 +92,13 @@ class PopulateTower
   end
 
   def create_obj(uri, data)
-    del_obj(uri, data[:name])
+    name_details = ''
+    if data.include?(:name)
+      name_details = "name=#{data[:name].ljust(27)}"
+      del_obj(uri, data[:name])
+    end
     obj = JSON.parse(@conn.post(uri, data).body)
-    puts "Created name=#{obj['name'].ljust(27)} manager_ref/ems_ref=#{obj['id'].to_s.ljust(10)} url=#{obj['url']}"
+    puts "Created #{name_details} manager_ref/ems_ref=#{obj['id'].to_s.ljust(10)} url=#{obj['url']}"
 
     obj
   end
@@ -214,7 +218,8 @@ class PopulateTower
       :vault_password => 'abc',
       :organization   => organization['id']
     }
-    _vault_credential = create_obj(uri, data)
+    vault_credential = create_obj(uri, data)
+    @tower_data[:items][data[:name]] = { :id => vault_credential['id'] }
 
     # create network cred
     data = {
@@ -409,6 +414,16 @@ class PopulateTower
     }
     @conn.post(uri, data)
 
+    # create workflow template with previously created job template
+    uri = '/api/v1/workflow_job_templates/'
+    data = {:name => 'hello_workflow'}
+    workflow = create_obj(uri, data)
+    @tower_data[:items][data[:name]] = { :id => workflow['id'] }
+    # add workflow_nodes
+    uri = "/api/v1/workflow_job_templates/#{workflow['id']}/workflow_nodes/"
+    data = {:unified_job_template => template['id']}
+    create_obj(uri, data)
+
     # Create a project with failed update.
     uri = '/api/v1/projects/'
     data = {
@@ -441,6 +456,7 @@ class PopulateTower
     # Watched record types
     record_types = {
       :configuration_script         => :job_templates,
+      :configuration_workflow       => :workflow_job_templates,
       :configuration_script_source  => :projects,
       :configured_system            => :hosts,
       :inventory_group              => :inventories,
