@@ -27,6 +27,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   require_nested :Refresher
   require_nested :RefreshWorker
 
+  has_many :configuration_workflows, :dependent => :destroy, :foreign_key => "manager_id", :inverse_of => :manager
+
   def self.ems_type
     @ems_type ||= "ansible_tower_automation".freeze
   end
