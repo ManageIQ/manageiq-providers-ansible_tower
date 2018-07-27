@@ -1,18 +1,7 @@
 shared_examples_for "refresh configuration_script_source" do |ansible_provider, manager_class, ems_type, cassette_path|
-  let(:tower_url) { ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/" }
-  let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
-  let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
-
-  let(:auth)                    { FactoryGirl.create(:authentication, :userid => auth_userid, :password => auth_password) }
-  let(:automation_manager)      { provider.automation_manager }
-  let(:provider) do
-    _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone
-    FactoryGirl.create(ansible_provider,
-                       :zone       => zone,
-                       :url        => tower_url,
-                       :verify_ssl => false,).tap { |provider| provider.authentications << auth }
-  end
-  let(:manager_class) { manager_class }
+  let(:provider)           { FactoryGirl.create(ansible_provider, :ansible_with_vcr_authentication) }
+  let(:automation_manager) { provider.automation_manager }
+  let(:manager_class)      { manager_class }
 
   it "will perform a targeted refresh" do
     credential = FactoryGirl.create(:"#{ems_type}_scm_credential", :name => '2keep')

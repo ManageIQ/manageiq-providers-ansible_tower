@@ -11,7 +11,6 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   # 2. remove the old cassette
   # 3. run the spec to create the cassette
   # 4. update the expectations
-  # 5. change credentials in cassettes before commit
   #
   # Option #2
   # ========
@@ -32,28 +31,21 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   #   * change back the order of cassettes
   #
   #
-  # To change credentials in cassettes
-  # ==================================
-  # replace with defaults - before committing
-  # ruby -pi -e 'gsub /yourdomain.com/, "example.com"; gsub /admin:smartvm/, "testuser:secret"' spec/vcr_cassettes/manageiq/providers/ansible_tower/automation_manager/*.yml
-  # replace with your working credentials
-  # ruby -pi -e 'gsub /example.com/, "yourdomain.com"; gsub /testuser:secret/, "admin:smartvm"' spec/vcr_cassettes/manageiq/providers/ansible_tower/automation_manager/*.yml
+  # To change credentials
+  # =====================
+  # To specify desired endpoint and user authentication, please upset your secters.yml with
+  # ````
+  #   ansible:
+  #     userid: "YOUR_FANCY_USERNAME"
+  #     password: "SECRET_PHRASE"
+  #     url: "https://here.is.my.ansible.tower.instance"
+  #  ```
 
-  let(:tower_url) { ENV['TOWER_URL'] || "https://example.com/api/v1/" }
-  let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
-  let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
+  let(:provider)           { FactoryGirl.create(ansible_provider, :ansible_with_vcr_authentication) }
+  let(:automation_manager) { provider.automation_manager }
+  let(:manager_class)      { manager_class }
 
-  let(:auth)                    { FactoryGirl.create(:authentication, :userid => auth_userid, :password => auth_password) }
-  let(:automation_manager)      { provider.automation_manager }
   let(:expected_counterpart_vm) { FactoryGirl.create(:vm, :uid_ems => "4233080d-7467-de61-76c9-c8307b6e4830") }
-  let(:provider) do
-    _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone
-    FactoryGirl.create(ansible_provider,
-                       :zone       => zone,
-                       :url        => tower_url,
-                       :verify_ssl => false,).tap { |provider| provider.authentications << auth }
-  end
-  let(:manager_class) { manager_class }
 
   it ".ems_type" do
     expect(described_class.ems_type).to eq(ems_type)
