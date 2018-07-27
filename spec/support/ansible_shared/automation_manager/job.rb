@@ -9,7 +9,7 @@ shared_examples_for "ansible job" do
   let(:connection) { double(:connection, :api => double(:api, :jobs => double(:jobs, :find => the_raw_job))) }
 
   let(:manager)  { FactoryGirl.create(:automation_manager_ansible_tower, :provider) }
-  let(:mock_api) { AnsibleTowerClient::Api.new(faraday_connection, 2) }
+  let(:mock_api) { AnsibleTowerClient::Api.new(faraday_connection) }
 
   let(:machine_credential) { FactoryGirl.create(:ansible_machine_credential, :manager_ref => '1', :resource => manager) }
   let(:cloud_credential)   { FactoryGirl.create(:ansible_cloud_credential,   :manager_ref => '2', :resource => manager) }
