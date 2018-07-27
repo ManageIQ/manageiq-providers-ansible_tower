@@ -103,8 +103,10 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   it "limits the size of configuration_script_source.last_update_error" do
     stub_const("#{ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationManager}::ERROR_MAX_SIZE", 20)
 
-    VCR.use_cassette(cassette_path) do
-      EmsRefresh.refresh(automation_manager)
+    Spec::Support::VcrHelper.with_cassette_library_dir(ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/vcr_cassettes")) do
+      VCR.use_cassette(cassette_path) do
+        EmsRefresh.refresh(automation_manager)
+      end
     end
 
     failed_configuration_script_source = automation_manager.configuration_script_sources.find_by(:name => 'failed_repo')
