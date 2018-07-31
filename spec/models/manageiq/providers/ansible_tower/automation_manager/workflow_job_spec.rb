@@ -9,7 +9,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
   let(:connection) { double(:connection, :api => double(:api, :workflow_jobs => double(:workflow_jobs, :find => the_raw_job))) }
 
   let(:manager)  { FactoryGirl.create(:automation_manager_ansible_tower, :provider) }
-  let(:mock_api) { AnsibleTowerClient::Api.new(faraday_connection, 1) }
+  let(:mock_api) { AnsibleTowerClient::Api.new(faraday_connection) }
 
   let(:the_raw_job) do
     AnsibleTowerClient::WorkflowJob.new(
