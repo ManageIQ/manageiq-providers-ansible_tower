@@ -28,8 +28,10 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
   end
 
   def configuration_scripts
+    provider_module = ManageIQ::Providers::Inflector.provider_module(collector.manager.class).name
     collector.job_templates.each do |job_template|
-      inventory_object = persister.configuration_scripts.find_or_build(job_template.id.to_s)
+      inventory_object = persister.configuration_scripts.build(:manager_ref => job_template.id.to_s)
+      inventory_object.type = "#{provider_module}::AutomationManager::ConfigurationScript"
       inventory_object.description = job_template.description
       inventory_object.name = job_template.name
       inventory_object.survey_spec = job_template.survey_spec_hash
@@ -49,6 +51,18 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
         next if credential_id.blank?
         inventory_object.authentications << persister.credentials.lazy_find(credential_id)
       end
+    end
+  end
+
+  def configuration_workflows
+    provider_module = ManageIQ::Providers::Inflector.provider_module(collector.manager.class).name
+    collector.configuration_workflows.each do |job_template|
+      inventory_object = persister.configuration_scripts.build(:manager_ref => job_template.id.to_s)
+      inventory_object.type = "#{provider_module}::AutomationManager::ConfigurationWorkflow"
+      inventory_object.description = job_template.description
+      inventory_object.name = job_template.name
+      inventory_object.survey_spec = job_template.survey_spec_hash
+      inventory_object.variables = job_template.extra_vars_hash
     end
   end
 
@@ -116,16 +130,6 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
       inventory_object.options = inventory_object.type.constantize::EXTRA_ATTRIBUTES.keys.each_with_object({}) do |k, h|
         h[k] = credential.try(k)
       end
-    end
-  end
-
-  def configuration_workflows
-    collector.configuration_workflows.each do |job_template|
-      inventory_object = persister.configuration_workflows.find_or_build(job_template.id.to_s)
-      inventory_object.description = job_template.description
-      inventory_object.name = job_template.name
-      inventory_object.survey_spec = job_template.survey_spec_hash
-      inventory_object.variables = job_template.extra_vars_hash
     end
   end
 end
