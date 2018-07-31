@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 91 ending 2018-07-30
+
+### Added
+- Service AnsibleTower and EmbeddedAnsible UI parity [(#108)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/108)
+- Get stdout on ansible repository refresh [(#72)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/72)
+
+### Fixed
+- FIX wrong VCR cassette for Embedded Ansible refresher spec [(#114)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/114)
+- Collect variable Tower data upon population [(#92)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/92)
+- Populate project without update job in Tower [(#82)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/82)
+
+### Removed
+- Removing old InventoryCollection definitions [(#104)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/104)
+
 ## Unreleased as of Sprint 90 ending 2018-07-16
 
 ### Fixed
