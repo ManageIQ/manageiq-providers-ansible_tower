@@ -1,8 +1,14 @@
 class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
   ManageIQ::Providers::ExternalAutomationManager::OrchestrationStack
 
+  require_nested :Status
+
   belongs_to :ext_management_system, :foreign_key => :ems_id, :class_name => "ManageIQ::Providers::AutomationManager"
   belongs_to :workflow_template, :foreign_key => :orchestration_template_id, :class_name => "ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWorkflow"
+
+  def self.status_class
+    "#{name}::Status".constantize
+  end
 
   #
   # Allowed options are
@@ -34,6 +40,19 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
 
   def self.display_name(number = 1)
     n_('Ansible Tower Workflow Job', 'Ansible Tower Workflow Jobs', number)
+  end
+
+  def raw_status
+    ext_management_system.with_provider_connection do |connection|
+      raw_job = connection.api.workflow_jobs.find(ems_ref)
+      self.class.status_class.new(raw_job.status, nil)
+    end
+  rescue AnsibleTowerClient::ResourceNotFoundError
+    msg = "AnsibleTower Workflow Job #{name} with id(#{id}) does not exist on #{ext_management_system.name}"
+    raise MiqException::MiqOrchestrationStackNotExistError, msg
+  rescue => err
+    _log.error("AnsibleTower Workflow Job #{name} with id(#{id}) status error: #{err}")
+    raise MiqException::MiqOrchestrationStatusError, err.to_s, err.backtrace
   end
 
   # If extra_vars are passed through automate, all keys are considered as attributes and
