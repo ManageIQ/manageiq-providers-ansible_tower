@@ -15,19 +15,19 @@ shared_examples_for "ansible configuration_workflow" do
 
     it "launches the referenced ansible workflow job template" do
       expect(workflow_job_template).to receive(:launch).with(:extra_vars => "{\"instance_ids\":[\"i-3434\"]}").and_return(job)
-      expect(manager.configuration_workflows.first.run).to be_a AnsibleTowerClient::WorkflowJob
+      expect(manager.configuration_scripts.first.run).to be_a AnsibleTowerClient::WorkflowJob
     end
 
     it "accepts different variables to launch a job template against" do
       added_extras = {:extra_vars => {:some_key => :some_value}}
       expect(workflow_job_template).to receive(:launch).with(:extra_vars=>"{\"instance_ids\":[\"i-3434\"],\"some_key\":\"some_value\"}").and_return(job)
-      expect(manager.configuration_workflows.first.run(added_extras)).to be_a AnsibleTowerClient::WorkflowJob
+      expect(manager.configuration_scripts.first.run(added_extras)).to be_a AnsibleTowerClient::WorkflowJob
     end
   end
 
   context "#merge_extra_vars" do
     it "merges internal and external hashes to send out to the tower gem" do
-      config_workflow = manager.configuration_workflows.first
+      config_workflow = manager.configuration_scripts.first
       external = {:some_key => :some_value}
       internal = config_workflow.variables
       expect(internal).to be_a Hash
@@ -35,7 +35,7 @@ shared_examples_for "ansible configuration_workflow" do
     end
 
     it "merges an internal hash and an empty hash to send out to the tower gem" do
-      config_workflow = manager.configuration_workflows.first
+      config_workflow = manager.configuration_scripts.first
       external = nil
       expect(config_workflow.merge_extra_vars(external)).to eq(:extra_vars => "{\"instance_ids\":[\"i-3434\"]}")
     end
@@ -43,7 +43,7 @@ shared_examples_for "ansible configuration_workflow" do
     it "merges an empty internal hash and a hash to send out to the tower gem" do
       external = {:some_key => :some_value}
       internal = {}
-      config_workflow = manager.configuration_workflows.first
+      config_workflow = manager.configuration_scripts.first
       config_workflow.variables = internal
       expect(config_workflow.merge_extra_vars(external)).to eq(:extra_vars => "{\"some_key\":\"some_value\"}")
     end
@@ -51,7 +51,7 @@ shared_examples_for "ansible configuration_workflow" do
     it "merges all empty arguments to send out to the tower gem" do
       external = nil
       internal = {}
-      config_workflow = manager.configuration_workflows.first
+      config_workflow = manager.configuration_scripts.first
       config_workflow.variables = internal
       expect(config_workflow.merge_extra_vars(external)).to eq(:extra_vars => "{}")
     end

@@ -3,12 +3,14 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Persister::AutomationManager
 
   def initialize_inventory_collections
     %i(credentials
-       configuration_scripts
        configuration_script_sources
-       configuration_workflows
        configured_systems).each do |name|
 
       add_collection(automation, name)
+    end
+
+    add_collection(automation, :configuration_scripts) do |builder|
+      builder.add_properties(:model_class => ManageIQ::Providers::AutomationManager::ConfigurationScript)
     end
 
     add_configuration_script_payloads
