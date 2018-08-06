@@ -4,4 +4,8 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScri
   let(:manager_with_configuration_scripts) { FactoryGirl.create(:automation_manager_ansible_tower, :provider, :configuration_script) }
 
   it_behaves_like 'ansible configuration_script'
+
+  it 'designates orchestration stack type' do
+    expect(described_class.stack_type).to eq('Job')
+  end
 end
