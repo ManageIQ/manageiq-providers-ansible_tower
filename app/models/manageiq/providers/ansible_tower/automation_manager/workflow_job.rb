@@ -110,6 +110,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
         :name                  => job_template.name,
         :ext_management_system => job_template.manager,
         :job_template          => job_template,
+        :ems_ref               => raw_job.id,
         :parent                => self
       )
     end
