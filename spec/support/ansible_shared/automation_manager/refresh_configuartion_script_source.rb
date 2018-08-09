@@ -1,7 +1,7 @@
 shared_examples_for "refresh configuration_script_source" do |ansible_provider, manager_class, ems_type, cassette_path|
   include_context "uses tower_data.yml"
 
-  let(:tower_url) { ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/" }
+  let(:tower_url) { ENV['TOWER_URL'] || "https://example.com/api/v1/" }
   let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
   let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
 
