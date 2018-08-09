@@ -59,6 +59,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
 
   let(:host_count) { tower_data[:total_counts][:hosts] }
   let(:job_template_count) { tower_data[:total_counts][:job_templates] }
+  let(:workflow_job_template_count) { tower_data[:total_counts][:workflow_job_templates] }
   let(:inventory_count) { tower_data[:total_counts][:inventories] }
   let(:project_count) { tower_data[:total_counts][:projects] }
   let(:playbook_count) { tower_data[:total_counts][:playbooks] }
@@ -138,9 +139,9 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(Provider.count).to                                         eq(1)
     expect(automation_manager).to                                     have_attributes(:api_version => api_version)
     expect(automation_manager.configured_systems.count).to            eq(host_count)
-    expect(automation_manager.configuration_scripts.count).to         eq(job_template_count)
-    expect(manager_workflows.count).to                                eq(11)
-    expect(manager_job_templates.count).to                            eq(10)
+    expect(automation_manager.configuration_scripts.count).to         eq(workflow_job_template_count + job_template_count)
+    expect(manager_workflows.count).to                                eq(workflow_job_template_count)
+    expect(manager_job_templates.count).to                            eq(job_template_count)
     expect(automation_manager.inventory_groups.count).to              eq(inventory_count)
     expect(automation_manager.configuration_script_sources.count).to  eq(project_count)
     expect(automation_manager.configuration_script_payloads.count).to eq(playbook_count)

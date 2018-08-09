@@ -453,17 +453,18 @@ class PopulateTower
   def counts
     # Watched record types
     record_types = {
-      :configuration_script         => :job_templates,
-      :configuration_script_source  => :projects,
-      :configured_system            => :hosts,
-      :inventory_group              => :inventories,
-      :credential                   => :credentials,
-      :configuration_script_payload => :playbooks
+      :job_templates          => :configuration_script,
+      :workflow_job_templates => :configuration_script,
+      :projects               => :configuration_script_source,
+      :hosts                  => :configured_system,
+      :inventories            => :inventory_group,
+      :credentials            => :credential,
+      :playbooks              => :configuration_script_payload
     }
 
     # Collect total counts for various object types
     @tower_data[:total_counts] = {}
-    record_types.except(:configuration_script_payload).each_value do |tower_name|
+    record_types.except(:playbooks).each_key do |tower_name|
       count = get_obj("/api/v1/#{tower_name}/")['count']
       @tower_data[:total_counts][tower_name] = count
     end
@@ -487,14 +488,14 @@ class PopulateTower
 
     # Report the counts
     puts "=== Object counts ==="
-    record_types.each_pair do |miq_name, tower_name|
+    record_types.each_pair do |tower_name, miq_name|
       label = "#{miq_name} (#{tower_name})"
-      puts "#{label.ljust(40)} #{@tower_data[:total_counts][tower_name]}"
+      puts "#{label.ljust(60)} #{@tower_data[:total_counts][tower_name]}"
     end
 
     playbook_counts_per_project.each_pair do |project, count|
-      label = "\t#{project}"
-      puts "#{label.ljust(40)} #{count}"
+      label = "    #{project}"
+      puts "#{label.ljust(60)} #{count}"
     end
 
     self
