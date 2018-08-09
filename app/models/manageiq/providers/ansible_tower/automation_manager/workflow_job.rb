@@ -25,7 +25,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
   def self.raw_create_stack(template, options = {})
     options = reconcile_extra_vars_keys(template, options)
     template.run(options)
-  rescue => err
+  rescue StandardError => err
     _log.error("Failed to create job from workflow(#{template.name}), error: #{err}")
     raise MiqException::MiqOrchestrationProvisionError, err.to_s, err.backtrace
   end
@@ -50,7 +50,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
   rescue AnsibleTowerClient::ResourceNotFoundError
     msg = "AnsibleTower Workflow Job #{name} with id(#{id}) does not exist on #{ext_management_system.name}"
     raise MiqException::MiqOrchestrationStackNotExistError, msg
-  rescue => err
+  rescue StandardError => err
     _log.error("AnsibleTower Workflow Job #{name} with id(#{id}) status error: #{err}")
     raise MiqException::MiqOrchestrationStatusError, err.to_s, err.backtrace
   end
@@ -81,7 +81,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
   rescue AnsibleTowerClient::ResourceNotFoundError
     msg = "AnsibleTower Workflow Job #{name} with id(#{id}) does not exist on #{ext_management_system.name}"
     raise MiqException::MiqOrchestrationStackNotExistError, msg
-  rescue => err
+  rescue StandardError => err
     _log.error("Refreshing Workflow job(#{name}, ems_ref=#{ems_ref}), error: #{err}")
     raise MiqException::MiqOrchestrationUpdateError, err.to_s, err.backtrace
   end
