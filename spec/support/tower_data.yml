@@ -1,0 +1,92 @@
+---
+:config:
+  :version: 3.2.2
+:user:
+  :id: 1
+:items:
+  spec_test_org:
+    :id: 89
+  hello_inventory:
+    :id: 109
+  hello_vm:
+    :id: 110
+  hello_repo:
+    :id: 399
+    :status: successful
+    :last_updated: 2018-07-23 15:51:03.037003000 Z
+    :playbooks:
+    - hello_world.yml
+    - jboss-standalone/demo-aws-launch.yml
+    - jboss-standalone/deploy-application.yml
+    - jboss-standalone/site.yml
+    - lamp_haproxy/aws/demo-aws-launch.yml
+    - lamp_haproxy/aws/rolling_update.yml
+    - lamp_haproxy/aws/site.yml
+    - lamp_haproxy/provision.yml
+    - lamp_haproxy/rolling_update.yml
+    - lamp_haproxy/site.yml
+    - lamp_simple/site.yml
+    - lamp_simple_rhel7/site.yml
+    - language_features/ansible_pull.yml
+    - language_features/batch_size_control.yml
+    - language_features/cloudformation.yaml
+    - language_features/complex_args.yml
+    - language_features/conditionals_part1.yml
+    - language_features/conditionals_part2.yml
+    - language_features/custom_filters.yml
+    - language_features/delegation.yml
+    - language_features/environment.yml
+    - language_features/eucalyptus-ec2.yml
+    - language_features/file_secontext.yml
+    - language_features/get_url.yml
+    - language_features/group_by.yml
+    - language_features/group_commands.yml
+    - language_features/intermediate_example.yml
+    - language_features/intro_example.yml
+    - language_features/loop_nested.yml
+    - language_features/loop_plugins.yml
+    - language_features/loop_with_items.yml
+    - language_features/mysql.yml
+    - language_features/nested_playbooks.yml
+    - language_features/netscaler.yml
+    - language_features/postgresql.yml
+    - language_features/prompts.yml
+    - language_features/rabbitmq.yml
+    - language_features/register_logic.yml
+    - language_features/roletest.yml
+    - language_features/roletest2.yml
+    - language_features/selective_file_sources.yml
+    - language_features/tags.yml
+    - language_features/upgraded_vars.yml
+    - language_features/user_commands.yml
+    - language_features/zfs.yml
+    - mongodb/playbooks/testsharding.yml
+    - mongodb/site.yml
+    - tomcat-memcached-failover/site.yml
+    - tomcat-standalone/site.yml
+    - windows/create-user.yml
+    - windows/deploy-site.yml
+    - windows/enable-iis.yml
+    - windows/install-msi.yml
+    - windows/ping.yml
+    - windows/run-powershell.yml
+    - windows/test.yml
+    - windows/wamp_haproxy/demo-aws-wamp-launch.yml
+    - windows/wamp_haproxy/rolling_update.yml
+    - windows/wamp_haproxy/site.yml
+    - wordpress-nginx/site.yml
+    - wordpress-nginx_rhel7/site.yml
+  hello_template:
+    :id: 400
+  hello_template_with_survey:
+    :id: 401
+  nonexistent_repo:
+    :id: 892
+:total_counts:
+  :job_templates: 10
+  :workflow_job_templates: 11
+  :projects: 14
+  :hosts: 6
+  :inventories: 6
+  :credentials: 17
+  :playbooks: 214
