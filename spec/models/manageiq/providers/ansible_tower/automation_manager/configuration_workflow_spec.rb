@@ -4,4 +4,8 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWork
   let(:manager_with_configuration_workflows) { FactoryGirl.create(:automation_manager_ansible_tower, :provider, :configuration_workflow) }
 
   it_behaves_like 'ansible configuration_workflow'
+
+  it 'designates orchestration stack type' do
+    expect(described_class.stack_type).to eq('WorkflowJob')
+  end
 end

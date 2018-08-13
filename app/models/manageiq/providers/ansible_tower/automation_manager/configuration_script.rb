@@ -7,4 +7,12 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript 
   def self.display_name(number = 1)
     n_('Job Template (Ansible Tower)', 'Job Templates (Ansible Tower)', number)
   end
+
+  def self.stack_type
+    "Job"
+  end
+
+  def supports_limit?
+    true
+  end
 end
