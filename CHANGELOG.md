@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Gaprindashvili-3
+## Gaprindashvili-5
+
+### Fixed
+- Move #retire_now to shared code [(#66)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/66)
+
+## Gaprindashvili-3 - Released 2018-05-15
 
 ### Added
 - Tower 3.2.2 vault credential type [(#54)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/54)
