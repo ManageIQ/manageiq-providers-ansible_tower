@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 94 ending 2018-09-10
+
+### Fixed
+- Deal with ansible not having a username [(#123)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/123)
+
+## Gaprindashvili-5 - Released 2018-09-07
+
+### Fixed
+- Move #retire_now to shared code [(#66)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/66)
+
 ## Unreleased as of Sprint 92 ending 2018-08-13
 
 ### Added
@@ -52,9 +62,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ### Added
 - To store Tower repo last_updated_on [(#59)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/59)
-
-### Fixed
-- Move #retire_now to shared code [(#66)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/66) 
 
 ## Gaprindashvili-2 released 2018-03-06
 
