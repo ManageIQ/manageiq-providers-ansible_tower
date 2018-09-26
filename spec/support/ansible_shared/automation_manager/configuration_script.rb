@@ -82,6 +82,12 @@ shared_examples_for "ansible configuration_script" do
       config_script.variables = internal
       expect(config_script.merge_extra_vars(external)).to eq(:extra_vars => "{}")
     end
+
+    it "decrypts extra_vars before sending out to the tower gem" do
+      config_script = manager.configuration_scripts.first
+      external = {:some_key => "password::#{MiqPassword.encrypt("some_value")}"}
+      expect(config_script.merge_extra_vars(external)).to eq(:extra_vars => "{\"instance_ids\":[\"i-3434\"],\"some_key\":\"some_value\"}")
+    end
   end
 
   context "CUD via the API" do
