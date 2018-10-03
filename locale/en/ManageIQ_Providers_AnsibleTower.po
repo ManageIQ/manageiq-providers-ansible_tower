@@ -1,0 +1,315 @@
+# English translations for ManageIQ_Providers_AnsibleTower package.
+# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ManageIQ_Providers_AnsibleTower package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ManageIQ_Providers_AnsibleTower 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2018-10-03 13:24+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"\n"
+
+msgid "%{name} Automation Manager"
+msgstr ""
+
+msgid "AWS Access Key for this credential"
+msgstr ""
+
+msgid "AWS Secret Key for this credential"
+msgstr ""
+
+msgid "Access Key"
+msgstr ""
+
+msgid "Amazon"
+msgstr ""
+
+msgid "Ansible Tower Job"
+msgid_plural "Ansible Tower Jobs"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Ansible Tower Provider"
+msgstr ""
+
+msgid "Ansible Tower Workflow Job"
+msgid_plural "Ansible Tower Workflow Jobs"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Authorize"
+msgstr ""
+
+msgid "Authorize password"
+msgstr ""
+
+msgid "Automation Manager (Ansible Tower)"
+msgid_plural "Automation Managers (Ansible Tower)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Azure"
+msgstr ""
+
+msgid "Client ID"
+msgstr ""
+
+msgid "Client Secret"
+msgstr ""
+
+msgid "Configured System (Ansible Tower)"
+msgid_plural "Configured Systems (Ansible Tower)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Contents of the PEM file associated with the service account email"
+msgstr ""
+
+msgid "Credential (Amazon)"
+msgid_plural "Credentials (Amazon)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Credential (Google)"
+msgid_plural "Credentials (Google)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Credential (Machine)"
+msgid_plural "Credentials (Machine)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Credential (Microsoft Azure)"
+msgid_plural "Credentials (Microsoft Azure)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Credential (Network)"
+msgid_plural "Credentials (Network)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Credential (OpenStack)"
+msgid_plural "Credentials (OpenStack)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Credential (SCM)"
+msgid_plural "Credentials (SCM)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Credential (Satellite)"
+msgid_plural "Credentials (Satellite)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Credential (VMware)"
+msgid_plural "Credentials (VMware)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Domain Name"
+msgstr ""
+
+msgid "Google Compute Engine"
+msgstr ""
+
+msgid "Host"
+msgstr ""
+
+msgid "Host (Authentication URL)"
+msgstr ""
+
+msgid "Hostname or IP address which corresponds to your Red Hat Satellite 6 server"
+msgstr ""
+
+msgid "Job Template (Ansible Tower)"
+msgid_plural "Job Templates (Ansible Tower)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Machine"
+msgstr ""
+
+msgid "Network"
+msgstr ""
+
+msgid "OpenStack"
+msgstr ""
+
+msgid "OpenStack domains define administrative boundaries. It is only needed for Keystone v3 authentication URLs"
+msgstr ""
+
+msgid "Passphrase to unlock SSH private key if encrypted"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password (API Key)"
+msgstr ""
+
+msgid "Password for privilege escalation method"
+msgstr ""
+
+msgid "Password for this credential"
+msgstr ""
+
+msgid "Password used by the authorize mechanism"
+msgstr ""
+
+msgid "Playbook (Ansible Tower)"
+msgid_plural "Playbooks (Ansible Tower)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Private key"
+msgstr ""
+
+msgid "Private key passphrase"
+msgstr ""
+
+msgid "Privilege Escalation"
+msgstr ""
+
+msgid "Privilege Escalation Password"
+msgstr ""
+
+msgid "Privilege Escalation Username"
+msgstr ""
+
+msgid "Privilege escalation method"
+msgstr ""
+
+msgid "Privilege escalation username"
+msgstr ""
+
+msgid "Project"
+msgstr ""
+
+msgid "Project (Tenant Name)"
+msgstr ""
+
+msgid "RSA Private Key"
+msgstr ""
+
+msgid "RSA or DSA private key to be used instead of password"
+msgstr ""
+
+msgid "Red Hat Virtualization"
+msgstr ""
+
+msgid "SSH key"
+msgstr ""
+
+msgid "STS Token"
+msgstr ""
+
+msgid "Satellite 6 Host"
+msgstr ""
+
+msgid "Satellite6"
+msgstr ""
+
+msgid "Scm"
+msgstr ""
+
+msgid "Secret Key"
+msgstr ""
+
+msgid "Security Token Service(STS) Token for this credential"
+msgstr ""
+
+msgid "Service Account Email Address"
+msgstr ""
+
+msgid "Subscription ID"
+msgstr ""
+
+msgid "Tenant ID"
+msgstr ""
+
+msgid "The Client ID for the Microsoft Azure account"
+msgstr ""
+
+msgid "The Client Secret for the Microsoft Azure account"
+msgstr ""
+
+msgid "The GCE assigned identification. It is constructed as two words followed by a three digit number, such as: squeamish-ossifrage-123"
+msgstr ""
+
+msgid "The Subscription UUID for the Microsoft Azure account"
+msgstr ""
+
+msgid "The Tenant ID for the Microsoft Azure account"
+msgstr ""
+
+msgid "The email address assigned to the Google Compute Engine service account"
+msgstr ""
+
+msgid "The host to authenticate with"
+msgstr ""
+
+msgid "The host to authenticate with. For example, https://openstack.business.com/v2.0"
+msgstr ""
+
+msgid "The hostname or IP address of the vCenter Host"
+msgstr ""
+
+msgid "The password or API key to use to connect to OpenStack"
+msgstr ""
+
+msgid "The password to use to connect to Satellite 6"
+msgstr ""
+
+msgid "The password to use to connect to the Microsoft Azure account"
+msgstr ""
+
+msgid "The username to use to connect to OpenStack"
+msgstr ""
+
+msgid "The username to use to connect to Satellite 6"
+msgstr ""
+
+msgid "The username to use to connect to the Microsoft Azure account"
+msgstr ""
+
+msgid "This is the tenant name. This value is usually the same as the username"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Username for this credential"
+msgstr ""
+
+msgid "Username or password is not valid"
+msgstr ""
+
+msgid "VMware"
+msgstr ""
+
+msgid "Vault"
+msgstr ""
+
+msgid "Vault password"
+msgstr ""
+
+msgid "Whether to use the authorize mechanism"
+msgstr ""
+
+msgid "no credentials defined"
+msgstr ""
+
+msgid "vCenter Host"
+msgstr ""
