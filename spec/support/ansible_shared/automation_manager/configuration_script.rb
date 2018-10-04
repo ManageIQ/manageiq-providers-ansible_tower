@@ -123,7 +123,7 @@ shared_examples_for "ansible configuration_script" do
 
         store_new_job_template(job_template, manager)
 
-        expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
+        expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task.id])
         expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
 
         expect(described_class.create_in_provider(manager.id, params)).to be_a(described_class)
@@ -131,7 +131,7 @@ shared_examples_for "ansible configuration_script" do
 
       it "not found during refresh" do
         expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-        expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
+        expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task.id])
         expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
 
         expect { described_class.create_in_provider(manager.id, params) }.to raise_error(ActiveRecord::RecordNotFound)

@@ -33,7 +33,7 @@ shared_examples_for "ansible configuration_script_source" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       store_new_project(project, manager)
       expect(described_class).to receive(:refresh_in_provider).with(project, nil).and_return(true)
-      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
       expect(projects).to receive(:create!).with(params)
       allow(Notification).to receive(:create)
@@ -44,7 +44,7 @@ shared_examples_for "ansible configuration_script_source" do
     it ".create_in_provider to fail(not found during refresh) and send creation notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       expect(described_class).to receive(:refresh_in_provider).with(project, nil).and_return(true)
-      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task.id])
       expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
       allow(Notification).to receive(:create)
       expect { described_class.create_in_provider(manager.id, params) }.to raise_error(ActiveRecord::RecordNotFound)
@@ -56,7 +56,7 @@ shared_examples_for "ansible configuration_script_source" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       store_new_project(project, manager)
       expect(described_class).to receive(:refresh_in_provider).with(project, nil).and_return(true)
-      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task.id])
       expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
       expect(projects).to receive(:create!).with(params)
       allow(Notification).to receive(:create)
@@ -70,7 +70,7 @@ shared_examples_for "ansible configuration_script_source" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       store_new_project(project, manager)
       expect(described_class).to receive(:refresh_in_provider).with(project, nil).and_return(false)
-      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task.id])
       expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
       expect(projects).to receive(:create!).with(params)
       allow(Notification).to receive(:create)
@@ -86,7 +86,7 @@ shared_examples_for "ansible configuration_script_source" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       store_new_project(project, manager)
       expect(described_class).to receive(:refresh_in_provider).with(project, nil).and_return(true)
-      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
       expected_params = params.clone.merge(:credential => '1')
       expected_params.delete(:authentication_id)
@@ -147,7 +147,7 @@ shared_examples_for "ansible configuration_script_source" do
 
     it "#delete_in_provider to succeed and send notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(Notification).to receive(:create).with(expected_notify)
       project.delete_in_provider
     end
@@ -186,7 +186,7 @@ shared_examples_for "ansible configuration_script_source" do
 
     it "#update_in_provider to succeed and send notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
       allow(Notification).to receive(:create)
       expect(tower_project).to receive(:update_attributes!).with({})
@@ -205,7 +205,7 @@ shared_examples_for "ansible configuration_script_source" do
 
     it "#update_in_provider to succeed (with refresh_in_provider success) and send notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
       allow(Notification).to receive(:create)
       expect(project.update_in_provider({})).to be_a(described_class)
@@ -216,7 +216,7 @@ shared_examples_for "ansible configuration_script_source" do
 
     it "#update_in_provider to succeed (with refresh_in_provider failure) and send notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(false)
       allow(Notification).to receive(:create)
       expect(project.update_in_provider({})).to be_a(described_class)
@@ -228,7 +228,7 @@ shared_examples_for "ansible configuration_script_source" do
 
     it "#update_in_provider with credential" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
       expect(tower_project).to receive(:update_attributes!).with(:credential => tower_cred.manager_ref)
       allow(Notification).to receive(:create)
@@ -238,7 +238,7 @@ shared_examples_for "ansible configuration_script_source" do
 
     it "#update_in_provider with nil credential" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
       expect(tower_project).to receive(:update_attributes!).with(:credential => nil)
       allow(Notification).to receive(:create)
