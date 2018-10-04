@@ -46,7 +46,7 @@ shared_examples_for "ansible credential" do
       expect(Vmdb::Settings).to receive(:decrypt_passwords!).with(expected_params)
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       store_new_credential(credential, manager)
-      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
       expect(credentials).to receive(:create!).with(expected_params)
       expect(Notification).to receive(:create).with(expected_notify)
@@ -57,7 +57,7 @@ shared_examples_for "ansible credential" do
       expected_params[:organization] = 1 if described_class.name.include?("::EmbeddedAnsible::")
       expect(Vmdb::Settings).to receive(:decrypt_passwords!).with(expected_params)
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task.id])
       expect(ExtManagementSystem).to receive(:find).with(manager.id).and_return(manager)
       expect(credentials).to receive(:create!).with(expected_params)
       expected_notify[:type] = :tower_op_failure
@@ -110,7 +110,7 @@ shared_examples_for "ansible credential" do
 
     it "#delete_in_provider to succeed and send notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task.id])
       expect(Notification).to receive(:create).with(expected_notify)
       ansible_cred.delete_in_provider
     end
@@ -160,7 +160,7 @@ shared_examples_for "ansible credential" do
       expected_params[:organization] = 1 if described_class.name.include?("::EmbeddedAnsible::")
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       expect(credential).to receive(:update_attributes!).with(expected_params)
-      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task])
+      expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task.id])
       expect(Notification).to receive(:create).with(expected_notify)
       expect(ansible_cred.update_in_provider(params)).to be_a(described_class)
     end
