@@ -152,14 +152,14 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configuration_script.authentications.count).to eq(3)
 
     # vault_credential
-    vault_credential = Authentication.all.find_by(:type => manager_class::VaultCredential, :manager_ref => '1022')
+    vault_credential = Authentication.find_by(:type => manager_class::VaultCredential.name, :manager_ref => '1022')
     expect(vault_credential.options.keys).to match_array([:vault_password])
     expect(vault_credential.options[:vault_password]).not_to be_empty
     expect(vault_credential.name).to eq("hello_vault_cred")
 
     # machine_credential
     machine_credential = expected_configuration_script.authentications.find_by(
-      :type => manager_class::MachineCredential
+      :type => manager_class::MachineCredential.name
     )
     expect(machine_credential).to have_attributes(
       :name   => "hello_machine_cred",
@@ -171,7 +171,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
 
     # network_credential
     network_credential = expected_configuration_script.authentications.find_by(
-      :type => manager_class::NetworkCredential
+      :type => manager_class::NetworkCredential.name
     )
     expect(network_credential).to have_attributes(
       :name   => "hello_network_cred",
@@ -180,7 +180,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(network_credential.options.keys).to match_array([:authorize, :authorize_password, :ssh_key_data, :ssh_key_unlock])
 
     cloud_credential = expected_configuration_script.authentications.find_by(
-      :type => manager_class::AmazonCredential
+      :type => manager_class::AmazonCredential.name
     )
     expect(cloud_credential).to have_attributes(
       :name   => "hello_aws_cred",
