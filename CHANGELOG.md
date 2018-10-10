@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 96 ending 2018-10-08
+
+### Fixed
+- find_by 'type' is a string not a class [(#130)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/130)
+Decrypt extra_vars before sending over to tower gem. [(#127)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/127)
+
 ## Unreleased as of Sprint 94 ending 2018-09-10
 
 ### Fixed
