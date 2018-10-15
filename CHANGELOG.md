@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - AnsibleTowerClient::Api.new now requires a version as of v0.16.0 [(#105)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/105)
 - Missing files killing embedded refresh [(#97)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/97)
 - Provider destroy not to destroy dependent manager automatically [(#49)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/49)
+- Decrypt extra_vars before sending over to tower gem. [(#127)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/127)
 
 ### Removed
 - Removing old InventoryCollection definitions [(#104)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/104)
