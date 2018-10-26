@@ -5,6 +5,20 @@ shared_examples_for "ansible credential" do
   let(:atc)           { double("AnsibleTowerClient::Connection", :api => api) }
   let(:api)           { double("AnsibleTowerClient::Api", :credentials => credentials) }
 
+  context "Tower 3.3 needs pk as integer" do
+    let(:machine_credential) { FactoryGirl.create(:ansible_machine_credential, :manager_ref => '1', :resource => manager) }
+    it "native_ref returns integer" do
+      expect(machine_credential.manager_ref).to eq('1')
+      expect(machine_credential.native_ref).to eq(1)
+    end
+
+    it "native_ref blows up for nil manager_ref" do
+      machine_credential.manager_ref = nil
+      expect(machine_credential.manager_ref).to be_nil
+      expect{ machine_credential.native_ref }.to raise_error(TypeError)
+    end
+  end
+
   context "Create through API" do
     let(:credentials)     { double("AnsibleTowerClient::Collection", :create! => credential) }
     let(:credential)      { AnsibleTowerClient::Credential.new(nil, credential_json) }
