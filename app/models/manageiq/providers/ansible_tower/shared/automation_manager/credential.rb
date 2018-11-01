@@ -30,7 +30,11 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Credential
   end
 
   def provider_object(connection = nil)
-    (connection || connection_source.connect).api.credentials.find(manager_ref)
+    (connection || connection_source.connect).api.credentials.find(native_ref)
+  end
+
+  def native_ref
+    Integer(manager_ref)
   end
 
   COMMON_ATTRIBUTES = {}.freeze
