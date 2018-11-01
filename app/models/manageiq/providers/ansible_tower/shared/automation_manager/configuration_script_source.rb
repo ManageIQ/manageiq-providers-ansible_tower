@@ -7,7 +7,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Configurati
     def provider_params(params)
       if params.keys.include?(:authentication_id)
         authentication_id = params.delete(:authentication_id)
-        params[:credential] = authentication_id ? Authentication.find(authentication_id).manager_ref : nil
+        params[:credential] = authentication_id ? Authentication.find(authentication_id).native_ref : nil
       end
       params
     end
