@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Gaprindashvili-6
+
+### Fixed
+- Deal with ansible not having a username [(#123)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/123)
+
 ## Gaprindashvili-5
 
 ### Fixed
