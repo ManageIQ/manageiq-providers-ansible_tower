@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Hammer Beta-1
+## Hammer RC-1
+
+### Fixed
+- Credential.manager_ref need to be an integer for Tower 3.3 [(#134)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/134)
+
+## Hammer Beta-1 - Released 2018-10-12
 
 ### Added
 - ConfigurationWorkflow only exists in under AnsibleTower::AutomationMa… [(#112)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/112)
