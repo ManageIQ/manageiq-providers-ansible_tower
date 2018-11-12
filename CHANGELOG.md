@@ -5,16 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 98 ending 2018-11-05
+
+### Fixed
+- Credential.manager_ref need to be an integer for Tower 3.3 [(#134)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/134)
+
+## Gaprindashvili-6 - Released 2018-11-02
+
+### Fixed
+- Deal with ansible not having a username [(#123)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/123)
+
 ## Unreleased as of Sprint 96 ending 2018-10-08
 
 ### Fixed
 - find_by 'type' is a string not a class [(#130)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/130)
 Decrypt extra_vars before sending over to tower gem. [(#127)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/127)
-
-## Unreleased as of Sprint 94 ending 2018-09-10
-
-### Fixed
-- Deal with ansible not having a username [(#123)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/123)
 
 ## Gaprindashvili-5 - Released 2018-09-07
 
