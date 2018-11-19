@@ -7,11 +7,11 @@
   spec_test_org:
     :id: 89
   hello_inventory:
-    :id: 109
+    :id: 111
   hello_vm:
-    :id: 110
+    :id: 111
   hello_repo:
-    :id: 399
+    :id: 415
     :status: successful
     :last_updated: 2018-07-23 15:51:03.037003000 Z
     :playbooks:
@@ -77,16 +77,16 @@
     - wordpress-nginx/site.yml
     - wordpress-nginx_rhel7/site.yml
   hello_template:
-    :id: 400
+    :id: 416
   hello_template_with_survey:
-    :id: 401
+    :id: 417
   nonexistent_repo:
-    :id: 892
+    :id: 420
 :total_counts:
-  :job_templates: 10
-  :workflow_job_templates: 11
-  :projects: 14
+  :job_templates: 18
+  :workflow_job_templates: 12
+  :projects: 16
   :hosts: 6
-  :inventories: 6
-  :credentials: 17
-  :playbooks: 214
+  :inventories: 7
+  :credentials: 21
+  :playbooks: 308

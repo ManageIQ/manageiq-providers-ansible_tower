@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:39 GMT
+      - Mon, 19 Nov 2018 23:12:22 GMT
       Content-Type:
       - text/html
       Content-Length:
@@ -41,7 +41,7 @@ http_interactions:
       string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
         bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/1.12.2</center>\r\n</body>\r\n</html>\r\n"
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:37 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:28 GMT
 - request:
     method: get
     uri: https://example.com/api/v1/config/
@@ -65,7 +65,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:40 GMT
+      - Mon, 19 Nov 2018 23:12:23 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -73,9 +73,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
-      - 0.713s
+      - 0.655s
       X-Api-Total-Time:
-      - 0.721s
+      - 0.663s
       Allow:
       - GET, POST, DELETE, HEAD, OPTIONS
       Content-Language:
@@ -91,12 +91,12 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJldWxhIjoiQU5TSUJMRSBUT1dFUiBCWSBSRUQgSEFUIEVORCBVU0VSIExJQ0VOU0UgQUdSRUVNRU5UXG5cblRoaXMgZW5kIHVzZXIgbGljZW5zZSBhZ3JlZW1lbnQgKOKAnEVVTEHigJ0pIGdvdmVybnMgdGhlIHVzZSBvZiB0aGUgQW5zaWJsZSBUb3dlciBzb2Z0d2FyZSBhbmQgYW55IHJlbGF0ZWQgdXBkYXRlcywgdXBncmFkZXMsIHZlcnNpb25zLCBhcHBlYXJhbmNlLCBzdHJ1Y3R1cmUgYW5kIG9yZ2FuaXphdGlvbiAodGhlIOKAnEFuc2libGUgVG93ZXIgU29mdHdhcmXigJ0pLCByZWdhcmRsZXNzIG9mIHRoZSBkZWxpdmVyeSBtZWNoYW5pc20uICBcblxuMS4gIExpY2Vuc2UgR3JhbnQuICBTdWJqZWN0IHRvIHRoZSB0ZXJtcyBvZiB0aGlzIEVVTEEsIFJlZCBIYXQsIEluYy4gYW5kIGl0cyBhZmZpbGlhdGVzICjigJxSZWQgSGF04oCdKSBncmFudCB0byB5b3UgKOKAnFlvdeKAnSkgYSBub24tdHJhbnNmZXJhYmxlLCBub24tZXhjbHVzaXZlLCB3b3JsZHdpZGUsIG5vbi1zdWJsaWNlbnNhYmxlLCBsaW1pdGVkLCByZXZvY2FibGUgbGljZW5zZSB0byB1c2UgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgZm9yIHRoZSB0ZXJtIG9mIHRoZSBhc3NvY2lhdGVkIFJlZCBIYXQgU29mdHdhcmUgU3Vic2NyaXB0aW9uKHMpIGFuZCBpbiBhIHF1YW50aXR5IGVxdWFsIHRvIHRoZSBudW1iZXIgb2YgUmVkIEhhdCBTb2Z0d2FyZSBTdWJzY3JpcHRpb25zIHB1cmNoYXNlZCBmcm9tIFJlZCBIYXQgZm9yIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlICjigJxMaWNlbnNl4oCdKSwgZWFjaCBhcyBzZXQgZm9ydGggb24gdGhlIGFwcGxpY2FibGUgUmVkIEhhdCBvcmRlcmluZyBkb2N1bWVudC4gIFlvdSBhY3F1aXJlIG9ubHkgdGhlIHJpZ2h0IHRvIHVzZSB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBhbmQgZG8gbm90IGFjcXVpcmUgYW55IHJpZ2h0cyBvZiBvd25lcnNoaXAuIFJlZCBIYXQgcmVzZXJ2ZXMgYWxsIHJpZ2h0cyB0byB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBub3QgZXhwcmVzc2x5IGdyYW50ZWQgdG8gWW91LiAgVGhpcyBMaWNlbnNlIGdyYW50IHBlcnRhaW5zIHNvbGVseSB0byBZb3VyIHVzZSBvZiB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBhbmQgaXMgbm90IGludGVuZGVkIHRvIGxpbWl0IFlvdXIgcmlnaHRzIHVuZGVyLCBvciBncmFudCBZb3UgcmlnaHRzIHRoYXQgc3VwZXJzZWRlLCB0aGUgbGljZW5zZSB0ZXJtcyBvZiBhbnkgc29mdHdhcmUgcGFja2FnZXMgd2hpY2ggbWF5IGJlIG1hZGUgYXZhaWxhYmxlIHdpdGggdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgdGhhdCBhcmUgc3ViamVjdCB0byBhbiBvcGVuIHNvdXJjZSBzb2Z0d2FyZSBsaWNlbnNlLiAgXG4gXG4yLiAgSW50ZWxsZWN0dWFsIFByb3BlcnR5IFJpZ2h0cy4gIFRpdGxlIHRvIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIGFuZCBlYWNoIGNvbXBvbmVudCwgY29weSBhbmQgbW9kaWZpY2F0aW9uLCBpbmNsdWRpbmcgYWxsIGRlcml2YXRpdmUgd29ya3Mgd2hldGhlciBtYWRlIGJ5IFJlZCBIYXQsIFlvdSBvciBvbiBSZWQgSGF0J3MgYmVoYWxmLCBpbmNsdWRpbmcgdGhvc2UgbWFkZSBhdCBZb3VyIHN1Z2dlc3Rpb24gYW5kIGFsbCBhc3NvY2lhdGVkIGludGVsbGVjdHVhbCBwcm9wZXJ0eSByaWdodHMsIGFyZSBhbmQgc2hhbGwgcmVtYWluIHRoZSBzb2xlIGFuZCBleGNsdXNpdmUgcHJvcGVydHkgb2YgUmVkIEhhdCBhbmQvb3IgaXQgbGljZW5zb3JzLiAgVGhlIExpY2Vuc2UgZG9lcyBub3QgYXV0aG9yaXplIFlvdSAobm9yIG1heSBZb3UgYWxsb3cgYW55IHRoaXJkIHBhcnR5LCBzcGVjaWZpY2FsbHkgbm9uLWVtcGxveWVlcyBvZiBZb3VycykgdG86IChhKSBjb3B5LCBkaXN0cmlidXRlLCByZXByb2R1Y2UsIHVzZSBvciBhbGxvdyB0aGlyZCBwYXJ0eSBhY2Nlc3MgdG8gdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgZXhjZXB0IGFzIGV4cHJlc3NseSBhdXRob3JpemVkIGhlcmV1bmRlcjsgKGIpIGRlY29tcGlsZSwgZGlzYXNzZW1ibGUsIHJldmVyc2UgZW5naW5lZXIsIHRyYW5zbGF0ZSwgbW9kaWZ5LCBjb252ZXJ0IG9yIGFwcGx5IGFueSBwcm9jZWR1cmUgb3IgcHJvY2VzcyB0byB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBpbiBvcmRlciB0byBhc2NlcnRhaW4sIGRlcml2ZSwgYW5kL29yIGFwcHJvcHJpYXRlIGZvciBhbnkgcmVhc29uIG9yIHB1cnBvc2UsIGluY2x1ZGluZyB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBzb3VyY2UgY29kZSBvciBzb3VyY2UgbGlzdGluZ3Mgb3IgYW55IHRyYWRlIHNlY3JldCBpbmZvcm1hdGlvbiBvciBwcm9jZXNzIGNvbnRhaW5lZCBpbiB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSAoZXhjZXB0IGFzIHBlcm1pdHRlZCB1bmRlciBhcHBsaWNhYmxlIGxhdyk7IChjKSBleGVjdXRlIG9yIGluY29ycG9yYXRlIG90aGVyIHNvZnR3YXJlIChleGNlcHQgZm9yIGFwcHJvdmVkIHNvZnR3YXJlIGFzIGFwcGVhcnMgaW4gdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgZG9jdW1lbnRhdGlvbiBvciBzcGVjaWZpY2FsbHkgYXBwcm92ZWQgYnkgUmVkIEhhdCBpbiB3cml0aW5nKSBpbnRvIEFuc2libGUgVG93ZXIgU29mdHdhcmUsIG9yIGNyZWF0ZSBhIGRlcml2YXRpdmUgd29yayBvZiBhbnkgcGFydCBvZiB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZTsgKGQpIHJlbW92ZSBhbnkgdHJhZGVtYXJrcywgdHJhZGUgbmFtZXMgb3IgdGl0bGVzLCBjb3B5cmlnaHRzIGxlZ2VuZHMgb3IgYW55IG90aGVyIHByb3ByaWV0YXJ5IG1hcmtpbmcgb24gdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmU7IChlKSBkaXNjbG9zZSB0aGUgcmVzdWx0cyBvZiBhbnkgYmVuY2htYXJraW5nIG9mIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlICh3aGV0aGVyIG9yIG5vdCBvYnRhaW5lZCB3aXRoIFJlZCBIYXTigJlzIGFzc2lzdGFuY2UpIHRvIGFueSB0aGlyZCBwYXJ0eTsgKGYpIGF0dGVtcHQgdG8gY2lyY3VtdmVudCBhbnkgdXNlciBsaW1pdHMgb3Igb3RoZXIgbGljZW5zZSwgdGltaW5nIG9yIHVzZSByZXN0cmljdGlvbnMgdGhhdCBhcmUgYnVpbHQgaW50bywgZGVmaW5lZCBvciBhZ3JlZWQgdXBvbiwgcmVnYXJkaW5nIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlLiBZb3UgYXJlIGhlcmVieSBub3RpZmllZCB0aGF0IHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIG1heSBjb250YWluIHRpbWUtb3V0IGRldmljZXMsIGNvdW50ZXIgZGV2aWNlcywgYW5kL29yIG90aGVyIGRldmljZXMgaW50ZW5kZWQgdG8gZW5zdXJlIHRoZSBsaW1pdHMgb2YgdGhlIExpY2Vuc2Ugd2lsbCBub3QgYmUgZXhjZWVkZWQgKOKAnExpbWl0aW5nIERldmljZXPigJ0pLiAgSWYgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgY29udGFpbnMgTGltaXRpbmcgRGV2aWNlcywgUmVkIEhhdCB3aWxsIHByb3ZpZGUgWW91IG1hdGVyaWFscyBuZWNlc3NhcnkgdG8gdXNlIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIHRvIHRoZSBleHRlbnQgcGVybWl0dGVkLiAgWW91IG1heSBub3QgdGFtcGVyIHdpdGggb3Igb3RoZXJ3aXNlIHRha2UgYW55IGFjdGlvbiB0byBkZWZlYXQgb3IgY2lyY3VtdmVudCBhIExpbWl0aW5nIERldmljZSBvciBvdGhlciBjb250cm9sIG1lYXN1cmUsIGluY2x1ZGluZyBidXQgbm90IGxpbWl0ZWQgdG8sIHJlc2V0dGluZyB0aGUgdW5pdCBhbW91bnQgb3IgdXNpbmcgZmFsc2UgaG9zdCBpZGVudGlmaWNhdGlvbiBudW1iZXIgZm9yIHRoZSBwdXJwb3NlIG9mIGV4dGVuZGluZyBhbnkgdGVybSBvZiB0aGUgTGljZW5zZS4gXG5cbjMuICBFdmFsdWF0aW9uIExpY2Vuc2VzLiBVbmxlc3MgWW91IGhhdmUgcHVyY2hhc2VkIEFuc2libGUgVG93ZXIgU29mdHdhcmUgU3Vic2NyaXB0aW9ucyBmcm9tIFJlZCBIYXQgb3IgYW4gYXV0aG9yaXplZCByZXNlbGxlciB1bmRlciB0aGUgdGVybXMgb2YgYSBjb21tZXJjaWFsIGFncmVlbWVudCB3aXRoIFJlZCBIYXQsIGFsbCB1c2Ugb2YgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgc2hhbGwgYmUgbGltaXRlZCB0byB0ZXN0aW5nIHB1cnBvc2VzIGFuZCBub3QgZm9yIHByb2R1Y3Rpb24gdXNlICjigJxFdmFsdWF0aW9u4oCdKS4gVW5sZXNzIG90aGVyd2lzZSBhZ3JlZWQgYnkgUmVkIEhhdCwgRXZhbHVhdGlvbiBvZiB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBzaGFsbCBiZSBsaW1pdGVkIHRvIGFuIGV2YWx1YXRpb24gZW52aXJvbm1lbnQgYW5kIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIHNoYWxsIG5vdCBiZSB1c2VkIHRvIG1hbmFnZSBhbnkgc3lzdGVtcyBvciB2aXJ0dWFsIG1hY2hpbmVzIG9uIG5ldHdvcmtzIGJlaW5nIHVzZWQgaW4gdGhlIG9wZXJhdGlvbiBvZiBZb3VyIGJ1c2luZXNzIG9yIGFueSBvdGhlciBub24tZXZhbHVhdGlvbiBwdXJwb3NlLiAgVW5sZXNzIG90aGVyd2lzZSBhZ3JlZWQgYnkgUmVkIEhhdCwgWW91IHNoYWxsIGxpbWl0IGFsbCBFdmFsdWF0aW9uIHVzZSB0byBhIHNpbmdsZSAzMCBkYXkgZXZhbHVhdGlvbiBwZXJpb2QgYW5kIHNoYWxsIG5vdCBkb3dubG9hZCBvciBvdGhlcndpc2Ugb2J0YWluIGFkZGl0aW9uYWwgY29waWVzIG9mIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIG9yIGxpY2Vuc2Uga2V5cyBmb3IgRXZhbHVhdGlvbi5cblxuNC4gIExpbWl0ZWQgV2FycmFudHkuICBFeGNlcHQgYXMgc3BlY2lmaWNhbGx5IHN0YXRlZCBpbiB0aGlzIFNlY3Rpb24gNCwgdG8gdGhlIG1heGltdW0gZXh0ZW50IHBlcm1pdHRlZCB1bmRlciBhcHBsaWNhYmxlIGxhdywgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgYW5kIHRoZSBjb21wb25lbnRzIGFyZSBwcm92aWRlZCBhbmQgbGljZW5zZWQg4oCcYXMgaXPigJ0gd2l0aG91dCB3YXJyYW50eSBvZiBhbnkga2luZCwgZXhwcmVzc2VkIG9yIGltcGxpZWQsIGluY2x1ZGluZyB0aGUgaW1wbGllZCB3YXJyYW50aWVzIG9mIG1lcmNoYW50YWJpbGl0eSwgbm9uLWluZnJpbmdlbWVudCBvciBmaXRuZXNzIGZvciBhIHBhcnRpY3VsYXIgcHVycG9zZS4gIFJlZCBIYXQgd2FycmFudHMgc29sZWx5IHRvIFlvdSB0aGF0IHRoZSBtZWRpYSBvbiB3aGljaCB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBtYXkgYmUgZnVybmlzaGVkIHdpbGwgYmUgZnJlZSBmcm9tIGRlZmVjdHMgaW4gbWF0ZXJpYWxzIGFuZCBtYW51ZmFjdHVyZSB1bmRlciBub3JtYWwgdXNlIGZvciBhIHBlcmlvZCBvZiB0aGlydHkgKDMwKSBkYXlzIGZyb20gdGhlIGRhdGUgb2YgZGVsaXZlcnkgdG8gWW91LiAgUmVkIEhhdCBkb2VzIG5vdCB3YXJyYW50IHRoYXQgdGhlIGZ1bmN0aW9ucyBjb250YWluZWQgaW4gdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgd2lsbCBtZWV0IFlvdXIgcmVxdWlyZW1lbnRzIG9yIHRoYXQgdGhlIG9wZXJhdGlvbiBvZiB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSB3aWxsIGJlIGVudGlyZWx5IGVycm9yIGZyZWUsIGFwcGVhciBwcmVjaXNlbHkgYXMgZGVzY3JpYmVkIGluIHRoZSBhY2NvbXBhbnlpbmcgZG9jdW1lbnRhdGlvbiwgb3IgY29tcGx5IHdpdGggcmVndWxhdG9yeSByZXF1aXJlbWVudHMuIFxuXG41LiAgTGltaXRhdGlvbiBvZiBSZW1lZGllcyBhbmQgTGlhYmlsaXR5LiBUbyB0aGUgbWF4aW11bSBleHRlbnQgcGVybWl0dGVkIGJ5IGFwcGxpY2FibGUgbGF3LCBZb3VyIGV4Y2x1c2l2ZSByZW1lZHkgdW5kZXIgdGhpcyBFVUxBIGlzIHRvIHJldHVybiBhbnkgZGVmZWN0aXZlIG1lZGlhIHdpdGhpbiB0aGlydHkgKDMwKSBkYXlzIG9mIGRlbGl2ZXJ5IGFsb25nIHdpdGggYSBjb3B5IG9mIFlvdXIgcGF5bWVudCByZWNlaXB0IGFuZCBSZWQgSGF0LCBhdCBpdHMgb3B0aW9uLCB3aWxsIHJlcGxhY2UgaXQgb3IgcmVmdW5kIHRoZSBtb25leSBwYWlkIGJ5IFlvdSBmb3IgdGhlIG1lZGlhLiAgVG8gdGhlIG1heGltdW0gZXh0ZW50IHBlcm1pdHRlZCB1bmRlciBhcHBsaWNhYmxlIGxhdywgbmVpdGhlciBSZWQgSGF0IG5vciBhbnkgUmVkIEhhdCBhdXRob3JpemVkIGRpc3RyaWJ1dG9yIHdpbGwgYmUgbGlhYmxlIHRvIFlvdSBmb3IgYW55IGluY2lkZW50YWwgb3IgY29uc2VxdWVudGlhbCBkYW1hZ2VzLCBpbmNsdWRpbmcgbG9zdCBwcm9maXRzIG9yIGxvc3Qgc2F2aW5ncyBhcmlzaW5nIG91dCBvZiB0aGUgdXNlIG9yIGluYWJpbGl0eSB0byB1c2UgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgb3IgYW55IGNvbXBvbmVudCwgZXZlbiBpZiBSZWQgSGF0IG9yIHRoZSBhdXRob3JpemVkIGRpc3RyaWJ1dG9yIGhhcyBiZWVuIGFkdmlzZWQgb2YgdGhlIHBvc3NpYmlsaXR5IG9mIHN1Y2ggZGFtYWdlcy4gIEluIG5vIGV2ZW50IHNoYWxsIFJlZCBIYXQncyBsaWFiaWxpdHkgb3IgYW4gYXV0aG9yaXplZCBkaXN0cmlidXRvcuKAmXMgbGlhYmlsaXR5IGV4Y2VlZCB0aGUgYW1vdW50IHRoYXQgWW91IHBhaWQgdG8gUmVkIEhhdCBmb3IgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgZHVyaW5nIHRoZSB0d2VsdmUgbW9udGhzIHByZWNlZGluZyB0aGUgZmlyc3QgZXZlbnQgZ2l2aW5nIHJpc2UgdG8gbGlhYmlsaXR5LlxuXG42LiAgRXhwb3J0IENvbnRyb2wuICBJbiBhY2NvcmRhbmNlIHdpdGggdGhlIGxhd3Mgb2YgdGhlIFVuaXRlZCBTdGF0ZXMgYW5kIG90aGVyIGNvdW50cmllcywgWW91IHJlcHJlc2VudCBhbmQgd2FycmFudCB0aGF0IFlvdTogKGEpIHVuZGVyc3RhbmQgdGhhdCB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBhbmQgaXRzIGNvbXBvbmVudHMgbWF5IGJlIHN1YmplY3QgdG8gZXhwb3J0IGNvbnRyb2xzIHVuZGVyIHRoZSBVLlMuIENvbW1lcmNlIERlcGFydG1lbnTigJlzIEV4cG9ydCBBZG1pbmlzdHJhdGlvbiBSZWd1bGF0aW9ucyAo4oCcRUFS4oCdKTsgKGIpIGFyZSBub3QgbG9jYXRlZCBpbiBhbnkgY291bnRyeSBsaXN0ZWQgaW4gQ291bnRyeSBHcm91cCBFOjEgaW4gU3VwcGxlbWVudCBOby4gMSB0byBwYXJ0IDc0MCBvZiB0aGUgRUFSOyAoYykgd2lsbCBub3QgZXhwb3J0LCByZS1leHBvcnQsIG9yIHRyYW5zZmVyIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIHRvIGFueSBwcm9oaWJpdGVkIGRlc3RpbmF0aW9uIG9yIHRvIGFueSBlbmQgdXNlciB3aG8gaGFzIGJlZW4gcHJvaGliaXRlZCBmcm9tIHBhcnRpY2lwYXRpbmcgaW4gVVMgZXhwb3J0IHRyYW5zYWN0aW9ucyBieSBhbnkgZmVkZXJhbCBhZ2VuY3kgb2YgdGhlIFVTIGdvdmVybm1lbnQ7ICAoZCkgd2lsbCBub3QgdXNlIG9yIHRyYW5zZmVyIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIGZvciB1c2UgaW4gY29ubmVjdGlvbiB3aXRoIHRoZSBkZXNpZ24sIGRldmVsb3BtZW50IG9yIHByb2R1Y3Rpb24gb2YgbnVjbGVhciwgY2hlbWljYWwgb3IgYmlvbG9naWNhbCB3ZWFwb25zLCBvciByb2NrZXQgc3lzdGVtcywgc3BhY2UgbGF1bmNoIHZlaGljbGVzLCBvciBzb3VuZGluZyByb2NrZXRzIG9yIHVubWFubmVkIGFpciB2ZWhpY2xlIHN5c3RlbXM7IChlKSB1bmRlcnN0YW5kIGFuZCBhZ3JlZSB0aGF0IGlmIHlvdSBhcmUgaW4gdGhlIFVuaXRlZCBTdGF0ZXMgYW5kIHlvdSBleHBvcnQgb3IgdHJhbnNmZXIgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgdG8gZWxpZ2libGUgZW5kIHVzZXJzLCB5b3Ugd2lsbCwgdG8gdGhlIGV4dGVudCByZXF1aXJlZCBieSBFQVIgU2VjdGlvbiA3NDAuMTcgb2J0YWluIGEgbGljZW5zZSBmb3Igc3VjaCBleHBvcnQgb3IgdHJhbnNmZXIgYW5kIHdpbGwgc3VibWl0IHNlbWktYW5udWFsIHJlcG9ydHMgdG8gdGhlIENvbW1lcmNlIERlcGFydG1lbnTigJlzIEJ1cmVhdSBvZiBJbmR1c3RyeSBhbmQgU2VjdXJpdHksIHdoaWNoIGluY2x1ZGUgdGhlIG5hbWUgYW5kIGFkZHJlc3MgKGluY2x1ZGluZyBjb3VudHJ5KSBvZiBlYWNoIHRyYW5zZmVyZWU7IGFuZCAoZikgdW5kZXJzdGFuZCB0aGF0IGNvdW50cmllcyBpbmNsdWRpbmcgdGhlIFVuaXRlZCBTdGF0ZXMgbWF5IHJlc3RyaWN0IHRoZSBpbXBvcnQsIHVzZSwgb3IgZXhwb3J0IG9mIGVuY3J5cHRpb24gcHJvZHVjdHMgKHdoaWNoIG1heSBpbmNsdWRlIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlKSBhbmQgYWdyZWUgdGhhdCB5b3Ugc2hhbGwgYmUgc29sZWx5IHJlc3BvbnNpYmxlIGZvciBjb21wbGlhbmNlIHdpdGggYW55IHN1Y2ggaW1wb3J0LCB1c2UsIG9yIGV4cG9ydCByZXN0cmljdGlvbnMuXG5cbjcuICBHZW5lcmFsLiAgSWYgYW55IHByb3Zpc2lvbiBvZiB0aGlzIEVVTEEgaXMgaGVsZCB0byBiZSB1bmVuZm9yY2VhYmxlLCB0aGF0IHNoYWxsIG5vdCBhZmZlY3QgdGhlIGVuZm9yY2VhYmlsaXR5IG9mIHRoZSByZW1haW5pbmcgcHJvdmlzaW9ucy4gIFRoaXMgYWdyZWVtZW50IHNoYWxsIGJlIGdvdmVybmVkIGJ5IHRoZSBsYXdzIG9mIHRoZSBTdGF0ZSBvZiBOZXcgWW9yayBhbmQgb2YgdGhlIFVuaXRlZCBTdGF0ZXMsIHdpdGhvdXQgcmVnYXJkIHRvIGFueSBjb25mbGljdCBvZiBsYXdzIHByb3Zpc2lvbnMuIFRoZSByaWdodHMgYW5kIG9ibGlnYXRpb25zIG9mIHRoZSBwYXJ0aWVzIHRvIHRoaXMgRVVMQSBzaGFsbCBub3QgYmUgZ292ZXJuZWQgYnkgdGhlIFVuaXRlZCBOYXRpb25zIENvbnZlbnRpb24gb24gdGhlIEludGVybmF0aW9uYWwgU2FsZSBvZiBHb29kcy4gXG5cbkNvcHlyaWdodCDCqSAyMDE1IFJlZCBIYXQsIEluYy4gIEFsbCByaWdodHMgcmVzZXJ2ZWQuICBcIlJlZCBIYXRcIiBhbmQg4oCcQW5zaWJsZSBUb3dlcuKAnSBhcmUgcmVnaXN0ZXJlZCB0cmFkZW1hcmtzIG9mIFJlZCBIYXQsIEluYy4gIEFsbCBvdGhlciB0cmFkZW1hcmtzIGFyZSB0aGUgcHJvcGVydHkgb2YgdGhlaXIgcmVzcGVjdGl2ZSBvd25lcnMuXG4iLCJsaWNlbnNlX2luZm8iOnsiZGVwbG95bWVudF9pZCI6IjFiZTFiNWY1MTJlZjRiN2FjZjA1MDFkNGRjODZiODBjODlkYTAyNTUiLCJzdWJzY3JpcHRpb25fbmFtZSI6IkFuc2libGUgVG93ZXIgYnkgUmVkIEhhdCAoNTAgTWFuYWdlZCBOb2RlcyksIFJIVCBJbnRlcm5hbCIsInZhbGlkX2tleSI6dHJ1ZSwiZmVhdHVyZXMiOnsic3VydmV5cyI6dHJ1ZSwibXVsdGlwbGVfb3JnYW5pemF0aW9ucyI6dHJ1ZSwid29ya2Zsb3dzIjp0cnVlLCJzeXN0ZW1fdHJhY2tpbmciOnRydWUsImVudGVycHJpc2VfYXV0aCI6dHJ1ZSwicmVicmFuZGluZyI6dHJ1ZSwiYWN0aXZpdHlfc3RyZWFtcyI6dHJ1ZSwibGRhcCI6dHJ1ZSwiaGEiOnRydWV9LCJkYXRlX2V4cGlyZWQiOmZhbHNlLCJhdmFpbGFibGVfaW5zdGFuY2VzIjo1MCwidGltZV9yZW1haW5pbmciOjEzNDk5MzAxLCJob3N0bmFtZSI6ImNhNzBiNTU3ZmEzZjRjNzQ4ZDA5MWJlMjE5ZWNjNjBlIiwiZnJlZV9pbnN0YW5jZXMiOjQ1LCJpbnN0YW5jZV9jb3VudCI6NTAsInRyaWFsIjp0cnVlLCJjb21wbGlhbnQiOnRydWUsImdyYWNlX3BlcmlvZF9yZW1haW5pbmciOjEzNDk5MzAxLCJjb250YWN0X2VtYWlsIjoic21pdHR5QHJlZGhhdC5jb20iLCJjb21wYW55X25hbWUiOiJSZWQgSGF0IiwiZGF0ZV93YXJuaW5nIjpmYWxzZSwibGljZW5zZV90eXBlIjoiZW50ZXJwcmlzZSIsImxpY2Vuc2Vfa2V5IjoiM2IwNmM4YTA4MTM0NGE2NWRhMzgxYzQ4OWQ3YTMzODUxMGQyOTNmYTkzY2M0N2UxYjk2M2Q0ZjEwMjY1MjJhNSIsImxpY2Vuc2VfZGF0ZSI6MTU0NzMxOTQyMCwiY29udGFjdF9uYW1lIjoiSm9zZXBoIFNtaXRoIiwiY3VycmVudF9pbnN0YW5jZXMiOjV9LCJhbmFseXRpY3Nfc3RhdHVzIjoiZGV0YWlsZWQiLCJ2ZXJzaW9uIjoiMy4yLjIiLCJwcm9qZWN0X2Jhc2VfZGlyIjoiL3Zhci9saWIvYXd4L3Byb2plY3RzIiwidGltZV96b25lIjpudWxsLCJhbnNpYmxlX3ZlcnNpb24iOiIyLjQuMS4wIiwicHJvamVjdF9sb2NhbF9wYXRocyI6W119
+        eyJldWxhIjoiQU5TSUJMRSBUT1dFUiBCWSBSRUQgSEFUIEVORCBVU0VSIExJQ0VOU0UgQUdSRUVNRU5UXG5cblRoaXMgZW5kIHVzZXIgbGljZW5zZSBhZ3JlZW1lbnQgKOKAnEVVTEHigJ0pIGdvdmVybnMgdGhlIHVzZSBvZiB0aGUgQW5zaWJsZSBUb3dlciBzb2Z0d2FyZSBhbmQgYW55IHJlbGF0ZWQgdXBkYXRlcywgdXBncmFkZXMsIHZlcnNpb25zLCBhcHBlYXJhbmNlLCBzdHJ1Y3R1cmUgYW5kIG9yZ2FuaXphdGlvbiAodGhlIOKAnEFuc2libGUgVG93ZXIgU29mdHdhcmXigJ0pLCByZWdhcmRsZXNzIG9mIHRoZSBkZWxpdmVyeSBtZWNoYW5pc20uICBcblxuMS4gIExpY2Vuc2UgR3JhbnQuICBTdWJqZWN0IHRvIHRoZSB0ZXJtcyBvZiB0aGlzIEVVTEEsIFJlZCBIYXQsIEluYy4gYW5kIGl0cyBhZmZpbGlhdGVzICjigJxSZWQgSGF04oCdKSBncmFudCB0byB5b3UgKOKAnFlvdeKAnSkgYSBub24tdHJhbnNmZXJhYmxlLCBub24tZXhjbHVzaXZlLCB3b3JsZHdpZGUsIG5vbi1zdWJsaWNlbnNhYmxlLCBsaW1pdGVkLCByZXZvY2FibGUgbGljZW5zZSB0byB1c2UgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgZm9yIHRoZSB0ZXJtIG9mIHRoZSBhc3NvY2lhdGVkIFJlZCBIYXQgU29mdHdhcmUgU3Vic2NyaXB0aW9uKHMpIGFuZCBpbiBhIHF1YW50aXR5IGVxdWFsIHRvIHRoZSBudW1iZXIgb2YgUmVkIEhhdCBTb2Z0d2FyZSBTdWJzY3JpcHRpb25zIHB1cmNoYXNlZCBmcm9tIFJlZCBIYXQgZm9yIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlICjigJxMaWNlbnNl4oCdKSwgZWFjaCBhcyBzZXQgZm9ydGggb24gdGhlIGFwcGxpY2FibGUgUmVkIEhhdCBvcmRlcmluZyBkb2N1bWVudC4gIFlvdSBhY3F1aXJlIG9ubHkgdGhlIHJpZ2h0IHRvIHVzZSB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBhbmQgZG8gbm90IGFjcXVpcmUgYW55IHJpZ2h0cyBvZiBvd25lcnNoaXAuIFJlZCBIYXQgcmVzZXJ2ZXMgYWxsIHJpZ2h0cyB0byB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBub3QgZXhwcmVzc2x5IGdyYW50ZWQgdG8gWW91LiAgVGhpcyBMaWNlbnNlIGdyYW50IHBlcnRhaW5zIHNvbGVseSB0byBZb3VyIHVzZSBvZiB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBhbmQgaXMgbm90IGludGVuZGVkIHRvIGxpbWl0IFlvdXIgcmlnaHRzIHVuZGVyLCBvciBncmFudCBZb3UgcmlnaHRzIHRoYXQgc3VwZXJzZWRlLCB0aGUgbGljZW5zZSB0ZXJtcyBvZiBhbnkgc29mdHdhcmUgcGFja2FnZXMgd2hpY2ggbWF5IGJlIG1hZGUgYXZhaWxhYmxlIHdpdGggdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgdGhhdCBhcmUgc3ViamVjdCB0byBhbiBvcGVuIHNvdXJjZSBzb2Z0d2FyZSBsaWNlbnNlLiAgXG4gXG4yLiAgSW50ZWxsZWN0dWFsIFByb3BlcnR5IFJpZ2h0cy4gIFRpdGxlIHRvIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIGFuZCBlYWNoIGNvbXBvbmVudCwgY29weSBhbmQgbW9kaWZpY2F0aW9uLCBpbmNsdWRpbmcgYWxsIGRlcml2YXRpdmUgd29ya3Mgd2hldGhlciBtYWRlIGJ5IFJlZCBIYXQsIFlvdSBvciBvbiBSZWQgSGF0J3MgYmVoYWxmLCBpbmNsdWRpbmcgdGhvc2UgbWFkZSBhdCBZb3VyIHN1Z2dlc3Rpb24gYW5kIGFsbCBhc3NvY2lhdGVkIGludGVsbGVjdHVhbCBwcm9wZXJ0eSByaWdodHMsIGFyZSBhbmQgc2hhbGwgcmVtYWluIHRoZSBzb2xlIGFuZCBleGNsdXNpdmUgcHJvcGVydHkgb2YgUmVkIEhhdCBhbmQvb3IgaXQgbGljZW5zb3JzLiAgVGhlIExpY2Vuc2UgZG9lcyBub3QgYXV0aG9yaXplIFlvdSAobm9yIG1heSBZb3UgYWxsb3cgYW55IHRoaXJkIHBhcnR5LCBzcGVjaWZpY2FsbHkgbm9uLWVtcGxveWVlcyBvZiBZb3VycykgdG86IChhKSBjb3B5LCBkaXN0cmlidXRlLCByZXByb2R1Y2UsIHVzZSBvciBhbGxvdyB0aGlyZCBwYXJ0eSBhY2Nlc3MgdG8gdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgZXhjZXB0IGFzIGV4cHJlc3NseSBhdXRob3JpemVkIGhlcmV1bmRlcjsgKGIpIGRlY29tcGlsZSwgZGlzYXNzZW1ibGUsIHJldmVyc2UgZW5naW5lZXIsIHRyYW5zbGF0ZSwgbW9kaWZ5LCBjb252ZXJ0IG9yIGFwcGx5IGFueSBwcm9jZWR1cmUgb3IgcHJvY2VzcyB0byB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBpbiBvcmRlciB0byBhc2NlcnRhaW4sIGRlcml2ZSwgYW5kL29yIGFwcHJvcHJpYXRlIGZvciBhbnkgcmVhc29uIG9yIHB1cnBvc2UsIGluY2x1ZGluZyB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBzb3VyY2UgY29kZSBvciBzb3VyY2UgbGlzdGluZ3Mgb3IgYW55IHRyYWRlIHNlY3JldCBpbmZvcm1hdGlvbiBvciBwcm9jZXNzIGNvbnRhaW5lZCBpbiB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSAoZXhjZXB0IGFzIHBlcm1pdHRlZCB1bmRlciBhcHBsaWNhYmxlIGxhdyk7IChjKSBleGVjdXRlIG9yIGluY29ycG9yYXRlIG90aGVyIHNvZnR3YXJlIChleGNlcHQgZm9yIGFwcHJvdmVkIHNvZnR3YXJlIGFzIGFwcGVhcnMgaW4gdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgZG9jdW1lbnRhdGlvbiBvciBzcGVjaWZpY2FsbHkgYXBwcm92ZWQgYnkgUmVkIEhhdCBpbiB3cml0aW5nKSBpbnRvIEFuc2libGUgVG93ZXIgU29mdHdhcmUsIG9yIGNyZWF0ZSBhIGRlcml2YXRpdmUgd29yayBvZiBhbnkgcGFydCBvZiB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZTsgKGQpIHJlbW92ZSBhbnkgdHJhZGVtYXJrcywgdHJhZGUgbmFtZXMgb3IgdGl0bGVzLCBjb3B5cmlnaHRzIGxlZ2VuZHMgb3IgYW55IG90aGVyIHByb3ByaWV0YXJ5IG1hcmtpbmcgb24gdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmU7IChlKSBkaXNjbG9zZSB0aGUgcmVzdWx0cyBvZiBhbnkgYmVuY2htYXJraW5nIG9mIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlICh3aGV0aGVyIG9yIG5vdCBvYnRhaW5lZCB3aXRoIFJlZCBIYXTigJlzIGFzc2lzdGFuY2UpIHRvIGFueSB0aGlyZCBwYXJ0eTsgKGYpIGF0dGVtcHQgdG8gY2lyY3VtdmVudCBhbnkgdXNlciBsaW1pdHMgb3Igb3RoZXIgbGljZW5zZSwgdGltaW5nIG9yIHVzZSByZXN0cmljdGlvbnMgdGhhdCBhcmUgYnVpbHQgaW50bywgZGVmaW5lZCBvciBhZ3JlZWQgdXBvbiwgcmVnYXJkaW5nIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlLiBZb3UgYXJlIGhlcmVieSBub3RpZmllZCB0aGF0IHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIG1heSBjb250YWluIHRpbWUtb3V0IGRldmljZXMsIGNvdW50ZXIgZGV2aWNlcywgYW5kL29yIG90aGVyIGRldmljZXMgaW50ZW5kZWQgdG8gZW5zdXJlIHRoZSBsaW1pdHMgb2YgdGhlIExpY2Vuc2Ugd2lsbCBub3QgYmUgZXhjZWVkZWQgKOKAnExpbWl0aW5nIERldmljZXPigJ0pLiAgSWYgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgY29udGFpbnMgTGltaXRpbmcgRGV2aWNlcywgUmVkIEhhdCB3aWxsIHByb3ZpZGUgWW91IG1hdGVyaWFscyBuZWNlc3NhcnkgdG8gdXNlIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIHRvIHRoZSBleHRlbnQgcGVybWl0dGVkLiAgWW91IG1heSBub3QgdGFtcGVyIHdpdGggb3Igb3RoZXJ3aXNlIHRha2UgYW55IGFjdGlvbiB0byBkZWZlYXQgb3IgY2lyY3VtdmVudCBhIExpbWl0aW5nIERldmljZSBvciBvdGhlciBjb250cm9sIG1lYXN1cmUsIGluY2x1ZGluZyBidXQgbm90IGxpbWl0ZWQgdG8sIHJlc2V0dGluZyB0aGUgdW5pdCBhbW91bnQgb3IgdXNpbmcgZmFsc2UgaG9zdCBpZGVudGlmaWNhdGlvbiBudW1iZXIgZm9yIHRoZSBwdXJwb3NlIG9mIGV4dGVuZGluZyBhbnkgdGVybSBvZiB0aGUgTGljZW5zZS4gXG5cbjMuICBFdmFsdWF0aW9uIExpY2Vuc2VzLiBVbmxlc3MgWW91IGhhdmUgcHVyY2hhc2VkIEFuc2libGUgVG93ZXIgU29mdHdhcmUgU3Vic2NyaXB0aW9ucyBmcm9tIFJlZCBIYXQgb3IgYW4gYXV0aG9yaXplZCByZXNlbGxlciB1bmRlciB0aGUgdGVybXMgb2YgYSBjb21tZXJjaWFsIGFncmVlbWVudCB3aXRoIFJlZCBIYXQsIGFsbCB1c2Ugb2YgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgc2hhbGwgYmUgbGltaXRlZCB0byB0ZXN0aW5nIHB1cnBvc2VzIGFuZCBub3QgZm9yIHByb2R1Y3Rpb24gdXNlICjigJxFdmFsdWF0aW9u4oCdKS4gVW5sZXNzIG90aGVyd2lzZSBhZ3JlZWQgYnkgUmVkIEhhdCwgRXZhbHVhdGlvbiBvZiB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBzaGFsbCBiZSBsaW1pdGVkIHRvIGFuIGV2YWx1YXRpb24gZW52aXJvbm1lbnQgYW5kIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIHNoYWxsIG5vdCBiZSB1c2VkIHRvIG1hbmFnZSBhbnkgc3lzdGVtcyBvciB2aXJ0dWFsIG1hY2hpbmVzIG9uIG5ldHdvcmtzIGJlaW5nIHVzZWQgaW4gdGhlIG9wZXJhdGlvbiBvZiBZb3VyIGJ1c2luZXNzIG9yIGFueSBvdGhlciBub24tZXZhbHVhdGlvbiBwdXJwb3NlLiAgVW5sZXNzIG90aGVyd2lzZSBhZ3JlZWQgYnkgUmVkIEhhdCwgWW91IHNoYWxsIGxpbWl0IGFsbCBFdmFsdWF0aW9uIHVzZSB0byBhIHNpbmdsZSAzMCBkYXkgZXZhbHVhdGlvbiBwZXJpb2QgYW5kIHNoYWxsIG5vdCBkb3dubG9hZCBvciBvdGhlcndpc2Ugb2J0YWluIGFkZGl0aW9uYWwgY29waWVzIG9mIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIG9yIGxpY2Vuc2Uga2V5cyBmb3IgRXZhbHVhdGlvbi5cblxuNC4gIExpbWl0ZWQgV2FycmFudHkuICBFeGNlcHQgYXMgc3BlY2lmaWNhbGx5IHN0YXRlZCBpbiB0aGlzIFNlY3Rpb24gNCwgdG8gdGhlIG1heGltdW0gZXh0ZW50IHBlcm1pdHRlZCB1bmRlciBhcHBsaWNhYmxlIGxhdywgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgYW5kIHRoZSBjb21wb25lbnRzIGFyZSBwcm92aWRlZCBhbmQgbGljZW5zZWQg4oCcYXMgaXPigJ0gd2l0aG91dCB3YXJyYW50eSBvZiBhbnkga2luZCwgZXhwcmVzc2VkIG9yIGltcGxpZWQsIGluY2x1ZGluZyB0aGUgaW1wbGllZCB3YXJyYW50aWVzIG9mIG1lcmNoYW50YWJpbGl0eSwgbm9uLWluZnJpbmdlbWVudCBvciBmaXRuZXNzIGZvciBhIHBhcnRpY3VsYXIgcHVycG9zZS4gIFJlZCBIYXQgd2FycmFudHMgc29sZWx5IHRvIFlvdSB0aGF0IHRoZSBtZWRpYSBvbiB3aGljaCB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBtYXkgYmUgZnVybmlzaGVkIHdpbGwgYmUgZnJlZSBmcm9tIGRlZmVjdHMgaW4gbWF0ZXJpYWxzIGFuZCBtYW51ZmFjdHVyZSB1bmRlciBub3JtYWwgdXNlIGZvciBhIHBlcmlvZCBvZiB0aGlydHkgKDMwKSBkYXlzIGZyb20gdGhlIGRhdGUgb2YgZGVsaXZlcnkgdG8gWW91LiAgUmVkIEhhdCBkb2VzIG5vdCB3YXJyYW50IHRoYXQgdGhlIGZ1bmN0aW9ucyBjb250YWluZWQgaW4gdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgd2lsbCBtZWV0IFlvdXIgcmVxdWlyZW1lbnRzIG9yIHRoYXQgdGhlIG9wZXJhdGlvbiBvZiB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSB3aWxsIGJlIGVudGlyZWx5IGVycm9yIGZyZWUsIGFwcGVhciBwcmVjaXNlbHkgYXMgZGVzY3JpYmVkIGluIHRoZSBhY2NvbXBhbnlpbmcgZG9jdW1lbnRhdGlvbiwgb3IgY29tcGx5IHdpdGggcmVndWxhdG9yeSByZXF1aXJlbWVudHMuIFxuXG41LiAgTGltaXRhdGlvbiBvZiBSZW1lZGllcyBhbmQgTGlhYmlsaXR5LiBUbyB0aGUgbWF4aW11bSBleHRlbnQgcGVybWl0dGVkIGJ5IGFwcGxpY2FibGUgbGF3LCBZb3VyIGV4Y2x1c2l2ZSByZW1lZHkgdW5kZXIgdGhpcyBFVUxBIGlzIHRvIHJldHVybiBhbnkgZGVmZWN0aXZlIG1lZGlhIHdpdGhpbiB0aGlydHkgKDMwKSBkYXlzIG9mIGRlbGl2ZXJ5IGFsb25nIHdpdGggYSBjb3B5IG9mIFlvdXIgcGF5bWVudCByZWNlaXB0IGFuZCBSZWQgSGF0LCBhdCBpdHMgb3B0aW9uLCB3aWxsIHJlcGxhY2UgaXQgb3IgcmVmdW5kIHRoZSBtb25leSBwYWlkIGJ5IFlvdSBmb3IgdGhlIG1lZGlhLiAgVG8gdGhlIG1heGltdW0gZXh0ZW50IHBlcm1pdHRlZCB1bmRlciBhcHBsaWNhYmxlIGxhdywgbmVpdGhlciBSZWQgSGF0IG5vciBhbnkgUmVkIEhhdCBhdXRob3JpemVkIGRpc3RyaWJ1dG9yIHdpbGwgYmUgbGlhYmxlIHRvIFlvdSBmb3IgYW55IGluY2lkZW50YWwgb3IgY29uc2VxdWVudGlhbCBkYW1hZ2VzLCBpbmNsdWRpbmcgbG9zdCBwcm9maXRzIG9yIGxvc3Qgc2F2aW5ncyBhcmlzaW5nIG91dCBvZiB0aGUgdXNlIG9yIGluYWJpbGl0eSB0byB1c2UgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgb3IgYW55IGNvbXBvbmVudCwgZXZlbiBpZiBSZWQgSGF0IG9yIHRoZSBhdXRob3JpemVkIGRpc3RyaWJ1dG9yIGhhcyBiZWVuIGFkdmlzZWQgb2YgdGhlIHBvc3NpYmlsaXR5IG9mIHN1Y2ggZGFtYWdlcy4gIEluIG5vIGV2ZW50IHNoYWxsIFJlZCBIYXQncyBsaWFiaWxpdHkgb3IgYW4gYXV0aG9yaXplZCBkaXN0cmlidXRvcuKAmXMgbGlhYmlsaXR5IGV4Y2VlZCB0aGUgYW1vdW50IHRoYXQgWW91IHBhaWQgdG8gUmVkIEhhdCBmb3IgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgZHVyaW5nIHRoZSB0d2VsdmUgbW9udGhzIHByZWNlZGluZyB0aGUgZmlyc3QgZXZlbnQgZ2l2aW5nIHJpc2UgdG8gbGlhYmlsaXR5LlxuXG42LiAgRXhwb3J0IENvbnRyb2wuICBJbiBhY2NvcmRhbmNlIHdpdGggdGhlIGxhd3Mgb2YgdGhlIFVuaXRlZCBTdGF0ZXMgYW5kIG90aGVyIGNvdW50cmllcywgWW91IHJlcHJlc2VudCBhbmQgd2FycmFudCB0aGF0IFlvdTogKGEpIHVuZGVyc3RhbmQgdGhhdCB0aGUgQW5zaWJsZSBUb3dlciBTb2Z0d2FyZSBhbmQgaXRzIGNvbXBvbmVudHMgbWF5IGJlIHN1YmplY3QgdG8gZXhwb3J0IGNvbnRyb2xzIHVuZGVyIHRoZSBVLlMuIENvbW1lcmNlIERlcGFydG1lbnTigJlzIEV4cG9ydCBBZG1pbmlzdHJhdGlvbiBSZWd1bGF0aW9ucyAo4oCcRUFS4oCdKTsgKGIpIGFyZSBub3QgbG9jYXRlZCBpbiBhbnkgY291bnRyeSBsaXN0ZWQgaW4gQ291bnRyeSBHcm91cCBFOjEgaW4gU3VwcGxlbWVudCBOby4gMSB0byBwYXJ0IDc0MCBvZiB0aGUgRUFSOyAoYykgd2lsbCBub3QgZXhwb3J0LCByZS1leHBvcnQsIG9yIHRyYW5zZmVyIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIHRvIGFueSBwcm9oaWJpdGVkIGRlc3RpbmF0aW9uIG9yIHRvIGFueSBlbmQgdXNlciB3aG8gaGFzIGJlZW4gcHJvaGliaXRlZCBmcm9tIHBhcnRpY2lwYXRpbmcgaW4gVVMgZXhwb3J0IHRyYW5zYWN0aW9ucyBieSBhbnkgZmVkZXJhbCBhZ2VuY3kgb2YgdGhlIFVTIGdvdmVybm1lbnQ7ICAoZCkgd2lsbCBub3QgdXNlIG9yIHRyYW5zZmVyIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlIGZvciB1c2UgaW4gY29ubmVjdGlvbiB3aXRoIHRoZSBkZXNpZ24sIGRldmVsb3BtZW50IG9yIHByb2R1Y3Rpb24gb2YgbnVjbGVhciwgY2hlbWljYWwgb3IgYmlvbG9naWNhbCB3ZWFwb25zLCBvciByb2NrZXQgc3lzdGVtcywgc3BhY2UgbGF1bmNoIHZlaGljbGVzLCBvciBzb3VuZGluZyByb2NrZXRzIG9yIHVubWFubmVkIGFpciB2ZWhpY2xlIHN5c3RlbXM7IChlKSB1bmRlcnN0YW5kIGFuZCBhZ3JlZSB0aGF0IGlmIHlvdSBhcmUgaW4gdGhlIFVuaXRlZCBTdGF0ZXMgYW5kIHlvdSBleHBvcnQgb3IgdHJhbnNmZXIgdGhlIEFuc2libGUgVG93ZXIgU29mdHdhcmUgdG8gZWxpZ2libGUgZW5kIHVzZXJzLCB5b3Ugd2lsbCwgdG8gdGhlIGV4dGVudCByZXF1aXJlZCBieSBFQVIgU2VjdGlvbiA3NDAuMTcgb2J0YWluIGEgbGljZW5zZSBmb3Igc3VjaCBleHBvcnQgb3IgdHJhbnNmZXIgYW5kIHdpbGwgc3VibWl0IHNlbWktYW5udWFsIHJlcG9ydHMgdG8gdGhlIENvbW1lcmNlIERlcGFydG1lbnTigJlzIEJ1cmVhdSBvZiBJbmR1c3RyeSBhbmQgU2VjdXJpdHksIHdoaWNoIGluY2x1ZGUgdGhlIG5hbWUgYW5kIGFkZHJlc3MgKGluY2x1ZGluZyBjb3VudHJ5KSBvZiBlYWNoIHRyYW5zZmVyZWU7IGFuZCAoZikgdW5kZXJzdGFuZCB0aGF0IGNvdW50cmllcyBpbmNsdWRpbmcgdGhlIFVuaXRlZCBTdGF0ZXMgbWF5IHJlc3RyaWN0IHRoZSBpbXBvcnQsIHVzZSwgb3IgZXhwb3J0IG9mIGVuY3J5cHRpb24gcHJvZHVjdHMgKHdoaWNoIG1heSBpbmNsdWRlIHRoZSBBbnNpYmxlIFRvd2VyIFNvZnR3YXJlKSBhbmQgYWdyZWUgdGhhdCB5b3Ugc2hhbGwgYmUgc29sZWx5IHJlc3BvbnNpYmxlIGZvciBjb21wbGlhbmNlIHdpdGggYW55IHN1Y2ggaW1wb3J0LCB1c2UsIG9yIGV4cG9ydCByZXN0cmljdGlvbnMuXG5cbjcuICBHZW5lcmFsLiAgSWYgYW55IHByb3Zpc2lvbiBvZiB0aGlzIEVVTEEgaXMgaGVsZCB0byBiZSB1bmVuZm9yY2VhYmxlLCB0aGF0IHNoYWxsIG5vdCBhZmZlY3QgdGhlIGVuZm9yY2VhYmlsaXR5IG9mIHRoZSByZW1haW5pbmcgcHJvdmlzaW9ucy4gIFRoaXMgYWdyZWVtZW50IHNoYWxsIGJlIGdvdmVybmVkIGJ5IHRoZSBsYXdzIG9mIHRoZSBTdGF0ZSBvZiBOZXcgWW9yayBhbmQgb2YgdGhlIFVuaXRlZCBTdGF0ZXMsIHdpdGhvdXQgcmVnYXJkIHRvIGFueSBjb25mbGljdCBvZiBsYXdzIHByb3Zpc2lvbnMuIFRoZSByaWdodHMgYW5kIG9ibGlnYXRpb25zIG9mIHRoZSBwYXJ0aWVzIHRvIHRoaXMgRVVMQSBzaGFsbCBub3QgYmUgZ292ZXJuZWQgYnkgdGhlIFVuaXRlZCBOYXRpb25zIENvbnZlbnRpb24gb24gdGhlIEludGVybmF0aW9uYWwgU2FsZSBvZiBHb29kcy4gXG5cbkNvcHlyaWdodCDCqSAyMDE1IFJlZCBIYXQsIEluYy4gIEFsbCByaWdodHMgcmVzZXJ2ZWQuICBcIlJlZCBIYXRcIiBhbmQg4oCcQW5zaWJsZSBUb3dlcuKAnSBhcmUgcmVnaXN0ZXJlZCB0cmFkZW1hcmtzIG9mIFJlZCBIYXQsIEluYy4gIEFsbCBvdGhlciB0cmFkZW1hcmtzIGFyZSB0aGUgcHJvcGVydHkgb2YgdGhlaXIgcmVzcGVjdGl2ZSBvd25lcnMuXG4iLCJsaWNlbnNlX2luZm8iOnsiZGVwbG95bWVudF9pZCI6IjFiZTFiNWY1MTJlZjRiN2FjZjA1MDFkNGRjODZiODBjODlkYTAyNTUiLCJzdWJzY3JpcHRpb25fbmFtZSI6IkFuc2libGUgVG93ZXIgYnkgUmVkIEhhdCAoNTAgTWFuYWdlZCBOb2RlcyksIFJIVCBJbnRlcm5hbCIsInZhbGlkX2tleSI6dHJ1ZSwiZmVhdHVyZXMiOnsic3VydmV5cyI6dHJ1ZSwibXVsdGlwbGVfb3JnYW5pemF0aW9ucyI6dHJ1ZSwid29ya2Zsb3dzIjp0cnVlLCJzeXN0ZW1fdHJhY2tpbmciOnRydWUsImVudGVycHJpc2VfYXV0aCI6dHJ1ZSwicmVicmFuZGluZyI6dHJ1ZSwiYWN0aXZpdHlfc3RyZWFtcyI6dHJ1ZSwibGRhcCI6dHJ1ZSwiaGEiOnRydWV9LCJkYXRlX2V4cGlyZWQiOmZhbHNlLCJhdmFpbGFibGVfaW5zdGFuY2VzIjo1MCwidGltZV9yZW1haW5pbmciOjQ2NTAyNzgsImhvc3RuYW1lIjoiY2E3MGI1NTdmYTNmNGM3NDhkMDkxYmUyMTllY2M2MGUiLCJmcmVlX2luc3RhbmNlcyI6NDYsImluc3RhbmNlX2NvdW50Ijo1MCwidHJpYWwiOnRydWUsImNvbXBsaWFudCI6dHJ1ZSwiZ3JhY2VfcGVyaW9kX3JlbWFpbmluZyI6NDY1MDI3OCwiY29udGFjdF9lbWFpbCI6InNtaXR0eUByZWRoYXQuY29tIiwiY29tcGFueV9uYW1lIjoiUmVkIEhhdCIsImRhdGVfd2FybmluZyI6ZmFsc2UsImxpY2Vuc2VfdHlwZSI6ImVudGVycHJpc2UiLCJsaWNlbnNlX2tleSI6IjNiMDZjOGEwODEzNDRhNjVkYTM4MWM0ODlkN2EzMzg1MTBkMjkzZmE5M2NjNDdlMWI5NjNkNGYxMDI2NTIyYTUiLCJsaWNlbnNlX2RhdGUiOjE1NDczMTk0MjAsImNvbnRhY3RfbmFtZSI6Ikpvc2VwaCBTbWl0aCIsImN1cnJlbnRfaW5zdGFuY2VzIjo0fSwiYW5hbHl0aWNzX3N0YXR1cyI6ImRldGFpbGVkIiwidmVyc2lvbiI6IjMuMi4yIiwicHJvamVjdF9iYXNlX2RpciI6Ii92YXIvbGliL2F3eC9wcm9qZWN0cyIsInRpbWVfem9uZSI6bnVsbCwiYW5zaWJsZV92ZXJzaW9uIjoiMi40LjEuMCIsInByb2plY3RfbG9jYWxfcGF0aHMiOltdfQ==
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:38 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:29 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/projects/399/
+    uri: https://example.com/api/v1/projects/415/
     body:
       encoding: US-ASCII
       string: ''
@@ -117,7 +117,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:41 GMT
+      - Mon, 19 Nov 2018 23:12:23 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -125,9 +125,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
-      - 0.057s
+      - 0.060s
       X-Api-Total-Time:
-      - 0.065s
+      - 0.067s
       Allow:
       - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
       Content-Language:
@@ -142,17 +142,17 @@ http_interactions:
       - DENY
     body:
       encoding: UTF-8
-      string: '{"id":399,"type":"project","url":"/api/v1/projects/399/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1020/","last_job":"/api/v1/project_updates/1215/","notification_templates_error":"/api/v1/projects/399/notification_templates_error/","notification_templates_success":"/api/v1/projects/399/notification_templates_success/","object_roles":"/api/v1/projects/399/object_roles/","notification_templates_any":"/api/v1/projects/399/notification_templates_any/","project_updates":"/api/v1/projects/399/project_updates/","update":"/api/v1/projects/399/update/","access_list":"/api/v1/projects/399/access_list/","teams":"/api/v1/projects/399/teams/","scm_inventory_sources":"/api/v1/projects/399/scm_inventory_sources/","inventory_files":"/api/v1/projects/399/inventories/","schedules":"/api/v1/projects/399/schedules/","playbooks":"/api/v1/projects/399/playbooks/","activity_stream":"/api/v1/projects/399/activity_stream/","organization":"/api/v1/organizations/117/","last_update":"/api/v1/project_updates/1215/"},"summary_fields":{"last_job":{"id":1215,"name":"hello_repo","description":"","finished":"2018-08-09T13:04:46.293Z","status":"successful","failed":false},"last_update":{"id":1215,"name":"hello_repo","description":"","status":"successful","failed":false},"credential":{"id":1020,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"organization":{"id":117,"name":"spec_test_org","description":"for
-        miq spec tests"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"id":5504,"description":"Can
-        manage all aspects of the project","name":"Admin"},"use_role":{"id":5506,"description":"Can
-        use the project in a job template","name":"Use"},"update_role":{"id":5507,"description":"May
-        update project or inventory or group using the configured source update system","name":"Update"},"read_role":{"id":5505,"description":"May
-        view settings for the project","name":"Read"}},"user_capabilities":{"edit":true,"start":true,"schedule":true,"delete":true}},"created":"2018-07-31T22:35:27.145Z","modified":"2018-08-09T13:04:46.257Z","name":"hello_repo","description":"","local_path":"_399__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1020,"timeout":0,"last_job_run":"2018-08-09T13:04:46.293046Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":117,"scm_delete_on_next_update":false,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"scm_revision":"c28f4a6f8ea69e409af58e4b17f937097efacc37","last_update_failed":false,"last_updated":"2018-08-09T13:04:46.293046Z"}'
+      string: '{"id":415,"type":"project","url":"/api/v1/projects/415/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","last_job":"/api/v1/project_updates/1678/","notification_templates_error":"/api/v1/projects/415/notification_templates_error/","notification_templates_success":"/api/v1/projects/415/notification_templates_success/","object_roles":"/api/v1/projects/415/object_roles/","notification_templates_any":"/api/v1/projects/415/notification_templates_any/","project_updates":"/api/v1/projects/415/project_updates/","update":"/api/v1/projects/415/update/","access_list":"/api/v1/projects/415/access_list/","teams":"/api/v1/projects/415/teams/","scm_inventory_sources":"/api/v1/projects/415/scm_inventory_sources/","inventory_files":"/api/v1/projects/415/inventories/","schedules":"/api/v1/projects/415/schedules/","playbooks":"/api/v1/projects/415/playbooks/","activity_stream":"/api/v1/projects/415/activity_stream/","organization":"/api/v1/organizations/118/","last_update":"/api/v1/project_updates/1678/"},"summary_fields":{"last_job":{"id":1678,"name":"hello_repo","description":"","finished":"2018-11-19T22:21:04.824Z","status":"successful","failed":false},"last_update":{"id":1678,"name":"hello_repo","description":"","status":"successful","failed":false},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"organization":{"id":118,"name":"spec_test_org","description":"for
+        miq spec tests"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"id":5609,"description":"Can
+        manage all aspects of the project","name":"Admin"},"use_role":{"id":5611,"description":"Can
+        use the project in a job template","name":"Use"},"update_role":{"id":5612,"description":"May
+        update project or inventory or group using the configured source update system","name":"Update"},"read_role":{"id":5610,"description":"May
+        view settings for the project","name":"Read"}},"user_capabilities":{"edit":true,"start":true,"schedule":true,"delete":true}},"created":"2018-11-19T22:20:59.535Z","modified":"2018-11-19T22:21:04.786Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"last_job_run":"2018-11-19T22:21:04.824550Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":118,"scm_delete_on_next_update":false,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"scm_revision":"e9902736a35303ad7167f0c442fe82181558e5a3","last_update_failed":false,"last_updated":"2018-11-19T22:21:04.824550Z"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:39 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:29 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/projects/399/update/
+    uri: https://example.com/api/v1/projects/415/update/
     body:
       encoding: US-ASCII
       string: ''
@@ -173,7 +173,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:41 GMT
+      - Mon, 19 Nov 2018 23:12:23 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -181,9 +181,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
-      - 0.036s
+      - 0.034s
       X-Api-Total-Time:
-      - 0.043s
+      - 0.041s
       Allow:
       - GET, POST, HEAD, OPTIONS
       Content-Language:
@@ -200,10 +200,10 @@ http_interactions:
       encoding: UTF-8
       string: '{"can_update":true}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:39 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:30 GMT
 - request:
     method: post
-    uri: https://example.com/api/v1/projects/399/update/
+    uri: https://example.com/api/v1/projects/415/update/
     body:
       encoding: UTF-8
       string: ''
@@ -226,7 +226,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:42 GMT
+      - Mon, 19 Nov 2018 23:12:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -234,9 +234,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
-      - 0.092s
+      - 0.087s
       X-Api-Total-Time:
-      - 0.171s
+      - 0.269s
       Allow:
       - GET, POST, HEAD, OPTIONS
       Content-Language:
@@ -244,17 +244,17 @@ http_interactions:
       Vary:
       - Accept, Accept-Language, Cookie
       Location:
-      - https://example.com/api/v1/project_updates/1216/
+      - https://example.com/api/v1/project_updates/1682/
       X-Api-Node:
       - localhost
     body:
       encoding: UTF-8
-      string: '{"project_update":1216}'
+      string: '{"project_update":1682}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:40 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:30 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/project_updates/1216/
+    uri: https://example.com/api/v1/project_updates/1682/
     body:
       encoding: US-ASCII
       string: ''
@@ -275,7 +275,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:42 GMT
+      - Mon, 19 Nov 2018 23:12:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -283,9 +283,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
-      - 0.067s
+      - 0.062s
       X-Api-Total-Time:
-      - 0.075s
+      - 0.069s
       Allow:
       - GET, DELETE, HEAD, OPTIONS
       Content-Language:
@@ -300,32 +300,13 @@ http_interactions:
       - DENY
     body:
       encoding: UTF-8
-      string: '{"id":1216,"type":"project_update","url":"/api/v1/project_updates/1216/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1020/","unified_job_template":"/api/v1/projects/399/","stdout":"/api/v1/project_updates/1216/stdout/","project":"/api/v1/projects/399/","cancel":"/api/v1/project_updates/1216/cancel/","notifications":"/api/v1/project_updates/1216/notifications/","scm_inventory_updates":"/api/v1/project_updates/1216/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1020,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":399,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":399,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-08-09T13:08:42.211Z","modified":"2018-08-09T13:08:42.403Z","name":"hello_repo","description":"","local_path":"_399__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1020,"timeout":0,"unified_job_template":399,"launch_type":"manual","status":"running","failed":false,"started":"2018-08-09T13:08:42.456339Z","finished":null,"elapsed":0.501024,"job_args":"[\"bwrap\",
-        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpMmCf9s\",
-        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmp9R6Zuc\", \"/tmp\",
-        \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpelzyew\", \"/var/lib/awx\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmptC115B\", \"/var/lib/awx/job_status\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmpMrMk_F\", \"/var/lib/awx/projects\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmp7m88Zz\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
-        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
-        \"--bind\", \"/tmp/awx_1216_qBFBb9\", \"/tmp/awx_1216_qBFBb9\", \"--bind\",
-        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
-        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
-        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
-        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
-        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
-        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_399__hello_repo\\\",
-        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
-        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"c28f4a6f8ea69e409af58e4b17f937097efacc37\\\",
-        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpuwNZBw\\\", \\\"scm_full_checkout\\\":
-        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
-        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Waiting
-        for results...","execution_node":"localhost","result_traceback":"","project":399,"job_type":"check"}'
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":0.097119,"job_args":"","job_cwd":"","job_env":{},"job_explanation":"","result_stdout":"Waiting
+        for results...","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:41 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:30 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/project_updates/1216/
+    uri: https://example.com/api/v1/project_updates/1682/
     body:
       encoding: US-ASCII
       string: ''
@@ -346,7 +327,443 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:43 GMT
+      - Mon, 19 Nov 2018 23:12:24 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.062s
+      X-Api-Total-Time:
+      - 0.070s
+      Allow:
+      - GET, DELETE, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":0.428584,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
+        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
+        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
+        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
+        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
+        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Waiting
+        for results...","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 23:12:31 GMT
+- request:
+    method: get
+    uri: https://example.com/api/v1/project_updates/1682/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.2
+      Date:
+      - Mon, 19 Nov 2018 23:12:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.062s
+      X-Api-Total-Time:
+      - 0.070s
+      Allow:
+      - GET, DELETE, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":0.632179,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
+        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
+        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
+        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
+        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
+        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Waiting
+        for results...","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 23:12:31 GMT
+- request:
+    method: get
+    uri: https://example.com/api/v1/project_updates/1682/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.2
+      Date:
+      - Mon, 19 Nov 2018 23:12:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.061s
+      X-Api-Total-Time:
+      - 0.069s
+      Allow:
+      - GET, DELETE, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":0.834765,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
+        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
+        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
+        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
+        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
+        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Waiting
+        for results...","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 23:12:31 GMT
+- request:
+    method: get
+    uri: https://example.com/api/v1/project_updates/1682/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.2
+      Date:
+      - Mon, 19 Nov 2018 23:12:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.058s
+      X-Api-Total-Time:
+      - 0.065s
+      Allow:
+      - GET, DELETE, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":1.048349,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
+        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
+        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
+        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
+        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
+        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
+        /etc/ansible/ansible.cfg as config file\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 23:12:31 GMT
+- request:
+    method: get
+    uri: https://example.com/api/v1/project_updates/1682/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.2
+      Date:
+      - Mon, 19 Nov 2018 23:12:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.061s
+      X-Api-Total-Time:
+      - 0.069s
+      Allow:
+      - GET, DELETE, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":1.339811,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
+        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
+        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
+        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
+        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
+        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
+        /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
+        option, In favor of become which \r\nis a generic framework . This feature
+        will be removed in version 2.8. \r\nDeprecation warnings can be disabled by
+        setting deprecation_warnings=False in \r\nansible.cfg.\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 23:12:31 GMT
+- request:
+    method: get
+    uri: https://example.com/api/v1/project_updates/1682/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.2
+      Date:
+      - Mon, 19 Nov 2018 23:12:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.062s
+      X-Api-Total-Time:
+      - 0.070s
+      Allow:
+      - GET, DELETE, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":1.550142,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
+        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
+        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
+        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
+        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
+        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
+        /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
+        option, In favor of become which \r\nis a generic framework . This feature
+        will be removed in version 2.8. \r\nDeprecation warnings can be disabled by
+        setting deprecation_warnings=False in \r\nansible.cfg.\r\n\r\nPLAY [all] *********************************************************************\r\n\r\nTASK
+        [delete project directory before update] **********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git and accept hostkey] *****************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git] ************************************************\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 23:12:32 GMT
+- request:
+    method: get
+    uri: https://example.com/api/v1/project_updates/1682/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.2
+      Date:
+      - Mon, 19 Nov 2018 23:12:26 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -371,32 +788,39 @@ http_interactions:
       - DENY
     body:
       encoding: UTF-8
-      string: '{"id":1216,"type":"project_update","url":"/api/v1/project_updates/1216/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1020/","unified_job_template":"/api/v1/projects/399/","stdout":"/api/v1/project_updates/1216/stdout/","project":"/api/v1/projects/399/","cancel":"/api/v1/project_updates/1216/cancel/","notifications":"/api/v1/project_updates/1216/notifications/","scm_inventory_updates":"/api/v1/project_updates/1216/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1020,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":399,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":399,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-08-09T13:08:42.211Z","modified":"2018-08-09T13:08:42.403Z","name":"hello_repo","description":"","local_path":"_399__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1020,"timeout":0,"unified_job_template":399,"launch_type":"manual","status":"running","failed":false,"started":"2018-08-09T13:08:42.456339Z","finished":null,"elapsed":1.122095,"job_args":"[\"bwrap\",
-        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpMmCf9s\",
-        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmp9R6Zuc\", \"/tmp\",
-        \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpelzyew\", \"/var/lib/awx\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmptC115B\", \"/var/lib/awx/job_status\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmpMrMk_F\", \"/var/lib/awx/projects\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmp7m88Zz\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":1.753784,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
         \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
-        \"--bind\", \"/tmp/awx_1216_qBFBb9\", \"/tmp/awx_1216_qBFBb9\", \"--bind\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
         \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
         \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
         \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
         \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
         \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
-        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_399__hello_repo\\\",
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
         \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
-        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"c28f4a6f8ea69e409af58e4b17f937097efacc37\\\",
-        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpuwNZBw\\\", \\\"scm_full_checkout\\\":
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
         false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
-        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Waiting
-        for results...","execution_node":"localhost","result_traceback":"","project":399,"job_type":"check"}'
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
+        /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
+        option, In favor of become which \r\nis a generic framework . This feature
+        will be removed in version 2.8. \r\nDeprecation warnings can be disabled by
+        setting deprecation_warnings=False in \r\nansible.cfg.\r\n\r\nPLAY [all] *********************************************************************\r\n\r\nTASK
+        [delete project directory before update] **********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git and accept hostkey] *****************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git] ************************************************\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:41 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:32 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/project_updates/1216/
+    uri: https://example.com/api/v1/project_updates/1682/
     body:
       encoding: US-ASCII
       string: ''
@@ -417,7 +841,85 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:44 GMT
+      - Mon, 19 Nov 2018 23:12:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.061s
+      X-Api-Total-Time:
+      - 0.069s
+      Allow:
+      - GET, DELETE, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":1.957147,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
+        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
+        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
+        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
+        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
+        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
+        /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
+        option, In favor of become which \r\nis a generic framework . This feature
+        will be removed in version 2.8. \r\nDeprecation warnings can be disabled by
+        setting deprecation_warnings=False in \r\nansible.cfg.\r\n\r\nPLAY [all] *********************************************************************\r\n\r\nTASK
+        [delete project directory before update] **********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git and accept hostkey] *****************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git] ************************************************\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 23:12:32 GMT
+- request:
+    method: get
+    uri: https://example.com/api/v1/project_updates/1682/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.2
+      Date:
+      - Mon, 19 Nov 2018 23:12:26 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -442,24 +944,24 @@ http_interactions:
       - DENY
     body:
       encoding: UTF-8
-      string: '{"id":1216,"type":"project_update","url":"/api/v1/project_updates/1216/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1020/","unified_job_template":"/api/v1/projects/399/","stdout":"/api/v1/project_updates/1216/stdout/","project":"/api/v1/projects/399/","cancel":"/api/v1/project_updates/1216/cancel/","notifications":"/api/v1/project_updates/1216/notifications/","scm_inventory_updates":"/api/v1/project_updates/1216/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1020,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":399,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":399,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-08-09T13:08:42.211Z","modified":"2018-08-09T13:08:42.403Z","name":"hello_repo","description":"","local_path":"_399__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1020,"timeout":0,"unified_job_template":399,"launch_type":"manual","status":"running","failed":false,"started":"2018-08-09T13:08:42.456339Z","finished":null,"elapsed":1.740568,"job_args":"[\"bwrap\",
-        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpMmCf9s\",
-        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmp9R6Zuc\", \"/tmp\",
-        \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpelzyew\", \"/var/lib/awx\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmptC115B\", \"/var/lib/awx/job_status\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmpMrMk_F\", \"/var/lib/awx/projects\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmp7m88Zz\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":2.16584,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
         \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
-        \"--bind\", \"/tmp/awx_1216_qBFBb9\", \"/tmp/awx_1216_qBFBb9\", \"--bind\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
         \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
         \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
         \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
         \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
         \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
-        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_399__hello_repo\\\",
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
         \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
-        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"c28f4a6f8ea69e409af58e4b17f937097efacc37\\\",
-        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpuwNZBw\\\", \\\"scm_full_checkout\\\":
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
         false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
         %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
         /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
@@ -469,12 +971,12 @@ http_interactions:
         [delete project directory before update] **********************************\r\nskipping:
         [localhost]\r\n\r\nTASK [update project using git and accept hostkey] *****************************\r\nskipping:
         [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nskipping:
-        [localhost]\r\n\r\nTASK [update project using git] ************************************************\r\n","execution_node":"localhost","result_traceback":"","project":399,"job_type":"check"}'
+        [localhost]\r\n\r\nTASK [update project using git] ************************************************\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:42 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:32 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/project_updates/1216/
+    uri: https://example.com/api/v1/project_updates/1682/
     body:
       encoding: US-ASCII
       string: ''
@@ -495,7 +997,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:44 GMT
+      - Mon, 19 Nov 2018 23:12:26 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -503,9 +1005,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
-      - 0.081s
+      - 0.107s
       X-Api-Total-Time:
-      - 0.089s
+      - 0.117s
       Allow:
       - GET, DELETE, HEAD, OPTIONS
       Content-Language:
@@ -520,24 +1022,24 @@ http_interactions:
       - DENY
     body:
       encoding: UTF-8
-      string: '{"id":1216,"type":"project_update","url":"/api/v1/project_updates/1216/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1020/","unified_job_template":"/api/v1/projects/399/","stdout":"/api/v1/project_updates/1216/stdout/","project":"/api/v1/projects/399/","cancel":"/api/v1/project_updates/1216/cancel/","notifications":"/api/v1/project_updates/1216/notifications/","scm_inventory_updates":"/api/v1/project_updates/1216/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1020,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":399,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":399,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-08-09T13:08:42.211Z","modified":"2018-08-09T13:08:42.403Z","name":"hello_repo","description":"","local_path":"_399__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1020,"timeout":0,"unified_job_template":399,"launch_type":"manual","status":"running","failed":false,"started":"2018-08-09T13:08:42.456339Z","finished":null,"elapsed":2.377016,"job_args":"[\"bwrap\",
-        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpMmCf9s\",
-        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmp9R6Zuc\", \"/tmp\",
-        \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpelzyew\", \"/var/lib/awx\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmptC115B\", \"/var/lib/awx/job_status\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmpMrMk_F\", \"/var/lib/awx/projects\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmp7m88Zz\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":2.416265,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
         \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
-        \"--bind\", \"/tmp/awx_1216_qBFBb9\", \"/tmp/awx_1216_qBFBb9\", \"--bind\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
         \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
         \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
         \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
         \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
         \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
-        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_399__hello_repo\\\",
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
         \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
-        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"c28f4a6f8ea69e409af58e4b17f937097efacc37\\\",
-        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpuwNZBw\\\", \\\"scm_full_checkout\\\":
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
         false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
         %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
         /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
@@ -548,12 +1050,14 @@ http_interactions:
         [localhost]\r\n\r\nTASK [update project using git and accept hostkey] *****************************\r\nskipping:
         [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nskipping:
         [localhost]\r\n\r\nTASK [update project using git] ************************************************\r\nok:
-        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\n","execution_node":"localhost","result_traceback":"","project":399,"job_type":"check"}'
+        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nok:
+        [localhost]\r\n\r\nTASK [update project using hg] *************************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the hg repository version] *******************************************\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:43 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:33 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/project_updates/1216/
+    uri: https://example.com/api/v1/project_updates/1682/
     body:
       encoding: US-ASCII
       string: ''
@@ -574,7 +1078,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:45 GMT
+      - Mon, 19 Nov 2018 23:12:27 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -582,9 +1086,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
-      - 0.058s
+      - 0.062s
       X-Api-Total-Time:
-      - 0.066s
+      - 0.069s
       Allow:
       - GET, DELETE, HEAD, OPTIONS
       Content-Language:
@@ -599,24 +1103,205 @@ http_interactions:
       - DENY
     body:
       encoding: UTF-8
-      string: '{"id":1216,"type":"project_update","url":"/api/v1/project_updates/1216/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1020/","unified_job_template":"/api/v1/projects/399/","stdout":"/api/v1/project_updates/1216/stdout/","project":"/api/v1/projects/399/","cancel":"/api/v1/project_updates/1216/cancel/","notifications":"/api/v1/project_updates/1216/notifications/","scm_inventory_updates":"/api/v1/project_updates/1216/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1020,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":399,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":399,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-08-09T13:08:42.211Z","modified":"2018-08-09T13:08:42.403Z","name":"hello_repo","description":"","local_path":"_399__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1020,"timeout":0,"unified_job_template":399,"launch_type":"manual","status":"running","failed":false,"started":"2018-08-09T13:08:42.456339Z","finished":null,"elapsed":2.990854,"job_args":"[\"bwrap\",
-        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpMmCf9s\",
-        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmp9R6Zuc\", \"/tmp\",
-        \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpelzyew\", \"/var/lib/awx\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmptC115B\", \"/var/lib/awx/job_status\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmpMrMk_F\", \"/var/lib/awx/projects\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmp7m88Zz\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":2.627409,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
         \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
-        \"--bind\", \"/tmp/awx_1216_qBFBb9\", \"/tmp/awx_1216_qBFBb9\", \"--bind\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
         \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
         \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
         \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
         \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
         \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
-        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_399__hello_repo\\\",
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
         \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
-        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"c28f4a6f8ea69e409af58e4b17f937097efacc37\\\",
-        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpuwNZBw\\\", \\\"scm_full_checkout\\\":
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
+        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
+        /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
+        option, In favor of become which \r\nis a generic framework . This feature
+        will be removed in version 2.8. \r\nDeprecation warnings can be disabled by
+        setting deprecation_warnings=False in \r\nansible.cfg.\r\n\r\nPLAY [all] *********************************************************************\r\n\r\nTASK
+        [delete project directory before update] **********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git and accept hostkey] *****************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git] ************************************************\r\nok:
+        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nok:
+        [localhost]\r\n\r\nTASK [update project using hg] *************************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the hg repository version] *******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using svn] ************************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the svn repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using svn with auth] **************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the svn repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Ensure the project directory is present] *********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Fetch Insights Playbook(s)] **********************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Save Insights Version] ***************************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [detect requirements.yml] *************************************************\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 23:12:33 GMT
+- request:
+    method: get
+    uri: https://example.com/api/v1/project_updates/1682/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.2
+      Date:
+      - Mon, 19 Nov 2018 23:12:27 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.101s
+      X-Api-Total-Time:
+      - 0.116s
+      Allow:
+      - GET, DELETE, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":2.879492,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
+        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
+        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
+        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
+        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
+        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
+        /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
+        option, In favor of become which \r\nis a generic framework . This feature
+        will be removed in version 2.8. \r\nDeprecation warnings can be disabled by
+        setting deprecation_warnings=False in \r\nansible.cfg.\r\n\r\nPLAY [all] *********************************************************************\r\n\r\nTASK
+        [delete project directory before update] **********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git and accept hostkey] *****************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git] ************************************************\r\nok:
+        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nok:
+        [localhost]\r\n\r\nTASK [update project using hg] *************************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the hg repository version] *******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using svn] ************************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the svn repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using svn with auth] **************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the svn repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Ensure the project directory is present] *********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Fetch Insights Playbook(s)] **********************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Save Insights Version] ***************************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [detect requirements.yml] *************************************************\r\nok:
+        [localhost]\r\n\r\nTASK [fetch galaxy roles from requirements.yml] ********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [parse subversion version string properly] ********************************\r\nskipping:
+        [localhost]\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 23:12:33 GMT
+- request:
+    method: get
+    uri: https://example.com/api/v1/project_updates/1682/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.2
+      Date:
+      - Mon, 19 Nov 2018 23:12:27 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.061s
+      X-Api-Total-Time:
+      - 0.068s
+      Allow:
+      - GET, DELETE, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":3.086248,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
+        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
+        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
+        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
+        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
         false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
         %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
         /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
@@ -642,13 +1327,13 @@ http_interactions:
         [localhost]\r\n\r\nTASK [parse subversion version string properly] ********************************\r\nskipping:
         [localhost]\r\n\r\nTASK [parse hg version string properly] ****************************************\r\nskipping:
         [localhost]\r\n\r\nTASK [Repository Version] ******************************************************\r\nok:
-        [localhost] => {\r\n    \"msg\": \"Repository Version c28f4a6f8ea69e409af58e4b17f937097efacc37\"\r\n}\r\n\r\nTASK
-        [Write Repository Version] ************************************************\r\n","execution_node":"localhost","result_traceback":"","project":399,"job_type":"check"}'
+        [localhost] => {\r\n    \"msg\": \"Repository Version e9902736a35303ad7167f0c442fe82181558e5a3\"\r\n}\r\n\r\nTASK
+        [Write Repository Version] ************************************************\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:43 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:33 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/project_updates/1216/
+    uri: https://example.com/api/v1/project_updates/1682/
     body:
       encoding: US-ASCII
       string: ''
@@ -669,7 +1354,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:46 GMT
+      - Mon, 19 Nov 2018 23:12:27 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -677,9 +1362,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
+      - 0.064s
+      X-Api-Total-Time:
       - 0.073s
-      X-Api-Total-Time:
-      - 0.085s
       Allow:
       - GET, DELETE, HEAD, OPTIONS
       Content-Language:
@@ -694,24 +1379,24 @@ http_interactions:
       - DENY
     body:
       encoding: UTF-8
-      string: '{"id":1216,"type":"project_update","url":"/api/v1/project_updates/1216/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1020/","unified_job_template":"/api/v1/projects/399/","stdout":"/api/v1/project_updates/1216/stdout/","project":"/api/v1/projects/399/","cancel":"/api/v1/project_updates/1216/cancel/","notifications":"/api/v1/project_updates/1216/notifications/","scm_inventory_updates":"/api/v1/project_updates/1216/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1020,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":399,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":399,"name":"hello_repo","description":"","status":"successful","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-08-09T13:08:42.211Z","modified":"2018-08-09T13:08:42.403Z","name":"hello_repo","description":"","local_path":"_399__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1020,"timeout":0,"unified_job_template":399,"launch_type":"manual","status":"successful","failed":false,"started":"2018-08-09T13:08:42.456339Z","finished":"2018-08-09T13:08:45.981594Z","elapsed":3.525,"job_args":"[\"bwrap\",
-        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpMmCf9s\",
-        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_wcMdoa/tmp9R6Zuc\", \"/tmp\",
-        \"--bind\", \"/tmp/awx_proot_wcMdoa/tmpelzyew\", \"/var/lib/awx\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmptC115B\", \"/var/lib/awx/job_status\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmpMrMk_F\", \"/var/lib/awx/projects\", \"--bind\",
-        \"/tmp/awx_proot_wcMdoa/tmp7m88Zz\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"running","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"running","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":null,"elapsed":3.387917,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
         \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
-        \"--bind\", \"/tmp/awx_1216_qBFBb9\", \"/tmp/awx_1216_qBFBb9\", \"--bind\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
         \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
         \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
         \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
         \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
         \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
-        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_399__hello_repo\\\",
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
         \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
-        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"c28f4a6f8ea69e409af58e4b17f937097efacc37\\\",
-        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpuwNZBw\\\", \\\"scm_full_checkout\\\":
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
         false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
         %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
         /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
@@ -737,15 +1422,15 @@ http_interactions:
         [localhost]\r\n\r\nTASK [parse subversion version string properly] ********************************\r\nskipping:
         [localhost]\r\n\r\nTASK [parse hg version string properly] ****************************************\r\nskipping:
         [localhost]\r\n\r\nTASK [Repository Version] ******************************************************\r\nok:
-        [localhost] => {\r\n    \"msg\": \"Repository Version c28f4a6f8ea69e409af58e4b17f937097efacc37\"\r\n}\r\n\r\nTASK
+        [localhost] => {\r\n    \"msg\": \"Repository Version e9902736a35303ad7167f0c442fe82181558e5a3\"\r\n}\r\n\r\nTASK
         [Write Repository Version] ************************************************\r\nchanged:
         [localhost]\r\n\r\nPLAY RECAP *********************************************************************\r\nlocalhost                  :
-        ok=5    changed=1    unreachable=0    failed=0   \r\n\r\n","execution_node":"localhost","result_traceback":"","project":399,"job_type":"check"}'
+        ok=5    changed=1    unreachable=0    failed=0   \r\n\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:44 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:34 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/projects/399/
+    uri: https://example.com/api/v1/project_updates/1682/
     body:
       encoding: US-ASCII
       string: ''
@@ -766,7 +1451,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:46 GMT
+      - Mon, 19 Nov 2018 23:12:28 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -776,7 +1461,104 @@ http_interactions:
       X-Api-Time:
       - 0.060s
       X-Api-Total-Time:
-      - 0.069s
+      - 0.068s
+      Allow:
+      - GET, DELETE, HEAD, OPTIONS
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      X-Api-Node:
+      - localhost
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - DENY
+    body:
+      encoding: UTF-8
+      string: '{"id":1682,"type":"project_update","url":"/api/v1/project_updates/1682/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","unified_job_template":"/api/v1/projects/415/","stdout":"/api/v1/project_updates/1682/stdout/","project":"/api/v1/projects/415/","cancel":"/api/v1/project_updates/1682/cancel/","notifications":"/api/v1/project_updates/1682/notifications/","scm_inventory_updates":"/api/v1/project_updates/1682/scm_inventory_updates/"},"summary_fields":{"instance_group":{"id":1,"name":"tower"},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"unified_job_template":{"id":415,"name":"hello_repo","description":"","unified_job_type":"project_update"},"project":{"id":415,"name":"hello_repo","description":"","status":"successful","scm_type":"git"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"user_capabilities":{"start":true,"delete":true}},"created":"2018-11-19T23:12:24.145Z","modified":"2018-11-19T23:12:24.433Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"unified_job_template":415,"launch_type":"manual","status":"successful","failed":false,"started":"2018-11-19T23:12:24.483183Z","finished":"2018-11-19T23:12:27.954073Z","elapsed":3.471,"job_args":"[\"bwrap\",
+        \"--unshare-pid\", \"--dev-bind\", \"/\", \"/\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmpNEGPli\",
+        \"/etc/tower\", \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp04Y9YV\", \"/tmp\",
+        \"--bind\", \"/tmp/awx_proot_mvt8Hk/tmp_3a4mX\", \"/var/lib/awx\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmp4qW8VY\", \"/var/lib/awx/job_status\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpMc6o8l\", \"/var/lib/awx/projects\", \"--bind\",
+        \"/tmp/awx_proot_mvt8Hk/tmpT4s1fT\", \"/var/log\", \"--ro-bind\", \"/var/lib/awx/venv/ansible\",
+        \"/var/lib/awx/venv/ansible\", \"--ro-bind\", \"/var/lib/awx/venv/awx\", \"/var/lib/awx/venv/awx\",
+        \"--bind\", \"/tmp/awx_1682_aw2ZCI\", \"/tmp/awx_1682_aw2ZCI\", \"--bind\",
+        \"/var/lib/awx/projects\", \"/var/lib/awx/projects\", \"--bind\", \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"--chdir\",
+        \"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks\", \"ansible-playbook\",
+        \"-i\", \"localhost,\", \"-v\", \"-e\", \"{\\\"scm_branch\\\": \\\"HEAD\\\",
+        \\\"insights_url\\\": \\\"https://access.redhat.com\\\", \\\"scm_type\\\":
+        \\\"git\\\", \\\"project_path\\\": \\\"/var/lib/awx/projects/_415__hello_repo\\\",
+        \\\"scm_clean\\\": false, \\\"scm_url\\\": \\\"https://admin:%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A@github.com/jameswnl/ansible-examples\\\",
+        \\\"scm_delete_on_update\\\": false, \\\"scm_revision\\\": \\\"e9902736a35303ad7167f0c442fe82181558e5a3\\\",
+        \\\"scm_revision_output\\\": \\\"/var/lib/awx/projects/tmpY1fSC3\\\", \\\"scm_full_checkout\\\":
+        false}\", \"project_update.yml\"]","job_cwd":"/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/playbooks","job_env":{"TMP":"/tmp","ANSIBLE_RETRY_FILES_ENABLED":"False","DJANGO_LIVE_TEST_SERVER_ADDRESS":"localhost:9013-9199","_MP_FORK_LOGFILE_":"","ANSIBLE_ASK_PASS":"False","CELERY_LOG_REDIRECT":"1","USER":"awx","HOME":"/var/lib/awx","PATH":"/var/lib/awx/venv/ansible/bin:/var/lib/awx/venv/awx/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin","PS1":"(awx)","DISPLAY":"","LANG":"en_US.UTF-8","VIRTUAL_ENV":"/var/lib/awx/venv/ansible","SUPERVISOR_SERVER_URL":"unix:///var/run/supervisor/supervisor.sock","ANSIBLE_PARAMIKO_RECORD_HOST_KEYS":"False","_MP_FORK_LOGFORMAT_":"[%(asctime)s:
+        %(levelname)s/%(processName)s] %(message)s","SHLVL":"0","SUPERVISOR_ENABLED":"1","CELERY_LOG_FILE":"","DJANGO_PROJECT_DIR":"/var/lib/awx/venv/awx/lib/python2.7/site-packages","ANSIBLE_HOST_KEY_CHECKING":"False","PYTHONPATH":"/var/lib/awx/venv/ansible/lib/python2.7/site-packages:/var/lib/awx/venv/awx/lib/python2.7/site-packages/awx/lib:","CELERY_LOADER":"djcelery.loaders.DjangoLoader","_MP_FORK_LOGLEVEL_":"10","ANSIBLE_FORCE_COLOR":"True","CELERY_LOG_REDIRECT_LEVEL":"WARNING","SUPERVISOR_PROCESS_NAME":"awx-celeryd","CELERY_LOG_LEVEL":"10","ANSIBLE_ASK_SUDO_PASS":"False","PWD":"/var/lib/awx","DJANGO_SETTINGS_MODULE":"awx.settings.production","ANSIBLE_VENV_PATH":"/var/lib/awx/venv/ansible","PROOT_TMP_DIR":"/tmp","SUPERVISOR_GROUP_NAME":"tower-processes"},"job_explanation":"","result_stdout":"Using
+        /etc/ansible/ansible.cfg as config file\r\n[DEPRECATION WARNING]: DEFAULT_ASK_SUDO_PASS
+        option, In favor of become which \r\nis a generic framework . This feature
+        will be removed in version 2.8. \r\nDeprecation warnings can be disabled by
+        setting deprecation_warnings=False in \r\nansible.cfg.\r\n\r\nPLAY [all] *********************************************************************\r\n\r\nTASK
+        [delete project directory before update] **********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git and accept hostkey] *****************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using git] ************************************************\r\nok:
+        [localhost]\r\n\r\nTASK [Set the git repository version] ******************************************\r\nok:
+        [localhost]\r\n\r\nTASK [update project using hg] *************************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the hg repository version] *******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using svn] ************************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the svn repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [update project using svn with auth] **************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Set the svn repository version] ******************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Ensure the project directory is present] *********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Fetch Insights Playbook(s)] **********************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Save Insights Version] ***************************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [detect requirements.yml] *************************************************\r\nok:
+        [localhost]\r\n\r\nTASK [fetch galaxy roles from requirements.yml] ********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [parse subversion version string properly] ********************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [parse hg version string properly] ****************************************\r\nskipping:
+        [localhost]\r\n\r\nTASK [Repository Version] ******************************************************\r\nok:
+        [localhost] => {\r\n    \"msg\": \"Repository Version e9902736a35303ad7167f0c442fe82181558e5a3\"\r\n}\r\n\r\nTASK
+        [Write Repository Version] ************************************************\r\nchanged:
+        [localhost]\r\n\r\nPLAY RECAP *********************************************************************\r\nlocalhost                  :
+        ok=5    changed=1    unreachable=0    failed=0   \r\n\r\n","execution_node":"localhost","result_traceback":"","project":415,"job_type":"check"}'
+    http_version: 
+  recorded_at: Mon, 19 Nov 2018 23:12:34 GMT
+- request:
+    method: get
+    uri: https://example.com/api/v1/projects/415/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic YWRtaW46c21hcnR2bQ==
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.2
+      Date:
+      - Mon, 19 Nov 2018 23:12:28 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Time:
+      - 0.054s
+      X-Api-Total-Time:
+      - 0.061s
       Allow:
       - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
       Content-Language:
@@ -791,17 +1573,17 @@ http_interactions:
       - DENY
     body:
       encoding: UTF-8
-      string: '{"id":399,"type":"project","url":"/api/v1/projects/399/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1020/","last_job":"/api/v1/project_updates/1216/","notification_templates_error":"/api/v1/projects/399/notification_templates_error/","notification_templates_success":"/api/v1/projects/399/notification_templates_success/","object_roles":"/api/v1/projects/399/object_roles/","notification_templates_any":"/api/v1/projects/399/notification_templates_any/","project_updates":"/api/v1/projects/399/project_updates/","update":"/api/v1/projects/399/update/","access_list":"/api/v1/projects/399/access_list/","teams":"/api/v1/projects/399/teams/","scm_inventory_sources":"/api/v1/projects/399/scm_inventory_sources/","inventory_files":"/api/v1/projects/399/inventories/","schedules":"/api/v1/projects/399/schedules/","playbooks":"/api/v1/projects/399/playbooks/","activity_stream":"/api/v1/projects/399/activity_stream/","organization":"/api/v1/organizations/117/","last_update":"/api/v1/project_updates/1216/"},"summary_fields":{"last_job":{"id":1216,"name":"hello_repo","description":"","finished":"2018-08-09T13:08:45.981Z","status":"successful","failed":false},"last_update":{"id":1216,"name":"hello_repo","description":"","status":"successful","failed":false},"credential":{"id":1020,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"organization":{"id":117,"name":"spec_test_org","description":"for
-        miq spec tests"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"id":5504,"description":"Can
-        manage all aspects of the project","name":"Admin"},"use_role":{"id":5506,"description":"Can
-        use the project in a job template","name":"Use"},"update_role":{"id":5507,"description":"May
-        update project or inventory or group using the configured source update system","name":"Update"},"read_role":{"id":5505,"description":"May
-        view settings for the project","name":"Read"}},"user_capabilities":{"edit":true,"start":true,"schedule":true,"delete":true}},"created":"2018-07-31T22:35:27.145Z","modified":"2018-08-09T13:08:45.937Z","name":"hello_repo","description":"","local_path":"_399__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1020,"timeout":0,"last_job_run":"2018-08-09T13:08:45.981594Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":117,"scm_delete_on_next_update":false,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"scm_revision":"c28f4a6f8ea69e409af58e4b17f937097efacc37","last_update_failed":false,"last_updated":"2018-08-09T13:08:45.981594Z"}'
+      string: '{"id":415,"type":"project","url":"/api/v1/projects/415/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","last_job":"/api/v1/project_updates/1682/","notification_templates_error":"/api/v1/projects/415/notification_templates_error/","notification_templates_success":"/api/v1/projects/415/notification_templates_success/","object_roles":"/api/v1/projects/415/object_roles/","notification_templates_any":"/api/v1/projects/415/notification_templates_any/","project_updates":"/api/v1/projects/415/project_updates/","update":"/api/v1/projects/415/update/","access_list":"/api/v1/projects/415/access_list/","teams":"/api/v1/projects/415/teams/","scm_inventory_sources":"/api/v1/projects/415/scm_inventory_sources/","inventory_files":"/api/v1/projects/415/inventories/","schedules":"/api/v1/projects/415/schedules/","playbooks":"/api/v1/projects/415/playbooks/","activity_stream":"/api/v1/projects/415/activity_stream/","organization":"/api/v1/organizations/118/","last_update":"/api/v1/project_updates/1682/"},"summary_fields":{"last_job":{"id":1682,"name":"hello_repo","description":"","finished":"2018-11-19T23:12:27.954Z","status":"successful","failed":false},"last_update":{"id":1682,"name":"hello_repo","description":"","status":"successful","failed":false},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"organization":{"id":118,"name":"spec_test_org","description":"for
+        miq spec tests"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"id":5609,"description":"Can
+        manage all aspects of the project","name":"Admin"},"use_role":{"id":5611,"description":"Can
+        use the project in a job template","name":"Use"},"update_role":{"id":5612,"description":"May
+        update project or inventory or group using the configured source update system","name":"Update"},"read_role":{"id":5610,"description":"May
+        view settings for the project","name":"Read"}},"user_capabilities":{"edit":true,"start":true,"schedule":true,"delete":true}},"created":"2018-11-19T22:20:59.535Z","modified":"2018-11-19T23:12:27.918Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"last_job_run":"2018-11-19T23:12:27.954073Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":118,"scm_delete_on_next_update":false,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"scm_revision":"e9902736a35303ad7167f0c442fe82181558e5a3","last_update_failed":false,"last_updated":"2018-11-19T23:12:27.954073Z"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:44 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:34 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/projects/399/playbooks/
+    uri: https://example.com/api/v1/projects/415/playbooks/
     body:
       encoding: US-ASCII
       string: ''
@@ -822,7 +1604,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:47 GMT
+      - Mon, 19 Nov 2018 23:12:28 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -830,9 +1612,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
-      - 0.036s
+      - 0.035s
       X-Api-Total-Time:
-      - 0.044s
+      - 0.042s
       Allow:
       - GET, HEAD, OPTIONS
       Content-Language:
@@ -849,10 +1631,10 @@ http_interactions:
       encoding: UTF-8
       string: '["hello_world.yml","jboss-standalone/demo-aws-launch.yml","jboss-standalone/deploy-application.yml","jboss-standalone/site.yml","lamp_haproxy/aws/demo-aws-launch.yml","lamp_haproxy/aws/rolling_update.yml","lamp_haproxy/aws/site.yml","lamp_haproxy/provision.yml","lamp_haproxy/rolling_update.yml","lamp_haproxy/site.yml","lamp_simple/site.yml","lamp_simple_rhel7/site.yml","language_features/ansible_pull.yml","language_features/batch_size_control.yml","language_features/cloudformation.yaml","language_features/complex_args.yml","language_features/conditionals_part1.yml","language_features/conditionals_part2.yml","language_features/custom_filters.yml","language_features/delegation.yml","language_features/environment.yml","language_features/eucalyptus-ec2.yml","language_features/file_secontext.yml","language_features/get_url.yml","language_features/group_by.yml","language_features/group_commands.yml","language_features/intermediate_example.yml","language_features/intro_example.yml","language_features/loop_nested.yml","language_features/loop_plugins.yml","language_features/loop_with_items.yml","language_features/mysql.yml","language_features/nested_playbooks.yml","language_features/netscaler.yml","language_features/postgresql.yml","language_features/prompts.yml","language_features/rabbitmq.yml","language_features/register_logic.yml","language_features/roletest.yml","language_features/roletest2.yml","language_features/selective_file_sources.yml","language_features/tags.yml","language_features/upgraded_vars.yml","language_features/user_commands.yml","language_features/zfs.yml","mongodb/playbooks/testsharding.yml","mongodb/site.yml","tomcat-memcached-failover/site.yml","tomcat-standalone/site.yml","windows/create-user.yml","windows/deploy-site.yml","windows/enable-iis.yml","windows/install-msi.yml","windows/ping.yml","windows/run-powershell.yml","windows/test.yml","windows/wamp_haproxy/demo-aws-wamp-launch.yml","windows/wamp_haproxy/rolling_update.yml","windows/wamp_haproxy/site.yml","wordpress-nginx/site.yml","wordpress-nginx_rhel7/site.yml"]'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:45 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:34 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/credentials/1020/
+    uri: https://example.com/api/v1/credentials/1033/
     body:
       encoding: US-ASCII
       string: ''
@@ -873,7 +1655,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:47 GMT
+      - Mon, 19 Nov 2018 23:12:28 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -881,9 +1663,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
-      - 0.061s
+      - 0.058s
       X-Api-Total-Time:
-      - 0.068s
+      - 0.064s
       Allow:
       - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
       Content-Language:
@@ -898,17 +1680,17 @@ http_interactions:
       - DENY
     body:
       encoding: UTF-8
-      string: '{"id":1020,"type":"credential","url":"/api/v1/credentials/1020/","related":{"created_by":"/api/v1/users/1/","modified_by":"/api/v1/users/1/","organization":"/api/v1/organizations/117/","owner_teams":"/api/v1/credentials/1020/owner_teams/","owner_users":"/api/v1/credentials/1020/owner_users/","activity_stream":"/api/v1/credentials/1020/activity_stream/","access_list":"/api/v1/credentials/1020/access_list/","object_roles":"/api/v1/credentials/1020/object_roles/"},"summary_fields":{"host":{},"project":{},"organization":{"id":117,"name":"spec_test_org","description":"for
-        miq spec tests"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"id":5472,"description":"Can
-        manage all aspects of the credential","name":"Admin"},"use_role":{"id":5474,"description":"Can
-        use the credential in a job template","name":"Use"},"read_role":{"id":5473,"description":"May
-        view settings for the credential","name":"Read"}},"user_capabilities":{"edit":true,"delete":true},"owners":[{"url":"/api/v1/organizations/117/","description":"for
-        miq spec tests","type":"organization","id":117,"name":"spec_test_org"}]},"created":"2018-07-31T22:35:19.421Z","modified":"2018-07-31T22:35:19.473Z","name":"hello_scm_cred","description":"","organization":117,"kind":"scm","cloud":false,"host":"","username":"admin","password":"$encrypted$","security_token":"","project":"","domain":"","ssh_key_data":"","ssh_key_unlock":"","become_method":"","become_username":"","become_password":"","vault_password":"","subscription":"","tenant":"","secret":"","client":"","authorize":false,"authorize_password":""}'
+      string: '{"id":1033,"type":"credential","url":"/api/v1/credentials/1033/","related":{"created_by":"/api/v1/users/1/","modified_by":"/api/v1/users/1/","organization":"/api/v1/organizations/118/","owner_teams":"/api/v1/credentials/1033/owner_teams/","owner_users":"/api/v1/credentials/1033/owner_users/","activity_stream":"/api/v1/credentials/1033/activity_stream/","access_list":"/api/v1/credentials/1033/access_list/","object_roles":"/api/v1/credentials/1033/object_roles/"},"summary_fields":{"host":{},"project":{},"organization":{"id":118,"name":"spec_test_org","description":"for
+        miq spec tests"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"modified_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"id":5577,"description":"Can
+        manage all aspects of the credential","name":"Admin"},"use_role":{"id":5579,"description":"Can
+        use the credential in a job template","name":"Use"},"read_role":{"id":5578,"description":"May
+        view settings for the credential","name":"Read"}},"user_capabilities":{"edit":true,"delete":true},"owners":[{"url":"/api/v1/organizations/118/","description":"for
+        miq spec tests","type":"organization","id":118,"name":"spec_test_org"}]},"created":"2018-11-19T22:20:52.210Z","modified":"2018-11-19T22:20:52.262Z","name":"hello_scm_cred","description":"","organization":118,"kind":"scm","cloud":false,"host":"","username":"admin","password":"$encrypted$","security_token":"","project":"","domain":"","ssh_key_data":"","ssh_key_unlock":"","become_method":"","become_username":"","become_password":"","vault_password":"","subscription":"","tenant":"","secret":"","client":"","authorize":false,"authorize_password":""}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:46 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:34 GMT
 - request:
     method: get
-    uri: https://example.com/api/v1/projects/399/
+    uri: https://example.com/api/v1/projects/415/
     body:
       encoding: US-ASCII
       string: ''
@@ -929,7 +1711,7 @@ http_interactions:
       Server:
       - nginx/1.12.2
       Date:
-      - Thu, 09 Aug 2018 13:08:48 GMT
+      - Mon, 19 Nov 2018 23:12:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -937,9 +1719,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Api-Time:
-      - 0.059s
+      - 0.057s
       X-Api-Total-Time:
-      - 0.066s
+      - 0.065s
       Allow:
       - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
       Content-Language:
@@ -954,12 +1736,12 @@ http_interactions:
       - DENY
     body:
       encoding: UTF-8
-      string: '{"id":399,"type":"project","url":"/api/v1/projects/399/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1020/","last_job":"/api/v1/project_updates/1216/","notification_templates_error":"/api/v1/projects/399/notification_templates_error/","notification_templates_success":"/api/v1/projects/399/notification_templates_success/","object_roles":"/api/v1/projects/399/object_roles/","notification_templates_any":"/api/v1/projects/399/notification_templates_any/","project_updates":"/api/v1/projects/399/project_updates/","update":"/api/v1/projects/399/update/","access_list":"/api/v1/projects/399/access_list/","teams":"/api/v1/projects/399/teams/","scm_inventory_sources":"/api/v1/projects/399/scm_inventory_sources/","inventory_files":"/api/v1/projects/399/inventories/","schedules":"/api/v1/projects/399/schedules/","playbooks":"/api/v1/projects/399/playbooks/","activity_stream":"/api/v1/projects/399/activity_stream/","organization":"/api/v1/organizations/117/","last_update":"/api/v1/project_updates/1216/"},"summary_fields":{"last_job":{"id":1216,"name":"hello_repo","description":"","finished":"2018-08-09T13:08:45.981Z","status":"successful","failed":false},"last_update":{"id":1216,"name":"hello_repo","description":"","status":"successful","failed":false},"credential":{"id":1020,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"organization":{"id":117,"name":"spec_test_org","description":"for
-        miq spec tests"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"id":5504,"description":"Can
-        manage all aspects of the project","name":"Admin"},"use_role":{"id":5506,"description":"Can
-        use the project in a job template","name":"Use"},"update_role":{"id":5507,"description":"May
-        update project or inventory or group using the configured source update system","name":"Update"},"read_role":{"id":5505,"description":"May
-        view settings for the project","name":"Read"}},"user_capabilities":{"edit":true,"start":true,"schedule":true,"delete":true}},"created":"2018-07-31T22:35:27.145Z","modified":"2018-08-09T13:08:45.937Z","name":"hello_repo","description":"","local_path":"_399__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1020,"timeout":0,"last_job_run":"2018-08-09T13:08:45.981594Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":117,"scm_delete_on_next_update":false,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"scm_revision":"c28f4a6f8ea69e409af58e4b17f937097efacc37","last_update_failed":false,"last_updated":"2018-08-09T13:08:45.981594Z"}'
+      string: '{"id":415,"type":"project","url":"/api/v1/projects/415/","related":{"created_by":"/api/v1/users/1/","credential":"/api/v1/credentials/1033/","last_job":"/api/v1/project_updates/1682/","notification_templates_error":"/api/v1/projects/415/notification_templates_error/","notification_templates_success":"/api/v1/projects/415/notification_templates_success/","object_roles":"/api/v1/projects/415/object_roles/","notification_templates_any":"/api/v1/projects/415/notification_templates_any/","project_updates":"/api/v1/projects/415/project_updates/","update":"/api/v1/projects/415/update/","access_list":"/api/v1/projects/415/access_list/","teams":"/api/v1/projects/415/teams/","scm_inventory_sources":"/api/v1/projects/415/scm_inventory_sources/","inventory_files":"/api/v1/projects/415/inventories/","schedules":"/api/v1/projects/415/schedules/","playbooks":"/api/v1/projects/415/playbooks/","activity_stream":"/api/v1/projects/415/activity_stream/","organization":"/api/v1/organizations/118/","last_update":"/api/v1/project_updates/1682/"},"summary_fields":{"last_job":{"id":1682,"name":"hello_repo","description":"","finished":"2018-11-19T23:12:27.954Z","status":"successful","failed":false},"last_update":{"id":1682,"name":"hello_repo","description":"","status":"successful","failed":false},"credential":{"id":1033,"name":"hello_scm_cred","description":"","kind":"scm","cloud":false},"organization":{"id":118,"name":"spec_test_org","description":"for
+        miq spec tests"},"created_by":{"id":1,"username":"admin","first_name":"","last_name":""},"object_roles":{"admin_role":{"id":5609,"description":"Can
+        manage all aspects of the project","name":"Admin"},"use_role":{"id":5611,"description":"Can
+        use the project in a job template","name":"Use"},"update_role":{"id":5612,"description":"May
+        update project or inventory or group using the configured source update system","name":"Update"},"read_role":{"id":5610,"description":"May
+        view settings for the project","name":"Read"}},"user_capabilities":{"edit":true,"start":true,"schedule":true,"delete":true}},"created":"2018-11-19T22:20:59.535Z","modified":"2018-11-19T23:12:27.918Z","name":"hello_repo","description":"","local_path":"_415__hello_repo","scm_type":"git","scm_url":"https://github.com/jameswnl/ansible-examples","scm_branch":"","scm_clean":false,"scm_delete_on_update":false,"credential":1033,"timeout":0,"last_job_run":"2018-11-19T23:12:27.954073Z","last_job_failed":false,"next_job_run":null,"status":"successful","organization":118,"scm_delete_on_next_update":false,"scm_update_on_launch":false,"scm_update_cache_timeout":0,"scm_revision":"e9902736a35303ad7167f0c442fe82181558e5a3","last_update_failed":false,"last_updated":"2018-11-19T23:12:27.954073Z"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 13:08:46 GMT
+  recorded_at: Mon, 19 Nov 2018 23:12:35 GMT
 recorded_with: VCR 3.0.3
