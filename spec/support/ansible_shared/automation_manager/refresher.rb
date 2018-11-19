@@ -152,7 +152,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configuration_script.authentications.count).to eq(3)
 
     # vault_credential
-    vault_credential = Authentication.find_by(:type => manager_class::VaultCredential.name, :manager_ref => '1022')
+    vault_credential = Authentication.find_by(:type => manager_class::VaultCredential.name, :manager_ref => '1035')
     expect(vault_credential.options.keys).to match_array([:vault_password])
     expect(vault_credential.options[:vault_password]).not_to be_empty
     expect(vault_credential.name).to eq("hello_vault_cred")
