@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Hammer RC-1
+## Hammer RC-2
+
+### Fixed
+- Tower 3.3 removed result_stdout from project_update [(#140)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/140)
+
+## Hammer RC-1 - Released 2018-11-16
 
 ### Fixed
 - Credential.manager_ref need to be an integer for Tower 3.3 [(#134)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/134)
