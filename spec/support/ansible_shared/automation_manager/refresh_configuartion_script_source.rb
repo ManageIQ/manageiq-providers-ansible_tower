@@ -5,11 +5,11 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
   let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
   let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
 
-  let(:auth)                    { FactoryGirl.create(:authentication, :userid => auth_userid, :password => auth_password) }
+  let(:auth)                    { FactoryBot.create(:authentication, :userid => auth_userid, :password => auth_password) }
   let(:automation_manager)      { provider.automation_manager }
   let(:provider) do
     _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone
-    FactoryGirl.create(ansible_provider,
+    FactoryBot.create(ansible_provider,
                        :zone       => zone,
                        :url        => tower_url,
                        :verify_ssl => false,).tap { |provider| provider.authentications << auth }
@@ -24,14 +24,14 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
   let(:targeted_refresh_playbook_count) { tower_data[:items]['hello_repo'][:playbooks].count }
 
   it "will perform a targeted refresh" do
-    credential = FactoryGirl.create(:"#{ems_type}_scm_credential", :name => '2keep')
+    credential = FactoryBot.create(:"#{ems_type}_scm_credential", :name => '2keep')
     automation_manager.credentials << credential
-    configuration_script_source = FactoryGirl.create(:"#{ems_type}_configuration_script_source",
+    configuration_script_source = FactoryBot.create(:"#{ems_type}_configuration_script_source",
                                                      :authentication => credential,
                                                      :manager        => automation_manager,
                                                      :manager_ref    => targeted_refresh_id)
     configuration_script_source.configuration_script_payloads.create!(:manager_ref => '2b_rm', :name => '2b_rm')
-    configuration_script_source_other = FactoryGirl.create(:"#{ems_type}_configuration_script_source",
+    configuration_script_source_other = FactoryBot.create(:"#{ems_type}_configuration_script_source",
                                                            :manager_ref => nonexistent_repo_id,
                                                            :manager     => automation_manager,
                                                            :name        => 'Dont touch this')

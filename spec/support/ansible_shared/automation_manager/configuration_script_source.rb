@@ -1,10 +1,10 @@
 require 'ansible_tower_client'
 
 shared_examples_for "ansible configuration_script_source" do
-  let(:finished_task) { FactoryGirl.create(:miq_task, :state => "Finished") }
+  let(:finished_task) { FactoryBot.create(:miq_task, :state => "Finished") }
   let(:atc)           { double("AnsibleTowerClient::Connection", :api => api) }
   let(:api)           { double("AnsibleTowerClient::Api", :projects => projects) }
-  let(:credential)    { FactoryGirl.create(:ansible_scm_credential, :manager_ref => '1') }
+  let(:credential)    { FactoryBot.create(:ansible_scm_credential, :manager_ref => '1') }
 
   context "create through API" do
     let(:projects) { double("AnsibleTowerClient::Collection", :create! => project) }
@@ -179,7 +179,7 @@ shared_examples_for "ansible configuration_script_source" do
     let(:projects)      { double("AnsibleTowerClient::Collection", :find => tower_project) }
     let(:tower_project) { double("AnsibleTowerClient::Project", :update_attributes! => {}, :id => 1) }
     let(:project)       { described_class.create!(:manager => manager, :manager_ref => tower_project.id) }
-    let(:tower_cred)    { FactoryGirl.create(:ansible_scm_credential, :manager_ref => '100') }
+    let(:tower_cred)    { FactoryBot.create(:ansible_scm_credential, :manager_ref => '100') }
 
     let(:expected_notify_update) { expected_notify('update') }
     let(:expected_notify_refresh_in_provider) { expected_notify('refresh in provider') }

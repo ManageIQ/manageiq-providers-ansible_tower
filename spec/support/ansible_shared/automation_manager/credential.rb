@@ -1,12 +1,12 @@
 require 'ansible_tower_client'
 
 shared_examples_for "ansible credential" do
-  let(:finished_task) { FactoryGirl.create(:miq_task, :state => "Finished") }
+  let(:finished_task) { FactoryBot.create(:miq_task, :state => "Finished") }
   let(:atc)           { double("AnsibleTowerClient::Connection", :api => api) }
   let(:api)           { double("AnsibleTowerClient::Api", :credentials => credentials) }
 
   context "Tower 3.3 needs pk as integer" do
-    let(:machine_credential) { FactoryGirl.create(:ansible_machine_credential, :manager_ref => '1', :resource => manager) }
+    let(:machine_credential) { FactoryBot.create(:ansible_machine_credential, :manager_ref => '1', :resource => manager) }
     it "native_ref returns integer" do
       expect(machine_credential.manager_ref).to eq('1')
       expect(machine_credential.native_ref).to eq(1)
@@ -94,7 +94,7 @@ shared_examples_for "ansible credential" do
     end
 
     it ".create_in_provider_queue to fail with incompatible manager" do
-      wrong_manager = FactoryGirl.create(:configuration_manager_foreman)
+      wrong_manager = FactoryBot.create(:configuration_manager_foreman)
       expect { described_class.create_in_provider_queue(wrong_manager.id, params) }.to raise_error(ActiveRecord::RecordNotFound)
     end
 

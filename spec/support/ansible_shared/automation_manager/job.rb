@@ -8,13 +8,13 @@ shared_examples_for "ansible job" do
 
   let(:connection) { double(:connection, :api => double(:api, :jobs => double(:jobs, :find => the_raw_job))) }
 
-  let(:manager)  { FactoryGirl.create(:automation_manager_ansible_tower, :provider) }
+  let(:manager)  { FactoryBot.create(:automation_manager_ansible_tower, :provider) }
   let(:mock_api) { AnsibleTowerClient::Api.new(faraday_connection) }
 
-  let(:machine_credential) { FactoryGirl.create(:ansible_machine_credential, :manager_ref => '1', :resource => manager) }
-  let(:cloud_credential)   { FactoryGirl.create(:ansible_cloud_credential,   :manager_ref => '2', :resource => manager) }
-  let(:network_credential) { FactoryGirl.create(:ansible_network_credential, :manager_ref => '3', :resource => manager) }
-  let(:vault_credential)   { FactoryGirl.create(:ansible_vault_credential,   :manager_ref => '4', :resource => manager) }
+  let(:machine_credential) { FactoryBot.create(:ansible_machine_credential, :manager_ref => '1', :resource => manager) }
+  let(:cloud_credential)   { FactoryBot.create(:ansible_cloud_credential,   :manager_ref => '2', :resource => manager) }
+  let(:network_credential) { FactoryBot.create(:ansible_network_credential, :manager_ref => '3', :resource => manager) }
+  let(:vault_credential)   { FactoryBot.create(:ansible_vault_credential,   :manager_ref => '4', :resource => manager) }
 
   let(:the_raw_job) do
     AnsibleTowerClient::Job.new(
@@ -43,8 +43,8 @@ shared_examples_for "ansible job" do
     ]
   end
 
-  let(:template) { FactoryGirl.create(:configuration_script, :manager => manager) }
-  subject { FactoryGirl.create(:ansible_tower_job, :job_template => template, :ext_management_system => manager) }
+  let(:template) { FactoryBot.create(:configuration_script, :manager => manager) }
+  subject { FactoryBot.create(:ansible_tower_job, :job_template => template, :ext_management_system => manager) }
 
   describe 'job operations' do
     describe ".create_job" do
@@ -63,7 +63,7 @@ shared_examples_for "ansible job" do
       end
 
       context 'template is temporary' do
-        let(:template) { FactoryGirl.build(:configuration_script, :manager => manager) }
+        let(:template) { FactoryBot.build(:configuration_script, :manager => manager) }
 
         it 'creates a job' do
           expect(template).to receive(:run).and_return(the_raw_job)
@@ -83,7 +83,7 @@ shared_examples_for "ansible job" do
 
       context 'options have extra_vars' do
         let(:template) do
-          FactoryGirl.build(:configuration_script,
+          FactoryBot.build(:configuration_script,
                             :manager     => manager,
                             :variables   => {'Var1' => 'v1', 'VAR2' => 'v2'},
                             :survey_spec => {'spec' => [{'default' => 'v3', 'variable' => 'var3', 'type' => 'text'}]})

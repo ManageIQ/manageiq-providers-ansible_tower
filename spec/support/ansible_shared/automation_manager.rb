@@ -1,6 +1,6 @@
 shared_examples_for "ansible automation_manager" do
-  let(:provider) { FactoryGirl.build(:provider) }
-  let(:ansible_automation_manager) { FactoryGirl.build(:automation_manager_ansible_tower, :provider => provider) }
+  let(:provider) { FactoryBot.build(:provider) }
+  let(:ansible_automation_manager) { FactoryBot.build(:automation_manager_ansible_tower, :provider => provider) }
 
   describe "#connect" do
     it "delegates to the provider" do
