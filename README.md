@@ -1,7 +1,7 @@
 # manageiq-providers-ansible_tower
 
 [![Gem Version](https://badge.fury.io/rb/manageiq-providers-ansible_tower.svg)](http://badge.fury.io/rb/manageiq-providers-ansible_tower)
-[![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-ansible_tower.svg)](https://travis-ci.org/ManageIQ/manageiq-providers-ansible_tower)
+[![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-ansible_tower.svg?branch=master)](https://travis-ci.org/ManageIQ/manageiq-providers-ansible_tower)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower)
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-providers-ansible_tower.svg)](https://gemnasium.com/ManageIQ/manageiq-providers-ansible_tower)
