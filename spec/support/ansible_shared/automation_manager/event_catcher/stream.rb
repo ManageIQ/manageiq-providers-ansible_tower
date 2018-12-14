@@ -5,10 +5,10 @@ shared_examples_for "ansible event_catcher stream" do |cassette_file|
   let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
   let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
 
-  let(:auth)                    { FactoryGirl.create(:authentication, :userid => auth_userid, :password => auth_password) }
+  let(:auth)                    { FactoryBot.create(:authentication, :userid => auth_userid, :password => auth_password) }
   let(:automation_manager)      { provider.automation_manager }
   let(:provider) do
-    FactoryGirl.create(:provider_ansible_tower,
+    FactoryBot.create(:provider_ansible_tower,
                        :url        => tower_url,
                        :verify_ssl => false,).tap { |provider| provider.authentications << auth }
   end

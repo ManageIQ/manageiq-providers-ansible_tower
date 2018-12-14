@@ -13,7 +13,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
                           :jobs          => double(:jobs, :find => the_raw_job)))
   end
 
-  let(:manager)  { FactoryGirl.create(:automation_manager_ansible_tower, :provider) }
+  let(:manager)  { FactoryBot.create(:automation_manager_ansible_tower, :provider) }
   let(:mock_api) { AnsibleTowerClient::Api.new(faraday_connection) }
 
   let(:the_raw_workflow_job) do
@@ -32,9 +32,9 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
   end
 
   let(:the_raw_job) { nil }
-  let(:template) { FactoryGirl.create(:ansible_configuration_script, :manager => manager) }
-  let(:workflow_template) { FactoryGirl.create(:configuration_workflow, :manager => manager) }
-  subject { FactoryGirl.create(:ansible_tower_workflow_job, :workflow_template => workflow_template, :ext_management_system => manager) }
+  let(:template) { FactoryBot.create(:ansible_configuration_script, :manager => manager) }
+  let(:workflow_template) { FactoryBot.create(:configuration_workflow, :manager => manager) }
+  subject { FactoryBot.create(:ansible_tower_workflow_job, :workflow_template => workflow_template, :ext_management_system => manager) }
 
   describe 'job operations' do
     describe ".create_job" do
@@ -60,7 +60,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
 
       context 'options have extra_vars' do
         let(:workflow_template) do
-          FactoryGirl.build(:configuration_workflow,
+          FactoryBot.build(:configuration_workflow,
                             :manager     => manager,
                             :variables   => {'Var1' => 'v1', 'VAR2' => 'v2'},
                             :survey_spec => {'spec' => [{'default' => 'v3', 'variable' => 'var3', 'type' => 'text'}]})

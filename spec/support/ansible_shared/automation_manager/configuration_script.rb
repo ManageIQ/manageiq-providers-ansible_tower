@@ -15,12 +15,12 @@ shared_examples_for "ansible configuration_script" do
   end
 
   context "relates to playbook" do
-    let(:configuration_script_source) { FactoryGirl.create(:configuration_script_source, :manager => manager) }
-    let!(:payload) { FactoryGirl.create(:configuration_script_payload) }
-    let(:configuration_scripts_without_payload) { FactoryGirl.create(:configuration_script) }
+    let(:configuration_script_source) { FactoryBot.create(:configuration_script_source, :manager => manager) }
+    let!(:payload) { FactoryBot.create(:configuration_script_payload) }
+    let(:configuration_scripts_without_payload) { FactoryBot.create(:configuration_script) }
     let(:configuration_scripts) do
-      [FactoryGirl.create(:configuration_script, :parent => payload),
-       FactoryGirl.create(:configuration_script, :parent => payload)]
+      [FactoryBot.create(:configuration_script, :parent => payload),
+       FactoryBot.create(:configuration_script, :parent => payload)]
     end
 
     it "can refer to a payload" do
@@ -116,7 +116,7 @@ shared_examples_for "ansible configuration_script" do
     end
 
     context ".create_in_provider" do
-      let(:finished_task) { FactoryGirl.create(:miq_task, :state => "Finished") }
+      let(:finished_task) { FactoryBot.create(:miq_task, :state => "Finished") }
 
       it "successfully created in provider" do
         expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)

@@ -43,12 +43,12 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
   let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
 
-  let(:auth)                    { FactoryGirl.create(:authentication, :userid => auth_userid, :password => auth_password) }
+  let(:auth)                    { FactoryBot.create(:authentication, :userid => auth_userid, :password => auth_password) }
   let(:automation_manager)      { provider.automation_manager }
-  let(:expected_counterpart_vm) { FactoryGirl.create(:vm, :uid_ems => "4233080d-7467-de61-76c9-c8307b6e4830") }
+  let(:expected_counterpart_vm) { FactoryBot.create(:vm, :uid_ems => "4233080d-7467-de61-76c9-c8307b6e4830") }
   let(:provider) do
     _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone
-    FactoryGirl.create(ansible_provider,
+    FactoryBot.create(ansible_provider,
                        :zone       => zone,
                        :url        => tower_url,
                        :verify_ssl => false,).tap { |provider| provider.authentications << auth }
