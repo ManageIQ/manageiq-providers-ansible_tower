@@ -59,6 +59,7 @@ shared_examples_for "ansible job" do
           expect(job.job_template).to          eq(template)
           expect(job.status).to                eq(the_raw_job.status)
           expect(job.ext_management_system).to eq(manager)
+          expect(job.retireable?).to           be false
         end
       end
 
