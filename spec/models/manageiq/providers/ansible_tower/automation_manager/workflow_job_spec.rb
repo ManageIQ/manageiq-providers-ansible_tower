@@ -48,6 +48,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
         expect(job.workflow_template).to     eq(workflow_template)
         expect(job.status).to                eq(the_raw_workflow_job.status)
         expect(job.ext_management_system).to eq(manager)
+        expect(job.retireable?).to           be false
       end
 
       it 'catches errors from provider' do
