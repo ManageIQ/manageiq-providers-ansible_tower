@@ -5,17 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Hammer RC-2
-
-### Fixed
-- Tower 3.3 removed result_stdout from project_update [(#140)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/140)
-
-## Hammer RC-1 - Released 2018-11-16
-
-### Fixed
-- Credential.manager_ref need to be an integer for Tower 3.3 [(#134)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/134)
-
-## Hammer Beta-1 - Released 2018-10-12
+## Hammer-1
 
 ### Added
 - ConfigurationWorkflow only exists in under AnsibleTower::AutomationMa… [(#112)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/112)
@@ -28,6 +18,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - Extract method raw_delete_in_provider from delete_in_provider [(#27)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/27)
 
 ### Fixed
+- Tower 3.3 removed result_stdout from project_update [(#140)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/140)
+- Credential.manager_ref need to be an integer for Tower 3.3 [(#134)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/134)
 - Deal with ansible not having a username [(#123)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/123)
 - FIX wrong VCR cassette for Embedded Ansible refresher spec [(#114)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/114)
 - Collect variable Tower data upon population [(#92)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/92)
