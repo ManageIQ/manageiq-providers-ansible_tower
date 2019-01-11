@@ -8,6 +8,12 @@ module ManageIQ::Providers::AnsibleTower::Inventory::Persister::Definitions::Col
     end
   end
 
+  def add_configuration_scripts
+    add_collection(automation, :configuration_scripts) do |builder|
+      builder.add_properties(:model_class => ManageIQ::Providers::AutomationManager::ConfigurationScript)
+    end
+  end
+
   def add_configuration_script_payloads(extra_properties = {})
     add_collection(automation, :configuration_script_payloads, extra_properties) do |builder|
       builder.add_properties(
