@@ -445,6 +445,9 @@ class PopulateTower
     }
     nonexistent_project = create_obj(uri, data)
     @tower_data[:items][data[:name]] = { :id => nonexistent_project['id'] }
+
+    sleep(DEL_SLEEP)
+
     del_obj(uri, data[:name])
 
     self
