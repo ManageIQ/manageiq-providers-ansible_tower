@@ -58,9 +58,9 @@ class PopulateTower
   require 'faraday'
   require 'faraday_middleware'
 
-  MAX_TRIES = 10
-  TRY_SLEEP = 2
-  DEL_SLEEP = 20
+  MAX_TRIES = ENV["MAX_TRIES"] || 10
+  TRY_SLEEP = ENV["TRY_SLEEP"] || 2
+  DEL_SLEEP = ENV["DEL_SLEEP"] || 20
 
   def initialize(tower_host, id, password)
     @conn = Faraday.new(tower_host, :ssl => {:verify => false}) do |c|
