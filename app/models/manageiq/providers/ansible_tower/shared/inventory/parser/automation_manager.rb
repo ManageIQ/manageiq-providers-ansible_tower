@@ -44,13 +44,19 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
         :manager_ref                 => job_template.playbook
       )
 
-      inventory_object.authentications = []
-      %w(credential_id cloud_credential_id network_credential_id).each do |credential_attr|
-        next unless job_template.respond_to?(credential_attr)
-        credential_id = job_template.public_send(credential_attr).to_s
-        next if credential_id.blank?
-        inventory_object.authentications << persister.credentials.lazy_find(credential_id)
-      end
+      configuration_script_authentications(inventory_object, job_template)
+    end
+  end
+
+  def configuration_script_authentications(persister_configuration_script, job_template)
+    %w(credential_id cloud_credential_id network_credential_id).each do |credential_attr|
+      next unless job_template.respond_to?(credential_attr)
+      credential_id = job_template.public_send(credential_attr).to_s
+      next if credential_id.blank?
+      persister.authentication_configuration_script_bases.build(
+        :configuration_script_base => persister_configuration_script,
+        :authentication            => persister.credentials.lazy_find(credential_id)
+      )
     end
   end
 

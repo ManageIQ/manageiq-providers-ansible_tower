@@ -39,7 +39,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   # ruby -pi -e 'gsub /example.com/, "yourdomain.com"; gsub /testuser:secret/, "admin:smartvm"' spec/vcr_cassettes/manageiq/providers/ansible_tower/automation_manager/*.yml
   include_context "uses tower_data.yml"
 
-  let(:tower_url) { ENV['TOWER_URL'] || "https://example.com/api/v1/" }
+  let(:tower_url) { ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/" }
   let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
   let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
 
@@ -72,6 +72,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   let(:hello_repo_status) { tower_data[:items]['hello_repo'][:status] }
   let(:hello_template_id) { tower_data[:items]['hello_template'][:id] }
   let(:hello_template_with_survey_id) { tower_data[:items]['hello_template_with_survey'][:id] }
+  let(:hello_workflow_id) { tower_data[:items]['hello_workflow'][:id] }
   let(:hello_vm_id) { tower_data[:items]['hello_vm'][:id] }
 
   it ".ems_type" do
@@ -91,7 +92,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
       :credentials            => mock_collection,
     )
     allow(automation_manager.provider).to receive_message_chain(:connect, :api).and_return(mock_api)
-    automation_manager.configuration_script_sources.create!
+    automation_manager.configuration_script_sources.create!(:type => manager_class::ConfigurationScriptSource)
     EmsRefresh.refresh(automation_manager)
 
     expect(ConfigurationScriptSource.count).to eq(0)
@@ -152,7 +153,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
     expect(expected_configuration_script.authentications.count).to eq(3)
 
     # vault_credential
-    vault_credential = Authentication.find_by(:type => manager_class::VaultCredential.name, :manager_ref => '1035')
+    vault_credential = Authentication.find_by(:type => manager_class::VaultCredential.name, :manager_ref => '1155')
     expect(vault_credential.options.keys).to match_array([:vault_password])
     expect(vault_credential.options[:vault_password]).not_to be_empty
     expect(vault_credential.name).to eq("hello_vault_cred")
@@ -311,7 +312,7 @@ shared_examples_for "ansible refresher" do |ansible_provider, manager_class, ems
   def assert_configuration_workflow
     expect(expected_configuration_workflow).to have_attributes(
       :name        => "hello_workflow",
-      :manager_ref => "402",
+      :manager_ref => hello_workflow_id.to_s,
       :survey_spec => {},
       :variables   => {},
     )

@@ -2,7 +2,8 @@ module ManageIQ::Providers::AnsibleTower::Inventory::Persister::Definitions::Aut
   extend ActiveSupport::Concern
 
   def initialize_automation_inventory_collections
-    %i(credentials
+    %i(authentication_configuration_script_bases
+       credentials
        configuration_script_sources
        configured_systems).each do |name|
 

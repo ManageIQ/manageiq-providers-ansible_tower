@@ -15,6 +15,6 @@
     :inventory_object_refresh: true
     :allow_targeted_refresh: true
     :inventory_collections:
-      :saver_strategy: default
+      :saver_strategy: batch
 :log:
   :level_ansible_tower: info
