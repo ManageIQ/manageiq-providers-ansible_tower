@@ -1,4 +1,4 @@
-shared_examples_for "refresh targeted" do |ansible_provider, manager_class, ems_type, cassette_path|
+shared_examples_for "refresh targeted" do |ansible_provider, manager_class, _ems_type, cassette_path|
   include_context "uses tower_data.yml"
 
   let(:tower_url) { ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/" }
@@ -22,8 +22,6 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, ems_
   context "with settings" do
     before do
       VCR.configure do |c|
-        # TODO: check for embedded ansible specs
-        # c.cassette_library_dir = File.join(File.dirname(__FILE__), "../" * 4 + "vcr_cassettes")
         c.cassette_library_dir = ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/vcr_cassettes")
       end
       [
@@ -43,7 +41,7 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, ems_
     end
 
     it "will refresh inventory_root_group" do
-      twice_with_cassette("inventory_root_group") do
+      repeat_with_cassette("inventory_root_group") do
         EmsRefresh.refresh([make_target(:inventory_root_groups,
                                         :ems_ref => tower_data[:items]['hello_inventory'][:id])])
 
@@ -52,7 +50,7 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, ems_
     end
 
     it "will refresh configured_system" do
-      twice_with_cassette("configured_system") do
+      repeat_with_cassette("configured_system") do
         EmsRefresh.refresh([make_target(:configured_systems,
                                         :manager_ref => tower_data[:items]['hello_vm'][:id])])
 
@@ -62,7 +60,7 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, ems_
     end
 
     it "will refresh configuration_script" do
-      twice_with_cassette("configuration_script") do
+      repeat_with_cassette("configuration_script") do
         EmsRefresh.refresh([make_target(:configuration_scripts,
                                         :manager_ref => tower_data[:items]['hello_template'][:id])])
 
@@ -74,7 +72,7 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, ems_
     end
 
     it "will refresh credential" do
-      twice_with_cassette("credential") do
+      repeat_with_cassette("credential") do
         EmsRefresh.refresh([make_target(:credentials,
                                         :manager_ref => "1157")])
 
@@ -83,11 +81,40 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, ems_
     end
 
     it "will refresh configuration_workflow" do
-      twice_with_cassette("configuration_workflow") do
+      repeat_with_cassette("configuration_workflow") do
         EmsRefresh.refresh [make_target(:configuration_scripts,
                                         :manager_ref => tower_data[:items]['hello_workflow'][:id])]
 
         assert_specific_configuration_workflow
+      end
+    end
+
+    it "will refresh configuration_script_sources in batches" do
+      # pre-loading needed due to stub_const error
+      # https://github.com/rspec/rspec-mocks/issues/1079
+      ManageIQ::Providers::AnsibleTower::Inventory
+      ManageIQ::Providers::AnsibleTower::Inventory::Collector
+
+      repeat_with_cassette("configuration_script_sources_in_batches", :repeat_count => 1) do
+        # get all projects first
+        connection = automation_manager.connect
+        projects = connection.api.projects.all
+        expect(projects.count).to eq(tower_data[:total_counts][:projects])
+
+        # create targets
+        targets = projects.map do |project|
+          make_target(:configuration_script_sources, :manager_ref => project.id.to_s)
+        end
+
+        # make targeted refresh in various sized batches
+        [1, 2, 100].each do |batch_size|
+          stub_const("#{manager_class.parent}::Inventory::Collector::TargetCollection::MAX_FILTER_SIZE", batch_size)
+
+          EmsRefresh.refresh(targets)
+
+          expect(ConfigurationScriptSource.count).to eq(tower_data[:total_counts][:projects])
+          ConfigurationScriptSource.destroy_all
+        end
       end
     end
 
@@ -97,8 +124,8 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, ems_
 
   private
 
-  def twice_with_cassette(cassette_name)
-    2.times do
+  def repeat_with_cassette(cassette_name, repeat_count: 2)
+    repeat_count.times do
       VCR.use_cassette(cassette_path + "/#{cassette_name}") do
         yield
       end
@@ -126,7 +153,6 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, ems_
       :configuration_script_source_id => nil,
       :inventory_root_group_id        => inventory(:inventory_root_group).id,
       :parent_id                      => inventory(:configuration_script_payload).id,
-
     )
 
     assert_specific_amazon_credential(inventory(:configuration_script, :reload => false))
@@ -208,7 +234,7 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, ems_
     )
 
     assert_specific_scm_credential(inventory(:configuration_script_source, :reload => false))
-    assert_specific_configuration_script_source_playbooks(inventory(:configuration_script_source, reload: false))
+    assert_specific_configuration_script_source_playbooks(inventory(:configuration_script_source, :reload => false))
   end
 
   def assert_specific_configuration_script_source_playbooks(configuration_script_source)

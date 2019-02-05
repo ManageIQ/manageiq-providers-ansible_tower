@@ -58,7 +58,8 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
           EmsRefresh.refresh([InventoryRefresh::Target.new(
             :association => :configuration_script_sources,
             :manager_id  => configuration_script_source.manager_id,
-            :manager_ref => { :manager_ref => configuration_script_source.manager_ref })])
+            :manager_ref => { :manager_ref => configuration_script_source.manager_ref }
+          )])
 
           expect(automation_manager.reload.last_refresh_error).to be_nil
           expect(automation_manager.configuration_script_sources.count).to eq(2)

@@ -1,4 +1,6 @@
 module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Collector::TargetCollection
+  MAX_FILTER_SIZE = 200
+
   def connection
     @connection ||= manager.connect
   end
@@ -83,8 +85,15 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Collector::TargetCo
         []
       end
     else
-      endpoint.all(:id__in => refs.join(','))
+      multi_query(refs) do |refs_batch|
+        # returns Enumeration
+        endpoint.all(:id__in => refs_batch.join(','))
+      end
     end
+  end
+
+  def multi_query(refs)
+    refs.each_slice(MAX_FILTER_SIZE).map { |refs_batch| yield(refs_batch) }.lazy.flat_map(&:lazy)
   end
 
   # @param collection [Symbol] inventory collection name (as identified in persister's definitions)
