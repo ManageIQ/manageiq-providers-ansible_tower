@@ -10,11 +10,5 @@
     :password:
     :port:
     :user:
-:ems_refresh:
-  :ansible_tower_automation:
-    :inventory_object_refresh: true
-    :allow_targeted_refresh: true
-    :inventory_collections:
-      :saver_strategy: batch
 :log:
   :level_ansible_tower: info
