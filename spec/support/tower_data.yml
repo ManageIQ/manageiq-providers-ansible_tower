@@ -5,15 +5,15 @@
   :id: 1
 :items:
   spec_test_org:
-    :id: 89
+    :id: 132
   hello_inventory:
-    :id: 111
+    :id: 129
   hello_vm:
-    :id: 111
+    :id: 162
   hello_repo:
-    :id: 415
+    :id: 505
     :status: successful
-    :last_updated: 2018-07-23 15:51:03.037003000 Z
+    :last_updated: 2019-02-01 12:27:01.133192000 Z
     :playbooks:
     - hello_world.yml
     - jboss-standalone/demo-aws-launch.yml
@@ -77,16 +77,18 @@
     - wordpress-nginx/site.yml
     - wordpress-nginx_rhel7/site.yml
   hello_template:
-    :id: 416
+    :id: 506
   hello_template_with_survey:
-    :id: 417
+    :id: 507
+  hello_workflow:
+    :id: 508
   nonexistent_repo:
-    :id: 420
+    :id: 511
 :total_counts:
-  :job_templates: 18
-  :workflow_job_templates: 12
-  :projects: 16
-  :hosts: 6
-  :inventories: 7
-  :credentials: 21
-  :playbooks: 308
+  :job_templates: 28
+  :workflow_job_templates: 17
+  :projects: 17
+  :hosts: 35
+  :inventories: 12
+  :credentials: 24
+  :playbooks: 277
