@@ -1,34 +1,10 @@
-module ManageIQ::Providers::AnsibleTower::Inventory::Persister::Definitions::AutomationCollections
+module ManageIQ::Providers::AnsibleTower::Inventory::Persister::Definitions::Collections
   extend ActiveSupport::Concern
-
-  def initialize_automation_inventory_collections
-    %i(authentication_configuration_script_bases
-       credentials
-       configuration_script_sources
-       configured_systems).each do |name|
-
-      add_collection(automation, name)
-    end
-
-    add_configuration_scripts
-
-    add_configuration_script_payloads
-
-    add_inventory_root_groups
-
-    add_vms
-  end
 
   # ------ IC provider specific definitions -------------------------
   def add_inventory_root_groups
     add_collection(automation, :inventory_root_groups) do |builder|
       builder.add_properties(:model_class => ManageIQ::Providers::AutomationManager::InventoryRootGroup)
-    end
-  end
-
-  def add_configuration_scripts
-    add_collection(automation, :configuration_scripts) do |builder|
-      builder.add_properties(:model_class => ManageIQ::Providers::AutomationManager::ConfigurationScript)
     end
   end
 

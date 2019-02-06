@@ -1,7 +1,7 @@
 namespace :spec do
   desc "Populate expected Tower objects for casssettes and spec tests"
   task :populate_tower do
-    tower_host = ENV['TOWER_URL'] ||"https://dev-ansible-tower3.example.com/api/v1/"
+    tower_host = ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/"
     id = ENV['TOWER_USER'] || 'testuser'
     password = ENV['TOWER_PASSWORD'] || 'secret'
     populate = PopulateTower.new(tower_host, id, password)
@@ -408,17 +408,6 @@ class PopulateTower
       }]
     }
     @conn.post(uri, data)
-
-    # create workflow job template
-    uri = '/api/v1/workflow_job_templates/'
-    data = {
-      :name         => 'hello_workflow',
-      :description  => 'test workflow',
-      :inventory    => inventory['id'],
-      :organization => organization['id']
-    }
-    workflow_template = create_obj(uri, data)
-    @tower_data[:items][data[:name]] = { :id => workflow_template['id'] }
 
     # Create a project with failed update.
     uri = '/api/v1/projects/'
