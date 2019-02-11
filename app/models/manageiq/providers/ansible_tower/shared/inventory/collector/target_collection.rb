@@ -86,7 +86,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Collector::TargetCo
       end
     else
       multi_query(refs) do |refs_batch|
-        # returns Enumeration
+        # returns Enumeration object
         endpoint.all(:id__in => refs_batch.join(','))
       end
     end
