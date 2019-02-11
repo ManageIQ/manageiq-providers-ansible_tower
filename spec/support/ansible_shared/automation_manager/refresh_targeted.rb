@@ -92,8 +92,8 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, _ems
     it "will refresh configuration_script_sources in batches" do
       # pre-loading needed due to stub_const error
       # https://github.com/rspec/rspec-mocks/issues/1079
-      ManageIQ::Providers::AnsibleTower::Inventory
-      ManageIQ::Providers::AnsibleTower::Inventory::Collector
+      manager_class.parent::Inventory
+      manager_class.parent::Inventory::Collector
 
       repeat_with_cassette("configuration_script_sources_in_batches", :repeat_count => 1) do
         # get all projects first
@@ -251,7 +251,7 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, _ems
     @inventory ||= {}
     @inventory[name] ||= case name
                          when :aws_credential then manager_class::AmazonCredential.where(:name => 'hello_aws_cred').first
-                         when :inventory_root_group then manager_class::InventoryRootGroup.where(:ems_ref => tower_data[:items]['hello_inventory'][:id]).first
+                         when :inventory_root_group then manager_class::Inventory.where(:ems_ref => tower_data[:items]['hello_inventory'][:id]).first
                          when :configuration_script then manager_class::ConfigurationScript.where(:manager_ref => tower_data[:items]['hello_template'][:id]).first
                          when :configuration_script_payload then manager_class::ConfigurationScriptPayload.where(:manager_ref => 'hello_world.yml').first
                          when :configuration_script_source then manager_class::ConfigurationScriptSource.where(:manager_ref => tower_data[:items]['hello_repo'][:id]).first
