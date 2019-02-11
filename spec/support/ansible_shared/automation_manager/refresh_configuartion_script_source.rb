@@ -1,7 +1,7 @@
 shared_examples_for "refresh configuration_script_source" do |ansible_provider, manager_class, ems_type, cassette_path|
   include_context "uses tower_data.yml"
 
-  let(:tower_url) { ENV['TOWER_URL'] || "https://example.com/api/v1/" }
+  let(:tower_url) { ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/" }
   let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
   let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
 
@@ -10,9 +10,9 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
   let(:provider) do
     _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone
     FactoryBot.create(ansible_provider,
-                       :zone       => zone,
-                       :url        => tower_url,
-                       :verify_ssl => false,).tap { |provider| provider.authentications << auth }
+                      :zone       => zone,
+                      :url        => tower_url,
+                      :verify_ssl => false,).tap { |provider| provider.authentications << auth }
   end
   let(:manager_class) { manager_class }
 
@@ -26,15 +26,23 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
   it "will perform a targeted refresh" do
     credential = FactoryBot.create(:"#{ems_type}_scm_credential", :name => '2keep')
     automation_manager.credentials << credential
-    configuration_script_source = FactoryBot.create(:"#{ems_type}_configuration_script_source",
-                                                     :authentication => credential,
-                                                     :manager        => automation_manager,
-                                                     :manager_ref    => targeted_refresh_id)
-    configuration_script_source.configuration_script_payloads.create!(:manager_ref => '2b_rm', :name => '2b_rm')
-    configuration_script_source_other = FactoryBot.create(:"#{ems_type}_configuration_script_source",
-                                                           :manager_ref => nonexistent_repo_id,
-                                                           :manager     => automation_manager,
-                                                           :name        => 'Dont touch this')
+    configuration_script_source = FactoryBot.create(
+      :"#{ems_type}_configuration_script_source",
+      :authentication => credential,
+      :manager        => automation_manager,
+      :manager_ref    => targeted_refresh_id
+    )
+    configuration_script_source.configuration_script_payloads.create!(
+      :manager_ref => '2b_rm',
+      :name        => '2b_rm',
+      :type        => manager_class::ConfigurationScriptPayload
+    )
+    configuration_script_source_other = FactoryBot.create(
+      :"#{ems_type}_configuration_script_source",
+      :manager_ref => nonexistent_repo_id,
+      :manager     => automation_manager,
+      :name        => 'Dont touch this'
+    )
 
     # When re-recording the cassetes, comment this to default to normal poll sleep time
     stub_const("ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::ConfigurationScriptSource::REFRESH_ON_TOWER_SLEEP", 0.seconds)
@@ -47,7 +55,11 @@ shared_examples_for "refresh configuration_script_source" do |ansible_provider, 
         configuration_script_payloads = configuration_script_source.configuration_script_payloads
 
         VCR.use_cassette(cassette_path) do
-          EmsRefresh.refresh([[configuration_script_source.class.to_s, configuration_script_source.id]])
+          EmsRefresh.refresh([InventoryRefresh::Target.new(
+            :association => :configuration_script_sources,
+            :manager_id  => configuration_script_source.manager_id,
+            :manager_ref => { :manager_ref => configuration_script_source.manager_ref }
+          )])
 
           expect(automation_manager.reload.last_refresh_error).to be_nil
           expect(automation_manager.configuration_script_sources.count).to eq(2)
