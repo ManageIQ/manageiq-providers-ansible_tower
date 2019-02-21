@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Hammer-1
+## Unreleased as of Sprint 105 ending 2019-02-18
+
+### Fixed
+- Fix of Inventory and ConfigurationScript model_classes [(#160)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/160)
+
+## Hammer-1 - Released 2019-01-15
 
 ### Added
 - ConfigurationWorkflow only exists in under AnsibleTower::AutomationMa… [(#112)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/112)
