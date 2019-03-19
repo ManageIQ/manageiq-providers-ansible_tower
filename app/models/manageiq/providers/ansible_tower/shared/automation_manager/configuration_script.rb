@@ -22,7 +22,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Configurati
   def merge_extra_vars(external)
     extra_vars = variables.merge(external || {}).each_with_object({}) do |(k, v), hash|
       match_data = v.kind_of?(String) && /password::/.match(v)
-      hash[k] = match_data ? MiqPassword.decrypt(v.gsub(/password::/, '')) : v
+      hash[k] = match_data ? ManageIQ::Password.decrypt(v.gsub(/password::/, '')) : v
     end
     {:extra_vars => extra_vars.to_json}
   end
