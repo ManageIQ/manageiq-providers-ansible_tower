@@ -2,48 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://dev-ansible-tower3.example.com/api/v1/config
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Basic YWRtaW46c21hcnR2bQ==
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 301
-      message: Moved Permanently
-    headers:
-      Server:
-      - nginx/1.12.2
-      Date:
-      - Fri, 01 Feb 2019 15:01:24 GMT
-      Content-Type:
-      - text/html
-      Content-Length:
-      - '185'
-      Location:
-      - https://dev-ansible-tower3.example.com/api/v1/config/
-      Connection:
-      - keep-alive
-      Strict-Transport-Security:
-      - max-age=15768000
-      X-Frame-Options:
-      - DENY
-    body:
-      encoding: UTF-8
-      string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
-        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/1.12.2</center>\r\n</body>\r\n</html>\r\n"
-    http_version: 
-  recorded_at: Fri, 01 Feb 2019 15:01:33 GMT
-- request:
-    method: get
     uri: https://dev-ansible-tower3.example.com/api/v1/config/
     body:
       encoding: US-ASCII
@@ -150,48 +108,6 @@ http_interactions:
         update project or inventory or group using the configured source update system","name":"Update"},"read_role":{"id":6416,"description":"May
         view settings for the inventory","name":"Read"}},"user_capabilities":{"edit":true,"adhoc":true,"delete":true}},"created":"2019-02-01T12:26:49.787Z","modified":"2019-02-01T12:26:52.947Z","name":"hello_inventory","description":"inventory
         for miq spec tests","organization":132,"kind":"","host_filter":null,"variables":"","has_active_failures":false,"total_hosts":1,"hosts_with_active_failures":0,"total_groups":0,"groups_with_active_failures":0,"has_inventory_sources":false,"total_inventory_sources":0,"inventory_sources_with_failures":0,"insights_credential":null,"pending_deletion":false,"can_run_ad_hoc_commands":true}'
-    http_version: 
-  recorded_at: Fri, 01 Feb 2019 15:01:34 GMT
-- request:
-    method: get
-    uri: https://dev-ansible-tower3.example.com/api/v1/config
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Basic YWRtaW46c21hcnR2bQ==
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 301
-      message: Moved Permanently
-    headers:
-      Server:
-      - nginx/1.12.2
-      Date:
-      - Fri, 01 Feb 2019 15:01:26 GMT
-      Content-Type:
-      - text/html
-      Content-Length:
-      - '185'
-      Location:
-      - https://dev-ansible-tower3.example.com/api/v1/config/
-      Connection:
-      - keep-alive
-      Strict-Transport-Security:
-      - max-age=15768000
-      X-Frame-Options:
-      - DENY
-    body:
-      encoding: UTF-8
-      string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
-        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/1.12.2</center>\r\n</body>\r\n</html>\r\n"
     http_version: 
   recorded_at: Fri, 01 Feb 2019 15:01:34 GMT
 - request:
