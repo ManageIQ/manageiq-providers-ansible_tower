@@ -118,7 +118,8 @@ module ManageIQ::Providers::AnsibleTower::Shared::Inventory::Parser::AutomationM
         'gce'        => "#{provider_module}::AutomationManager::GoogleCredential",
         'azure_rm'   => "#{provider_module}::AutomationManager::AzureCredential",
         'openstack'  => "#{provider_module}::AutomationManager::OpenstackCredential",
-        'rhv'        => "#{provider_module}::AutomationManager::RhvCredential"
+        'rhv'        => "#{provider_module}::AutomationManager::RhvCredential",
+        'vault'      => "#{provider_module}::AutomationManager::VaultCredential",
       }.select { |_tower_type, miq_type| supported_types.include?(miq_type) }
     end
   end
