@@ -19,7 +19,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner < ::J
     time = Time.zone.now
     update_attributes(:started_on => time)
     miq_task.update_attributes(:started_on => time)
-    my_signal(false, :launch_ansible_tower_job)
+    my_signal(false, :launch_ansible_tower_job, :priority => MiqQueue::HIGH_PRIORITY)
   end
 
   def launch_ansible_tower_job
@@ -102,16 +102,16 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner < ::J
     }
   end
 
-  def my_signal(no_queue, action, *args, deliver_on: nil)
+  def my_signal(no_queue, action, *args, deliver_on: nil, priority: nil)
     if no_queue
       signal(action, *args)
     else
-      queue_signal(action, *args, :deliver_on => deliver_on)
+      queue_signal(action, *args, :deliver_on => deliver_on, :priority => priority)
     end
   end
 
-  def queue_signal(*args, deliver_on: nil)
-    priority = options[:priority] || MiqQueue::NORMAL_PRIORITY
+  def queue_signal(*args, deliver_on: nil, priority: nil)
+    priority ||= options[:priority] || MiqQueue::NORMAL_PRIORITY
 
     MiqQueue.put(
       :class_name  => self.class.name,
