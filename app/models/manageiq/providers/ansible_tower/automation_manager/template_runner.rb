@@ -15,11 +15,11 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner < ::J
       (options[:execution_ttl].present? ? options[:execution_ttl].try(:to_i) : DEFAULT_EXECUTION_TTL) * 60
   end
 
-  def start
+  def start(priority: nil)
     time = Time.zone.now
     update_attributes(:started_on => time)
     miq_task.update_attributes(:started_on => time)
-    my_signal(false, :launch_ansible_tower_job)
+    my_signal(false, :launch_ansible_tower_job, :priority => priority)
   end
 
   def launch_ansible_tower_job
@@ -64,7 +64,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner < ::J
   end
 
   def ansible_job
-    job_class.find(options[:tower_job_id])
+    job_class.find_by(:id => options[:tower_job_id])
   end
 
   def set_status(message, status = "ok")
@@ -74,6 +74,17 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner < ::J
 
   def job_template
     @template ||= ManageIQ::Providers::ExternalAutomationManager::ConfigurationScript.find(options[:ansible_template_id])
+  end
+
+  def wait_on_ansible_job
+    while ansible_job.blank?
+      _log.info("Waiting for the schedule of ansible job from template #{job_template.name}")
+      sleep 2
+      # Code running with Rails QueryCache enabled,
+      # need to disable caching for the reload to see updates.
+      self.class.uncached { reload }
+    end
+    ansible_job
   end
 
   alias initializing dispatch_start
@@ -102,16 +113,16 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner < ::J
     }
   end
 
-  def my_signal(no_queue, action, *args, deliver_on: nil)
+  def my_signal(no_queue, action, *args, deliver_on: nil, priority: nil)
     if no_queue
       signal(action, *args)
     else
-      queue_signal(action, *args, :deliver_on => deliver_on)
+      queue_signal(action, *args, :deliver_on => deliver_on, :priority => priority)
     end
   end
 
-  def queue_signal(*args, deliver_on: nil)
-    priority = options[:priority] || MiqQueue::NORMAL_PRIORITY
+  def queue_signal(*args, deliver_on: nil, priority: nil)
+    priority ||= options[:priority] || MiqQueue::NORMAL_PRIORITY
 
     MiqQueue.put(
       :class_name  => self.class.name,

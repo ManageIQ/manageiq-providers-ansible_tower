@@ -7,7 +7,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner do
     let(:options) { {} }
 
     it 'moves on to launch_ansible_tower_job' do
-      expect(subject).to receive(:queue_signal).with(:launch_ansible_tower_job, :deliver_on => nil)
+      expect(subject).to receive(:queue_signal).with(:launch_ansible_tower_job, :deliver_on => nil, :priority => nil)
       subject.start
     end
   end
