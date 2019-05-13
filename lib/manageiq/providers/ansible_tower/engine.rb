@@ -4,6 +4,10 @@ module ManageIQ
       class Engine < ::Rails::Engine
         isolate_namespace ManageIQ::Providers::AnsibleTower
 
+        def self.vmdb_plugin?
+          true
+        end
+
         def self.plugin_name
           _('Ansible Tower Provider')
         end
