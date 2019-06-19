@@ -12,7 +12,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager
            :to => :provider
 
   def self.included(klass)
-    klass.after_save :change_maintenance_for_provider, :if => proc { |ems| ems.enabled_changed? }
+    klass.after_save :change_maintenance_for_provider, :if => proc { |ems| ems.saved_change_to_enabled? }
   end
 
   module ClassMethods
@@ -28,7 +28,7 @@ module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager
   end
 
   def change_maintenance_for_provider
-    if provider.present? && zone_id_changed?
+    if provider.present? && saved_change_to_zone_id?
       provider.zone_id = zone_id
       provider.save
     end
