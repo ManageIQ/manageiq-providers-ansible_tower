@@ -1,11 +1,11 @@
 # manageiq-providers-ansible_tower
 
 [![Gem Version](https://badge.fury.io/rb/manageiq-providers-ansible_tower.svg)](http://badge.fury.io/rb/manageiq-providers-ansible_tower)
-[![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-ansible_tower.svg?branch=master)](https://travis-ci.org/ManageIQ/manageiq-providers-ansible_tower)
+[![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-ansible_tower.svg?branch=ivanchuk)](https://travis-ci.org/ManageIQ/manageiq-providers-ansible_tower)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower)
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-providers-ansible_tower.svg)](https://gemnasium.com/ManageIQ/manageiq-providers-ansible_tower)
-[![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-ansible_tower/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-ansible_tower/master)
+[![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-ansible_tower/ivanchuk.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-ansible_tower/ivanchuk)
 
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/manageiq-providers-ansible_tower?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Translate](https://img.shields.io/badge/translate-zanata-blue.svg)](https://translate.zanata.org/zanata/project/view/manageiq-providers-ansible_tower)
