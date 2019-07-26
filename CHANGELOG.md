@@ -5,12 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Unreleased as of Sprint 106 ending 2019-03-04
+## Ivanchuk Beta1
 
 ### Added
 - Changed provider zone when EMS paused/resumed [(#155)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/155)
-
-## Unreleased as of Sprint 105 ending 2019-02-18
 
 ### Fixed
 - Fix of Inventory and ConfigurationScript model_classes [(#160)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/160)
