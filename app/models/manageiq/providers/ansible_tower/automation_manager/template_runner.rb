@@ -2,7 +2,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner < ::J
   DEFAULT_EXECUTION_TTL = 10 # minutes
 
   def self.create_job(options)
-    super(name, options.with_indifferent_access)
+    super(options.with_indifferent_access)
   end
 
   def minimize_indirect
