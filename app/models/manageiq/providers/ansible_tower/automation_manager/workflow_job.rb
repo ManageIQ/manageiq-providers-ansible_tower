@@ -1,5 +1,5 @@
 class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
-  ManageIQ::Providers::ExternalAutomationManager::OrchestrationStack
+  ManageIQ::Providers::AutomationManager::OrchestrationStack
 
   require_nested :Status
 

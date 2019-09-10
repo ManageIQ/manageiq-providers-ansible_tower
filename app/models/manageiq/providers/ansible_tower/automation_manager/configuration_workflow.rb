@@ -1,4 +1,4 @@
-class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWorkflow < ManageIQ::Providers::ExternalAutomationManager::ConfigurationScript
+class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWorkflow < ManageIQ::Providers::AutomationManager::ConfigurationScript
   include ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::ConfigurationWorkflow
 
   def run_with_miq_job(options, userid = nil)

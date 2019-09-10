@@ -73,7 +73,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner < ::J
   end
 
   def job_template
-    @template ||= ManageIQ::Providers::ExternalAutomationManager::ConfigurationScript.find(options[:ansible_template_id])
+    @template ||= ManageIQ::Providers::AutomationManager::ConfigurationScript.find(options[:ansible_template_id])
   end
 
   def wait_on_ansible_job

@@ -1,5 +1,5 @@
 class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
-  ManageIQ::Providers::ExternalAutomationManager::OrchestrationStack
+  ManageIQ::Providers::AutomationManager::OrchestrationStack
   include ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job
 
   require_nested :Status

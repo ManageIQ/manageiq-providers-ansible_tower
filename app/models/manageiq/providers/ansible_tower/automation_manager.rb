@@ -1,4 +1,4 @@
-class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers::ExternalAutomationManager
+class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers::AutomationManager
   include ManageIQ::Providers::AnsibleTower::Shared::AutomationManager
 
   require_nested :Credential
