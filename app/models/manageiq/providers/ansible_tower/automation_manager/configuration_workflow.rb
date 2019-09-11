@@ -1,5 +1,5 @@
 class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWorkflow < ManageIQ::Providers::ExternalAutomationManager::ConfigurationScript
-  include ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::ConfigurationWorkflow
+  include ProviderObjectMixin
 
   def run_with_miq_job(options, userid = nil)
     options[:name] = "Workflow Template: #{name}"
@@ -21,4 +21,28 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWorkflo
   def self.display_name(number = 1)
     n_('Workflow Template (Ansible Tower)', 'Workflow Templates (Ansible Tower)', number)
   end
+
+  def self.provider_collection(manager)
+    manager.with_provider_connection do |connection|
+      connection.api.workflow_job_templates
+    end
+  end
+
+  def run(vars = {})
+    options = vars.merge(merge_extra_vars(vars[:extra_vars]))
+
+    with_provider_object do |jt|
+      jt.launch(options)
+    end
+  end
+
+  def merge_extra_vars(external)
+    {:extra_vars => variables.merge(external || {}).to_json}
+  end
+
+  def provider_object(connection = nil)
+    (connection || connection_source.connect).api.workflow_job_templates.find(manager_ref)
+  end
+
+  FRIENDLY_NAME = 'Ansible Tower Workflow Job Template'.freeze
 end
