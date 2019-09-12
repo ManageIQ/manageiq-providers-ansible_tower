@@ -1,4 +1,4 @@
-module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi
+module ManageIQ::Providers::AnsibleTower::AutomationManager::TowerApi
   extend ActiveSupport::Concern
 
   module ClassMethods

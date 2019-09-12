@@ -1,7 +1,7 @@
 class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScriptSource <
   ManageIQ::Providers::ExternalAutomationManager::ConfigurationScriptSource
 
-  include ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi
+  include ManageIQ::Providers::AnsibleTower::AutomationManager::TowerApi
   include ProviderObjectMixin
 
   def self.provider_params(params)
