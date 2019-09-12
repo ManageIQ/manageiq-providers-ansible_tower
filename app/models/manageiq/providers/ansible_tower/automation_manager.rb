@@ -1,5 +1,16 @@
 class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers::ExternalAutomationManager
-  include ManageIQ::Providers::AnsibleTower::Shared::AutomationManager
+
+  include ProcessTasksMixin
+  delegate :authentications,
+           :authentication_check,
+           :authentication_status,
+           :authentication_status_ok?,
+           :connect,
+           :verify_credentials,
+           :with_provider_connection,
+           :to => :provider
+
+  after_save :change_maintenance_for_provider, :if => proc { |ems| ems.saved_change_to_enabled? }
 
   require_nested :Credential
   require_nested :AmazonCredential
@@ -27,6 +38,22 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   require_nested :Refresher
   require_nested :RefreshWorker
   require_nested :WorkflowJob
+
+  def self.connection_source(options = {})
+    options[:connection_source] || self
+  end
+  private_class_method :connection_source
+
+  def image_name
+    "ansible"
+  end
+
+  def change_maintenance_for_provider
+    if provider.present? && saved_change_to_zone_id?
+      provider.zone_id = zone_id
+      provider.save
+    end
+  end
 
   def self.ems_type
     @ems_type ||= "ansible_tower_automation".freeze
