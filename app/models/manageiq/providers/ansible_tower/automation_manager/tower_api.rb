@@ -80,7 +80,7 @@ module ManageIQ::Providers::AnsibleTower::AutomationManager::TowerApi
     params.delete(:miq_task_id) # miq_queue.activate_miq_task will stick in a :miq_task_id
     params = self.class.provider_params(params) if self.class.respond_to?(:provider_params)
     with_provider_object do |provider_object|
-      provider_object.update_attributes!(params)
+      provider_object.update!(params)
       self.class.send(:refresh_in_provider_notify, manager_id, params, provider_object, id)
     end
     self.class.send('refresh', manager)

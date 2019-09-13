@@ -87,7 +87,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
   end
 
   def update_with_provider_object(raw_workflow_job)
-    update_attributes(
+    update(
       :ems_ref     => raw_workflow_job.id,
       :status      => raw_workflow_job.status,
       :start_time  => raw_workflow_job.started,
@@ -126,7 +126,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
   private :update_parameters
 
   def retire_now(requester = nil)
-    update_attributes(:retirement_requester => requester)
+    update(:retirement_requester => requester)
     finish_retirement
 
     Array(jobs).each { |job| job.retire_now(requester) }

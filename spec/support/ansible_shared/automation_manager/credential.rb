@@ -173,16 +173,16 @@ shared_examples_for "ansible credential" do
       expect(Vmdb::Settings).to receive(:decrypt_passwords!).with(params)
       expected_params[:organization] = 1 if described_class.name.include?("::EmbeddedAnsible::")
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(credential).to receive(:update_attributes!).with(expected_params)
+      expect(credential).to receive(:update!).with(expected_params)
       expect(EmsRefresh).to receive(:queue_refresh_task).and_return([finished_task.id])
       expect(Notification).to receive(:create).with(expected_notify)
       expect(ansible_cred.update_in_provider(params)).to be_a(described_class)
     end
 
-    it "#update_in_provider to fail (doing update_attributes!) and send notification" do
+    it "#update_in_provider to fail (doing update!) and send notification" do
       expected_params[:organization] = 1 if described_class.name.include?("::EmbeddedAnsible::")
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(credential).to receive(:update_attributes!).with(expected_params).and_raise(AnsibleTowerClient::ClientError)
+      expect(credential).to receive(:update!).with(expected_params).and_raise(AnsibleTowerClient::ClientError)
       expected_notify[:type] = :tower_op_failure
       expect(Notification).to receive(:create).with(expected_notify).and_return(double(Notification))
       expect { ansible_cred.update_in_provider(params) }.to raise_error(AnsibleTowerClient::ClientError)

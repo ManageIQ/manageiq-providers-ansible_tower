@@ -85,7 +85,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
   end
 
   def update_with_provider_object(raw_job)
-    update_attributes(
+    update(
       :ems_ref     => raw_job.id,
       :status      => raw_job.status,
       :start_time  => raw_job.started,
@@ -135,7 +135,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
     self.resources = plays.collect do |play_hash|
       old_resource = old_resources.find { |o| o.ems_ref == play_hash[:ems_ref].to_s }
       if old_resource
-        old_resource.update_attributes(play_hash)
+        old_resource.update(play_hash)
         old_resource
       else
         OrchestrationStackResource.new(play_hash)
@@ -186,7 +186,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
   end
 
   def retire_now(requester = nil)
-    update_attributes(:retirement_requester => requester)
+    update(:retirement_requester => requester)
     finish_retirement
   end
 end
