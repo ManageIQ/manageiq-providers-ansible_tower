@@ -51,8 +51,10 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Parser::AutomationManager < 
   def configuration_script_authentications(persister_configuration_script, job_template)
     %w(credential_id cloud_credential_id network_credential_id).each do |credential_attr|
       next unless job_template.respond_to?(credential_attr)
+
       credential_id = job_template.public_send(credential_attr).to_s
       next if credential_id.blank?
+
       persister.authentication_configuration_script_bases.build(
         :configuration_script_base => persister_configuration_script,
         :authentication            => persister.credentials.lazy_find(credential_id)

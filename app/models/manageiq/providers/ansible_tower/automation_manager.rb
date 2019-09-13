@@ -1,5 +1,4 @@
 class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers::ExternalAutomationManager
-
   include ProcessTasksMixin
   delegate :authentications,
            :authentication_check,

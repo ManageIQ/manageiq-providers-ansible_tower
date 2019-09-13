@@ -68,6 +68,7 @@ module ManageIQ::Providers::AnsibleTower::AutomationManager::TowerApi
 
     def refresh_in_provider_notify(manager_id, params, tower_object, model_id = nil)
       return unless respond_to?(:refresh_in_provider)
+
       success = refresh_in_provider(tower_object, model_id)
       notify('refresh in provider', manager_id, params, success)
     end
