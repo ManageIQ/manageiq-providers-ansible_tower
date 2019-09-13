@@ -6,7 +6,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Credential < ManageI
   alias_attribute :manager_id, :resource_id
   alias_attribute :manager, :resource
 
-  include ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi
+  include ManageIQ::Providers::AnsibleTower::AutomationManager::TowerApi
   include ProviderObjectMixin
 
   def self.provider_collection(manager)

@@ -1,7 +1,7 @@
 class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript <
   ManageIQ::Providers::ExternalAutomationManager::ConfigurationScript
   include ProviderObjectMixin
-  include ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::TowerApi
+  include ManageIQ::Providers::AnsibleTower::AutomationManager::TowerApi
 
   def run_with_miq_job(options, userid = nil)
     options[:name] = "Job Template: #{name}"

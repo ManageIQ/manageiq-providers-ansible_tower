@@ -1,4 +1,4 @@
-module ManageIQ::Providers::AnsibleTower::Shared::AutomationManager::Job::Status
+module ManageIQ::Providers::AnsibleTower::AutomationManager::Job::StatusMixin
   def succeeded?
     status.casecmp("successful").zero?
   end
