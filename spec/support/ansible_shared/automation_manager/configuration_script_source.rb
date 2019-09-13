@@ -177,7 +177,7 @@ shared_examples_for "ansible configuration_script_source" do
 
   context "Update through API" do
     let(:projects)      { double("AnsibleTowerClient::Collection", :find => tower_project) }
-    let(:tower_project) { double("AnsibleTowerClient::Project", :update_attributes! => {}, :id => 1) }
+    let(:tower_project) { double("AnsibleTowerClient::Project", :update! => {}, :id => 1) }
     let(:project)       { described_class.create!(:manager => manager, :manager_ref => tower_project.id) }
     let(:tower_cred)    { FactoryBot.create(:ansible_scm_credential, :manager_ref => '100') }
 
@@ -189,14 +189,14 @@ shared_examples_for "ansible configuration_script_source" do
       expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
       allow(Notification).to receive(:create)
-      expect(tower_project).to receive(:update_attributes!).with({})
+      expect(tower_project).to receive(:update!).with({})
       expect(project.update_in_provider(:miq_task_id => 1, :task_id => 1)).to be_a(described_class)
       expect(Notification).to have_received(:create).with(expected_notify_update)
     end
 
-    it "#update_in_provider to fail (at update_attributes!) and send notification" do
+    it "#update_in_provider to fail (at update!) and send notification" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
-      expect(tower_project).to receive(:update_attributes!).with({}).and_raise(AnsibleTowerClient::ClientError)
+      expect(tower_project).to receive(:update!).with({}).and_raise(AnsibleTowerClient::ClientError)
       allow(Notification).to receive(:create)
       expect { project.update_in_provider({}) }.to raise_error(AnsibleTowerClient::ClientError)
       expected_notify_update[:type] = :tower_op_failure
@@ -230,7 +230,7 @@ shared_examples_for "ansible configuration_script_source" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
-      expect(tower_project).to receive(:update_attributes!).with(:credential => tower_cred.native_ref)
+      expect(tower_project).to receive(:update!).with(:credential => tower_cred.native_ref)
       allow(Notification).to receive(:create)
       expect(project.update_in_provider(:authentication_id => tower_cred.id)).to be_a(described_class)
       expect(Notification).to have_received(:create).with(expected_notify_update)
@@ -240,7 +240,7 @@ shared_examples_for "ansible configuration_script_source" do
       expect(AnsibleTowerClient::Connection).to receive(:new).and_return(atc)
       expect(EmsRefresh).to receive(:queue_refresh_task).with(manager).and_return([finished_task.id])
       expect(described_class).to receive(:refresh_in_provider).with(tower_project, project.id).and_return(true)
-      expect(tower_project).to receive(:update_attributes!).with(:credential => nil)
+      expect(tower_project).to receive(:update!).with(:credential => nil)
       allow(Notification).to receive(:create)
       expect(project.update_in_provider(:authentication_id => nil)).to be_a(described_class)
       expect(Notification).to have_received(:create).with(expected_notify_update)

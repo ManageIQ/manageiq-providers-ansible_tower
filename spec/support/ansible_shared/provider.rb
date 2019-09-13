@@ -51,9 +51,9 @@ shared_examples_for "ansible provider" do
       expect(subject.url).to eq("https://server.example.com:1234/api/v1")
     end
 
-    it "works with #update_attributes" do
-      subject.update_attributes(:url => "server.example.com")
-      subject.update_attributes(:url => "server2.example.com")
+    it "works with #update" do
+      subject.update(:url => "server.example.com")
+      subject.update(:url => "server2.example.com")
       expect(Endpoint.find(subject.default_endpoint.id).url).to eq("https://server2.example.com/api/v1")
     end
   end

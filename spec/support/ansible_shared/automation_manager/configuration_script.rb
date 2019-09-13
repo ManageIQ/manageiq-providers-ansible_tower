@@ -162,7 +162,7 @@ shared_examples_for "ansible configuration_script" do
     end
 
     it "#update_in_provider_queue" do
-      tower_project = double("AnsibleTowerClient::Project", :update_attributes! => {}, :id => 1)
+      tower_project = double("AnsibleTowerClient::Project", :update! => {}, :id => 1)
       project = described_class.create!(:manager => manager, :manager_ref => tower_project.id)
       task_id = project.update_in_provider_queue(params)
       expect(MiqTask.find(task_id)).to have_attributes(:name => "Updating #{described_class::FRIENDLY_NAME} (Tower internal reference=#{project.manager_ref})")
