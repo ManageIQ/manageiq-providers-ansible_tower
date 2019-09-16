@@ -107,7 +107,8 @@ shared_examples_for "refresh targeted" do |ansible_provider, manager_class, _ems
         end
 
         # make targeted refresh in various sized batches
-        [1, 2, 100].each do |batch_size|
+        [17, 20, 100].each do |batch_size|
+          # TODO: need to update the batch_size and re-record the cassettes
           stub_const("#{manager_class.parent}::Inventory::Collector::TargetCollection::MAX_FILTER_SIZE", batch_size)
 
           EmsRefresh.refresh(targets)
