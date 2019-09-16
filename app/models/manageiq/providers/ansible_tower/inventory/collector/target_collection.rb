@@ -1,6 +1,6 @@
 class ManageIQ::Providers::AnsibleTower::Inventory::Collector::TargetCollection < ManageIQ::Providers::Inventory::Collector
   MAX_FILTER_SIZE = 200
-  
+
   def connection
     @connection ||= manager.connect
   end
@@ -10,7 +10,7 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Collector::TargetCollection 
 
     infer_related_manager_refs!
   end
-  
+
   def inventories
     find_records(:inventory_root_groups, connection.api.inventories)
   end
