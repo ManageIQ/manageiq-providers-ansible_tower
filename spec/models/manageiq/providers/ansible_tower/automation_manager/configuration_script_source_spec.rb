@@ -1,5 +1,6 @@
+require 'ansible_tower_client'
+
 describe ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScriptSource do
-  require 'ansible_tower_client'
   let(:manager) do
     FactoryBot.create(:provider_ansible_tower, :with_authentication).managers.first
   end

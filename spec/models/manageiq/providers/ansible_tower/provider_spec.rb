@@ -1,4 +1,5 @@
 require "ansible_tower_client"
+
 describe ManageIQ::Providers::AnsibleTower::Provider do
   subject { FactoryBot.create(:provider_ansible_tower) }
   describe "#connect" do
