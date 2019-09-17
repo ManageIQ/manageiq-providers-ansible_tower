@@ -23,21 +23,19 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::EventCatcher::Str
 
   context "#poll" do
     it "yields valid events" do
-      Spec::Support::VcrHelper.with_cassette_library_dir(ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/vcr_cassettes")) do
-        VCR.use_cassette(cassette_file) do
-          last_activity = subject.send(:last_activity)
-          # do something on tower that creates an activity in activity_stream
-          provider.connect.api.credentials.create!(:organization => spec_test_org_id,
-                                                   :name         => 'test_stream',
-                                                   :user         => user_id)
-          polled_event = nil
-          subject.poll do |event|
-            expect(event['id']).to eq(last_activity.id + 1)
-            subject.stop
-            polled_event = event
-          end
-          expect(subject.send(:last_activity).id).to eq(polled_event['id'])
+      VCR.use_cassette(cassette_file) do
+        last_activity = subject.send(:last_activity)
+        # do something on tower that creates an activity in activity_stream
+        provider.connect.api.credentials.create!(:organization => spec_test_org_id,
+                                                  :name         => 'test_stream',
+                                                  :user         => user_id)
+        polled_event = nil
+        subject.poll do |event|
+          expect(event['id']).to eq(last_activity.id + 1)
+          subject.stop
+          polled_event = event
         end
+        expect(subject.send(:last_activity).id).to eq(polled_event['id'])
       end
     end
   end

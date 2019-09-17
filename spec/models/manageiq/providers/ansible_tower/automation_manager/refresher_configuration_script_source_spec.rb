@@ -52,45 +52,43 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
     # this is to check if a project will be updated on tower
     last_project_update = targeted_refresh_last_updated
 
-    Spec::Support::VcrHelper.with_cassette_library_dir(ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/vcr_cassettes")) do
-      2.times do
-        configuration_script_payloads = configuration_script_source.configuration_script_payloads
+    2.times do
+      configuration_script_payloads = configuration_script_source.configuration_script_payloads
 
-        VCR.use_cassette(cassette_path) do
-          EmsRefresh.refresh([InventoryRefresh::Target.new(
-            :association => :configuration_script_sources,
-            :manager_id  => configuration_script_source.manager_id,
-            :manager_ref => { :manager_ref => configuration_script_source.manager_ref }
-          )])
+      VCR.use_cassette(cassette_path) do
+        EmsRefresh.refresh([InventoryRefresh::Target.new(
+          :association => :configuration_script_sources,
+          :manager_id  => configuration_script_source.manager_id,
+          :manager_ref => { :manager_ref => configuration_script_source.manager_ref }
+        )])
 
-          expect(automation_manager.reload.last_refresh_error).to be_nil
-          expect(automation_manager.configuration_script_sources.count).to eq(2)
+        expect(automation_manager.reload.last_refresh_error).to be_nil
+        expect(automation_manager.configuration_script_sources.count).to eq(2)
 
-          configuration_script_source.reload
-          configuration_script_source_other.reload
+        configuration_script_source.reload
+        configuration_script_source_other.reload
 
-          last_updated = Time.parse(configuration_script_source.provider_object.last_updated).utc
-          expect(last_updated).to be >= last_project_update
-          last_project_update = last_updated
+        last_updated = Time.parse(configuration_script_source.provider_object.last_updated).utc
+        expect(last_updated).to be >= last_project_update
+        last_project_update = last_updated
 
-          expect(configuration_script_source.name).to eq('hello_repo')
-          expect(configuration_script_source.last_updated_on).to eq(last_updated)
-          expect(ConfigurationScriptPayload.count).to eq(targeted_refresh_playbook_count)
-          expect(ConfigurationScriptPayload.where(:name => '2b_rm')).to be_empty
+        expect(configuration_script_source.name).to eq('hello_repo')
+        expect(configuration_script_source.last_updated_on).to eq(last_updated)
+        expect(ConfigurationScriptPayload.count).to eq(targeted_refresh_playbook_count)
+        expect(ConfigurationScriptPayload.where(:name => '2b_rm')).to be_empty
 
-          expect(configuration_script_payloads.count).to eq(targeted_refresh_playbook_count)
-          targeted_refresh_playbooks.each do |playbook|
-            expect(configuration_script_payloads.where(:name => playbook).count).to eq(1)
-          end
-
-          expect(configuration_script_source.authentication.name).to eq('hello_scm_cred')
-          expect(credential.reload).to eq(credential)
-
-          expect(configuration_script_source_other.name).to eq("Dont touch this")
+        expect(configuration_script_payloads.count).to eq(targeted_refresh_playbook_count)
+        targeted_refresh_playbooks.each do |playbook|
+          expect(configuration_script_payloads.where(:name => playbook).count).to eq(1)
         end
-        # check if playbooks will be added back in on the second run
-        configuration_script_payloads.destroy_all
+
+        expect(configuration_script_source.authentication.name).to eq('hello_scm_cred')
+        expect(credential.reload).to eq(credential)
+
+        expect(configuration_script_source_other.name).to eq("Dont touch this")
       end
+      # check if playbooks will be added back in on the second run
+      configuration_script_payloads.destroy_all
     end
   end
 end

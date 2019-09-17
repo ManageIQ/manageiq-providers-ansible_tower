@@ -108,33 +108,29 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
   it "will perform a full refresh" do
     expected_counterpart_vm
 
-    Spec::Support::VcrHelper.with_cassette_library_dir(ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/vcr_cassettes")) do
-      2.times do
-        # to re-record cassettes see comment at the beginning of this file
-        VCR.use_cassette(cassette_path) do
-          EmsRefresh.refresh(automation_manager)
-          expect(automation_manager.reload.last_refresh_error).to be_nil
-        end
-        assert_counts
-        assert_configured_system
-        assert_configuration_script_with_nil_survey_spec
-        assert_configuration_script_with_survey_spec
-        assert_configuration_workflow
-        assert_inventory_root_group
-        assert_configuration_script_sources
-        assert_playbooks
-        assert_credentials
+    2.times do
+      # to re-record cassettes see comment at the beginning of this file
+      VCR.use_cassette(cassette_path) do
+        EmsRefresh.refresh(automation_manager)
+        expect(automation_manager.reload.last_refresh_error).to be_nil
       end
+      assert_counts
+      assert_configured_system
+      assert_configuration_script_with_nil_survey_spec
+      assert_configuration_script_with_survey_spec
+      assert_configuration_workflow
+      assert_inventory_root_group
+      assert_configuration_script_sources
+      assert_playbooks
+      assert_credentials
     end
   end
 
   it "limits the size of configuration_script_source.last_update_error" do
     stub_const("#{ManageIQ::Providers::AnsibleTower::Inventory::Parser::AutomationManager}::ERROR_MAX_SIZE", 20)
 
-    Spec::Support::VcrHelper.with_cassette_library_dir(ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/vcr_cassettes")) do
-      VCR.use_cassette(cassette_path) do
-        EmsRefresh.refresh(automation_manager)
-      end
+    VCR.use_cassette(cassette_path) do
+      EmsRefresh.refresh(automation_manager)
     end
 
     failed_configuration_script_source = automation_manager.configuration_script_sources.find_by(:name => 'failed_repo')
