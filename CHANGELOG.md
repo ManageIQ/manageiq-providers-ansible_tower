@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Ivanchuk-1
+## Sprint 120 - Unreleased as of 2019-09-16
+
+### Fixed
+- Remove the "shared" ansible_tower modules that are no longer use by embedded ansible [(#186)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/186)
+
+## Ivanchuk-1 - Released 2019-09-18
 
 ### Added
 - Changed provider zone when EMS paused/resumed [(#155)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/155)
