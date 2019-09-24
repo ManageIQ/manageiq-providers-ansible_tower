@@ -5,7 +5,7 @@ module ManageIQ::Providers::AnsibleTower::AutomationManager::EventParser
 
   def event_to_hash(event, ems_id)
     filtered_event_data = event.dup.tap do |data|
-      if (changes_hash = data[:full_data]["changes"])
+      if (changes_hash = data["changes"])
         changes_hash["extra_vars"] = '[FILTERED]' if changes_hash["extra_vars"]
       end
     end
