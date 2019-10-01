@@ -1,5 +1,12 @@
 class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers::ExternalAutomationManager
   include ProcessTasksMixin
+
+  class << self
+    delegate :params_for_create,
+             :verify_credentials,
+             :to => ManageIQ::Providers::AnsibleTower::Provider
+  end
+
   delegate :authentications,
            :authentication_check,
            :authentication_status,
