@@ -12,7 +12,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWork
   let(:manager)               { FactoryBot.create(:automation_manager_ansible_tower, :provider, :configuration_workflow) }
   context "#run" do
     before do
-      allow_any_instance_of(Provider).to receive_messages(:connect => connection)
+      allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
       allow(api.workflow_job_templates).to receive(:find) { workflow_job_template }
     end
 
