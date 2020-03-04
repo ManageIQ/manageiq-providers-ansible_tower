@@ -13,7 +13,8 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
                           :jobs          => double(:jobs, :find => the_raw_job)))
   end
 
-  let(:manager)  { FactoryBot.create(:automation_manager_ansible_tower, :provider) }
+  let(:provider) { FactoryBot.create(:provider_ansible_tower) }
+  let(:manager)  { FactoryBot.create(:automation_manager_ansible_tower, :provider => provider) }
   let(:mock_api) { AnsibleTowerClient::Api.new(faraday_connection) }
 
   let(:the_raw_workflow_job) do
@@ -77,7 +78,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
 
     context "#refres_ems" do
       before do
-        allow_any_instance_of(Provider).to receive_messages(:connect => connection)
+        allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
       end
 
       let(:the_raw_job) do
