@@ -9,7 +9,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWork
   let(:connection)            { double(:connection, :api => api) }
   let(:job)                   { AnsibleTowerClient::WorkflowJob.new(connection.api, "id" => 1) }
   let(:workflow_job_template) { AnsibleTowerClient::WorkflowJobTemplate.new(connection.api, "limit" => "", "id" => 1, "url" => "api/workflow_job_templates/1/", "name" => "template", "description" => "description", "extra_vars" => {:instance_ids => ['i-3434']}) }
-  let(:manager)               { FactoryBot.create(:automation_manager_ansible_tower, :provider, :configuration_workflow) }
+  let(:manager)               { FactoryBot.create(:automation_manager_ansible_tower, :configuration_workflow, :provider => provider_with_authentication) }
   context "#run" do
     before do
       allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
