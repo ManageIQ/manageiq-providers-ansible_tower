@@ -9,7 +9,8 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
 
   let(:connection) { double(:connection, :api => double(:api, :jobs => double(:jobs, :find => the_raw_job))) }
 
-  let(:manager)  { FactoryBot.create(:automation_manager_ansible_tower, :provider) }
+  let(:provider) { FactoryBot.create(:provider_ansible_tower) }
+  let(:manager)  { FactoryBot.create(:automation_manager_ansible_tower, :provider => provider) }
   let(:mock_api) { AnsibleTowerClient::Api.new(faraday_connection) }
 
   let(:machine_credential) { FactoryBot.create(:ansible_machine_credential, :manager_ref => '1', :resource => manager) }
@@ -101,7 +102,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
 
     context "#refres_ems" do
       before do
-        allow_any_instance_of(Provider).to receive_messages(:connect => connection)
+        allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
       end
 
       it 'syncs the job with the provider' do
@@ -151,7 +152,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
 
   describe 'job status' do
     before do
-      allow_any_instance_of(Provider).to receive_messages(:connect => connection)
+      allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
     end
 
     context '#raw_status and #raw_exists' do
