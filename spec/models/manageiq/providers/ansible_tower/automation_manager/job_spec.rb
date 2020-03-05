@@ -45,7 +45,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
     ]
   end
 
-  let(:template) { FactoryBot.create(:configuration_script, :manager => manager) }
+  let(:template) { FactoryBot.create(:ansible_configuration_script, :manager => manager) }
   subject { FactoryBot.create(:ansible_tower_job, :job_template => template, :ext_management_system => manager) }
 
   describe 'job operations' do
@@ -66,7 +66,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
       end
 
       context 'template is temporary' do
-        let(:template) { FactoryBot.build(:configuration_script, :manager => manager) }
+        let(:template) { FactoryBot.build(:ansible_configuration_script, :manager => manager) }
 
         it 'creates a job' do
           expect(template).to receive(:run).and_return(the_raw_job)
@@ -86,7 +86,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
 
       context 'options have extra_vars' do
         let(:template) do
-          FactoryBot.build(:configuration_script,
+          FactoryBot.build(:ansible_configuration_script,
                             :manager     => manager,
                             :variables   => {'Var1' => 'v1', 'VAR2' => 'v2'},
                             :survey_spec => {'spec' => [{'default' => 'v3', 'variable' => 'var3', 'type' => 'text'}]})
@@ -181,7 +181,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
 
   describe '#raw_stdout' do
     before do
-      allow_any_instance_of(Provider).to receive_messages(:connect => connection)
+      allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
     end
 
     it 'gets the standard output of the job' do
