@@ -9,7 +9,8 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
 
   let(:connection) { double(:connection, :api => double(:api, :jobs => double(:jobs, :find => the_raw_job))) }
 
-  let(:manager)  { FactoryBot.create(:automation_manager_ansible_tower, :provider) }
+  let(:provider) { FactoryBot.create(:provider_ansible_tower) }
+  let(:manager)  { FactoryBot.create(:automation_manager_ansible_tower, :provider => provider) }
   let(:mock_api) { AnsibleTowerClient::Api.new(faraday_connection) }
 
   let(:machine_credential) { FactoryBot.create(:ansible_machine_credential, :manager_ref => '1', :resource => manager) }
@@ -44,7 +45,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
     ]
   end
 
-  let(:template) { FactoryBot.create(:configuration_script, :manager => manager) }
+  let(:template) { FactoryBot.create(:ansible_configuration_script, :manager => manager) }
   subject { FactoryBot.create(:ansible_tower_job, :job_template => template, :ext_management_system => manager) }
 
   describe 'job operations' do
@@ -65,7 +66,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
       end
 
       context 'template is temporary' do
-        let(:template) { FactoryBot.build(:configuration_script, :manager => manager) }
+        let(:template) { FactoryBot.build(:ansible_configuration_script, :manager => manager) }
 
         it 'creates a job' do
           expect(template).to receive(:run).and_return(the_raw_job)
@@ -85,7 +86,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
 
       context 'options have extra_vars' do
         let(:template) do
-          FactoryBot.build(:configuration_script,
+          FactoryBot.build(:ansible_configuration_script,
                             :manager     => manager,
                             :variables   => {'Var1' => 'v1', 'VAR2' => 'v2'},
                             :survey_spec => {'spec' => [{'default' => 'v3', 'variable' => 'var3', 'type' => 'text'}]})
@@ -101,7 +102,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
 
     context "#refres_ems" do
       before do
-        allow_any_instance_of(Provider).to receive_messages(:connect => connection)
+        allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
       end
 
       it 'syncs the job with the provider' do
@@ -151,7 +152,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
 
   describe 'job status' do
     before do
-      allow_any_instance_of(Provider).to receive_messages(:connect => connection)
+      allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
     end
 
     context '#raw_status and #raw_exists' do
@@ -180,7 +181,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Job do
 
   describe '#raw_stdout' do
     before do
-      allow_any_instance_of(Provider).to receive_messages(:connect => connection)
+      allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
     end
 
     it 'gets the standard output of the job' do

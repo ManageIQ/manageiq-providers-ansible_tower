@@ -1,4 +1,4 @@
-describe ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript do  
+describe ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript do
   it 'designates orchestration stack type' do
     expect(described_class.stack_type).to eq('Job')
   end
@@ -13,9 +13,13 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScri
   end
 
   context "ansible configuration_script" do
-    let(:provider_with_authentication)       { FactoryBot.create(:provider_ansible_tower, :with_authentication) }
-    let(:manager_with_authentication)        { provider_with_authentication.managers.first }
-    let(:manager_with_configuration_scripts) { FactoryBot.create(:automation_manager_ansible_tower, :provider, :configuration_script) }
+    let(:provider_with_authentication) { FactoryBot.create(:provider_ansible_tower, :with_authentication) }
+    let(:manager_with_authentication)  { provider_with_authentication.automation_manager }
+
+    let(:manager_with_configuration_scripts) do
+      FactoryBot.create(:automation_manager_ansible_tower, :configuration_script, :provider => provider_with_authentication)
+    end
+
     # subject { FactoryBot.create(:ansible_configuration_script, :manager => manager_with_configuration_scripts) }
 
     let(:api)          { double(:api, :job_templates => double(:job_templates)) }
@@ -52,7 +56,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScri
 
     context "#run" do
       before do
-        allow_any_instance_of(Provider).to receive_messages(:connect => connection)
+        allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
         allow(api.job_templates).to receive(:find) { job_template }
       end
 
