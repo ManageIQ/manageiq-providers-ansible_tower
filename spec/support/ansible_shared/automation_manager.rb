@@ -1,5 +1,5 @@
 shared_examples_for "ansible automation_manager" do
-  let(:provider) { FactoryBot.build(:provider) }
+  let(:provider) { FactoryBot.build(:provider_ansible_tower) }
   let(:ansible_automation_manager) { FactoryBot.build(:automation_manager_ansible_tower, :provider => provider) }
 
   describe "#connect" do
@@ -16,7 +16,7 @@ shared_examples_for "ansible automation_manager" do
     end
 
     it "moves provider to maintenance_zone when paused" do
-      provider = FactoryBot.create(:provider, :zone => Zone.default_zone)
+      provider = FactoryBot.create(:provider_ansible_tower, :zone => Zone.default_zone)
       ems = FactoryBot.create(:automation_manager_ansible_tower,
                               :provider => provider,
                               :zone     => Zone.default_zone)
@@ -30,7 +30,7 @@ shared_examples_for "ansible automation_manager" do
     end
 
     it "moves provider from maintenance_zone when resumed" do
-      provider = FactoryBot.create(:provider, :zone => Zone.maintenance_zone)
+      provider = FactoryBot.create(:provider_ansible_tower, :zone => Zone.maintenance_zone)
       ems = FactoryBot.create(:automation_manager_ansible_tower,
                               :enabled           => false,
                               :provider          => provider,
