@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## Ivanchuk-3
+
+### Added
+- Bump ansible_tower_client to v0.20.2 [(#208)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/208)
+
+## Ivanchuk-2
+
+### Fixed
+- Test ruby 2.5.5 [(#204)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/204)
+- Filter out extra_vars data [(#203)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/203)
 
 ## Ivanchuk-1
 
