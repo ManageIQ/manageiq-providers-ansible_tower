@@ -26,7 +26,6 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
       end
       [
         :allow_targeted_refresh   => true,
-        :inventory_object_refresh => true,
         :inventory_collections    => {
           :saver_strategy => "batch",
           :use_ar_object  => false,
