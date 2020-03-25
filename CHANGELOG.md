@@ -4,8 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
-
-## Sprint 120 - Unreleased as of 2019-09-16
+## Jansa-1 Alpha-1
 
 ### Fixed
 - Remove the "shared" ansible_tower modules that are no longer use by embedded ansible [(#186)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/pull/186)
