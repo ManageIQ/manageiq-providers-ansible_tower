@@ -69,8 +69,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
     @description ||= "Ansible Tower Automation".freeze
   end
 
-  def supported_catalog_types
-    %w(generic_ansible_tower)
+  def self.catalog_types
+    {"generic_ansible_tower" => N_("Ansible Tower")}
   end
 
   def self.display_name(number = 1)
