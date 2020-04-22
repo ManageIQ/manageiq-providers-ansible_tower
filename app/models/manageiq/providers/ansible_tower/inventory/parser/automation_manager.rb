@@ -30,21 +30,26 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Parser::AutomationManager < 
   def configuration_scripts
     provider_module = ManageIQ::Providers::Inflector.provider_module(collector.manager.class).name
     collector.job_templates.each do |job_template|
-      inventory_object = persister.configuration_scripts.build(:manager_ref => job_template.id.to_s)
-      inventory_object.type = "#{provider_module}::AutomationManager::ConfigurationScript"
-      inventory_object.description = job_template.description
-      inventory_object.name = job_template.name
-      inventory_object.survey_spec = job_template.survey_spec_hash
-      inventory_object.variables = job_template.extra_vars_hash
-      inventory_object.inventory_root_group = persister.inventory_root_groups.lazy_find(job_template.inventory_id.to_s)
-      inventory_object.parent = persister.configuration_script_payloads.lazy_find(
-        # checking job_template.project_id due to https://github.com/ansible/ansible_tower_client_ruby/issues/68
-        # if we hit a job_template which has no related project and thus .project_id is not defined
-        :configuration_script_source => persister.configuration_script_sources.lazy_find(job_template.try(:project_id)),
-        :manager_ref                 => job_template.playbook
-      )
+      begin
+        inventory_object = persister.configuration_scripts.build(:manager_ref => job_template.id.to_s)
+        inventory_object.type = "#{provider_module}::AutomationManager::ConfigurationScript"
+        inventory_object.description = job_template.description
+        inventory_object.name = job_template.name
+        inventory_object.survey_spec = job_template.survey_spec_hash
+        inventory_object.variables = job_template.extra_vars_hash
+        inventory_object.inventory_root_group = persister.inventory_root_groups.lazy_find(job_template.inventory_id.to_s)
+        inventory_object.parent = persister.configuration_script_payloads.lazy_find(
+          # checking job_template.project_id due to https://github.com/ansible/ansible_tower_client_ruby/issues/68
+          # if we hit a job_template which has no related project and thus .project_id is not defined
+          :configuration_script_source => persister.configuration_script_sources.lazy_find(job_template.try(:project_id)),
+          :manager_ref                 => job_template.playbook
+        )
 
-      configuration_script_authentications(inventory_object, job_template)
+        configuration_script_authentications(inventory_object, job_template)
+      rescue => err
+        _log.warn("Failed to parse job_template ID [#{job_template&.id}]: #{err}")
+        _log.debug { job_template.inspect }
+      end
     end
   end
 
@@ -65,12 +70,17 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Parser::AutomationManager < 
   def configuration_workflows
     provider_module = ManageIQ::Providers::Inflector.provider_module(collector.manager.class).name
     collector.configuration_workflows.each do |job_template|
-      inventory_object = persister.configuration_scripts.build(:manager_ref => job_template.id.to_s)
-      inventory_object.type = "#{provider_module}::AutomationManager::ConfigurationWorkflow"
-      inventory_object.description = job_template.description
-      inventory_object.name = job_template.name
-      inventory_object.survey_spec = job_template.survey_spec_hash
-      inventory_object.variables = job_template.extra_vars_hash
+      begin
+        inventory_object = persister.configuration_scripts.build(:manager_ref => job_template.id.to_s)
+        inventory_object.type = "#{provider_module}::AutomationManager::ConfigurationWorkflow"
+        inventory_object.description = job_template.description
+        inventory_object.name = job_template.name
+        inventory_object.survey_spec = job_template.survey_spec_hash
+        inventory_object.variables = job_template.extra_vars_hash
+      rescue => err
+        _log.warn("Failed to parse workflow_job_template ID [#{job_template&.id}]: #{err}")
+        _log.debug { job_template.inspect }
+      end
     end
   end
 
