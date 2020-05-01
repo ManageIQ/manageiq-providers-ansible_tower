@@ -177,7 +177,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
     msg = "AnsibleTower Job #{name} with id(#{id}) or its artifacts does not exist on #{ext_management_system.name}"
     raise MiqException::MiqOrchestrationStackNotExistError, msg
   rescue => err
-    _log.error "Reading AnsibleTower Job #{name} with id(#{id}) artifacts failed with error: #{err}"
+    _log.error("Reading AnsibleTower Job #{name} with id(#{id}) artifacts failed with error: #{err}")
     raise MiqException::MiqOrchestrationStatusError, err.to_s, err.backtrace
   end
 
