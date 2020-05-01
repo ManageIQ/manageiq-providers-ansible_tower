@@ -169,6 +169,18 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
     raise MiqException::MiqOrchestrationStatusError, err.to_s, err.backtrace
   end
 
+  def raw_artifacts
+    ext_management_system.with_provider_connection do |connection|
+      connection.api.jobs.find(ems_ref).artifacts
+    end
+  rescue AnsibleTowerClient::ResourceNotFoundError
+    msg = "AnsibleTower Job #{name} with id(#{id}) or its artifacts does not exist on #{ext_management_system.name}"
+    raise MiqException::MiqOrchestrationStackNotExistError, msg
+  rescue => err
+    _log.error "Reading AnsibleTower Job #{name} with id(#{id}) artifacts failed with error: #{err}"
+    raise MiqException::MiqOrchestrationStatusError, err.to_s, err.backtrace
+  end
+
   # Intend to be called by UI to display stdout. The stdout is stored in MiqTask#task_results or #message if error
   # Since the task_results may contain a large block of data, it is desired to remove the task upon receiving the data
   def raw_stdout_via_worker(userid, format = 'txt', role = nil)
