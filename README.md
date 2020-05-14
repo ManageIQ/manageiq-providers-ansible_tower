@@ -4,7 +4,6 @@
 [![Build Status](https://travis-ci.com/ManageIQ/manageiq-providers-ansible_tower.svg?branch=master)](https://travis-ci.com/ManageIQ/manageiq-providers-ansible_tower)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower)
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower/coverage)
-[![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-providers-ansible_tower.svg)](https://gemnasium.com/ManageIQ/manageiq-providers-ansible_tower)
 [![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-ansible_tower/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-ansible_tower/master)
 
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/manageiq-providers-ansible_tower?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
