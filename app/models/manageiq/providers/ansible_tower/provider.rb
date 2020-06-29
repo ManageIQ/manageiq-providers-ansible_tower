@@ -70,7 +70,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
   end
 
   def self.default_api_path
-    "/api/v1".freeze
+    "/api/v2".freeze
   end
 
   def self.adjust_url(url)
