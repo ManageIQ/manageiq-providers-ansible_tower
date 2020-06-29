@@ -55,12 +55,12 @@ describe ManageIQ::Providers::AnsibleTower::Provider do
     it "works with #update" do
       subject.update(:url => "server.example.com")
       subject.update(:url => "server2.example.com")
-      expect(Endpoint.find(subject.default_endpoint.id).url).to eq("https://server2.example.com/api/v1")
+      expect(Endpoint.find(subject.default_endpoint.id).url).to eq("https://server2.example.com/api/v2")
     end
   end
 
   it "with only hostname" do
     subject.url = "server.example.com"
-    expect(subject.url).to eq("https://server.example.com/api/v1")
+    expect(subject.url).to eq("https://server.example.com/api/v2")
   end
 end
