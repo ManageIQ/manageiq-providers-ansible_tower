@@ -30,19 +30,18 @@ shared_examples_for "ansible automation_manager" do
     end
 
     it "moves provider from maintenance_zone when resumed" do
-      provider = FactoryBot.create(:provider_ansible_tower, :zone => Zone.maintenance_zone)
       ems = FactoryBot.create(:automation_manager_ansible_tower,
                               :enabled           => false,
-                              :provider          => provider,
+                              :provider          => FactoryBot.build(:provider_ansible_tower),
                               :zone              => Zone.maintenance_zone,
                               :zone_before_pause => Zone.default_zone)
 
       ems.resume!
-      provider.reload
+      ems.provider.reload
 
       expect(ems.enabled).to eq(true)
       expect(ems.zone).to eq(Zone.default_zone)
-      expect(provider.zone).to eq(Zone.default_zone)
+      expect(ems.provider.zone).to eq(Zone.default_zone)
     end
   end
 end
