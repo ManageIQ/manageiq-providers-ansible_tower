@@ -8,65 +8,89 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
   validates :name, :presence => true, :uniqueness => true
   validates :url,  :presence => true
 
-  PARAMS_FOR_CREATE = {
-    :title  => "Configure Ansible Tower",
-    :fields => [
-      {
-        :component  => "text-field",
-        :name       => "endpoints.default.base_url",
-        :label      => "URL",
-        :isRequired => true,
-        :validate   => [{:type => "required-validator"}]
-      },
-      {
-        :component  => "text-field",
-        :name       => "endpoints.default.username",
-        :label      => "Username",
-        :isRequired => true,
-        :validate   => [{:type => "required-validator"}]
-      },
-      {
-        :component  => "text-field",
-        :name       => "endpoints.default.password",
-        :label      => "Password",
-        :type       => "password",
-        :isRequired => true,
-        :validate   => [{:type => "required-validator"}]
-      },
-      {
-        :component => "checkbox",
-        :name      => "endpoints.default.verify_ssl",
-        :label     => "Verify SSL"
-      }
-    ]
-  }.freeze
-
   def self.params_for_create
-    PARAMS_FOR_CREATE
+    @params_for_create ||= {
+      :fields => [
+        {
+          :component => 'sub-form',
+          :name      => 'endpoints-subform',
+          :title     => _("Endpoint"),
+          :fields    => [
+            {
+              :component              => 'validate-provider-credentials',
+              :name                   => 'authentications.default.valid',
+              :skipSubmit             => true,
+              :validationDependencies => %w[type zone_id],
+              :fields                 => [
+                {
+                  :component  => "text-field",
+                  :name       => "endpoints.default.url",
+                  :label      => _("URL"),
+                  :isRequired => true,
+                  :validate   => [{:type => "required-validator"}]
+                },
+                {
+                  :component    => "select-field",
+                  :name         => "endpoints.default.verify_ssl",
+                  :label        => _("SSL verification"),
+                  :isRequired   => true,
+                  :initialValue => OpenSSL::SSL::VERIFY_PEER,
+                  :options      => [
+                    {
+                      :label => _('Do not verify'),
+                      :value => OpenSSL::SSL::VERIFY_NONE,
+                    },
+                    {
+                      :label => _('Verify'),
+                      :value => OpenSSL::SSL::VERIFY_PEER,
+                    },
+                  ]
+                },
+                {
+                  :component  => "text-field",
+                  :name       => "authentications.default.userid",
+                  :label      => _("Username"),
+                  :helperText => _("Should have privileged access, such as root or administrator."),
+                  :isRequired => true,
+                  :validate   => [{:type => "required-validator"}]
+                },
+                {
+                  :component  => "password-field",
+                  :name       => "authentications.default.password",
+                  :label      => _("Password"),
+                  :type       => "password",
+                  :isRequired => true,
+                  :validate   => [{:type => "required-validator"}]
+                },
+              ],
+            },
+          ],
+        },
+      ]
+    }.freeze
   end
 
   # Verify Credentials
-  # args:
-  # {
-  #   "endpoints" => {
+  # args: {
+  #  "endpoints" => {
+  #    "default" => {
+  #       "url" => nil,
+  #       "verify_ssl" => nil
+  #    },
+  #  },
+  #  "authentications" => {
   #     "default" => {
-  #       "base_url"   => "",
-  #       "username"   => "",
-  #       "password"   => "",
-  #       "verify_ssl" => ""
+  #       "userid" => nil,
+  #       "password" => nil,
   #     }
   #   }
   # }
   def self.verify_credentials(args)
-    default_endpoint = args.dig("endpoints", "default")
-
-    base_url, username, password, verify_ssl = default_endpoint&.values_at(
-      "base_url", "username", "password", "verify_ssl"
-    )
-    base_url   = adjust_url(base_url)
-    verify_ssl = verify_ssl ? OpenSSL::SSL::VERIFY_PEER : OpenSSL::SSL::VERIFY_NONE
-
-    !!verify_connection(raw_connect(base_url, username, password, verify_ssl))
+    default_authentication = args.dig("authentications", "default")
+    base_url = args.dig("endpoints", "default", "url")
+    verify_ssl = args.dig("endpoints", "default", "verify_ssl")
+    userid, password = default_authentication&.values_at("userid", "password")
+    verify_connection(raw_connect(base_url, userid, password, verify_ssl))
   end
 
   def self.default_api_path
