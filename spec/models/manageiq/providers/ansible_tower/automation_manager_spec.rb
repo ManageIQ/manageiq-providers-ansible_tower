@@ -34,7 +34,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager do
 
       provider = automation_manager.provider
       expect(provider.name).to eq("Ansible Tower")
-      expect(provider.url).to  eq("https://localhost")
+      expect(provider.url).to  eq("https://localhost/api/v2")
 
       automation_manager.edit_with_params(params, endpoints, authentications)
 

@@ -156,13 +156,18 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
     default_endpoint.url = self.class.adjust_url(new_url).to_s
   end
 
+  def name=(val)
+    super(val.sub(/ Automation Manager$/, ''))
+  end
+
   private
 
   def ensure_managers
     build_automation_manager unless automation_manager
+    automation_manager.provider = self
+
     if zone_id_changed?
       automation_manager.enabled = Zone.maintenance_zone&.id != zone_id
-      automation_manager.zone_id = zone_id
     end
   end
 end
