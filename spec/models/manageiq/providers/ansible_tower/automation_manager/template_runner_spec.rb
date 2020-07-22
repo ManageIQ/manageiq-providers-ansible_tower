@@ -1,5 +1,5 @@
 describe ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner do
-  let(:manager_with_configuration_scripts) { FactoryBot.create(:automation_manager_ansible_tower, :provider, :configuration_script) }
+  let(:manager_with_configuration_scripts) { FactoryBot.create(:automation_manager_ansible_tower, :configuration_script) }
   let(:template) { FactoryBot.create(:ansible_configuration_script, :manager => manager_with_configuration_scripts) }
   subject { ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner.create_job(options.merge(:ansible_template_id => template.id)) }
 
