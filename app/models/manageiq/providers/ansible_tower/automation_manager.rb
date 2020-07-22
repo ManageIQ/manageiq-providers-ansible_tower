@@ -61,10 +61,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   end
 
   def change_maintenance_for_provider
-    if provider.present? && saved_change_to_zone_id?
-      provider.zone_id = zone_id
-      provider.save
-    end
+    provider.save
   end
 
   def self.ems_type
