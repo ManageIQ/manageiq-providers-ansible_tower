@@ -87,9 +87,12 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
   # }
   def self.verify_credentials(args)
     default_authentication = args.dig("authentications", "default")
-    base_url = args.dig("endpoints", "default", "url")
+    base_url = adjust_url(args.dig("endpoints", "default", "url"))
     verify_ssl = args.dig("endpoints", "default", "verify_ssl")
-    userid, password = default_authentication&.values_at("userid", "password")
+
+    userid   = default_authentication["userid"]
+    password = MiqPassword.try_decrypt(default_authentication["password"])
+
     verify_connection(raw_connect(base_url, userid, password, verify_ssl))
   end
 
