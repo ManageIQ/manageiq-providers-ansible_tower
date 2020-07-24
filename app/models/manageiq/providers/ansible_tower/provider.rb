@@ -157,7 +157,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
   end
 
   def name=(val)
-    super(val.sub(/ Automation Manager$/, ''))
+    super(val&.sub(/ Automation Manager$/, ''))
   end
 
   private
