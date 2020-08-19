@@ -27,10 +27,10 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
                   :name       => "endpoints.default.url",
                   :label      => _("URL"),
                   :isRequired => true,
-                  :validate   => [{:type => "required-validator"}]
+                  :validate   => [{:type => "required"}]
                 },
                 {
-                  :component    => "select-field",
+                  :component    => "select",
                   :name         => "endpoints.default.verify_ssl",
                   :label        => _("SSL verification"),
                   :isRequired   => true,
@@ -52,7 +52,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
                   :label      => _("Username"),
                   :helperText => _("Should have privileged access, such as root or administrator."),
                   :isRequired => true,
-                  :validate   => [{:type => "required-validator"}]
+                  :validate   => [{:type => "required"}]
                 },
                 {
                   :component  => "password-field",
@@ -60,7 +60,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
                   :label      => _("Password"),
                   :type       => "password",
                   :isRequired => true,
-                  :validate   => [{:type => "required-validator"}]
+                  :validate   => [{:type => "required"}]
                 },
               ],
             },
