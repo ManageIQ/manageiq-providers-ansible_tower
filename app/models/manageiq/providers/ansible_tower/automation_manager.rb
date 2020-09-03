@@ -80,32 +80,6 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
     n_('Automation Manager (Ansible Tower)', 'Automation Managers (Ansible Tower)', number)
   end
 
-  def self.create_from_params(params, endpoints, authentications)
-    new(params).tap do |ems|
-      endpoints.each { |endpoint| ems.assign_nested_endpoint(endpoint) }
-      authentications.each { |authentication| ems.assign_nested_authentication(authentication) }
-
-      ems.provider.save!
-      ems.save!
-    end
-  end
-
-  def edit_with_params(params, endpoints, authentications)
-    tap do |ems|
-      transaction do
-        # Remove endpoints/attributes that are not arriving in the arguments above
-        ems.endpoints.where.not(:role => nil).where.not(:role => endpoints.map { |ep| ep['role'] }).delete_all
-        ems.authentications.where.not(:authtype => nil).where.not(:authtype => authentications.map { |au| au['authtype'] }).delete_all
-
-        ems.assign_attributes(params)
-        ems.endpoints = endpoints.map(&method(:assign_nested_endpoint))
-        ems.authentications = authentications.map(&method(:assign_nested_authentication))
-
-        ems.provider.save!
-        ems.save!
-      end
-    end
-  end
   delegate :name=, :zone, :zone=, :zone_id, :zone_id=, :to => :provider
 
   def name
