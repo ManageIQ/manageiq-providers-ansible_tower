@@ -13,17 +13,20 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
       :fields => [
         {
           :component => 'sub-form',
+          :id        => 'endpoints-subform',
           :name      => 'endpoints-subform',
           :title     => _("Endpoint"),
           :fields    => [
             {
               :component              => 'validate-provider-credentials',
+              :id                     => 'authentications.default.valid',
               :name                   => 'authentications.default.valid',
               :skipSubmit             => true,
               :validationDependencies => %w[type zone_id],
               :fields                 => [
                 {
                   :component  => "text-field",
+                  :id         => "endpoints.default.url",
                   :name       => "endpoints.default.url",
                   :label      => _("URL"),
                   :isRequired => true,
@@ -31,6 +34,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
                 },
                 {
                   :component    => "select",
+                  :id           => "endpoints.default.verify_ssl",
                   :name         => "endpoints.default.verify_ssl",
                   :label        => _("SSL verification"),
                   :isRequired   => true,
@@ -48,6 +52,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
                 },
                 {
                   :component  => "text-field",
+                  :id         => "authentications.default.userid",
                   :name       => "authentications.default.userid",
                   :label      => _("Username"),
                   :helperText => _("Should have privileged access, such as root or administrator."),
@@ -56,6 +61,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
                 },
                 {
                   :component  => "password-field",
+                  :id         => "authentications.default.password",
                   :name       => "authentications.default.password",
                   :label      => _("Password"),
                   :type       => "password",
