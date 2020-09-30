@@ -98,7 +98,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
     verify_ssl = args.dig("endpoints", "default", "verify_ssl")
 
     userid   = default_authentication["userid"]
-    password = MiqPassword.try_decrypt(default_authentication["password"])
+    password = ManageIQ::Password.try_decrypt(default_authentication["password"])
 
     verify_connection(raw_connect(base_url, userid, password, verify_ssl))
   end
