@@ -15,6 +15,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
            :connect,
            :endpoints,
            :endpoints=,
+           :name=,
            :url,
            :url=,
            :verify_credentials,
@@ -22,6 +23,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
            :to => :provider
 
   belongs_to :provider, :autosave => true, :dependent => :destroy
+  before_validation :update_provider_zone
+
   after_save :change_maintenance_for_provider, :if => proc { |ems| ems.saved_change_to_enabled? }
 
   require_nested :Credential
@@ -60,6 +63,10 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
     "ansible"
   end
 
+  def update_provider_zone
+    provider.zone = zone if zone_id_changed?
+  end
+
   def change_maintenance_for_provider
     provider.save
   end
@@ -80,8 +87,6 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
     n_('Automation Manager (Ansible Tower)', 'Automation Managers (Ansible Tower)', number)
   end
 
-  delegate :name=, :zone, :zone=, :zone_id, :zone_id=, :to => :provider
-
   def name
     "#{provider.name} Automation Manager"
   end
@@ -93,6 +98,6 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   private
 
   def ensure_provider
-    build_provider.tap { |p| p.automation_manager = self }
+    build_provider(:automation_manager => self, :zone => zone)
   end
 end

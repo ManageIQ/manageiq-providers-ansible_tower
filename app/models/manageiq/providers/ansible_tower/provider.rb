@@ -174,6 +174,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
     automation_manager.provider = self
 
     if zone_id_changed?
+      automation_manager.zone    = zone
       automation_manager.enabled = Zone.maintenance_zone&.id != zone_id
     end
   end
