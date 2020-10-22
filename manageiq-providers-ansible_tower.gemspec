@@ -20,5 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "ansible_tower_client", "~> 0.20", ">= 0.21.2"
 
+  spec.add_development_dependency "manageiq-style"
   spec.add_development_dependency "simplecov"
 end
