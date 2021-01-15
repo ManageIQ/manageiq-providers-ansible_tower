@@ -13,6 +13,14 @@ module ManageIQ
         def self.plugin_name
           _('Ansible Tower Provider')
         end
+
+        def self.init_loggers
+          $ansible_tower_log ||= Vmdb::Loggers.create_logger("ansible_tower.log")
+        end
+
+        def self.apply_logger_config(config)
+          Vmdb::Loggers.apply_config_value(config, $ansible_tower_log, :level_ansible_tower)
+        end
       end
     end
   end

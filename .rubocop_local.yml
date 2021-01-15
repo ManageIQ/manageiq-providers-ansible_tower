@@ -1,2 +1,3 @@
-# Style/GlobalVars:
-#   AllowedVariables:
+Style/GlobalVars:
+  AllowedVariables:
+  - $ansible_tower_log
