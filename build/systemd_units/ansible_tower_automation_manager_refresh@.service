@@ -1,0 +1,11 @@
+[Unit]
+PartOf=ansible_tower_automation_manager_refresh.target
+[Install]
+WantedBy=ansible_tower_automation_manager_refresh.target
+[Service]
+WorkingDirectory=/var/www/miq/vmdb
+Environment=BUNDLER_GROUPS=manageiq_default,ui_dependencies
+ExecStart=/bin/bash -lc 'exec ruby lib/workers/bin/run_single_worker.rb ManageIQ::Providers::AnsibleTower::AutomationManager::RefreshWorker --heartbeat --guid=%i'
+Restart=no
+Type=notify
+Slice=miq-ansible_tower_automation_manager_refresh.slice
