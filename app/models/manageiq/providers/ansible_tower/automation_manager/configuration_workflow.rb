@@ -14,9 +14,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWorkflo
     "WorkflowJob"
   end
 
-  def supports_limit?
-    false
-  end
+  supports :limit
 
   def self.display_name(number = 1)
     n_('Workflow Template (Ansible Tower)', 'Workflow Templates (Ansible Tower)', number)

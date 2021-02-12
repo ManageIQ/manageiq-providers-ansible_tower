@@ -20,9 +20,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript 
     "Job"
   end
 
-  def supports_limit?
-    true
-  end
+  supports :limit
 
   def self.provider_collection(manager)
     manager.with_provider_connection do |connection|
