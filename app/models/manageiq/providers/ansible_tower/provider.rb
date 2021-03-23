@@ -99,6 +99,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
 
     userid   = default_authentication["userid"]
     password = ManageIQ::Password.try_decrypt(default_authentication["password"])
+    password ||= find(args["id"]).authentication_password
 
     verify_connection(raw_connect(base_url, userid, password, verify_ssl))
   end
