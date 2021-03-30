@@ -3,6 +3,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
           :foreign_key => "provider_id",
           :class_name  => "ManageIQ::Providers::AnsibleTower::AutomationManager",
           :autosave    => true
+  delegate :url=, :to => :default_endpoint
   has_many :endpoints, :as => :resource, :dependent => :destroy, :autosave => true
   before_validation :ensure_managers
   validates :name, :presence => true, :uniqueness => true
@@ -95,14 +96,14 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
   # }
   def self.verify_credentials(args)
     default_authentication = args.dig("authentications", "default")
-    base_url = adjust_url(args.dig("endpoints", "default", "url"))
+    url = args.dig("endpoints", "default", "url")
     verify_ssl = args.dig("endpoints", "default", "verify_ssl")
 
     userid   = default_authentication["userid"]
     password = ManageIQ::Password.try_decrypt(default_authentication["password"])
     password ||= find(args["id"]).authentication_password
 
-    verify_connection(raw_connect(base_url, userid, password, verify_ssl))
+    verify_connection(raw_connect(url, userid, password, verify_ssl))
   end
 
   def self.default_api_path
@@ -126,7 +127,9 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
     end
   end
 
-  def self.raw_connect(base_url, username, password, verify_ssl)
+  def self.raw_connect(url, username, password, verify_ssl)
+    base_url = adjust_url(url).to_s
+
     require 'ansible_tower_client'
     AnsibleTowerClient.logger = $ansible_tower_log
     AnsibleTowerClient::Connection.new(
@@ -159,10 +162,6 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
     with_provider_connection(options.merge(:auth_type => auth_type)) do |c|
       self.class.verify_connection(c)
     end
-  end
-
-  def url=(new_url)
-    default_endpoint.url = self.class.adjust_url(new_url).to_s
   end
 
   def name=(val)
