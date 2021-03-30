@@ -7,15 +7,33 @@ describe ManageIQ::Providers::AnsibleTower::Provider do
 
     it "with no port" do
       url = "example.com"
+      expected_url = "https://example.com/api/v2"
 
-      expect(AnsibleTowerClient::Connection).to receive(:new).with(attrs.merge(:base_url => url))
+      expect(AnsibleTowerClient::Connection).to receive(:new).with(attrs.merge(:base_url => expected_url))
       subject.connect(attrs.merge(:url => url))
     end
 
     it "with a port" do
       url = "example.com:555"
+      expected_url = "https://example.com:555/api/v2"
 
-      expect(AnsibleTowerClient::Connection).to receive(:new).with(attrs.merge(:base_url => url))
+      expect(AnsibleTowerClient::Connection).to receive(:new).with(attrs.merge(:base_url => expected_url))
+      subject.connect(attrs.merge(:url => url))
+    end
+
+    it "with an explicit api path" do
+      url = "example.com/api/v1"
+      expected_url = "https://example.com/api/v1"
+
+      expect(AnsibleTowerClient::Connection).to receive(:new).with(attrs.merge(:base_url => expected_url))
+      subject.connect(attrs.merge(:url => url))
+    end
+
+    it "with an explicit scheme" do
+      url = "http://example.com"
+      expected_url = "http://example.com/api/v2"
+
+      expect(AnsibleTowerClient::Connection).to receive(:new).with(attrs.merge(:base_url => expected_url))
       subject.connect(attrs.merge(:url => url))
     end
   end
@@ -39,28 +57,5 @@ describe ManageIQ::Providers::AnsibleTower::Provider do
       expect(OperatingSystem.count).to       eq(0)
       expect(Hardware.count).to              eq(0)
     end
-  end
-
-  context "#url=" do
-    it "with full URL" do
-      subject.url = "https://server.example.com:1234/api/v1"
-      expect(subject.url).to eq("https://server.example.com:1234/api/v1")
-    end
-
-    it "missing scheme" do
-      subject.url = "server.example.com:1234/api/v1"
-      expect(subject.url).to eq("https://server.example.com:1234/api/v1")
-    end
-
-    it "works with #update" do
-      subject.update(:url => "server.example.com")
-      subject.update(:url => "server2.example.com")
-      expect(Endpoint.find(subject.default_endpoint.id).url).to eq("https://server2.example.com/api/v2")
-    end
-  end
-
-  it "with only hostname" do
-    subject.url = "server.example.com"
-    expect(subject.url).to eq("https://server.example.com/api/v2")
   end
 end
