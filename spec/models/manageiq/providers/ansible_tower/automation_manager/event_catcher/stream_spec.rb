@@ -1,16 +1,15 @@
 describe ManageIQ::Providers::AnsibleTower::AutomationManager::EventCatcher::Stream do
   include_context "uses tower_data.yml"
 
-  let(:tower_url) { ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/" }
-  let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
-  let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
+  let(:auth_userid) { Rails.application.secrets.ansible_tower[:user] }
+  let(:auth_password) { Rails.application.secrets.ansible_tower[:password] }
 
   let(:cassette_file) { described_class.name.underscore.to_s }
   let(:auth)                    { FactoryBot.create(:authentication, :userid => auth_userid, :password => auth_password) }
   let(:automation_manager)      { provider.automation_manager }
   let(:provider) do
     FactoryBot.create(:provider_ansible_tower,
-                       :url        => tower_url,
+                       :url        => Rails.application.secrets.ansible_tower[:url],
                        :verify_ssl => false,).tap { |provider| provider.authentications << auth }
   end
 

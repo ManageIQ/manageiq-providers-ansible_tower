@@ -39,18 +39,14 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
   # ruby -pi -e 'gsub /example.com/, "yourdomain.com"; gsub /testuser:secret/, "admin:smartvm"' spec/vcr_cassettes/manageiq/providers/ansible_tower/automation_manager/*.yml
   include_context "uses tower_data.yml"
 
-  let(:tower_url) { ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/" }
-  let(:auth_userid) { ENV['TOWER_USER'] || 'testuser' }
-  let(:auth_password) { ENV['TOWER_PASSWORD'] || 'secret' }
-
-  let(:auth)                    { FactoryBot.create(:authentication, :userid => auth_userid, :password => auth_password) }
+  let(:auth)                    { FactoryBot.create(:authentication, :userid => Rails.application.secrets.ansible_tower[:user], :password => Rails.application.secrets.ansible_tower[:password]) }
   let(:automation_manager)      { provider.automation_manager }
   let(:expected_counterpart_vm) { FactoryBot.create(:vm, :uid_ems => "4233080d-7467-de61-76c9-c8307b6e4830") }
   let(:provider) do
     _guid, _server, zone = EvmSpecHelper.create_guid_miq_server_zone
     FactoryBot.create(:provider_ansible_tower,
                        :zone       => zone,
-                       :url        => tower_url,
+                       :url        => Rails.application.secrets.ansible_tower[:url],
                        :verify_ssl => false,).tap { |provider| provider.authentications << auth }
   end
   let(:manager_class) { described_class.parent }
