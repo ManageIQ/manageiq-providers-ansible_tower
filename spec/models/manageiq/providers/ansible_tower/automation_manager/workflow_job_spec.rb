@@ -28,11 +28,14 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
       'started'    => Time.current,
       'finished'   => Time.current
     ).tap do |rjob|
-      allow(rjob).to receive(:workflow_job_nodes).and_return([double('node', :job => the_raw_job)])
+      allow(rjob).to receive(:workflow_job_nodes).and_return([double('node', :job => the_raw_job, :job_id => the_raw_job_id, :summary_fields => summary_fields)])
     end
   end
 
+  let(:the_raw_job_id) { nil }
   let(:the_raw_job) { nil }
+  let(:summary_fields) { double("summary_fields", :job => summary_job) }
+  let(:summary_job) { nil }
   let(:template) { FactoryBot.create(:ansible_configuration_script, :manager => manager) }
   let(:workflow_template) { FactoryBot.create(:configuration_workflow, :manager => manager) }
   subject { FactoryBot.create(:ansible_tower_workflow_job, :workflow_template => workflow_template, :ext_management_system => manager) }
@@ -76,15 +79,16 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
       end
     end
 
-    context "#refres_ems" do
+    context "#refresh_ems" do
       before do
         allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
       end
 
+      let(:the_raw_job_id) { '1' }
       let(:the_raw_job) do
         AnsibleTowerClient::Job.new(
           mock_api,
-          'id'              => '1',
+          'id'              => the_raw_job_id,
           'name'            => template.name,
           'status'          => 'Successful',
           'extra_vars'      => {'param1' => 'val1'}.to_json,
@@ -96,6 +100,8 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
           allow(rjob).to receive(:job_events).with(:event => 'playbook_on_play_start').and_return(the_raw_plays)
         end
       end
+
+      let(:summary_job) { double("summary_job", :type => "job") }
 
       let(:the_raw_plays) do
         [

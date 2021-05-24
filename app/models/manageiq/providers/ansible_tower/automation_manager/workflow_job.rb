@@ -97,7 +97,18 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
     update_parameters(raw_workflow_job) if parameters.empty?
 
     raw_workflow_job.workflow_job_nodes.each do |node|
-      update_child_job(node.job) if node.job
+      next if node.job_id.nil?
+
+      case node.summary_fields&.job&.type
+      when "job"
+        update_child_job(node.job)
+      when "workflow_job"
+        # For nested workflows ansible tower returns a workflow_job id in the job
+        # attribute.  This means that "/api/v2/jobs/#{node.job_id}" will return a 404
+        # because the collection has to be "/api/v2/workflow_jobs/#{node.job_id}"
+        child_workflow_job = node.api.workflow_jobs.find(node.job_id)
+        update_child_workflow_job(child_workflow_job)
+      end
     end
   end
   private :update_with_provider_object
@@ -117,6 +128,22 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
     job.refresh_ems
   end
   private :update_child_job
+
+  def update_child_workflow_job(raw_workflow_job)
+    job = jobs.find_by(:ems_ref => raw_workflow_job.id)
+    unless job
+      workflow_template = ext_management_system.configuration_scripts.find_by(:manager_ref => raw_workflow_job.workflow_job_template_id)
+      job = ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob.create(
+        :name                  => workflow_template.name,
+        :ext_management_system => workflow_template.manager,
+        :workflow_template     => workflow_template,
+        :ems_ref               => raw_workflow_job.id,
+        :parent                => self
+      )
+    end
+    job.refresh_ems
+  end
+  private :update_child_workflow_job
 
   def update_parameters(raw_job)
     self.parameters = raw_job.extra_vars_hash.collect do |para_key, para_val|
