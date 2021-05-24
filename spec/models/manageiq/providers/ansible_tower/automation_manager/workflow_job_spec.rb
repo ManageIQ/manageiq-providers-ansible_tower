@@ -79,7 +79,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
       end
     end
 
-    context "#refres_ems" do
+    context "#refresh_ems" do
       before do
         allow_any_instance_of(ManageIQ::Providers::AnsibleTower::Provider).to receive_messages(:connect => connection)
       end
