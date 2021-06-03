@@ -139,6 +139,28 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
         expect(child_job.status).to                eq(the_raw_job.status)
         expect(child_job.ext_management_system).to eq(manager)
       end
+
+      context "with a workflow_job_node with no job_id" do
+        let(:the_raw_workflow_job) do
+          AnsibleTowerClient::WorkflowJob.new(
+            mock_api,
+            'id'         => '1',
+            'related'    => {},
+            'name'       => workflow_template.name,
+            'status'     => 'Successful',
+            'extra_vars' => {'param1' => 'val1'}.to_json,
+            'started'    => Time.current,
+            'finished'   => Time.current
+          ).tap do |rjob|
+            allow(rjob).to receive(:workflow_job_nodes).and_return([double('node')])
+          end
+        end
+
+        it "doesn't create child jobs" do
+          subject.refresh_ems
+          expect(subject.jobs.size).to be_zero
+        end
+      end
     end
 
     describe '#retire_now' do

@@ -97,7 +97,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
     update_parameters(raw_workflow_job) if parameters.empty?
 
     raw_workflow_job.workflow_job_nodes.each do |node|
-      next if node.job_id.nil?
+      next if node.try(:job_id).nil?
 
       case node.summary_fields&.job&.type
       when "job"
