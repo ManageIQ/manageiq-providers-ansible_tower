@@ -47,8 +47,8 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Parser::AutomationManager < 
           :type                 => "#{provider_module}::AutomationManager::ConfigurationScript",
           :description          => job_template.description,
           :name                 => job_template.name,
-          :survey_spec          => survey_spec,
-          :variables            => variables,
+          :survey_spec          => survey_spec.to_h,
+          :variables            => variables.to_h,
           :inventory_root_group => inventory_root_group,
           :parent               => parent
         )
@@ -79,12 +79,17 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Parser::AutomationManager < 
     provider_module = ManageIQ::Providers::Inflector.provider_module(collector.manager.class).name
     collector.configuration_workflows.each do |job_template|
       begin
-        inventory_object = persister.configuration_scripts.build(:manager_ref => job_template.id.to_s)
-        inventory_object.type = "#{provider_module}::AutomationManager::ConfigurationWorkflow"
-        inventory_object.description = job_template.description
-        inventory_object.name = job_template.name
-        inventory_object.survey_spec = job_template.survey_spec_hash
-        inventory_object.variables = job_template.extra_vars_hash
+        survey_spec = job_template.survey_spec_hash
+        variables   = job_template.extra_vars_hash
+
+        persister.configuration_scripts.build(
+          :manager_ref => job_template.id.to_s,
+          :type        => "#{provider_module}::AutomationManager::ConfigurationWorkflow",
+          :description => job_template.description,
+          :name        => job_template.name,
+          :survey_spec => survey_spec.to_h,
+          :variables   => variables.to_h
+        )
       rescue => err
         _log.warn("Failed to parse workflow_job_template ID [#{job_template&.id}]: #{err}")
         _log.debug { job_template.inspect }
