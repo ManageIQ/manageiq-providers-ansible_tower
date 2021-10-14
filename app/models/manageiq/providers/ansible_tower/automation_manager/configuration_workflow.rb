@@ -37,7 +37,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWorkflo
   end
 
   def merge_extra_vars(external)
-    {:extra_vars => variables.merge(external || {}).to_json}
+    {:extra_vars => Hash(variables).merge(external || {}).to_json}
   end
 
   def provider_object(connection = nil)
