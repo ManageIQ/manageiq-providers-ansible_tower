@@ -82,7 +82,7 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Parser::AutomationManager < 
         survey_spec = job_template.survey_spec_hash
         variables   = job_template.extra_vars_hash
 
-        inventory_object = persister.configuration_scripts.build(
+        persister.configuration_scripts.build(
           :manager_ref => job_template.id.to_s,
           :type        => "#{provider_module}::AutomationManager::ConfigurationWorkflow",
           :description => job_template.description,

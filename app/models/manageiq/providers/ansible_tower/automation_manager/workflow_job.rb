@@ -62,8 +62,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
     extra_vars = options[:extra_vars]
     return options if extra_vars.blank?
 
-    defined_extra_vars = Array(Hash(template.survey_spec)['spec']).collect { |s| s['variable'] }
-    defined_extra_vars |= Hash(template.variables).keys
+    defined_extra_vars = template.survey_spec.to_h['spec'].to_a.collect { |s| s['variable'] }
+    defined_extra_vars |= template.variables.to_h.keys
     extra_vars_lookup = defined_extra_vars.collect { |key| [key.downcase, key] }.to_h
 
     extra_vars = extra_vars.transform_keys do |key|
