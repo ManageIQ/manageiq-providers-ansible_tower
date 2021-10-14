@@ -39,7 +39,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript 
   end
 
   def merge_extra_vars(external)
-    extra_vars = variables.merge(external || {}).each_with_object({}) do |(k, v), hash|
+    extra_vars = variables.to_h.merge(external.to_h).each_with_object({}) do |(k, v), hash|
       match_data = v.kind_of?(String) && /password::/.match(v)
       hash[k] = match_data ? ManageIQ::Password.decrypt(v.gsub(/password::/, '')) : v
     end
