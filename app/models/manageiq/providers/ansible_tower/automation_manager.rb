@@ -55,6 +55,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   require_nested :WorkflowJob
 
   supports :catalog
+  supports :create
 
   def self.connection_source(options = {})
     options[:connection_source] || self
