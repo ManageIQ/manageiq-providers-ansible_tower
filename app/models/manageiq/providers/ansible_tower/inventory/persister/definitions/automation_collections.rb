@@ -34,7 +34,7 @@ module ManageIQ::Providers::AnsibleTower::Inventory::Persister::Definitions::Aut
   end
 
   def add_vms
-    add_collection(automation, :vms) do |builder|
+    add_collection(automation, :vms, {}, {:without_sti => true}) do |builder|
       builder.add_properties(
         :parent   => nil,
         :arel     => Vm,
