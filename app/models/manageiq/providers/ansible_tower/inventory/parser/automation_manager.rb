@@ -23,7 +23,7 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Parser::AutomationManager < 
       inventory_object.hostname = host.name
       inventory_object.virtual_instance_ref = host.instance_id
       inventory_object.inventory_root_group = persister.inventory_root_groups.lazy_find(host.inventory_id.to_s)
-      inventory_object.counterpart = persister.vms.lazy_find(host.instance_id)
+      inventory_object.counterpart = persister.cross_link_vms.lazy_find({:uid_ems => host.instance_id}, {:ref => :by_uid_ems})
     end
   end
 
