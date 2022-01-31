@@ -4,6 +4,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScriptS
   include ManageIQ::Providers::AnsibleTower::AutomationManager::TowerApi
   include ProviderObjectMixin
 
+  supports :create
+
   def self.provider_params(params)
     if params.keys.include?(:authentication_id)
       authentication_id = params.delete(:authentication_id)

@@ -9,6 +9,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Credential < ManageI
   include ManageIQ::Providers::AnsibleTower::AutomationManager::TowerApi
   include ProviderObjectMixin
 
+  supports :create
+
   def self.provider_collection(manager)
     manager.with_provider_connection do |connection|
       connection.api.credentials
