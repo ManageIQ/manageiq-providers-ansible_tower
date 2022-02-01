@@ -3,6 +3,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript 
   include ProviderObjectMixin
   include ManageIQ::Providers::AnsibleTower::AutomationManager::TowerApi
 
+  supports :create
+
   def run_with_miq_job(options, userid = nil)
     options[:name] = "Job Template: #{name}"
     options[:ansible_template_id] = id
