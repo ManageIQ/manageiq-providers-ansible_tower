@@ -1,6 +1,6 @@
 # ManageIQ::Providers::AnsibleTower
 
-[![Build Status](https://travis-ci.com/ManageIQ/manageiq-providers-ansible_tower.svg?branch=master)](https://travis-ci.com/github/ManageIQ/manageiq-providers-ansible_tower)
+[![CI](https://github.com/ManageIQ/manageiq-providers-ansible_tower/actions/workflows/ci.yaml/badge.svg)](https://github.com/ManageIQ/manageiq-providers-ansible_tower/actions/workflows/ci.yaml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/fc704a8f0a6a627f5b67/maintainability)](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/fc704a8f0a6a627f5b67/test_coverage)](https://codeclimate.com/github/ManageIQ/manageiq-providers-ansible_tower/test_coverage)
 
