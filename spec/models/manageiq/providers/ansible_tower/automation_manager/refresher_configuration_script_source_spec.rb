@@ -14,7 +14,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
                       :url        => tower_url,
                       :verify_ssl => false,).tap { |provider| provider.authentications << auth }
   end
-  let(:manager_class) { described_class.parent }
+  let(:manager_class) { described_class.module_parent }
   let(:ems_type) { :ansible }
   let(:cassette_path) { described_class.name.underscore + '_targeted_configuration_script_source' }
 

@@ -14,7 +14,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
                       :url        => tower_url,
                       :verify_ssl => false,).tap { |provider| provider.authentications << auth }
   end
-  let(:manager_class) { described_class.parent }
+  let(:manager_class) { described_class.module_parent }
   let(:cassette_path) { described_class.name.underscore + '_targeted' }
 
   let(:targeted_refresh_last_updated) { tower_data[:items]['hello_repo'][:last_updated].utc }
@@ -91,8 +91,8 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
     it "will refresh configuration_script_sources in batches" do
       # pre-loading needed due to stub_const error
       # https://github.com/rspec/rspec-mocks/issues/1079
-      manager_class.parent::Inventory
-      manager_class.parent::Inventory::Collector
+      manager_class.module_parent::Inventory
+      manager_class.module_parent::Inventory::Collector
 
       repeat_with_cassette("configuration_script_sources_in_batches", :repeat_count => 1) do
         # get all projects first
@@ -107,7 +107,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
 
         # make targeted refresh in various sized batches
         [1, 2, 100].each do |batch_size|
-          stub_const("#{manager_class.parent}::Inventory::Collector::TargetCollection::MAX_FILTER_SIZE", batch_size)
+          stub_const("#{manager_class.module_parent}::Inventory::Collector::TargetCollection::MAX_FILTER_SIZE", batch_size)
 
           EmsRefresh.refresh(targets)
 

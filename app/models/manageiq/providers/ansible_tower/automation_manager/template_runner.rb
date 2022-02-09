@@ -147,7 +147,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::TemplateRunner < ::J
   end
 
   def job_class
-    "#{job_template.class.parent.name}::#{job_template.class.stack_type}".constantize
+    "#{job_template.class.module_parent.name}::#{job_template.class.stack_type}".constantize
   end
 
   def job_finish_message
