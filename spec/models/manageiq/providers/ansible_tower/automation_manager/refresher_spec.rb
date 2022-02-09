@@ -49,7 +49,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
                        :url        => Rails.application.secrets.ansible_tower[:url],
                        :verify_ssl => false,).tap { |provider| provider.authentications << auth }
   end
-  let(:manager_class) { described_class.parent }
+  let(:manager_class) { described_class.module_parent }
   let(:cassette_path) { described_class.name.underscore }
   let(:ems_type) { :ansible_tower_automation }
   let(:more_credential_types) do
