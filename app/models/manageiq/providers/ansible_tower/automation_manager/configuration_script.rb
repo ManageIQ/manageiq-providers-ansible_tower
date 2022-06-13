@@ -1,7 +1,7 @@
+ManageIQ::Providers::Awx::AutomationManager::ConfigurationScript.include(ActsAsStiLeafClass)
+
 class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript <
-  ManageIQ::Providers::ExternalAutomationManager::ConfigurationScript
-  include ProviderObjectMixin
-  include ManageIQ::Providers::AnsibleTower::AutomationManager::TowerApi
+  ManageIQ::Providers::Awx::AutomationManager::ConfigurationScript
 
   supports :create
 
@@ -16,40 +16,6 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript 
 
   def self.display_name(number = 1)
     n_('Job Template (Ansible Tower)', 'Job Templates (Ansible Tower)', number)
-  end
-
-  def self.stack_type
-    "Job"
-  end
-
-  def supports_limit?
-    true
-  end
-
-  def self.provider_collection(manager)
-    manager.with_provider_connection do |connection|
-      connection.api.job_templates
-    end
-  end
-
-  def run(vars = {})
-    options = vars.merge(merge_extra_vars(vars[:extra_vars]))
-
-    with_provider_object do |jt|
-      jt.launch(options)
-    end
-  end
-
-  def merge_extra_vars(external)
-    extra_vars = variables.to_h.merge(external.to_h).each_with_object({}) do |(k, v), hash|
-      match_data = v.kind_of?(String) && /password::/.match(v)
-      hash[k] = match_data ? ManageIQ::Password.decrypt(v.gsub(/password::/, '')) : v
-    end
-    {:extra_vars => extra_vars.to_json}
-  end
-
-  def provider_object(connection = nil)
-    (connection || connection_source.connect).api.job_templates.find(manager_ref)
   end
 
   FRIENDLY_NAME = 'Ansible Tower Job Template'.freeze

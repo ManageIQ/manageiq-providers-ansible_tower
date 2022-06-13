@@ -160,7 +160,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
   end
 
   def assert_specific_configuration_workflow
-    expect(inventory(:configuration_workflow)).to have_attributes(
+    expect(inventory(:ansible_configuration_workflow)).to have_attributes(
       :name        => 'hello_workflow',
       :description => 'test workflow',
       :survey_spec => {},
@@ -254,7 +254,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
                          when :configuration_script then manager_class::ConfigurationScript.where(:manager_ref => tower_data[:items]['hello_template'][:id]).first
                          when :configuration_script_payload then manager_class::ConfigurationScriptPayload.where(:manager_ref => 'hello_world.yml').first
                          when :configuration_script_source then manager_class::ConfigurationScriptSource.where(:manager_ref => tower_data[:items]['hello_repo'][:id]).first
-                         when :configuration_workflow then manager_class::ConfigurationWorkflow.where(:manager_ref => tower_data[:items]['hello_workflow'][:id]).first
+                         when :ansible_configuration_workflow then manager_class::ConfigurationWorkflow.where(:manager_ref => tower_data[:items]['hello_workflow'][:id]).first
                          when :configured_system then manager_class::ConfiguredSystem.where(:manager_ref => tower_data[:items]['hello_vm'][:id]).first
                          end
     @inventory[name].reload if @inventory[name].present? && reload
