@@ -10,7 +10,7 @@ class ManageIQ::Providers::AnsibleTower::Provider < ::Provider
   validates :url,  :presence => true
 
   def self.params_for_create
-    @params_for_create ||= {
+    {
       :fields => [
         {
           :component => 'sub-form',
