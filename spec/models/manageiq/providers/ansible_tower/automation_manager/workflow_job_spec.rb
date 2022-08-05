@@ -37,7 +37,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
   let(:summary_fields) { double("summary_fields", :job => summary_job) }
   let(:summary_job) { nil }
   let(:template) { FactoryBot.create(:ansible_configuration_script, :manager => manager) }
-  let(:workflow_template) { FactoryBot.create(:configuration_workflow, :manager => manager) }
+  let(:workflow_template) { FactoryBot.create(:ansible_configuration_workflow, :manager => manager) }
   subject { FactoryBot.create(:ansible_tower_workflow_job, :workflow_template => workflow_template, :ext_management_system => manager) }
 
   describe 'job operations' do
@@ -65,7 +65,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
 
       context 'options have extra_vars' do
         let(:workflow_template) do
-          FactoryBot.build(:configuration_workflow,
+          FactoryBot.build(:ansible_configuration_workflow,
                             :manager     => manager,
                             :variables   => {'Var1' => 'v1', 'VAR2' => 'v2'},
                             :survey_spec => {'spec' => [{'default' => 'v3', 'variable' => 'var3', 'type' => 'text'}]})

@@ -1,11 +1,7 @@
-class ManageIQ::Providers::AnsibleTower::Inventory < ManageIQ::Providers::Inventory
+class ManageIQ::Providers::AnsibleTower::Inventory < ManageIQ::Providers::Awx::Inventory
   require_nested :Collector
   require_nested :Parser
   require_nested :Persister
-
-  def self.default_manager_name
-    "AutomationManager"
-  end
 
   def self.parser_classes_for(ems, target)
     case target

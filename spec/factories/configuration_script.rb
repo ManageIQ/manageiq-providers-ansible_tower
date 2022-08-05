@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :configuration_workflow,
+  factory :ansible_configuration_workflow,
           :class  => "ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWorkflow",
           :parent => :configuration_script
 
