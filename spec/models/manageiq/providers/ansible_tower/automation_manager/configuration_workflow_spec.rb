@@ -17,13 +17,13 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWork
     end
 
     it "launches the referenced ansible workflow job template" do
-      expect(workflow_job_template).to receive(:launch).with(:extra_vars => "{\"instance_ids\":[\"i-3434\"]}").and_return(job)
+      expect(workflow_job_template).to receive(:launch).with({:extra_vars => "{\"instance_ids\":[\"i-3434\"]}"}).and_return(job)
       expect(manager.configuration_scripts.first.run).to be_a AnsibleTowerClient::WorkflowJob
     end
 
     it "accepts different variables to launch a job template against" do
       added_extras = {:extra_vars => {:some_key => :some_value}}
-      expect(workflow_job_template).to receive(:launch).with(:extra_vars=>"{\"instance_ids\":[\"i-3434\"],\"some_key\":\"some_value\"}").and_return(job)
+      expect(workflow_job_template).to receive(:launch).with({:extra_vars=>"{\"instance_ids\":[\"i-3434\"],\"some_key\":\"some_value\"}"}).and_return(job)
       expect(manager.configuration_scripts.first.run(added_extras)).to be_a AnsibleTowerClient::WorkflowJob
     end
   end

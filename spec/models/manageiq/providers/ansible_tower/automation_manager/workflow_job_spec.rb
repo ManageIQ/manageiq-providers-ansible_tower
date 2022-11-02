@@ -72,9 +72,9 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob do
         end
 
         it 'updates the extra_vars with original keys' do
-          expect(workflow_template).to receive(:run).with(:extra_vars => {'Var1' => 'n1', 'VAR2' => 'n2', 'var3' => 'n3'}).and_return(the_raw_workflow_job)
+          expect(workflow_template).to receive(:run).with({:extra_vars => {'Var1' => 'n1', 'VAR2' => 'n2', 'var3' => 'n3'}}).and_return(the_raw_workflow_job)
 
-          described_class.create_job(workflow_template, :extra_vars => {'var1' => 'n1', 'var2' => 'n2', 'VAR3' => 'n3'})
+          described_class.create_job(workflow_template, {:extra_vars => {'var1' => 'n1', 'var2' => 'n2', 'VAR3' => 'n3'}})
         end
       end
     end
