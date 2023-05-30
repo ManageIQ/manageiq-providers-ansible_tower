@@ -6,7 +6,7 @@ end
 Dir[Rails.root.join("spec/shared/**/*.rb")].each { |f| require f }
 Dir[File.join(__dir__, "support/**/*.rb")].each { |f| require f }
 
-require "manageiq-providers-ansible_tower"
+require "manageiq/providers/ansible_tower"
 
 VCR.configure do |config|
   config.ignore_hosts 'codeclimate.com' if ENV['CI']
