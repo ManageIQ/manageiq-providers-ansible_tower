@@ -9,6 +9,20 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager do
     end
   end
 
+  context "#pause!" do
+    let(:zone) { FactoryBot.create(:zone) }
+    let(:ems)  { FactoryBot.create(:automation_manager_ansible_tower, :zone => zone) }
+
+    include_examples "ExtManagementSystem#pause!"
+  end
+
+  context "#resume!" do
+    let(:zone) { FactoryBot.create(:zone) }
+    let(:ems)  { FactoryBot.create(:automation_manager_ansible_tower, :zone => zone) }
+
+    include_examples "ExtManagementSystem#resume!"
+  end
+
   describe ".create_from_params" do
     it "delegates endpoints, zone, name to provider" do
       params = {:zone => FactoryBot.create(:zone), :name => "Ansible Tower"}
