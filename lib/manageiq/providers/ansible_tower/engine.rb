@@ -20,7 +20,7 @@ module ManageIQ
         end
 
         def self.init_loggers
-          $ansible_tower_log ||= Vmdb::Loggers.create_logger("ansible_tower.log")
+          $ansible_tower_log ||= Vmdb::Loggers.create_logger("ansible_tower.log", Vmdb::Loggers::ProviderSdkLogger)
         end
 
         def self.apply_logger_config(config)
