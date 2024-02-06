@@ -3,8 +3,6 @@ ManageIQ::Providers::Awx::AutomationManager::Job.include(ActsAsStiLeafClass)
 require 'ansible_tower_client'
 class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
   ManageIQ::Providers::Awx::AutomationManager::Job
-  require_nested :Status
-
   belongs_to :ext_management_system, :foreign_key => :ems_id, :class_name => "ManageIQ::Providers::AutomationManager"
   belongs_to :job_template, :foreign_key => :configuration_script_id, :class_name => "ConfigurationScript"
   belongs_to :playbook, :foreign_key => :configuration_script_base_id

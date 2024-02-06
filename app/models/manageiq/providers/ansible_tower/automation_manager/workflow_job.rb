@@ -3,8 +3,6 @@ ManageIQ::Providers::Awx::AutomationManager::WorkflowJob.include(ActsAsStiLeafCl
 class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
   ManageIQ::Providers::Awx::AutomationManager::WorkflowJob
 
-  require_nested :Status
-
   belongs_to :ext_management_system, :foreign_key => :ems_id, :class_name => "ManageIQ::Providers::AutomationManager"
   belongs_to :workflow_template, :foreign_key => :orchestration_template_id, :class_name => "ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWorkflow"
 

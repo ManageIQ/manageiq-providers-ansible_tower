@@ -27,33 +27,6 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
 
   after_save :change_maintenance_for_provider, :if => proc { |ems| ems.saved_change_to_enabled? }
 
-  require_nested :Credential
-  require_nested :AmazonCredential
-  require_nested :AzureCredential
-  require_nested :CloudCredential
-  require_nested :GoogleCredential
-  require_nested :MachineCredential
-  require_nested :VaultCredential
-  require_nested :NetworkCredential
-  require_nested :OpenstackCredential
-  require_nested :ScmCredential
-  require_nested :Satellite6Credential
-  require_nested :VmwareCredential
-  require_nested :RhvCredential
-
-  require_nested :ConfigurationScript
-  require_nested :ConfigurationScriptSource
-  require_nested :ConfigurationWorkflow
-  require_nested :ConfiguredSystem
-  require_nested :EventCatcher
-  require_nested :EventParser
-  require_nested :Inventory
-  require_nested :Job
-  require_nested :Playbook
-  require_nested :Refresher
-  require_nested :RefreshWorker
-  require_nested :WorkflowJob
-
   supports :catalog
   supports :create
 
