@@ -25,7 +25,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   belongs_to :provider, :autosave => true, :dependent => :destroy
   before_validation :update_provider_zone
 
-  after_save :change_maintenance_for_provider, :if => proc { |ems| ems.saved_change_to_enabled? }
+  after_save :change_maintenance_for_provider, :if => proc { |ems| ems.saved_change_to_enabled? && !ems.enabled_before_last_save.nil? }
 
   supports :catalog
   supports :create
