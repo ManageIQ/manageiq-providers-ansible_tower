@@ -1,6 +1,5 @@
 ManageIQ::Providers::Awx::AutomationManager::Job.include(ActsAsStiLeafClass)
 
-require 'ansible_tower_client'
 class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
   ManageIQ::Providers::Awx::AutomationManager::Job
   belongs_to :ext_management_system, :foreign_key => :ems_id, :class_name => "ManageIQ::Providers::AutomationManager"
@@ -12,6 +11,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
   end
 
   def refresh_ems
+    require 'ansible_tower_client'
     ext_management_system.with_provider_connection do |connection|
       update_with_provider_object(connection.api.jobs.find(ems_ref))
     end
@@ -24,6 +24,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
   end
 
   def raw_status
+    require 'ansible_tower_client'
     ext_management_system.with_provider_connection do |connection|
       raw_job = connection.api.jobs.find(ems_ref)
       self.class.status_class.new(raw_job.status, nil)
@@ -37,6 +38,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
   end
 
   def raw_stdout(format = 'txt')
+    require 'ansible_tower_client'
     ext_management_system.with_provider_connection do |connection|
       connection.api.jobs.find(ems_ref).stdout(format)
     end
@@ -49,6 +51,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
   end
 
   def raw_artifacts
+    require 'ansible_tower_client'
     ext_management_system.with_provider_connection do |connection|
       connection.api.jobs.find(ems_ref).artifacts
     end
