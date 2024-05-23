@@ -75,6 +75,7 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Collector::TargetCollection 
   # @param inventory_collection_name [Symbol] IC name (as identified in persister's definitions)
   # @param endpoint - endpoint for AnsibleTowerClient api call
   def find_records(inventory_collection_name, endpoint)
+    require 'ansible_tower_client'
     refs = references(inventory_collection_name)
     return [] if refs.blank?
 
