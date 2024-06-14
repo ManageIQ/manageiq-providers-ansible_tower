@@ -1,11 +1,6 @@
 ManageIQ::Providers::Awx::AutomationManager::Job.include(ActsAsStiLeafClass)
 
-class ManageIQ::Providers::AnsibleTower::AutomationManager::Job <
-  ManageIQ::Providers::Awx::AutomationManager::Job
-  belongs_to :ext_management_system, :foreign_key => :ems_id, :class_name => "ManageIQ::Providers::AutomationManager"
-  belongs_to :job_template, :foreign_key => :configuration_script_id, :class_name => "ConfigurationScript"
-  belongs_to :playbook, :foreign_key => :configuration_script_base_id
-
+class ManageIQ::Providers::AnsibleTower::AutomationManager::Job < ManageIQ::Providers::Awx::AutomationManager::Job
   def self.display_name(number = 1)
     n_('Ansible Tower Job', 'Ansible Tower Jobs', number)
   end
