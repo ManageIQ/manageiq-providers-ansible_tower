@@ -52,15 +52,15 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   end
 
   def self.description
-    @description ||= "Ansible Tower Automation".freeze
+    @description ||= "Ansible Automation Platform".freeze
   end
 
   def self.catalog_types
-    {"generic_ansible_tower" => N_("Ansible Tower")}
+    {"generic_ansible_tower" => N_("Ansible Automation Platform")}
   end
 
   def self.display_name(number = 1)
-    n_('Automation Manager (Ansible Tower)', 'Automation Managers (Ansible Tower)', number)
+    n_('Automation Manager (Ansible Automation Platform)', 'Automation Managers (Ansible Automation Platform)', number)
   end
 
   def name

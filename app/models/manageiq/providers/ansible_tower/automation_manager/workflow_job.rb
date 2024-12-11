@@ -10,7 +10,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
   alias jobs orchestration_stacks
 
   def self.display_name(number = 1)
-    n_('Ansible Tower Workflow Job', 'Ansible Tower Workflow Jobs', number)
+    n_('Ansible Automation Platform Workflow Job', 'Ansible Automation Platform Workflow Jobs', number)
   end
 
   def raw_status

@@ -16,7 +16,7 @@ module ManageIQ
         end
 
         def self.plugin_name
-          _('Ansible Tower Provider')
+          _('Ansible Automation Platform Provider')
         end
 
         def self.init_loggers
