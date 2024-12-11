@@ -5,5 +5,5 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScriptS
 
   supports :create
 
-  FRIENDLY_NAME = 'Ansible Tower Project'.freeze
+  FRIENDLY_NAME = 'Ansible Automation Platform Project'.freeze
 end

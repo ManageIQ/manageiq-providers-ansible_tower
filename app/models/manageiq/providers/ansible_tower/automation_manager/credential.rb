@@ -10,5 +10,5 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Credential < ManageI
 
   supports :create
 
-  FRIENDLY_NAME = 'Ansible Tower Credential'.freeze
+  FRIENDLY_NAME = 'Ansible Automation Platform Credential'.freeze
 end

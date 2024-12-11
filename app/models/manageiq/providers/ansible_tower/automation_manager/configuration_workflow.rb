@@ -11,8 +11,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationWorkflo
   end
 
   def self.display_name(number = 1)
-    n_('Workflow Template (Ansible Tower)', 'Workflow Templates (Ansible Tower)', number)
+    n_('Workflow Template (Ansible Automation Platform)', 'Workflow Templates (Ansible Automation Platform)', number)
   end
 
-  FRIENDLY_NAME = 'Ansible Tower Workflow Job Template'.freeze
+  FRIENDLY_NAME = 'Ansible Automation Platform Workflow Job Template'.freeze
 end

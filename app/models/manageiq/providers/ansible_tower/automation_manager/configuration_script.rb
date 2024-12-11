@@ -15,8 +15,8 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript 
   end
 
   def self.display_name(number = 1)
-    n_('Job Template (Ansible Tower)', 'Job Templates (Ansible Tower)', number)
+    n_('Job Template (Ansible Automation Platform)', 'Job Templates (Ansible Automation Platform)', number)
   end
 
-  FRIENDLY_NAME = 'Ansible Tower Job Template'.freeze
+  FRIENDLY_NAME = 'Ansible Automation Platform Job Template'.freeze
 end
