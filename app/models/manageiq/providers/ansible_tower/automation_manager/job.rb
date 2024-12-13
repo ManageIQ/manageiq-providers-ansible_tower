@@ -1,10 +1,6 @@
 ManageIQ::Providers::Awx::AutomationManager::Job.include(ActsAsStiLeafClass)
 
 class ManageIQ::Providers::AnsibleTower::AutomationManager::Job < ManageIQ::Providers::Awx::AutomationManager::Job
-  def self.display_name(number = 1)
-    n_('Ansible Automation Platform Job', 'Ansible Automation Platform Jobs', number)
-  end
-
   def refresh_ems
     require 'ansible_tower_client'
     ext_management_system.with_provider_connection do |connection|

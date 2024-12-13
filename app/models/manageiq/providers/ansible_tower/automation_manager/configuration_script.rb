@@ -14,9 +14,5 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::ConfigurationScript 
     miq_job.miq_task.id
   end
 
-  def self.display_name(number = 1)
-    n_('Job Template (Ansible Automation Platform)', 'Job Templates (Ansible Automation Platform)', number)
-  end
-
   FRIENDLY_NAME = 'Ansible Automation Platform Job Template'.freeze
 end
