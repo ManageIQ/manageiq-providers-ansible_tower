@@ -9,10 +9,6 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::WorkflowJob <
   # jobs under this workflow job
   alias jobs orchestration_stacks
 
-  def self.display_name(number = 1)
-    n_('Ansible Automation Platform Workflow Job', 'Ansible Automation Platform Workflow Jobs', number)
-  end
-
   def raw_status
     require 'ansible_tower_client'
     ext_management_system.with_provider_connection do |connection|
