@@ -6,9 +6,16 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager::Credential < ManageI
   # CUD operations in the TowerApi concern
 
   alias_attribute :manager_id, :resource_id
-  alias_attribute :manager, :resource
 
   supports :create
 
   FRIENDLY_NAME = 'Ansible Automation Platform Credential'.freeze
+
+  def manager
+    resource
+  end
+
+  def manager=(object)
+    self.resource = object
+  end
 end
