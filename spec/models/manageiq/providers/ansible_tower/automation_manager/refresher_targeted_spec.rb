@@ -1,9 +1,9 @@
 describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
   include_context "uses tower_data.yml"
 
-  let(:tower_url) { Rails.application.secrets.ansible_tower[:url] }
-  let(:auth_userid) { Rails.application.secrets.ansible_tower[:user] }
-  let(:auth_password) { Rails.application.secrets.ansible_tower[:password] }
+  let(:tower_url) { VcrSecrets.ansible_tower.url }
+  let(:auth_userid) { VcrSecrets.ansible_tower.user }
+  let(:auth_password) { VcrSecrets.ansible_tower.password }
 
   let(:auth)                    { FactoryBot.create(:authentication, :userid => auth_userid, :password => auth_password) }
   let(:automation_manager)      { provider.automation_manager }
