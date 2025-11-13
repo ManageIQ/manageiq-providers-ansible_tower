@@ -3,6 +3,7 @@ module ManageIQ::Providers::AnsibleTower::Inventory::Persister::Definitions::Aut
 
   def initialize_automation_inventory_collections
     %i[
+      ext_management_system
       authentication_configuration_script_bases
       credentials
       configuration_scripts

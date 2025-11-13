@@ -85,7 +85,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager::Refresher do
   it "will remove all objects if an empty collection is returned by tower" do
     mock_api = double
     mock_collection = double(:all => [])
-    allow(mock_api).to receive(:version).and_return(api_version)
+    allow(mock_api).to receive(:config).and_return("version" => api_version)
     allow(mock_api).to receive_messages(
       :inventories            => mock_collection,
       :hosts                  => mock_collection,

@@ -15,6 +15,10 @@ class ManageIQ::Providers::AnsibleTower::Inventory::Collector::TargetCollection 
     find_records(:inventory_root_groups, connection.api.inventories)
   end
 
+  def config
+    connection.api.config
+  end
+
   def hosts
     return @hosts if @hosts.present?
     @hosts = find_records(:configured_systems, connection.api.hosts)
