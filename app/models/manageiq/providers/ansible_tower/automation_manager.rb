@@ -56,7 +56,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   end
 
   def self.catalog_types
-    {"generic_ansible_tower" => N_("Ansible Automation Platform")}
+    {"generic_ansible_tower" => N_("Ansible Automation Platform (deprecated)"), "ansible_tower" => N_("Ansible Automation Platform")}
   end
 
   def self.display_name(number = 1)
