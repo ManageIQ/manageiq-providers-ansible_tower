@@ -1,19 +1,19 @@
 namespace :spec do
   desc "Populate expected Tower objects for casssettes and spec tests"
   task :populate_tower do
-    tower_host = ENV['TOWER_URL'] ||"https://dev-ansible-tower3.example.com/api/v1/"
+    tower_host = ENV['TOWER_URL'] ||"https://dev-ansible-tower3.example.com/api/v2/"
     id = ENV['TOWER_USER'] || 'testuser'
     password = ENV['TOWER_PASSWORD'] || 'secret'
     populate = PopulateTower.new(tower_host, id, password)
 
     populate.create_dataset
     populate.counts
-    populate.to_file(ManageIQ::Providers::AnsibleTower::Engine.root.join("spec/support/tower_data.yml"))
+    populate.to_file(ManageIQ::Providers::Awx::Engine.root.join("spec/support/tower_data.yml"))
   end
 
   desc "Get counts of various Tower objects"
   task :tower_counts do
-    tower_host = ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v1/"
+    tower_host = ENV['TOWER_URL'] || "https://dev-ansible-tower3.example.com/api/v2/"
     id = ENV['TOWER_USER'] || 'testuser'
     password = ENV['TOWER_PASSWORD'] || 'secret'
     PopulateTower.new(tower_host, id, password).counts
@@ -56,7 +56,7 @@ class PopulateTower
   #     hello_repo                                     : 61
   #
   require 'faraday'
-  require 'faraday_middleware'
+  require 'faraday/follow_redirects'
 
   MAX_TRIES = ENV["MAX_TRIES"] || 10
   TRY_SLEEP = ENV["TRY_SLEEP"] || 2
@@ -64,8 +64,8 @@ class PopulateTower
 
   def initialize(tower_host, id, password)
     @conn = Faraday.new(tower_host, :ssl => {:verify => false}) do |c|
-      c.use(FaradayMiddleware::EncodeJson)
-      c.use(FaradayMiddleware::FollowRedirects, :limit => 3, :standards_compliant => true)
+      c.request :json
+      c.use(Faraday::FollowRedirects::Middleware, :limit => 3, :standards_compliant => true)
       c.use(Faraday::Response::RaiseError)
       c.adapter(Faraday.default_adapter)
       c.basic_auth(id, password)
@@ -73,12 +73,12 @@ class PopulateTower
 
     @tower_data = {}
 
-    uri = '/api/v1/config'
+    uri = '/api/v2/config'
     config = get_obj(uri)
     @version = Gem::Version.new(config['version'])
     @tower_data[:config] = { :version => config['version'] }
 
-    uri = '/api/v1/me'
+    uri = '/api/v2/me'
     me = get_obj(uri)
     @tower_data[:user] = { :id => me['results'].first['id'] }
   end
@@ -178,7 +178,7 @@ class PopulateTower
     @tower_data[:items] = {}
 
     # create test organization
-    uri = '/api/v1/organizations/'
+    uri = '/api/v2/organizations/'
     data = {
       :name        => 'spec_test_org',
       :description => 'for miq spec tests'
@@ -187,7 +187,7 @@ class PopulateTower
     @tower_data[:items][data[:name]] = { :id => organization['id'] }
 
     # create scm cred
-    uri = '/api/v1/credentials/'
+    uri = '/api/v2/credentials/'
     data = {
       :name         => 'hello_scm_cred',
       :kind         => 'scm',
@@ -309,7 +309,7 @@ class PopulateTower
     end
 
     # create inventory
-    uri = '/api/v1/inventories/'
+    uri = '/api/v2/inventories/'
     data = {
       :name         => 'hello_inventory',
       :description  => 'inventory for miq spec tests',
@@ -319,7 +319,7 @@ class PopulateTower
     @tower_data[:items][data[:name]] = { :id => inventory['id'] }
 
     # create a host
-    uri = '/api/v1/hosts/'
+    uri = '/api/v2/hosts/'
     data = {
       :name        => 'hello_vm',
       :instance_id => '4233080d-7467-de61-76c9-c8307b6e4830',
@@ -329,7 +329,7 @@ class PopulateTower
     @tower_data[:items][data[:name]] = { :id => host['id'] }
 
     # create a project
-    uri = '/api/v1/projects/'
+    uri = '/api/v2/projects/'
     data = {
       :name         => 'hello_repo',
       :scm_url      => 'https://github.com/jameswnl/ansible-examples',
@@ -361,7 +361,7 @@ class PopulateTower
     @tower_data[:items][data[:name]][:playbooks] = get_obj(project['related']['playbooks'])
 
     # create a job_template
-    uri = '/api/v1/job_templates/'
+    uri = '/api/v2/job_templates/'
     data = {
       :name               => 'hello_template',
       :description        => 'test job',
@@ -378,7 +378,7 @@ class PopulateTower
     @tower_data[:items][data[:name]] = { :id => template['id'] }
 
     # create a job_template with survey spec
-    uri = '/api/v1/job_templates/'
+    uri = '/api/v2/job_templates/'
     data = {
       :name           => 'hello_template_with_survey',
       :description    => 'test job with survey spec',
@@ -394,7 +394,7 @@ class PopulateTower
     @tower_data[:items][data[:name]] = { :id => template['id'] }
 
     # create survey spec
-    uri = "/api/v1/job_templates/#{template['id']}/survey_spec/"
+    uri = "/api/v2/job_templates/#{template['id']}/survey_spec/"
     data = {
       :name        => 'Simple Survey',
       :description => 'Description of the simple survey',
@@ -410,7 +410,7 @@ class PopulateTower
     @conn.post(uri, data)
 
     # create workflow job template
-    uri = '/api/v1/workflow_job_templates/'
+    uri = '/api/v2/workflow_job_templates/'
     data = {
       :name         => 'hello_workflow',
       :description  => 'test workflow',
@@ -421,7 +421,7 @@ class PopulateTower
     @tower_data[:items][data[:name]] = { :id => workflow_template['id'] }
 
     # Create a project with failed update.
-    uri = '/api/v1/projects/'
+    uri = '/api/v2/projects/'
     data = {
       :name         => 'failed_repo',
       :scm_url      => 'https://github.com/jameswnl/ansible-examplez',
@@ -432,7 +432,7 @@ class PopulateTower
     create_obj(uri, data)
 
     # Create a project without an update job.
-    uri = '/api/v1/projects/'
+    uri = '/api/v2/projects/'
     data = {
       :name         => 'jobless_repo',
       :scm_url      => 'https://github.com/jameswnl/ansible-examples',
@@ -446,7 +446,7 @@ class PopulateTower
     @conn.delete(last_update['url'])
 
     # Create and remove project - record an collect an ID of missing entity
-    uri = '/api/v1/projects/'
+    uri = '/api/v2/projects/'
     data = {
       :name         => 'nonexistent_repo',
       :scm_url      => 'https://github.com/jameswnl/ansible-examples',
@@ -479,7 +479,7 @@ class PopulateTower
     # Collect total counts for various object types
     @tower_data[:total_counts] = {}
     record_types.except(:playbooks).each_key do |tower_name|
-      count = get_obj("/api/v1/#{tower_name}/")['count']
+      count = get_obj("/api/v2/#{tower_name}/")['count']
       @tower_data[:total_counts][tower_name] = count
     end
 
@@ -488,7 +488,7 @@ class PopulateTower
     watched_projects = %w(hello_repo)
     @tower_data[:total_counts][:playbooks] = 0
 
-    uri = '/api/v1/projects/'
+    uri = '/api/v2/projects/'
     while uri
       response = get_obj(uri)
       uri = response['next']
