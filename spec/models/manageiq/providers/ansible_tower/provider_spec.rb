@@ -2,11 +2,17 @@ require "ansible_tower_client"
 
 describe ManageIQ::Providers::AnsibleTower::Provider do
   subject { FactoryBot.create(:provider_ansible_tower) }
-  describe "#connect" do
+  describe ".raw_connect" do
     let(:attrs) { {:username => "admin", :password => "smartvm", :verify_ssl => OpenSSL::SSL::VERIFY_PEER} }
 
-    it "with no port" do
+    it "with an invalid url" do
       url = "example.com"
+      expect { described_class.raw_connect(url, "admin", "smartvm", OpenSSL::SSL::VERIFY_PEER) }
+        .to raise_error(ArgumentError, "Invalid URL")
+    end
+
+    it "with no port" do
+      url = "https://example.com"
       expected_url = "https://example.com/api/v2"
 
       expect(AnsibleTowerClient::Connection).to receive(:new).with(attrs.merge(:base_url => expected_url))
@@ -14,7 +20,7 @@ describe ManageIQ::Providers::AnsibleTower::Provider do
     end
 
     it "with a port" do
-      url = "example.com:555"
+      url = "https://example.com:555"
       expected_url = "https://example.com:555/api/v2"
 
       expect(AnsibleTowerClient::Connection).to receive(:new).with(attrs.merge(:base_url => expected_url))
@@ -22,7 +28,7 @@ describe ManageIQ::Providers::AnsibleTower::Provider do
     end
 
     it "with an explicit api path" do
-      url = "example.com/api/v1"
+      url = "https://example.com/api/v1"
       expected_url = "https://example.com/api/v1"
 
       expect(AnsibleTowerClient::Connection).to receive(:new).with(attrs.merge(:base_url => expected_url))

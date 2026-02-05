@@ -34,6 +34,15 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager do
       expect(automation_manager.provider.name).to eq("Ansible Automation Platform")
       expect(automation_manager.provider.endpoints.count).to eq(1)
     end
+
+    it "validates url includes scheme" do
+      params = {:zone => FactoryBot.create(:zone), :name => "AWX"}
+      endpoints = [{"role" => "default", "url" => "awx_missing_scheme:443", "verify_ssl" => 0}]
+      authentications = [{"authtype" => "default", "userid" => "admin", "password" => "smartvm"}]
+
+      expect { described_class.create_from_params(params, endpoints, authentications) }
+        .to raise_error(ActiveRecord::RecordInvalid, /Validation failed: ManageIQ::Providers::AnsibleTower::Provider: Url has to be a valid URL/)
+    end
   end
 
   describe "#edit_with_params" do
@@ -55,6 +64,15 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager do
       provider.reload
       expect(provider.name).to eq("Ansible Automation Platform 2")
       expect(provider.url).to eq("https://tower")
+    end
+
+    it "validates the url on update" do
+      params = {:zone => FactoryBot.create(:zone), :name => "AWX 2"}
+      endpoints = [{"role" => "default", "url" => "awx", "verify_ssl" => 0}]
+      authentications = [{"authtype" => "default", "userid" => "admin", "password" => "smartvm"}]
+
+      expect { automation_manager.edit_with_params(params, endpoints, authentications) }
+        .to raise_error(ActiveRecord::RecordInvalid, /Validation failed: ManageIQ::Providers::AnsibleTower::Provider: Url has to be a valid URL/)
     end
   end
 end
