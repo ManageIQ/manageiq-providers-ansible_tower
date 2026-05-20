@@ -5,7 +5,7 @@ describe ManageIQ::Providers::AnsibleTower::AutomationManager do
     let(:ems) { FactoryBot.create(:automation_manager_ansible_tower) }
 
     it "#catalog_types" do
-      expect(ems.catalog_types).to include("generic_ansible_tower")
+      expect(ems.catalog_types).to include("ansible_tower")
     end
   end
 
