@@ -60,7 +60,7 @@ class ManageIQ::Providers::AnsibleTower::AutomationManager < ManageIQ::Providers
   end
 
   def self.display_name(number = 1)
-    n_('Automation Manager (Ansible Automation Platform)', 'Automation Managers (Ansible Automation Platform)', number)
+    n_('Automation Provider (Ansible Automation Platform)', 'Automation Providers (Ansible Automation Platform)', number)
   end
 
   def name
